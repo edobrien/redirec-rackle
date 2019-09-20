@@ -42,21 +42,15 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Law Firm Clients</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
                         <h6 class="font-weight-bold text-grey">Types of recruitment</h6>
                         <ul class="text-grey pl-4">
                             <li class="pb-1" ng-repeat="type in firm.firm_recruitment_type"><% type.recruitment_type.name %></li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Inhouse clients</h6>
+                        <h6 class="font-weight-bold text-grey">Law Firm Clients</h6>
                         <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" ng-show="sector.sector.type='INHOUSE'"><% sector.sector.name %>
+                            <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
@@ -66,23 +60,30 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Sector specialisms</h6>
+                        <h6 class="font-weight-bold text-grey">Private Practice Sector specialisms</h6>
                         <ul class="text-grey pl-4">
                             <li class="pb-1" ng-repeat="sector in firm.firm_sector"><% sector.sector.name %>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Inhouse Sector specialisms</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" ng-show="sector.sector.type='INHOUSE'"><% sector.sector.name %>
                         </ul>
                     </div>
                 </div>
                 <h5 class="font-weight-bold py-2">Regions recruited for</h5>
                 <ul class="text-grey pl-4">
-                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> - <% region.location.name %></li>
+                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> <br> <% region.location.name %></li>
                 </ul>
                 <h5 class="font-weight-bold pb-2">Contact Details</h5>
                 <div class="row">
-                    <div class="col-md-12">
-                        <h6 class="font-weight-bold text-grey">Office Location</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="location in firm.firm_location"><% location.location.name %> - <% location.contact_name %> - <% location.telephone %> - <% location.email %></li>
-                        </ul>
+                    <div class="col-md-6 col-lg-4" ng-repeat="location in firm.firm_location">
+                        <ul class="text-grey list-style-none pl-0">
+                            <li class="pb-1">
+                                <h6 class="font-weight-bold text-grey"><% location.location.name %></h6>
+                                <% location.contact_name %> <br> <% location.telephone %> <br> <% location.email %>
+                            </li>
                         </ul>
                     </div>
                 </div>
