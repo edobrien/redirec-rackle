@@ -1,0 +1,150 @@
+@extends('layouts.app')
+@section('content')
+<div class="row" ng-cloak ng-controller="DetailListingController">
+    <div class="col-md-12 pt-4 pb-3 px-4">
+        <h4 class="font-weight-bold text-blue pb-2">Recruiters</h4>
+        <div class="row">
+            <div class="col-md-3 search-results">
+                @foreach($firms as $firm)
+                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-2 pl-3">
+                        <p class="m-0 user-name" data-toggle="tooltip" data-placement="top" title="{{$firm->name}}">
+                            {{$firm->name}}
+                        </p>
+                        <small class="text-muted mb-0">{{$firm->location}}</small>
+                        @if(Auth::user()->is_admin == "YES")
+                        <small class="text-muted mb-0 pull-right">{{$firm->view_count}}</small>
+                        @endif
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div ng-show="!firm" class="col-md-9 d-flex justify-content-center mt-18">
+                <h2 class="font-weight-bold text-grey"> Click on recruiters to see detailed description</h2>
+            </div>
+            <div class="col-md-9 search-results" ng-show="firm">
+                <h5 class="font-weight-bold py-2"><% firm.name %></h5>
+                <p class="text-grey" ng-bind-html="firm.description | trust"></p>
+                <h5 class="font-weight-bold py-2">Testimonials</h5>
+                <p class="text-grey" ng-bind-html="firm.testimonials | trust"></p>
+                <h5 class="font-weight-bold py-2">Facts and Figures</h5>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Office Location</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="location in firm.firm_location"><% location.location.name %></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Services</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="service in firm.firm_service"><% service.service.name %></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Law Firm Clients</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Types of recruitment</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="type in firm.firm_recruitment_type"><% type.recruitment_type.name %></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Inhouse clients</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" ng-show="sector.sector.type='INHOUSE'"><% sector.sector.name %>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Practice area specialisms</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="area in firm.firm_practice_area"><% area.practice_area.name %></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Sector specialisms</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="sector in firm.firm_sector"><% sector.sector.name %>
+                        </ul>
+                    </div>
+                </div>
+                <h5 class="font-weight-bold py-2">Regions recruited for</h5>
+                <ul class="text-grey pl-4">
+                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> - <% region.location.name %></li>
+                </ul>
+                <h5 class="font-weight-bold pb-2">Contact Details</h5>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6 class="font-weight-bold text-grey">Office Location</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="location in firm.firm_location"><% location.location.name %> - <% location.contact_name %> - <% location.telephone %> - <% location.email %></li>
+                        </ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row pt-2 text-footer">
+                    <div class="col-md-3">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="text-grey"><% firm.location %></span>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <span class="text-grey"><% firm.practice_area %></span>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <span class="text-grey"><% firm.sector %></span>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <i class="fa fa fa-globe" aria-hidden="true"></i>
+                        <a href="<% firm.website_link %>" class="text-grey"><% firm.website_link %></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@push('scripts')
+<script type="text/javascript">
+    
+    app.filter("trust", ['$sce', function($sce) {
+      return function(htmlCode){
+        return $sce.trustAsHtml(htmlCode);
+      }
+    }]);
+
+    app.controller('DetailListingController', function ($scope, $http, $compile) {
+
+        $scope.saveViewCount = function(firm_id){
+            $(".bg_load").show();
+            $scope.modalErrors = null;$scope.firm = {};
+            var url = 'firm-view-count/'+firm_id;
+            $http.get(url).then(function (response) {
+                if (response.data.status == 'SUCCESS') {
+                    $scope.firm = response.data.firm;
+                } else {
+                    var errors = [];
+                    $.each(response.data.errors, function (key, value) {
+                        errors.push(value);
+                    });
+                    $scope.modalErrors = errors;
+                }
+            }).finally(function(){
+                $(".bg_load").hide();
+            });
+        }
+
+        $scope.init = function () {
+            $scope.form_data = {};
+            $scope.errors = $scope.successMessage = $scope.modalErrors = null;
+        }
+
+        $scope.init();
+    });
+</script>
+@endpush
