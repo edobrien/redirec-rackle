@@ -54,10 +54,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                             <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Area </a>
+                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Area Guide</a>
                             </li>
                             <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/interview-guide') }}">Interview </a>
+                                <a class="nav-link" href="{{ url('/interview-guide') }}">Interview / Resource Guides</a>
                             </li>
                             <li class="nav-item {{ Request::is('reports-analysis') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/reports-analysis') }}">Reports</a>
@@ -124,9 +124,6 @@
                                             <a class="dropdown-item text-muted {{ Request::is('upload-file') ? 'active' : '' }}" href="{{ url('/upload-file') }}">
                                             Upload File 
                                             </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('recruitment-firm') ? 'active' : '' }}" href="{{ url('/recruitment-firm') }}">
-                                            Recruitment Firm
-                                            </a>
                                             <a class="dropdown-item text-muted {{ Request::is('region') ? 'active' : '' }}" href="{{ url('/region') }}">
                                             Region
                                             </a>
@@ -142,10 +139,13 @@
                                             <a class="dropdown-item text-muted {{ Request::is('practice-area') ? 'active' : '' }}" href="{{ url('/practice-area') }}">
                                             Practice Area
                                             </a>
-                                        </div>
-                                        <div class="col-md-4 pr-4">
                                             <a class="dropdown-item text-muted {{ Request::is('sector') ? 'active' : '' }}" href="{{ url('/sector') }}">
                                             Sector
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4 pr-4">
+                                            <a class="dropdown-item text-muted {{ Request::is('recruitment-firm') ? 'active' : '' }}" href="{{ url('/recruitment-firm') }}">
+                                            Recruitment Firm
                                             </a>
                                             <a class="dropdown-item text-muted {{ Request::is('firm-location') ? 'active' : '' }}" href="{{ url('/firm-location') }}">
                                             Firm Location
@@ -156,11 +156,17 @@
                                             <a class="dropdown-item text-muted {{ Request::is('firm-recruitment-type') ? 'active' : '' }}" href="{{ url('/firm-recruitment-type') }}">
                                             Firm Recruitment Type
                                             </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('firm-client') ? 'active' : '' }}" href="{{ url('/firm-client') }}">
+                                            Firm Client
+                                            </a>
                                             <a class="dropdown-item text-muted {{ Request::is('firm-practice-area') ? 'active' : '' }}" href="{{ url('/firm-practice-area') }}">
                                             Firm Practice Area
                                             </a>
                                             <a class="dropdown-item text-muted {{ Request::is('firm-sector') ? 'active' : '' }}" href="{{ url('/firm-sector') }}">
                                             Firm Sector
+                                            </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('firm-recruitment-region') ? 'active' : '' }}" href="{{ url('/firm-recruitment-region') }}">
+                                            Firm Region
                                             </a>
                                         </div>
                                     </div>
@@ -233,14 +239,14 @@
                         <label for="practiceArea">Practice Area</label>
                         <select class="mb8" name="practice_area_id"
                                 ng-model="search_data.practice_area_id" 
-                                ng-options="area.id as area.name group by area.type for area in search_areas track by area.id">
-                                <option value="">Any</option>
+                                ng-options="area.id as area.name for area in search_areas  | filter: { type: 'SPECIAL' } track by area.id">
+                                <option value="">General</option>
                         </select>
                         <label for="sector">Sector</label>
                         <select class="mb8" name="sector_id" 
                                 ng-model="search_data.sector_id" 
-                                ng-options="sector.id as sector.name group by sector.type for sector in search_sectors track by sector.id">
-                                <option value="">Any</option>
+                                ng-options="sector.id as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">
+                                <option value="">General</option>
                         </select>
                         <button type="submit" class="btn btn-sm bg-darkblue br-40 w-100">Search</button>
                         </form>
