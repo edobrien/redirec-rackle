@@ -121,6 +121,11 @@
                                         <option ng-repeat="x in established_years"><% x %></option>
                                     </select>
                                 </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                    <label class="mb-0">General Ranking</label>
+                                    <input type="number" class="form-text" ng-model="form_data.general_ranking" required>
+                                    </select>
+                                </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>
                                     <label class="switch">

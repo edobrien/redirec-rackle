@@ -203,8 +203,7 @@
                         @csrf
                     <div class="recruitment">
                         <p for="recruitmentFirm" class="text-dark mt-1 mb-2">Recruitment Firm Name</p>
-                        <select id="recruitmentFirm"
-                                ng-model="search_data.firm_id" name="firm_id"
+                        <select ng-model="search_data.firm_id" name="firm_id"
                                 ng-options="firm.id as firm.name for firm in search_firms track by firm.id">
                                 <option value="">Any</option>
                         </select>
@@ -212,7 +211,7 @@
                     <div class="find-recruiters">
                         <p class="text-dark mb-1">Find Recruiters</p>
                         <label for="location">Location</label>
-                        <select id="location" class="mb8" name="location_id" 
+                        <select class="mb8" name="location_id" 
                                 ng-model="search_data.location_id" 
                                 ng-options="loc.id as loc.name group by loc.region.name for loc in search_locations track by loc.id">
                                 <option value="">Any</option>
@@ -230,7 +229,7 @@
                                 <option value="">Any</option>
                         </select>
                         <label for="recruitmentSize">Size of Recruitment Firm</label>
-                        <select class="mb8" ng-model="size" name="size">
+                        <select class="mb8" ng-model="size" name="size" id="size">
                             <option value="">Any</option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL; ?>"><?php echo \App\RecruitmentFirm::SIZE_SMALL_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM; ?>"><?php echo \App\RecruitmentFirm::SIZE_MEDIUM_TEXT; ?></option>
@@ -265,28 +264,29 @@
      <input type="text" style="display:none;" name="firm" id="firm" value="{{ session('firm_id') }}"><br>
      @endif
      @if (session('location_id'))
-     <input type="text" style="display:none;" name="location_id" id="location_id" value="{{ session('location_id') }}"><br>
+     <input type="text" style="display:none;" name="location" id="location" value="{{ session('location_id') }}"><br>
      @endif
      @if (session('service_id'))
-     <input type="text" style="display:none;" name="service_id" id="service_id" value="{{ session('service_id') }}"><br>
+     <input type="text" style="display:none;" name="service" id="service" value="{{ session('service_id') }}"><br>
      @endif
      @if (session('recruitment_id'))
-     <input type="text" style="display:none;" name="recruitment_id" id="recruitment_id" value="{{ session('recruitment_id') }}"><br>
+     <input type="text" style="display:none;" name="recruitment" id="recruitment" value="{{ session('recruitment_id') }}"><br>
      @endif
      @if (session('firm_size'))
-     <input type="text" style="display:none;" name="firm_size" id="firm_size" value="{{ session('size') }}"><br>
+     <input type="text" style="display:none;" name="firm_size" id="firm_size" value="{{ session('firm_size') }}"><br>
      @endif
      @if (session('practice_area_id'))
-     <input type="text" style="display:none;" name="practice_area_id" id="practice_area_id" value="{{ session('practice_area_id') }}"><br>
+     <input type="text" style="display:none;" name="practice_area" id="practice_area" value="{{ session('practice_area_id') }}"><br>
      @endif
      @if (session('sector_id'))
-     <input type="text" style="display:none;" name="sector_id" id="sector_id" value="{{ session('sector_id') }}"><br>
+     <input type="text" style="display:none;" name="sector" id="sector" value="{{ session('sector_id') }}"><br>
     @endif
 </body>
 <script>
     
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
+        $('#size').val($('#firm_size').val());
     })
 </script>
 </html>
