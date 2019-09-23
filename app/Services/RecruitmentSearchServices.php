@@ -8,17 +8,25 @@ Recruitment search services class to hold the related action logics
 namespace App\Services;
 
 use App\RecruitmentFirm;
+use App\FirmPracticeArea;
+use App\PracticeArea;
+use App\FirmSector;
+use App\Sector;
+
+use DB;
 
 class RecruitmentSearchServices{
 
 	public function listFirms($filters){
 
-        $firms = RecruitmentFirm::select('recruitment_firms.id','recruitment_firms.name',
-                                        'recruitment_firms.location','recruitment_firms.view_count')
+        $firms = RecruitmentFirm::select('recruitment_firms.id',
+                                        'recruitment_firms.name',
+                                        'recruitment_firms.location',
+                                        'recruitment_firms.view_count')
                     ->with('firmLocation','firmService','firmRecruitmentType',
-                            'firmClient','firmRegion')
-                    ->leftJoin('firm_practice_areas','recruitment_firms.id', '=', 'firm_practice_areas.firm_id')
-                    ->leftJoin('firm_sectors','recruitment_firms.id', '=', 'firm_sectors.firm_id');
+                    'firmPracticeArea','firmPracticeArea.practiceArea',
+                    'firmSector','firmSector.sector',
+                    'firmClient','firmRegion');
 
         if(isset($filters->firm_id)){
             $firms->where('recruitment_firms.id', $filters->firm_id)
@@ -51,19 +59,68 @@ class RecruitmentSearchServices{
         }
 
         if(isset($filters->practice_area_id)){
-            $firms->whereHas('firmPracticeArea', function($q) use($filters){
-                $q->where('practice_area_id', $filters->practice_area_id)
+
+            $specialist = FirmPracticeArea::select('practice_area_id')
+                            ->where('practice_area_id', $filters->practice_area_id)
+                            ->where('firm_practice_areas.is_active', RecruitmentFirm::FLAG_YES);
+                        
+            $general = FirmPracticeArea::select('practice_area_id')
+                        ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
+                        ->where('practice_areas.type', PracticeArea::AREA_GENERAL)
+                        ->where('firm_practice_areas.is_active', RecruitmentFirm::FLAG_YES);
+                       
+            if(!empty($specialist) && !empty($general)){
+                $areas = $specialist->union($general)->get();
+            }else if(!empty($specialist)){
+                $areas = $specialist->get();
+            }else{
+                $areas = $general->get();
+            }
+            
+            $area_ids = array();
+            foreach($areas as $area){
+                array_push($area_ids, $area->practice_area_id);
+            }
+
+            $firms->whereHas('firmPracticeArea', function($q) use($area_ids){
+                $q->whereIn('practice_area_id', $area_ids)
+                ->where('is_active', FirmPracticeArea::FLAG_YES);
+            });
+
+        }
+
+        if(isset($filters->sector_id)){
+            $specialist = FirmSector::select('sector_id')
+                            ->where('sector_id', $filters->sector_id)
+                            ->where('firm_sectors.is_active', RecruitmentFirm::FLAG_YES);
+
+            $general = FirmSector::select('sector_id')
+                        ->join('sectors','sectors.id','=','firm_sectors.sector_id')
+                        ->where('sectors.type', Sector::SECTOR_GENERAL)
+                        ->where('firm_sectors.is_active', RecruitmentFirm::FLAG_YES);
+
+            if(!empty($specialist) && !empty($general)){
+                $areas = $specialist->union($general)->get();
+            }else if(!empty($specialist)){
+                $areas = $specialist->get();
+            }else{
+                $areas = $general->get();
+            }            
+            
+            $sector_ids = array();
+            foreach($areas as $area){
+                array_push($sector_ids, $area->sector_id);
+            }
+
+            $firms->whereHas('firmSector', function($q) use($sector_ids){
+                $q->whereIn('sector_id', $sector_ids)
                 ->where('is_active', RecruitmentFirm::FLAG_YES);
             });
         }
 
         if(isset($filters->sector_id)){
-            $firms->whereHas('firmSector', function($q) use($filters){
-                $q->where('sector_id', $filters->sector_id)
-                ->where('is_active', RecruitmentFirm::FLAG_YES);
-            });
+            //$firms->orderByRaw('CASE WHEN recruitment_firms.firm_sectors.sectors.type AND != "GENERAL" THEN 1 ELSE 2 END');
         }
-
         return $firms->orderBy('general_ranking', 'ASC')->get();
 	}
 
