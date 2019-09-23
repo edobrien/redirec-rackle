@@ -720,3 +720,9 @@ table.dataTable th, table.dataTable td {
 .list-style-none {
     list-style-type: none;
 }
+.bg-green {
+    background-color: #074E62;
+}
+.no-search-results {
+    height: calc(100vh - 160px);
+}
