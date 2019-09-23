@@ -2,6 +2,7 @@
 @section('content')
 <div class="row" ng-cloak ng-controller="DetailListingController">
     <div class="col-md-12 pt-4 pb-3 px-4">
+        @if(count($firms))
         <h4 class="font-weight-bold text-blue pb-2">Recruiters</h4>
         <div class="row">
             <div class="col-md-3 search-results">
@@ -13,7 +14,7 @@
                         </p>
                         <small class="text-muted mb-0">{{$firm->location}}</small>
                         @if(Auth::user()->is_admin == "YES")
-                        <small class="text-muted mb-0 pull-right">{{$firm->view_count}}</small>
+                        <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small>
                         @endif
                     </div>
                 </div>
@@ -107,6 +108,17 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="row">
+            <div class="col-md-12">
+                <div class="no-search-results d-flex flex-column align-items-center justify-content-center">
+                    <h2>Sorry, No Search results found</h2>
+                    <p class="pb-3">Please try searching with another term</p>
+                    <img src="/img/search-firm.png" height="140">    
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
 @endsection
