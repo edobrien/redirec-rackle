@@ -10,6 +10,7 @@ use App\Exports\ServiceExport;
 use App\Exports\RecrutimentTypeExport;
 use App\Exports\PracticeAreaExport;
 use App\Exports\SectorExport;
+use \Illuminate\Support\Collection;
 
 class MasterDataExport implements WithMultipleSheets
 {
@@ -24,7 +25,8 @@ class MasterDataExport implements WithMultipleSheets
                     new ServiceExport,
                     new RecrutimentTypeExport,
                     new PracticeAreaExport,
-                    new SectorExport
+                    new SectorExport,
+                    new ImportColumns,
                 ];
 
         return $sheets;

@@ -119,9 +119,22 @@
                 @else
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="https://www.jmangroup.com/" target="_blank">
-                            <img src="/img/jman-add.jpg">
-                        </a>
+                        <div class="card border-0 rounded shadow bg-green pb-0">
+                            <div class="card-body py-0">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-12 py-3">
+                                        <h5 class="card-title text-white">JMAN GROUP IS A TECHNOLOGY-ENABLED MANAGEMENT CONSULTANCY.</h5>
+                                        <p class="text-white">Recognised by Financial Times as one of the UK’s leading Management Consultancies in 2018.</p>
+                                        <a href="https://www.jmangroup.com/" target="_blank">
+                                            <button type="button" class="btn btn-sm btn-form br-40 px-4 py-2">Get Started</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 text-lg-right text-center">
+                                        <img src="/img/finanacial-times-logo-2019.png" height="130">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @endif

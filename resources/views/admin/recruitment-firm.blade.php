@@ -118,6 +118,7 @@
                                 <div class="form-group form-animate-text col-md-6">
                                     <label class="mb-0">Established Year</label>
                                     <select class="form-control" ng-model="form_data.established_year">
+                                        <option value="">Select</option>
                                         <option ng-repeat="x in established_years"><% x %></option>
                                     </select>
                                 </div>
