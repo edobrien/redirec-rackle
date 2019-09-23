@@ -13,8 +13,8 @@ class RecrutimentTypeExport implements FromCollection, WithTitle
     */
     public function collection()
     {
-        return RecrutimentType::select('id','name')
-        ->where('is_active', RecrutimentType::FLAG_YES)->get();
+        return RecruitmentType::select('id','name')
+                    ->where('is_active', RecruitmentType::FLAG_YES)->get();
     }
 
     /**
