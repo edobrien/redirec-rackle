@@ -64,6 +64,10 @@ class RecruitmentFirmController extends Controller
             $errors[] = "Location is missing";
         }
 
+        if(empty($request->general_ranking)){
+            $errors[] = "General ranking is missing";
+        }
+
         if(empty($request->practice_area)){
             $errors[] = "Practice area is missing";
         }

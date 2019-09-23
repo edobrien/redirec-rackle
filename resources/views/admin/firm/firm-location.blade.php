@@ -65,15 +65,15 @@
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
                                     <label class="mb-0">Contact Name</label>
-                                    <input type="text" class="form-text" ng-model="form_data.contact_name" required>
+                                    <input type="text" class="form-text" ng-model="form_data.contact_name">
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
                                     <label class="mb-0">Telephone</label>
-                                    <input type="text" class="form-text" ng-model="form_data.telephone" required>
+                                    <input type="text" class="form-text" ng-model="form_data.telephone">
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
                                     <label class="mb-0">Contact Email</label>
-                                    <input type="email" class="form-text" ng-model="form_data.email" required>
+                                    <input type="email" class="form-text" ng-model="form_data.email">
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>

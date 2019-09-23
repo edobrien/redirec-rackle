@@ -72,6 +72,7 @@ class RecruitmentServices{
             }
             
             $firm->location = $datas->location;
+            $firm->general_ranking = $datas->general_ranking;
             $firm->practice_area = $datas->practice_area;
             $firm->sector = $datas->sector;
             $firm->established_year = $datas->established_year;
