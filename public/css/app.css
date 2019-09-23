@@ -717,3 +717,6 @@ table.dataTable th, table.dataTable td {
 .mt-18 {
     margin-top: 18%;
 }
+.list-style-none {
+    list-style-type: none;
+}

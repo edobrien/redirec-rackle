@@ -42,9 +42,9 @@ class RecruitmentSearchController extends Controller
         }
 
         if(isset($request->size)){
-            $request->session()->put('size',$request->size);
+            $request->session()->put('firm_size',$request->size);
         }else{
-            $request->session()->forget('size');
+            $request->session()->forget('firm_size');
         }
 
         if(isset($request->practice_area_id)){

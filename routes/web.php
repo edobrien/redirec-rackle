@@ -265,6 +265,9 @@ Route::middleware(['auth'])->group(function () {
         //Search recruitment firm
         Route::post('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
         Route::get('/firm-view-count/{id}', 'RecruitmentSearchController@saveViewCount');
+
+        //Import and Export data
+        Route::get('/download-template', 'FirmDataLoadController@downloadTemplate');
     });
     
 });
