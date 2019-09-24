@@ -155,6 +155,7 @@
 
         $scope.init = function () {
             $scope.search_data = {};
+            $scope.search_location = [];
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.getActiveFirms();
             $scope.getActiveLocations();
