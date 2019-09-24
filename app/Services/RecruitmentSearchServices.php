@@ -33,9 +33,9 @@ class RecruitmentSearchServices{
             ->where('is_active', RecruitmentFirm::FLAG_YES);
         }
 
-        if(isset($filters->location_id)){
+        if(isset($filters->search_locations) && count($filters->search_locations)){
             $firms->whereHas('firmLocation', function($q) use($filters){
-                $q->where('location_id', $filters->location_id)
+                $q->whereIn('location_id', $filters->search_locations)
                 ->where('is_active', RecruitmentFirm::FLAG_YES);
             });
         }
