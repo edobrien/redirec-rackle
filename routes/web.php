@@ -268,6 +268,8 @@ Route::middleware(['auth'])->group(function () {
 
         //Import and Export data
         Route::get('/download-template', 'FirmDataLoadController@downloadTemplate');
+        Route::post('/upload-firms', 'FirmDataLoadController@uploadData');
+        Route::get('/read-uploaded-file', 'FirmDataLoadController@importTemplate');
     });
     
 });
