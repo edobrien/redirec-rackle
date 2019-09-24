@@ -40,12 +40,6 @@ class FirmLocationController extends Controller
             $errors[] = "Location is missing";
         }
 
-        if(empty($request->telephone)){
-            $errors[] = "Telephone is missing";
-        }else if (!ctype_digit($request->telephone)) {
-            $errors[] = "Telephone should contain only numbers";
-        }
-
         //Check mapping already exists
         if($this->firmLocationServices->mappingExists($request)){
             $errors[] = "Mapping already exists";
