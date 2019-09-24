@@ -12,10 +12,10 @@ class ImportColumns implements FromArray
     public function array(): array
     {
         return [
-            ['name','website_link','description','firm_size','telephone',
-            'contact_name','testimonials','view_count','general_ranking',
-            'location','practice_area','sector','established_year','is_active',
-            'locations','services','recruitment_type','client','practice_area',
+            ['name','website_link','description','firm_size(SMALL/MEDIUM/LARGE)','telephone',
+            'contact_name','testimonials','general_ranking',
+            'location(GLOBAL/UK)','practice_area(GENERAL/SPECIALIST)','sector(GENERAL/PRIVATE_PRACTICE/INHOUSE)','established_year','is_active',
+            'locations(&,$)','services','recruitment_type','client','practice_area',
             'sector','recruitment_region'],
         ];
     }

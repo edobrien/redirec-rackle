@@ -35,9 +35,14 @@
                     $scope.search_locations = response.data.locations;
                     selected = $('#location').val();
                     if(selected){
-                        index = $scope.getSelectedItem($scope.search_locations, 
-                                                        selected);
-                        $scope.search_data.location_id = $scope.search_locations[index];
+                        var multi_select = selected.split(",");
+                        var selectedArray = [];
+                        for (i=0; i< multi_select.length; i++) {
+                            index = $scope.getSelectedItem($scope.search_locations, 
+                                multi_select[i]);
+                                selectedArray.push($scope.search_locations[index]);
+                        }
+                        $scope.search_location = selectedArray;                
                     }
                 } else {
                     alert("Error in fetching active locations");
@@ -155,6 +160,7 @@
 
         $scope.init = function () {
             $scope.search_data = {};
+            $scope.search_location = [];
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.getActiveFirms();
             $scope.getActiveLocations();
