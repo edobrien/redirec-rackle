@@ -7,7 +7,7 @@
     <div class="responsive-table">
         <div class="row">
             <div class="col-md-3 mb-3">
-                <select class="selectpicker form-control" ng-change="listUsers()" ng-model="filter_data.status">
+                <select class="form-control" ng-change="listUsers()" ng-model="filter_data.status">
                     <option value="">All</option>
                     <option value="<?php echo \App\User::FLAG_YES; ?>">Active</option>
                     <option value="<?php echo \App\User::FLAG_NO; ?>">In Active</option>

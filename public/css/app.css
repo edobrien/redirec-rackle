@@ -168,10 +168,14 @@ a:hover {
     display: none;
 }
 .sidebar .dropdown .btn {
-    padding: .1rem .75rem;
+    padding: .1rem .3rem;
     padding-bottom: 0 !important;
     border-radius: 0;
-} 
+}
+.sidebar .btn-light:hover {
+    background-color: #fff;
+    border-color: #dae0e5;
+}
 .sidebar::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
@@ -191,7 +195,7 @@ a:hover {
     margin-top: 1px; 
 }
 .filter-option {
-    padding-left: 8px !important;
+    padding-left: 0px !important;
     padding-right: 5px !important;
     padding-bottom: 0 !important;
 }
@@ -213,7 +217,21 @@ a:hover {
 }
 .sidebar .dropdown-item {
     white-space: normal;
-    padding: .4rem 0.8rem;
+    padding: 0rem 0.4rem;
+    font-size: 14px !important;
+    color: #212529 !important;
+}
+.sidebar .dropdown-header {
+    color: #000 !important;
+    padding: 0rem 0.4rem;
+    font-size: 13px;
+    font-weight: bolder;
+}
+.sidebar .dropdown-divider {
+    display: none;
+}
+.sidebar .bootstrap-select .dropdown-menu li a.opt {
+    padding-left: 1.8em;
 }
 
 /* Content */
@@ -690,7 +708,7 @@ table.dataTable tbody td {
 .sidebar select {
     background-color: rgba(76,35,161,.02);
     border-color: rgba(76,35,161,.04);
-    color: rgba(0,0,0,.3);
+    color: rgba(76,35,161,.25) !important;
     font-size: 12px !important;
     width: 100%;
     height: 24px;

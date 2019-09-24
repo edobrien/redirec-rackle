@@ -17,6 +17,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
     <!-- Styles -->
@@ -33,7 +34,7 @@
 
     <!-- Bootstrap Multi-select -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="{{ asset('js/firm-search.js') }}"></script>
     @yield('head')
@@ -211,10 +212,9 @@
                     <div class="find-recruiters">
                         <p class="text-dark mb-1">Find Recruiters</p>
                         <label for="location">Location</label>
-                        <select class="mb8" name="location_id" 
-                                ng-model="search_data.location_id" 
-                                ng-options="loc.id as loc.name group by loc.region.name for loc in search_locations track by loc.id">
-                                <option value="">Any</option>
+                        <select class="mb8 selectpicker" title="Any" name="search_locations[]" 
+                                ng-model="search_location" 
+                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id" multiple>
                         </select>
                         <label for="service">Service</label>
                         <select class="mb8" name="service_id" 
