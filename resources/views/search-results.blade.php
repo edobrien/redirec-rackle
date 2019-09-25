@@ -63,13 +63,15 @@
                     <div class="col-md-6 col-lg-4">
                         <h6 class="font-weight-bold text-grey">Private Practice Sector specialisms</h6>
                         <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="sector in firm.firm_sector"><% sector.sector.name %>
+                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" 
+                                ng-show="sector.sector.type=='PRIVATE_PRACTICE'"><% sector.sector.name %>
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <h6 class="font-weight-bold text-grey">Inhouse Sector specialisms</h6>
                         <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" ng-show="sector.sector.type='INHOUSE'"><% sector.sector.name %>
+                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" 
+                                ng-show="sector.sector.type=='INHOUSE'"><% sector.sector.name %>
                         </ul>
                     </div>
                 </div>

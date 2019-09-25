@@ -27,7 +27,7 @@
         <table id="area-listing" class="table table-striped table-responsive-sm" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Practic Area Name</th>
+                    <th>Practice Area Name</th>
                     <th>Type</th>
                     <th>IsActive</th>
                     <th>Action</th>
