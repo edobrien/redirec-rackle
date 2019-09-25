@@ -89,19 +89,17 @@
                     </div>
                 </div>
                 <div class="row pt-2 text-footer">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="text-grey"><% firm.location %></span>
                     </div>
-                    <div class="col-md-3 text-center">
+                    <div class="col-md-5 text-right">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey"><% firm.practice_area %></span>
-                    </div>
-                    <div class="col-md-3 text-center">
+                        <span class="text-grey pr-4"><% firm.practice_area %></span>
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                         <span class="text-grey"><% firm.sector %></span>
                     </div>
-                    <div class="col-md-3 text-right">
+                    <div class="col-md-5 text-right">
                         <i class="fa fa fa-globe" aria-hidden="true"></i>
                         <a href="<% firm.website_link %>" class="text-grey"><% firm.website_link %></a>
                     </div>
