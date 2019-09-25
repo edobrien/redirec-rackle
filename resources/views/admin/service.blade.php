@@ -27,8 +27,8 @@
         <table id="service-listing" class="table table-striped" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Status</th>
+                    <th>Service Name</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>

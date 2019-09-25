@@ -17,7 +17,8 @@ class ReportServices{
 
 	public function listReports(){
 
-		$reports = Report::select(['id','name','description','is_active','ordering']);
+        $reports = Report::select(['id','name','description','is_active',
+                    'ordering'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($reports)
         			->addColumn('status_text',function($reports){
@@ -87,7 +88,8 @@ class ReportServices{
 
     public function getActiveReports(){
         return Report::select('id','name','description')
-			        ->where('is_active', Report::FLAG_YES)
+                    ->where('is_active', Report::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

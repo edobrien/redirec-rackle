@@ -30,7 +30,7 @@
                     <th>Report Name</th>
                     <th>Description</th>
                     <th>Ordering</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>

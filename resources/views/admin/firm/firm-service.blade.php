@@ -29,7 +29,7 @@
                 <tr>
                     <th>Firm Name</th>
                     <th>Service Name</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
