@@ -31,7 +31,7 @@
                     <th>View Count</th>
                     <th>Firm Size</th>
                     <th>Establihsed Year</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>

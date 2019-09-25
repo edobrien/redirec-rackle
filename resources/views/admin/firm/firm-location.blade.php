@@ -31,7 +31,7 @@
                     <th>Location Name</th>
                     <th>Contact Name</th>
                     <th>Telephone</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>

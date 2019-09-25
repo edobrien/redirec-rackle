@@ -30,7 +30,7 @@
                     <th>Guide Name</th>
                     <th>Ordering</th>
                     <th>View Count</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>

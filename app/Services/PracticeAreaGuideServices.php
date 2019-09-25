@@ -15,7 +15,7 @@ class PracticeAreaGuideServices{
 	public function listGuides(){
 
 		$guides = PracticeAreaGuide::select(['id','title','description','is_active',
-												'ordering','view_count']);
+												'ordering','view_count'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($guides)
         			->addColumn('status_text',function($guides){
@@ -83,7 +83,8 @@ class PracticeAreaGuideServices{
 
     public function getActiveGuides(){
         return PracticeAreaGuide::select('id','title','view_count')
-			        ->where('is_active', PracticeAreaGuide::FLAG_YES)
+                    ->where('is_active', PracticeAreaGuide::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

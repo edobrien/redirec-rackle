@@ -30,7 +30,7 @@
                     <th>Hyperlink Text</th>
                     <th>Hyperlink</th>
                     <th>Ordering</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>

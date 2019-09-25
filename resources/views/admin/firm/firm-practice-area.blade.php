@@ -29,7 +29,7 @@
                 <tr>
                     <th>Firm Name</th>
                     <th>Practice Area</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
