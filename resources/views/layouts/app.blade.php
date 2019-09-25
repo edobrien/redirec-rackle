@@ -215,7 +215,7 @@
                         <p class="text-dark mb-1">Find Recruiters</p>
                         <label for="location">Location</label>
                         <select class="mb8 selectpicker" title="Any" name="search_locations[]" 
-                                ng-model="search_location" 
+                                ng-model="search_location"
                                 ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id" multiple>
                         </select>
                         <label for="service">Service</label>

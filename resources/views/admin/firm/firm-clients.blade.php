@@ -29,7 +29,7 @@
                 <tr>
                     <th>Firm Name</th>
                     <th>Client Location</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -140,10 +140,10 @@
             $(".bg_load").show();
             $scope.modalErrors = null;
             $scope.getActiveFirms();
-            var url = 'firm-location/get-info/' + firm_client_id;
+            var url = 'firm-client/get-info/' + firm_client_id;
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
-                    $("#firm-location-modal").modal('show');
+                    $("#firm-client-modal").modal('show');
                     $scope.form_data  = response.data.firm_client;
                 } else {
                     var errors = [];

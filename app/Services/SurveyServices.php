@@ -14,7 +14,8 @@ class SurveyServices{
 
 	public function listSurvies(){
 
-		$surveys = Survey::select(['id','title','url','ordering','is_active']);
+        $surveys = Survey::select(['id','title','url','ordering','is_active'])
+                        ->orderBy('ordering', 'ASC');
 
 		return Datatables::of($surveys)
         			->addColumn('status_text',function($surveys){
@@ -85,7 +86,8 @@ class SurveyServices{
 
     public function getActiveSurveys(){
         return Survey::select('id','title','url')
-			        ->where('is_active', Survey::FLAG_YES)
+                    ->where('is_active', Survey::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

@@ -27,6 +27,8 @@ class FirmDataLoadServices{
     private $recruitmentType;
     private $practiceArea;
     private $sector;
+    private $practiceAreaType;
+    private $sectorType;
 
     public function __construct(){
         $this->location = Location::pluck('id')->toArray();
@@ -34,6 +36,11 @@ class FirmDataLoadServices{
         $this->recruitmentType = RecruitmentType::pluck('id')->toArray();
         $this->practiceArea = PracticeArea::pluck('id')->toArray();
         $this->sector = Sector::pluck('id')->toArray();
+        $this->practiceAreaType = array(PracticeArea::AREA_GENERAL,
+                                        PracticeArea::AREA_SPECIAL);
+        $this->sectorType = array(Sector::SECTOR_GENERAL,
+                                Sector::SECTOR_PRIVATE_PRACTICE,
+                                Sector::SECTOR_INHOUSE);
     }
 
 	public function downloadTemplate() {
@@ -64,6 +71,7 @@ class FirmDataLoadServices{
     public function importTemplate(){
 
         try {
+            $errors = array();
             $file = DB::table('data_upload_logs')
                         ->where('status', DataUploadLog::STATUS_UPLOADED)
                         ->latest('created_at')->first();
@@ -72,35 +80,53 @@ class FirmDataLoadServices{
             //Read only first sheet
             $firm_data = $xlsx->rows(0);
 
-            for($i=1; $i < count($firm_data); $i++){
-                $this->cellValidation($firm_data[$i]);
-            }exit;
-            return true;
+            if(count($xlsx->rows()) < 2){
+                $this->deleteUploadedFile($file);
+                $errors = ['No data to upload'];
+                return $errors;
+            }
+            
+            for($i=1; $i < count($firm_data); $i++){ 
+                $row_errors = $this->cellValidation($firm_data[$i]);
+                if(!empty($row_errors)){
+                    $errors[] = "Row ".$i." - ".implode(", ",$this->cellValidation($firm_data[$i]));
+                }                
+            }
+
+            //Return true if no error found
+            if(count($errors) > 0){
+                return true;
+            }
+            $this->deleteUploadedFile($file);
+            return $errors;
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error($e);
+            $this->deleteUploadedFile($file);
             return false;
         }
     }
 
     public function cellValidation($row){
-
         
-
         $errors = array();
+        if(empty($row[0])){
+            return $errors;
+        }
+
         if(empty(trim($row[0]))){
-            $errors[] = "Missing Recruitment firm";          
+            $errors[] = "Missing recruitment firm";          
         }
-
+        
         if(empty(trim($row[1]))){
-            $errors[] = "Missing Website link";          
+            $errors[] = "Missing website link";          
         }
-
+        
         if(empty(trim($row[2]))){
-            $errors[] = "Missing Recruitment description";          
+            $errors[] = "Missing recruitment description";          
         }
 
         if(empty(trim($row[3]))){
-            $errors[] = "Missing Firm Size";          
+            $errors[] = "Missing firm size";          
         }
 
         if(empty(trim($row[4]))){
@@ -110,55 +136,81 @@ class FirmDataLoadServices{
         }
 
         if(empty(trim($row[5]))){
-            $errors[] = "Missing Contact Name";          
+            $errors[] = "Missing contact name";          
         }
 
         if(empty(trim($row[7]))){
-            $errors[] = "Missing General ranking";          
+            $errors[] = "Missing general ranking";          
         }else if(!ctype_digit(trim($row[7]))){
             $errors[] = "General ranking must be numbers";
         }        
 
         if(empty(trim($row[8]))){
-            $errors[] = "Missing Location";          
+            $errors[] = "Missing location";          
         }
 
         if(empty(trim($row[9]))){
-            $errors[] = "Missing Practice Area";          
+            $errors[] = "Missing practice area";          
+        }else if(!in_array(trim($row[9]),$this->practiceAreaType)){
+            $errors[] = "Invalid practice area type";
         }
 
         if(empty(trim($row[10]))){
-            $errors[] = "Missing Sector";          
-        }       
+            $errors[] = "Missing sector";          
+        }else if(!in_array(trim($row[10]),$this->sectorType)){
+            $errors[] = "Invalid sector type";
+        }      
 
         if(empty(trim($row[13]))){
-            $errors[] = "Missing Location mapping";        
+            $errors[] = "Missing location mapping";        
         }else if(count(array_diff(explode("&",$row[13]), $this->location))){
-            $errors[] = "Invalid Location mapping";
-        }
-
-        if(empty(trim($row[14]))){
-            $errors[] = "Missing Service mapping";
-        }
-
-        if(empty(trim($row[15]))){
-            $errors[] = "Recruitment Type mapping";
-        }
-
-        if(empty(trim($row[16]))){
-            $errors[] = "Client mapping";
+            $errors[] = "Invalid location mapping";
         }
 
         if(empty(trim($row[17]))){
-            $errors[] = "Practice Area mapping";
+            $errors[] = "Missing service mapping";
+        }else if(count(array_diff(explode("&",$row[17]), $this->service))){
+            $errors[] = "Invalid service mapping";
         }
 
         if(empty(trim($row[18]))){
-            $errors[] = "Sector mapping";
+            $errors[] = "Recruitment type mapping";
+        }else if(count(array_diff(explode("&",$row[18]), $this->recruitmentType))){
+            $errors[] = "Invalid recruitment type mapping";
         }
 
         if(empty(trim($row[19]))){
-            $errors[] = "Recruitment Region mapping";
+            $errors[] = "Client mapping";
+        }else if(count(explode("&",$row[19])) < 1){
+            $errors[] = "Invalid client mapping";
         }
+
+        if(empty(trim($row[20]))){
+            $errors[] = "Practice area mapping";
+        }else if(count(array_diff(explode("&",$row[20]), $this->practiceArea))){
+            $errors[] = "Invalid practice area mapping";
+        }
+
+        if(empty(trim($row[21]))){
+            $errors[] = "Sector mapping";
+        }else if(count(array_diff(explode("&",$row[21]), $this->sector))){
+            $errors[] = "Invalid sector mapping";
+        }
+
+        if(empty(trim($row[22]))){
+            $errors[] = "Recruitment region mapping";
+        }else if(count(array_diff(explode("&",$row[22]), $this->location))){
+            $errors[] = "Invalid recruitment region mapping";
+        }
+        return $errors;
+    }
+
+    public function deleteUploadedFile($file){
+
+        if(file_exists(public_path().'/imports/'.$file->file_name)){
+            unlink(public_path().'/imports/'.$file->file_name);
+            //Delete uploaded file
+            DataUploadLog::destroy($file->id);
+        }        
     }
 }

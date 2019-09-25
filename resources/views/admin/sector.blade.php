@@ -27,9 +27,9 @@
         <table id="sector-listing" class="table table-striped table-responsive-sm" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Sector Name</th>
                     <th>Type</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>

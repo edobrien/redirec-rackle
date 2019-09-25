@@ -25,7 +25,7 @@ class FirmDataLoadController extends Controller
         try {
 
             $errors = array();
-            $size = filesize($request->upload_excel);
+            $size = $request->file('upload_excel')->getSize();
 
             if(empty($request->upload_excel) || 
                     $request->upload_excel == "undefined"){
@@ -40,18 +40,14 @@ class FirmDataLoadController extends Controller
             if(!empty($errors)){
                 $rv = array("status" => "FAILED", "errors" => $errors);
             }else{
-                if($this->firmDataLoadServices->uploadExcel($request)){
-                    $rv = array("status" => "SUCCESS", "message" => "File uploaded successfully");
-                    //Data analysis reading excel
-                    //$result = $this->firmDataLoadServices->importTemplate();
-                    
+                if($this->firmDataLoadServices->uploadExcel($request)){                    
+                    $rv = $this->importTemplate();
                 }else{
                     $rv = array("status" => "FAILED", "errors" => ["Error in uploading file"]);
                 }
             }
-
             return response()->json($rv);
-        } catch (\Exception $e) {
+        }catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error($e->getMessage());
             $rv = array("status" => "FAILED", "errors" => ["Something went wrong"]);
             return response()->json($rv);
@@ -61,11 +57,15 @@ class FirmDataLoadController extends Controller
     //Used to validate excel for valid fields and datatype
     public function importTemplate()
     {
-        if($this->firmDataLoadServices->importTemplate()){
-            $rv = array("status" => "SUCCESS", "message" => "Validation successful");
-        }else{
-            $rv = array("status" => "FAILED", "errors" => ["Error in uploading file"]);
+        //Data analysis reading excel
+        $result = $this->firmDataLoadServices->importTemplate();
+        if(is_bool($result)){
+            if($result){
+                return array("status" => "SUCCESS", "messgae" => "Your data uploading process will start shortely");
+            }else{
+                return array("status" => "FAILED", "errors" => ["Error in uploading file"]);
+            }            
         }
-        return response()->json($rv);
+        return array("status" => "SUCCESS", "errors" => $result);
     }
 }

@@ -29,7 +29,7 @@
                 <tr>
                     <th>Location Name</th>
                     <th>Region Name</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
