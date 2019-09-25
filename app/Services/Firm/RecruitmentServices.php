@@ -13,6 +13,8 @@ use App\FirmLocation;
 use App\FirmService;
 use App\FirmRecruitmentType;
 use App\FirmSector;
+use App\FirmClient;
+use App\FirmRecruitmentRegion;
 
 use Yajra\Datatables\Datatables;
 
@@ -116,6 +118,8 @@ class RecruitmentServices{
                     FirmLocation::where('firm_id', $id)->count() +
                     FirmService::where('firm_id', $id)->count() +
                     FirmRecruitmentType::where('firm_id', $id)->count() +
+                    FirmRecruitmentRegion::where('firm_id', $id)->count() +
+                    FirmClient::where('firm_id', $id)->count() +
                     FirmSector::where('firm_id', $id)->count();
 
         if($mappings){
