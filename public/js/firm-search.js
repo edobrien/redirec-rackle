@@ -43,9 +43,9 @@
                                 multi_select[i]);
                                 selectedArray.push($scope.search_locations[index]);
                         }
-                        $scope.search_location = selectedArray;
-                        $(".bg_load").hide();                
+                        $scope.search_location = selectedArray;               
                     }
+                    $(".bg_load").hide();
                 } else {
                     alert("Error in fetching active locations");
                 }
