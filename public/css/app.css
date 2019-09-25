@@ -37,7 +37,7 @@ body {
 	border: none;
 	border-bottom: 1px solid rgba(255,255,255,.15);
 	border-radius: unset;
-	padding: .375rem 0rem;
+	padding: .375rem;
     background-color: transparent;
     color: #AFADAD;
 }
@@ -306,6 +306,9 @@ a:hover {
 table.dataTable thead th, table.dataTable.no-footer {
     border-bottom: 0 !important;
 }
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px !important;
+}
 
 @media (min-width: 320px) and (max-width: 480px) {
     .collapse:not(.show) {
@@ -383,9 +386,6 @@ table.dataTable thead th, table.dataTable.no-footer {
 }
 .mt-170 {
     padding-top: 170px;
-}
-input:-internal-autofill-selected {
-    background-color: unset !important;
 }
     /* li {
         padding-bottom: 6px;
@@ -495,7 +495,7 @@ table.dataTable tbody td {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .unset;
+    border-radius: unset;
 }
 
 /* Admin Modal */
@@ -743,4 +743,16 @@ table.dataTable th, table.dataTable td {
 }
 .no-search-results {
     height: calc(100vh - 160px);
+}
+.ml-n-250 {
+    margin-left: -250px;
+    height: calc(100vh - 160px);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background 5000s ease-in-out 0s;
+    background-color: transparent !important;
+    -webkit-text-fill-color: #AFADAD;
 }
