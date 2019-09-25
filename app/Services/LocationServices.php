@@ -71,7 +71,7 @@ class LocationServices{
         }
     }
 
-    public function canDeleteRegion($id){
+    public function canDeleteLocation($id){
         $mappings = FirmRecruitmentRegion::where('location_id', $id)->count() + 
                         FirmLocation::where('location_id', $id)->count();
         if($mappings){

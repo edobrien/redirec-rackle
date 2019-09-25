@@ -84,7 +84,6 @@ class UploadData extends Command
     public function readCell($data, $count){
 
         $firm = new RecruitmentFirm;
-        
         if(empty($row[0])){
             return true;
         }
