@@ -70,6 +70,6 @@ class FirmDataLoadController extends Controller
                 return array("status" => "FAILED", "errors" => ["Error in uploading file"]);
             }            
         }
-        return array("status" => "SUCCESS", "errors" => $result);
+        return array("status" => "SUCCESS", "message" => "File uploaded successfully");
     }
 }
