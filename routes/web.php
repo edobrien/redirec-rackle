@@ -267,6 +267,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
         Route::get('/firm-view-count/{id}', 'RecruitmentSearchController@saveViewCount');
 
+        Route::get('/search-recruitment-firm', function () {
+            return view('search-restriction');
+        });
+
         //Import and Export data
         Route::get('/download-template', 'FirmDataLoadController@downloadTemplate');
         Route::post('/upload-firms', 'FirmDataLoadController@uploadData');

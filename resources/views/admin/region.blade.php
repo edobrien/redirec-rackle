@@ -49,7 +49,7 @@
                                     </ul>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
-                                    <label class="mb-0">Region Name</label>
+                                    <label class="mb-0">Name</label>
                                     <input type="text" class="form-text" ng-model="form_data.name" required>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
