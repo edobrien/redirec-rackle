@@ -14,8 +14,11 @@ class ImportColumns implements FromArray
         return [
             ['name','website_link','description','firm_size(SMALL/MEDIUM/LARGE)','telephone',
             'contact_name','testimonials','general_ranking',
-            'location(GLOBAL/UK)','practice_area(GENERAL/SPECIALIST)','sector(GENERAL/PRIVATE_PRACTICE/INHOUSE)','established_year','is_active',
-            'locations(&,$)','services','recruitment_type','client','practice_area',
+            'location(GLOBAL/UK)','practice_area(GENERAL/SPECIALIST)',
+            'sector(GENERAL/PRIVATE_PRACTICE/INHOUSE)','established_year','is_active(YES/NO)',
+            'locations(&)','location_contact(&)'
+            ,'location_phone(&)','location_email(&)'
+            ,'services','recruitment_type','client','practice_area',
             'sector','recruitment_region'],
         ];
     }

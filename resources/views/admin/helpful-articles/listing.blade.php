@@ -29,7 +29,7 @@
                 <tr>
                     <th>Article Name</th>
                     <th>Ordering</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
