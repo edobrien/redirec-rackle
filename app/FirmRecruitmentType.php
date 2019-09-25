@@ -39,7 +39,7 @@ class FirmRecruitmentType extends Model
     }
 
     public function firm(){
-        return $this->belongsTo('App\RecruitmentFirm','recruitment_id');
+        return $this->belongsTo('App\RecruitmentFirm','firm_id');
     }
 
     public function recruitmentType(){

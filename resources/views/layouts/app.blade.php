@@ -290,6 +290,13 @@
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
         $('#size').val($('#firm_size').val());
+        $(document).ajaxStop(function () {
+            $('.bg_load').hide();
+        });
+
+        $(document).ajaxStart(function () {
+            $('.bg_load').show();
+        });
     })
 </script>
 </html>

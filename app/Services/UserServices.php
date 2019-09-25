@@ -37,11 +37,6 @@ class UserServices{
                             . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
                             . '<ion-icon name="create"></ion-icon></button>';
 
-                    $buttons .= ' <button ng-click="deleteUser(' . $user->id . ')"  '
-                            . 'title="Delete" alt="Delete" '
-                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-                            . '<ion-icon name="close"></ion-icon></button>';
-
                     return $buttons;
                 })->make(true);
 	}
