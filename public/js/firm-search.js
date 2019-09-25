@@ -34,6 +34,7 @@
                 if (response.data.status == 'SUCCESS') {
                     $scope.search_locations = response.data.locations;
                     selected = $('#location').val();
+                    $(".bg_load").show();
                     if(selected){
                         var multi_select = selected.split(",");
                         var selectedArray = [];
@@ -42,7 +43,8 @@
                                 multi_select[i]);
                                 selectedArray.push($scope.search_locations[index]);
                         }
-                        $scope.search_location = selectedArray;                
+                        $scope.search_location = selectedArray;
+                        $(".bg_load").hide();                
                     }
                 } else {
                     alert("Error in fetching active locations");
