@@ -194,6 +194,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/practice-area/delete/{id}', 'Admin\PracticeAreaController@delete');
         Route::get('/practice-area/get-active-areas', 'Admin\PracticeAreaController@getActivePracticeAreas');
 
+        //File Downloads
+        Route::get('/data-upload', 'Admin\DataUploadController@index');        
+        Route::get('/data-upload/list', 'Admin\DataUploadController@listDataUploads');
+        Route::get('/data-upload/download/{file_id}', 'Admin\DataUploadController@downloadFile');
+
+
         //Sectors
         Route::get('/sector', 'Admin\SectorController@index');
         Route::get('/sector/list-sectors', 'Admin\SectorController@listSectors');

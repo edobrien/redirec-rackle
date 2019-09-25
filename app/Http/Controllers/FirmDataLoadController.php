@@ -25,7 +25,11 @@ class FirmDataLoadController extends Controller
         try {
 
             $errors = array();
-            $size = $request->file('upload_excel')->getSize();
+            if((!empty($request->upload_excel)) ||
+                    ($request->upload_excel != "undefined")){
+                $size = $request->file('upload_excel')->getSize();
+
+            }
 
             if(empty($request->upload_excel) || 
                     $request->upload_excel == "undefined"){
