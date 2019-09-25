@@ -54,6 +54,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                        @if (Auth::user()->is_active == "YES")
                             <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Area Guide</a>
                             </li>
@@ -66,7 +67,7 @@
                             <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/feedback-surveys') }}">Feedback</a>
                             </li>
-
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -195,6 +196,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </button>
             <div class="container-fluid">
+                @if (Auth::user()->is_active == "YES")
                 <nav class="sidebar pt-3 pb-2 collapse navbar-collapse" id="sidebar" ng-controller="SearchDataController">
                     <button type="button" class="close" data-toggle="collapse" data-target="#sidebar" aria-expanded="false" aria-label="Close">
                         <i class="fa fa-times" aria-hidden="true"></i>
@@ -251,6 +253,7 @@
                         </form>
                     </div>
                 </nav>
+                @endif
                 <div class="content">
                     @yield('content')
                 </div>
