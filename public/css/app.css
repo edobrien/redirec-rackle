@@ -129,7 +129,7 @@ a:hover {
     z-index: unset;
     position: fixed;
     margin-top: 54px !important;
-    overflow: auto;
+    overflow: hidden auto;
 }
 .sidebar .form-control:focus {
     box-shadow: none;
@@ -619,7 +619,7 @@ table.dataTable tbody td {
 /* Search Page */
 .search-results {
     height: calc(100vh - 136px);
-    overflow: auto;
+    overflow: hidden auto;
 }
 .search-results::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -755,4 +755,30 @@ input:-webkit-autofill:active {
     transition: background 5000s ease-in-out 0s;
     background-color: transparent !important;
     -webkit-text-fill-color: #AFADAD;
+}
+#rc-imageselect, .g-recaptcha { 
+    transform: scale(1.08); 
+    -webkit-transform: scale(1.08); 
+    transform-origin: 0 0; 
+    -webkit-transform-origin: 0 0;
+}
+#reset #rc-imageselect, #reset .g-recaptcha { 
+    transform: unset; 
+    -webkit-transform: unset; 
+    transform-origin: 0 0; 
+    -webkit-transform-origin: 0 0;
+}
+.alert-danger {
+    background-color: #ffffff;
+    opacity: 0.9;
+    color: red;
+    border-radius: 0;
+    border: 0;
+}
+.alert-danger li {
+    list-style-type: none;
+}
+.alert-danger button:focus, .alert-danger button:hover {
+    outline: none;
+    color: red !important;
 }
