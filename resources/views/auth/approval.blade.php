@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center ml-n-250">
         <div class="col-md-8 p-4">
             <div class="card">
-                <div class="card-header">Waiting for Approval</div>
+                <h5 class="card-header font-weight-bold">Waiting for Approval</h5>
                 <div class="card-body">
                     Your account is waiting for our administrator approval.
                     <br />
