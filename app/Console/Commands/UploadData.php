@@ -61,7 +61,7 @@ class UploadData extends Command
 
             if(!is_null($file)){
                 $file->status = DataUploadLog::STATUS_STARTED;
-                $file->save();
+                //$file->save();
 
                 $xlsx = SimpleXLSX::parse(public_path().'/imports/'.$file->file_name);
                 //Read only first sheet
@@ -71,9 +71,9 @@ class UploadData extends Command
                 }
 
                 $file->status = DataUploadLog::STATUS_COMPLETED;
-                $file->save();
+                //$file->save();
 
-                Mail::send(new DataUploadNotification($file));
+                //Mail::send(new DataUploadNotification($file));
             }
             
         }catch (\Exception $e) {
@@ -81,7 +81,7 @@ class UploadData extends Command
         }
     }
 
-    public function readCell($data, $count){
+    public function readCell($row, $count){
 
         $firm = new RecruitmentFirm;
         if(empty($row[0])){
