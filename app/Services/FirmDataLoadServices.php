@@ -94,7 +94,7 @@ class FirmDataLoadServices{
             }
 
             //Return true if no error found
-            if(count($errors) > 0){
+            if(count($errors) < 0){
                 return true;
             }
             $this->deleteUploadedFile($file);
