@@ -15,7 +15,7 @@ class InterviewGuideServices{
 	public function listGuides(){
 
 		$guides = InterviewGuide::select(['id','title','description','is_active',
-												'ordering','view_count']);
+												'ordering','view_count'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($guides)
         			->addColumn('status_text',function($guides){
@@ -83,7 +83,8 @@ class InterviewGuideServices{
 
     public function getActiveGuides(){
         return InterviewGuide::select('id','title','view_count')
-			        ->where('is_active', InterviewGuide::FLAG_YES)
+                    ->where('is_active', InterviewGuide::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

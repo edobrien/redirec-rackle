@@ -194,6 +194,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/practice-area/delete/{id}', 'Admin\PracticeAreaController@delete');
         Route::get('/practice-area/get-active-areas', 'Admin\PracticeAreaController@getActivePracticeAreas');
 
+        //File Downloads
+        Route::get('/data-upload', 'Admin\DataUploadController@index');        
+        Route::get('/data-upload/list', 'Admin\DataUploadController@listDataUploads');
+        Route::get('/data-upload/download/{file_id}', 'Admin\DataUploadController@downloadFile');
+
+
         //Sectors
         Route::get('/sector', 'Admin\SectorController@index');
         Route::get('/sector/list-sectors', 'Admin\SectorController@listSectors');
@@ -264,7 +270,17 @@ Route::middleware(['auth'])->group(function () {
 
         //Search recruitment firm
         Route::post('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
+        Route::get('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
         Route::get('/firm-view-count/{id}', 'RecruitmentSearchController@saveViewCount');
+
+        Route::get('/search-recruitment-firm', function () {
+            return view('search-restriction');
+        });
+
+        //Import and Export data
+        Route::get('/download-template', 'FirmDataLoadController@downloadTemplate');
+        Route::post('/upload-firms', 'FirmDataLoadController@uploadData');
+        Route::get('/read-uploaded-file', 'FirmDataLoadController@importTemplate');
     });
     
 });

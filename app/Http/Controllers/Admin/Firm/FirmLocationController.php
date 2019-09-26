@@ -15,7 +15,7 @@ class FirmLocationController extends Controller
     }
 
     public function index(){
-        return view('admin.firm.office-location');
+        return view('admin.firm.firm-location');
     }
 
     public function getInfo($id)
@@ -38,20 +38,6 @@ class FirmLocationController extends Controller
 
         if(empty($request->location_id)){
             $errors[] = "Location is missing";
-        }
-
-        if(empty($request->telephone)){
-            $errors[] = "Telephone is missing";
-        }else if (!ctype_digit($request->telephone)) {
-            $errors[] = "Telephone should contain only numbers";
-        }
-
-        if(empty($request->contact_name)){
-            $errors[] = "Contact name is missing";
-        }
-
-        if(empty($request->email)){
-            $errors[] = "Contact email is missing";
         }
 
         //Check mapping already exists

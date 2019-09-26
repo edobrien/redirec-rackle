@@ -15,7 +15,7 @@ class HelpfulArticleServices{
 	public function listArticles(){
 
 		$articles = HelpfulArticle::select(['id','title','description','is_active',
-												'ordering']);
+												'ordering'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($articles)
         			->addColumn('status_text',function($articles){
@@ -85,9 +85,9 @@ class HelpfulArticleServices{
 
     public function getActiveArticles(){
         return HelpfulArticle::select('id','title','description')
-			        ->where('is_active', HelpfulArticle::FLAG_YES)
+                    ->where('is_active', HelpfulArticle::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
-
     }
 
 }

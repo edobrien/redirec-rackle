@@ -15,7 +15,7 @@ class UsefulLinksServices{
 	public function listLinks(){
 
 		$links = UsefulLink::select(['id','title','description','is_active',
-												'ordering']);
+												'ordering'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($links)
         			->addColumn('status_text',function($links){
@@ -85,7 +85,8 @@ class UsefulLinksServices{
 
     public function getActiveUsefulLinks(){
         return UsefulLink::select('id','title','description')
-			        ->where('is_active', UsefulLink::FLAG_YES)
+                    ->where('is_active', UsefulLink::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

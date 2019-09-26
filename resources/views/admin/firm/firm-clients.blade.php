@@ -15,13 +15,13 @@
     </div>
     <div class="responsive-table">
         <div ng-hide="!errors" class="alert alert-danger">
-            <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-            <ul>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <ul class="pl-2 mb-0">
                 <li ng-repeat="error in errors"><% error %></li>
             </ul>
         </div>
         <div ng-hide="!successMessage"  class="alert alert-success">
-            <a href="#"  class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
             <% successMessage %>
         </div>
         <table id="firm-client-listing" class="table table-striped" width="100%" cellspacing="0">
@@ -29,7 +29,7 @@
                 <tr>
                     <th>Firm Name</th>
                     <th>Client Location</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -45,7 +45,8 @@
                         <div class="modal-body">
                             <div class="form-row">
                                 <div ng-if="modalErrors" class="alert alert-danger  col-md-12">
-                                    <ul>
+                                    <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                    <ul class="pl-2 mb-0">
                                         <li ng-repeat="error in modalErrors"><% error %></li>
                                     </ul>
                                 </div>
@@ -140,10 +141,10 @@
             $(".bg_load").show();
             $scope.modalErrors = null;
             $scope.getActiveFirms();
-            var url = 'firm-location/get-info/' + firm_client_id;
+            var url = 'firm-client/get-info/' + firm_client_id;
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
-                    $("#firm-location-modal").modal('show');
+                    $("#firm-client-modal").modal('show');
                     $scope.form_data  = response.data.firm_client;
                 } else {
                     var errors = [];
