@@ -7,7 +7,7 @@
     <div class="responsive-table">
         <div class="row">
             <div class="col-md-3 mb-3">
-                <select class="selectpicker form-control" ng-change="listUsers()" ng-model="filter_data.status">
+                <select class="form-control" ng-change="listUsers()" ng-model="filter_data.status">
                     <option value="">All</option>
                     <option value="<?php echo \App\User::FLAG_YES; ?>">Active</option>
                     <option value="<?php echo \App\User::FLAG_NO; ?>">In Active</option>
@@ -15,13 +15,13 @@
             </div>
         </div>
         <div ng-hide="!errors" class="alert alert-danger">
-            <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-            <ul>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <ul class="pl-2 mb-0">
                 <li ng-repeat="error in errors"><% error %></li>
             </ul>
         </div>
         <div ng-hide="!successMessage"  class="alert alert-success">
-            <a href="#"  class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
             <% successMessage %>
         </div>
         <table id="user-listing" class="table table-striped table-responsive-sm table-responsive-md" width="100%" cellspacing="0">
@@ -47,7 +47,8 @@
                         </div>
                         <div class="modal-body">
                             <div ng-if="modalErrors" class="alert alert-danger col-md-12">
-                                <ul>
+                                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                <ul class="pl-2 mb-0">
                                     <li ng-repeat="error in modalErrors"><% error %></li>
                                 </ul>
                             </div>

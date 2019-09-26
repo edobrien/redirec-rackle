@@ -17,6 +17,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
     <!-- Styles -->
@@ -33,7 +34,7 @@
 
     <!-- Bootstrap Multi-select -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="{{ asset('js/firm-search.js') }}"></script>
     @yield('head')
@@ -53,11 +54,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                        @if (Auth::user()->is_active == "YES")
                             <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Area </a>
+                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Area Guide</a>
                             </li>
                             <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/interview-guide') }}">Interview </a>
+                                <a class="nav-link" href="{{ url('/interview-guide') }}">Interview / Resource Guides</a>
                             </li>
                             <li class="nav-item {{ Request::is('reports-analysis') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/reports-analysis') }}">Reports</a>
@@ -65,7 +67,7 @@
                             <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/feedback-surveys') }}">Feedback</a>
                             </li>
-
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -124,9 +126,6 @@
                                             <a class="dropdown-item text-muted {{ Request::is('upload-file') ? 'active' : '' }}" href="{{ url('/upload-file') }}">
                                             Upload File 
                                             </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('recruitment-firm') ? 'active' : '' }}" href="{{ url('/recruitment-firm') }}">
-                                            Recruitment Firm
-                                            </a>
                                             <a class="dropdown-item text-muted {{ Request::is('region') ? 'active' : '' }}" href="{{ url('/region') }}">
                                             Region
                                             </a>
@@ -142,10 +141,13 @@
                                             <a class="dropdown-item text-muted {{ Request::is('practice-area') ? 'active' : '' }}" href="{{ url('/practice-area') }}">
                                             Practice Area
                                             </a>
-                                        </div>
-                                        <div class="col-md-4 pr-4">
                                             <a class="dropdown-item text-muted {{ Request::is('sector') ? 'active' : '' }}" href="{{ url('/sector') }}">
                                             Sector
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4 pr-4">
+                                            <a class="dropdown-item text-muted {{ Request::is('recruitment-firm') ? 'active' : '' }}" href="{{ url('/recruitment-firm') }}">
+                                            Recruitment Firm
                                             </a>
                                             <a class="dropdown-item text-muted {{ Request::is('firm-location') ? 'active' : '' }}" href="{{ url('/firm-location') }}">
                                             Firm Location
@@ -156,11 +158,17 @@
                                             <a class="dropdown-item text-muted {{ Request::is('firm-recruitment-type') ? 'active' : '' }}" href="{{ url('/firm-recruitment-type') }}">
                                             Firm Recruitment Type
                                             </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('firm-client') ? 'active' : '' }}" href="{{ url('/firm-client') }}">
+                                            Firm Client
+                                            </a>
                                             <a class="dropdown-item text-muted {{ Request::is('firm-practice-area') ? 'active' : '' }}" href="{{ url('/firm-practice-area') }}">
                                             Firm Practice Area
                                             </a>
                                             <a class="dropdown-item text-muted {{ Request::is('firm-sector') ? 'active' : '' }}" href="{{ url('/firm-sector') }}">
                                             Firm Sector
+                                            </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('firm-recruitment-region') ? 'active' : '' }}" href="{{ url('/firm-recruitment-region') }}">
+                                            Firm Region
                                             </a>
                                         </div>
                                     </div>
@@ -188,6 +196,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </button>
             <div class="container-fluid">
+                @if (Auth::user()->is_active == "YES")
                 <nav class="sidebar pt-3 pb-2 collapse navbar-collapse" id="sidebar" ng-controller="SearchDataController">
                     <button type="button" class="close" data-toggle="collapse" data-target="#sidebar" aria-expanded="false" aria-label="Close">
                         <i class="fa fa-times" aria-hidden="true"></i>
@@ -197,8 +206,7 @@
                         @csrf
                     <div class="recruitment">
                         <p for="recruitmentFirm" class="text-dark mt-1 mb-2">Recruitment Firm Name</p>
-                        <select id="recruitmentFirm"
-                                ng-model="search_data.firm_id" name="firm_id"
+                        <select ng-model="search_data.firm_id" name="firm_id"
                                 ng-options="firm.id as firm.name for firm in search_firms track by firm.id">
                                 <option value="">Any</option>
                         </select>
@@ -206,10 +214,9 @@
                     <div class="find-recruiters">
                         <p class="text-dark mb-1">Find Recruiters</p>
                         <label for="location">Location</label>
-                        <select id="location" class="mb8" name="location_id" 
-                                ng-model="search_data.location_id" 
-                                ng-options="loc.id as loc.name group by loc.region.name for loc in search_locations track by loc.id">
-                                <option value="">Any</option>
+                        <select class="mb8 selectpicker" title="Any" name="search_locations[]" 
+                                ng-model="search_location"
+                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id" multiple>
                         </select>
                         <label for="service">Service</label>
                         <select class="mb8" name="service_id" 
@@ -224,7 +231,7 @@
                                 <option value="">Any</option>
                         </select>
                         <label for="recruitmentSize">Size of Recruitment Firm</label>
-                        <select class="mb8" ng-model="size" name="size">
+                        <select class="mb8" ng-model="size" name="size" id="size">
                             <option value="">Any</option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL; ?>"><?php echo \App\RecruitmentFirm::SIZE_SMALL_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM; ?>"><?php echo \App\RecruitmentFirm::SIZE_MEDIUM_TEXT; ?></option>
@@ -233,19 +240,20 @@
                         <label for="practiceArea">Practice Area</label>
                         <select class="mb8" name="practice_area_id"
                                 ng-model="search_data.practice_area_id" 
-                                ng-options="area.id as area.name group by area.type for area in search_areas track by area.id">
-                                <option value="">Any</option>
+                                ng-options="area.id as area.name for area in search_areas  | filter: { type: 'SPECIAL' } track by area.id">
+                                <option value="">General</option>
                         </select>
                         <label for="sector">Sector</label>
                         <select class="mb8" name="sector_id" 
                                 ng-model="search_data.sector_id" 
-                                ng-options="sector.id as sector.name group by sector.type for sector in search_sectors track by sector.id">
-                                <option value="">Any</option>
+                                ng-options="sector.id as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">
+                                <option value="">General</option>
                         </select>
                         <button type="submit" class="btn btn-sm bg-darkblue br-40 w-100">Search</button>
                         </form>
                     </div>
                 </nav>
+                @endif
                 <div class="content">
                     @yield('content')
                 </div>
@@ -259,28 +267,36 @@
      <input type="text" style="display:none;" name="firm" id="firm" value="{{ session('firm_id') }}"><br>
      @endif
      @if (session('location_id'))
-     <input type="text" style="display:none;" name="location_id" id="location_id" value="{{ session('location_id') }}"><br>
+     <input type="text" style="display:none;" name="location" id="location" value="{{ session('location_id') }}"><br>
      @endif
      @if (session('service_id'))
-     <input type="text" style="display:none;" name="service_id" id="service_id" value="{{ session('service_id') }}"><br>
+     <input type="text" style="display:none;" name="service" id="service" value="{{ session('service_id') }}"><br>
      @endif
      @if (session('recruitment_id'))
-     <input type="text" style="display:none;" name="recruitment_id" id="recruitment_id" value="{{ session('recruitment_id') }}"><br>
+     <input type="text" style="display:none;" name="recruitment" id="recruitment" value="{{ session('recruitment_id') }}"><br>
      @endif
      @if (session('firm_size'))
-     <input type="text" style="display:none;" name="firm_size" id="firm_size" value="{{ session('size') }}"><br>
+     <input type="text" style="display:none;" name="firm_size" id="firm_size" value="{{ session('firm_size') }}"><br>
      @endif
      @if (session('practice_area_id'))
-     <input type="text" style="display:none;" name="practice_area_id" id="practice_area_id" value="{{ session('practice_area_id') }}"><br>
+     <input type="text" style="display:none;" name="practice_area" id="practice_area" value="{{ session('practice_area_id') }}"><br>
      @endif
      @if (session('sector_id'))
-     <input type="text" style="display:none;" name="sector_id" id="sector_id" value="{{ session('sector_id') }}"><br>
+     <input type="text" style="display:none;" name="sector" id="sector" value="{{ session('sector_id') }}"><br>
     @endif
 </body>
 <script>
     
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
+        $('#size').val($('#firm_size').val());
+        $(document).ajaxStop(function () {
+            $('.bg_load').hide();
+        });
+
+        $(document).ajaxStart(function () {
+            $('.bg_load').show();
+        });
     })
 </script>
 </html>

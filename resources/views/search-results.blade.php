@@ -2,6 +2,7 @@
 @section('content')
 <div class="row" ng-cloak ng-controller="DetailListingController">
     <div class="col-md-12 pt-4 pb-3 px-4">
+        @if(count($firms))
         <h4 class="font-weight-bold text-blue pb-2">Recruiters</h4>
         <div class="row">
             <div class="col-md-3 search-results">
@@ -13,7 +14,7 @@
                         </p>
                         <small class="text-muted mb-0">{{$firm->location}}</small>
                         @if(Auth::user()->is_admin == "YES")
-                        <small class="text-muted mb-0 pull-right">{{$firm->view_count}}</small>
+                        <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small>
                         @endif
                     </div>
                 </div>
@@ -42,21 +43,15 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Law Firm Clients</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
                         <h6 class="font-weight-bold text-grey">Types of recruitment</h6>
                         <ul class="text-grey pl-4">
                             <li class="pb-1" ng-repeat="type in firm.firm_recruitment_type"><% type.recruitment_type.name %></li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Inhouse clients</h6>
+                        <h6 class="font-weight-bold text-grey">Law Firm Clients</h6>
                         <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" ng-show="sector.sector.type='INHOUSE'"><% sector.sector.name %>
+                            <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
@@ -66,46 +61,64 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Sector specialisms</h6>
+                        <h6 class="font-weight-bold text-grey">Private Practice Sector specialisms</h6>
                         <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="sector in firm.firm_sector"><% sector.sector.name %>
+                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" 
+                                ng-show="sector.sector.type=='PRIVATE_PRACTICE'"><% sector.sector.name %>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="font-weight-bold text-grey">Inhouse Sector specialisms</h6>
+                        <ul class="text-grey pl-4">
+                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" 
+                                ng-show="sector.sector.type=='INHOUSE'"><% sector.sector.name %>
                         </ul>
                     </div>
                 </div>
                 <h5 class="font-weight-bold py-2">Regions recruited for</h5>
                 <ul class="text-grey pl-4">
-                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> - <% region.location.name %></li>
+                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> <br> <% region.location.name %></li>
                 </ul>
                 <h5 class="font-weight-bold pb-2">Contact Details</h5>
                 <div class="row">
-                    <div class="col-md-12">
-                        <h6 class="font-weight-bold text-grey">Office Location</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="location in firm.firm_location"><% location.location.name %> - <% location.contact_name %> - <% location.telephone %> - <% location.email %></li>
-                        </ul>
+                    <div class="col-md-6 col-lg-4" ng-repeat="location in firm.firm_location">
+                        <ul class="text-grey list-style-none pl-0">
+                            <li class="pb-1">
+                                <h6 class="font-weight-bold text-grey"><% location.location.name %></h6>
+                                <% location.contact_name %> <br> <% location.telephone %> <br> <% location.email %>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="row pt-2 text-footer">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="text-grey"><% firm.location %></span>
                     </div>
-                    <div class="col-md-3 text-center">
+                    <div class="col-md-5 text-right">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey"><% firm.practice_area %></span>
-                    </div>
-                    <div class="col-md-3 text-center">
+                        <span class="text-grey pr-4"><% firm.practice_area %></span>
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                         <span class="text-grey"><% firm.sector %></span>
                     </div>
-                    <div class="col-md-3 text-right">
+                    <div class="col-md-5 text-right">
                         <i class="fa fa fa-globe" aria-hidden="true"></i>
                         <a href="<% firm.website_link %>" class="text-grey"><% firm.website_link %></a>
                     </div>
                 </div>
             </div>
         </div>
+        @else
+        <div class="row">
+            <div class="col-md-12">
+                <div class="no-search-results d-flex flex-column align-items-center justify-content-center">
+                    <h2>Sorry, No Search results found</h2>
+                    <p class="pb-3">Please try searching with another term</p>
+                    <img src="/img/search-firm.png" height="140">    
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
 @endsection

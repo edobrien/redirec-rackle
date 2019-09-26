@@ -13,13 +13,13 @@
     </div>
     <div class="responsive-table">
         <div ng-hide="!errors" class="alert alert-danger">
-            <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-            <ul>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <ul class="pl-2 mb-0">
                 <li ng-repeat="error in errors"><% error %></li>
             </ul>
         </div>
         <div ng-hide="!successMessage"  class="alert alert-success">
-            <a href="#"  class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
             <% successMessage %>
         </div>
         <table id="firm-listing" class="table table-striped table-responsive-sm table-responsive-md  table-responsive-lg" width="100%" cellspacing="0">
@@ -31,7 +31,7 @@
                     <th>View Count</th>
                     <th>Firm Size</th>
                     <th>Establihsed Year</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -47,7 +47,8 @@
                         <div class="modal-body">
                             <div class="form-row">
                                 <div ng-if="modalErrors" class="alert alert-danger col-md-12">
-                                    <ul>
+                                    <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                    <ul class="pl-2 mb-0">
                                         <li ng-repeat="error in modalErrors"><% error %></li>
                                     </ul>
                                 </div>
@@ -118,7 +119,13 @@
                                 <div class="form-group form-animate-text col-md-6">
                                     <label class="mb-0">Established Year</label>
                                     <select class="form-control" ng-model="form_data.established_year">
+                                        <option value="">Select</option>
                                         <option ng-repeat="x in established_years"><% x %></option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                    <label class="mb-0">General Ranking</label>
+                                    <input type="number" class="form-text" ng-model="form_data.general_ranking" required>
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">

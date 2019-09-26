@@ -22,9 +22,9 @@ class RecruitmentSearchController extends Controller
         }else{
             $request->session()->forget('firm_id');
         }
-
-        if(isset($request->location_id)){
-            $request->session()->put('location_id',$request->location_id);
+        
+        if(isset($request->search_locations) && count($request->search_locations)){
+            $request->session()->put('location_id',implode(",",$request->search_locations));
         }else{
             $request->session()->forget('location_id');
         }
@@ -42,9 +42,9 @@ class RecruitmentSearchController extends Controller
         }
 
         if(isset($request->size)){
-            $request->session()->put('size',$request->size);
+            $request->session()->put('firm_size',$request->size);
         }else{
-            $request->session()->forget('size');
+            $request->session()->forget('firm_size');
         }
 
         if(isset($request->practice_area_id)){
