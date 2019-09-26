@@ -57,7 +57,8 @@
                     <div class="col-md-6 col-lg-4">
                         <h6 class="font-weight-bold text-grey">Practice area specialisms</h6>
                         <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="area in firm.firm_practice_area"><% area.practice_area.name %></li>
+                            <li class="pb-1" ng-repeat="area in firm.firm_practice_area" 
+                                ng-show="area.practice_area.type!='GENERAL'"><% area.practice_area.name %></li>
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">

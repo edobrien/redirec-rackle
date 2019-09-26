@@ -55,6 +55,11 @@ class UserController extends Controller
              $errors[] = "Email is missing";
         }      
 
+        //Check email already exists
+        if($this->userServices->emailExists($request)){
+            $errors[] = "Email already exists";
+        }
+
         if(!empty($errors)){
             $rv = array("status" => "FAILED", "errors" => $errors);
         }else{

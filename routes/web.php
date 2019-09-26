@@ -48,6 +48,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/approval', 'HomeController@approval')->name('approval');
 
+    //Search page data
+    Route::get('/recruitment-firm/get-active-firms', 'Admin\Firm\RecruitmentFirmController@getActiveFirms');
+    Route::get('/location/get-active-locations', 'Admin\LocationController@getActiveLocations');
+    Route::get('/service/get-active-services', 'Admin\ServiceController@getActiveServices');
+    Route::get('/recruitment-type/get-active-types', 'Admin\RecruitmentTypeController@getActiveRecruitmentTypes');
+    Route::get('/practice-area/get-active-areas', 'Admin\PracticeAreaController@getActivePracticeAreas');
+    Route::get('/sector/get-active-sectors', 'Admin\SectorController@getActiveSectors');
+
     //Listing management data
     Route::get('/practice-area-guides/get-active-guides', 'Admin\PracticeAreaGuideController@getActiveGuides');
     Route::get('/interview-guides/get-active-guides', 'Admin\InterviewGuideController@getActiveGuides');
@@ -165,7 +173,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/location/get-info/{id}', 'Admin\LocationController@getInfo');
         Route::get('/location/can-delete-location/{id}', 'Admin\LocationController@canDeleteLocation');
         Route::get('/location/delete/{id}', 'Admin\LocationController@delete');
-        Route::get('/location/get-active-locations', 'Admin\LocationController@getActiveLocations');
 
         //Service
         Route::get('/service', 'Admin\ServiceController@index');
@@ -174,7 +181,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/service/get-info/{id}', 'Admin\ServiceController@getInfo');
         Route::get('/service/can-delete-service/{id}', 'Admin\ServiceController@canDeleteService');
         Route::get('/service/delete/{id}', 'Admin\ServiceController@delete');
-        Route::get('/service/get-active-services', 'Admin\ServiceController@getActiveServices');
 
         //Recruitment Type
         Route::get('/recruitment-type', 'Admin\RecruitmentTypeController@index');
@@ -183,7 +189,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/recruitment-type/get-info/{id}', 'Admin\RecruitmentTypeController@getInfo');
         Route::get('/recruitment-type/can-delete-type/{id}', 'Admin\RecruitmentTypeController@canDeleteRecruitment');
         Route::get('/recruitment-type/delete/{id}', 'Admin\RecruitmentTypeController@delete');
-        Route::get('/recruitment-type/get-active-types', 'Admin\RecruitmentTypeController@getActiveRecruitmentTypes');
+        
 
         //Practice Area
         Route::get('/practice-area', 'Admin\PracticeAreaController@index');
@@ -192,7 +198,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/practice-area/get-info/{id}', 'Admin\PracticeAreaController@getInfo');
         Route::get('/practice-area/can-delete-area/{id}', 'Admin\PracticeAreaController@canDeleteArea');
         Route::get('/practice-area/delete/{id}', 'Admin\PracticeAreaController@delete');
-        Route::get('/practice-area/get-active-areas', 'Admin\PracticeAreaController@getActivePracticeAreas');
 
         //File Downloads
         Route::get('/data-upload', 'Admin\DataUploadController@index');        
@@ -207,7 +212,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/sector/get-info/{id}', 'Admin\SectorController@getInfo');
         Route::get('/sector/can-delete-sector/{id}', 'Admin\SectorController@canDeleteSector');
         Route::get('/sector/delete/{id}', 'Admin\SectorController@delete');
-        Route::get('/sector/get-active-sectors', 'Admin\SectorController@getActiveSectors');
 
         //Recruitment Firm
         Route::get('/recruitment-firm', 'Admin\Firm\RecruitmentFirmController@index');
@@ -216,7 +220,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/recruitment-firm/get-info/{id}', 'Admin\Firm\RecruitmentFirmController@getInfo');
         Route::get('/recruitment-firm/can-delete-firm/{id}', 'Admin\Firm\RecruitmentFirmController@canDeleteFirm');
         Route::get('/recruitment-firm/delete/{id}', 'Admin\Firm\RecruitmentFirmController@delete');
-        Route::get('/recruitment-firm/get-active-firms', 'Admin\Firm\RecruitmentFirmController@getActiveFirms');
         
         //Recruitment firm pivot tables
         //Firm location mapping

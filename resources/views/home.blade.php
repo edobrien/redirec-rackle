@@ -176,7 +176,7 @@
         $scope.newletterRegister = function(){
             $scope.messageToshow = null;
             $(".bg_load").show();
-            var url = 'user/newsletter-register';
+            var url = '/user/newsletter-register';
             $http.post(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $(".bg_load").hide();
