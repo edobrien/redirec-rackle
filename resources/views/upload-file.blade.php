@@ -7,17 +7,18 @@
         <button class="btn btn-outline-secondary btn-sm br-40 mr-2 px-3 fs-12 mb-4">Download Template</button>
     </a>
     <div ng-hide="!errors" class="alert alert-danger">
-        <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-        <ul>
+        <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+        <ul class="pl-2 mb-0">
             <li ng-repeat="error in errors"><% error %></li>
         </ul>
     </div>
     <div ng-hide="!successMessage"  class="alert alert-success">
-        <a href="#"  class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+        <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
         <% successMessage %>
     </div>
     <div ng-if="modalErrors" class="alert alert-danger col-md-12">
-        <ul>
+        <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+        <ul class="pl-2 mb-0">
             <li ng-repeat="error in modalErrors"><% error %></li>
         </ul>
     </div>

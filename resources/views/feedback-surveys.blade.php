@@ -13,13 +13,13 @@
             <h4 class="font-weight-bold text-blue pb-2">Feedback</h4>
             <p class="text-grey">We welcome any feedback in respect of the site on things that you think could be improved or additional functionality that you would like to see.</p>
             <div ng-hide="!errors" class="alert alert-danger">
-                <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-                <ul>
+                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                <ul class="pl-2 mb-0">
                     <li ng-repeat="error in errors"><% error %></li>
                 </ul>
             </div>
             <div ng-hide="!successMessage"  class="alert alert-success">
-                <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
                 <% successMessage %>
             </div>
             <form method="post" ng-submit="feedbackSubmit(form_data)" ng-model="form_data">

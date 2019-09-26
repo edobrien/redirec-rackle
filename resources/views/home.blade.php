@@ -94,13 +94,13 @@
                     <div class="col-md-12">
                         <div class="card border-0 rounded shadow">
                             <div ng-hide="!errors" class="alert alert-danger">
-                                <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-                                <ul>
+                                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                <ul class="pl-2 mb-0">
                                     <li ng-repeat="error in errors"><% error %></li>
                                 </ul>
                             </div>
                             <div ng-hide="!successMessage"  class="alert alert-success">
-                                <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
                                 <% successMessage %>
                             </div>
                             <div class="card-body pb-0">

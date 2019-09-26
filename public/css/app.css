@@ -668,6 +668,7 @@ table.dataTable tbody td {
     left: 0;
 }
 .upload form button{
+    position: relative;
     margin: 0;
     background: #5229A4;
     color: #ffffff;
@@ -675,7 +676,10 @@ table.dataTable tbody td {
     line-height: 40px;
     width: 200px;
     border: none;
-    bottom: -20px;
+    bottom: 2px;
+}
+.upload form button:focus {
+    outline: unset !important;
 }
 .upload .dropzone {
     color: #979797;
@@ -769,12 +773,10 @@ input:-webkit-autofill:active {
     -webkit-transform-origin: 0 0;
 }
 .alert-danger {
-    background-color: #ffffff;
-    opacity: 0.9;
     color: red;
     border-radius: 0;
     border: 0;
-}
+}  
 .alert-danger li {
     list-style-type: none;
 }
