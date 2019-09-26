@@ -85,14 +85,27 @@ class UserServices{
 
     public function delete($id){
         try{
-
-        User::destroy($id); 
-        return true;
-        
+            User::destroy($id); 
+            return true;
         }catch(\Exception $e){
             \Illuminate\Support\Facades\Log::error($e->getMessage());
-            return false;
- 
+            return false; 
         }
+    }
+
+    public function emailExists($data){
+        if(isset($data)){
+            $mapping = User::where('email', $data->email)
+                            ->where('id', '!=', $data->id)
+                            ->count();
+        }else{
+            $mapping = User::where('email', $data->email)
+                            ->count();
+        }
+
+        if($mapping){
+            return true;
+        }
+        return false;
     }
 }
