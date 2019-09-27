@@ -2,42 +2,39 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport"content="width=device-width, initial-scale=1">
+     
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="../img/fav.png">
-    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
+    <meta name="csrf-token"content="{{ csrf_token() }}">
+    <link rel="icon"href="../img/fav.png">
     <title>Recdirec</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.css">
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-
+     
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}"rel="stylesheet">
+    <link href="{{ asset('css/jquery.dataTables.min.css') }}"rel="stylesheet">
+     
+    <!-- Fonts -->
+    <link rel="dns-prefetch"href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito"rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+     
+    <!-- Script - Jquery, Popper and Bootstrap -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"defer></script>
+     
     <!-- Used for google recaptcha-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+     
     <!-- Used for yajra datatables-->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
-
-    <!-- Bootstrap Multi-select -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"defer></script>
+     
+    <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+     
+    <!-- Search Firm -->
     <script src="{{ asset('js/firm-search.js') }}"></script>
-
     @yield('head')
     @stack('scripts')
 </head>
