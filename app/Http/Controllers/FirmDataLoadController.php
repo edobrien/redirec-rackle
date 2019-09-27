@@ -65,11 +65,11 @@ class FirmDataLoadController extends Controller
         $result = $this->firmDataLoadServices->importTemplate();
         if(is_bool($result)){
             if($result){
-                return array("status" => "SUCCESS", "messgae" => "Your data uploading process will start shortely");
+                return array("status" => "SUCCESS", "message" => "Your data uploading process will start shortly");
             }else{
                 return array("status" => "FAILED", "errors" => ["Error in uploading file"]);
             }            
         }
-        return array("status" => "SUCCESS", "message" => "File uploaded successfully");
+        return array("status" => "FAILED", "errors" => $result);
     }
 }

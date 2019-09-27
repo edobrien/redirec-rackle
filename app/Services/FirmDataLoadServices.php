@@ -179,9 +179,7 @@ class FirmDataLoadServices{
             $errors[] = "Invalid recruitment type mapping";
         }
 
-        if(empty(trim($row[19]))){
-            $errors[] = "Client mapping";
-        }else if(count(explode("&",$row[19])) < 1){
+        if(count(explode("&",$row[19])) < 1){
             $errors[] = "Invalid client mapping";
         }
 
@@ -197,9 +195,7 @@ class FirmDataLoadServices{
             $errors[] = "Invalid sector mapping";
         }
 
-        if(empty(trim($row[22]))){
-            $errors[] = "Recruitment region mapping";
-        }else if(count(array_diff(explode("&",$row[22]), $this->location))){
+        if(count(array_diff(explode("&",$row[22]), $this->location))){
             $errors[] = "Invalid recruitment region mapping";
         }
         return $errors;
