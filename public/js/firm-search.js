@@ -34,7 +34,6 @@
                 if (response.data.status == 'SUCCESS') {
                     $scope.search_locations = response.data.locations;
                     selected = $('#location').val();
-                    $(".bg_load").show();
                     if(selected){
                         index = $scope.getSelectedItem($scope.search_locations, 
                                                         selected);
