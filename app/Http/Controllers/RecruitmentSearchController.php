@@ -23,8 +23,8 @@ class RecruitmentSearchController extends Controller
             $request->session()->forget('firm_id');
         }
         
-        if(isset($request->search_locations) && count($request->search_locations)){
-            $request->session()->put('location_id',implode(",",$request->search_locations));
+        if(isset($request->search_locations)){
+            $request->session()->put('location_id',$request->search_locations);
         }else{
             $request->session()->forget('location_id');
         }

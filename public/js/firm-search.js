@@ -36,16 +36,20 @@
                     selected = $('#location').val();
                     $(".bg_load").show();
                     if(selected){
-                        var multi_select = selected.split(",");
-                        var selectedArray = [];
-                        for (i=0; i< multi_select.length; i++) {
-                            index = $scope.getSelectedItem($scope.search_locations, 
-                                multi_select[i]);
-                                selectedArray.push($scope.search_locations[index]);
-                        }
-                        $scope.search_location = selectedArray;               
+                        index = $scope.getSelectedItem($scope.search_locations, 
+                                                        selected);
+                        $scope.search_location = $scope.search_locations[index];
                     }
-                    $(".bg_load").hide();
+                    // if(selected){
+                    //     var multi_select = selected.split(",");
+                    //     var selectedArray = [];
+                    //     for (i=0; i< multi_select.length; i++) {
+                    //         index = $scope.getSelectedItem($scope.search_locations, 
+                    //             multi_select[i]);
+                    //             selectedArray.push($scope.search_locations[index]);
+                    //     }
+                    //     $scope.search_location = selectedArray;                
+                    // }
                 } else {
                     alert("Error in fetching active locations");
                 }
@@ -162,7 +166,7 @@
 
         $scope.init = function () {
             $scope.search_data = {};
-            $scope.search_location = [];
+            //$scope.search_location = [];
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.getActiveFirms();
             $scope.getActiveLocations();
