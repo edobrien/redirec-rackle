@@ -162,15 +162,17 @@ class UploadData extends Command
         }
 
         //Firm Client Mapping 
-        $clients = explode("&", $row[19]);
+        if(!empty(trim($row[19]))){
+            $clients = explode("&", $row[19]);
 
-        if(count($clients)){
-            for($i=0; $i<count($clients); $i++){
-                $type = new FirmRecruitmentType;
-                $type->firm_id = $firm->id;
-                $type->client_location = $clients[$i];
-                $type->is_active = FirmRecruitmentType::FLAG_YES;
-                $type->save();
+            if(count($clients)){
+                for($i=0; $i<count($clients); $i++){
+                    $type = new FirmRecruitmentType;
+                    $type->firm_id = $firm->id;
+                    $type->client_location = $clients[$i];
+                    $type->is_active = FirmRecruitmentType::FLAG_YES;
+                    $type->save();
+                }
             }
         }
 
@@ -201,17 +203,19 @@ class UploadData extends Command
         }
 
         //Firm Recruitment Region Mapping 
-        $regions = explode("&", $row[19]);
+        if(!empty(trim($row[19]))){
+            $regions = explode("&", $row[19]);
 
-        if(count($regions)){
-            for($i=0; $i<count($regions); $i++){
-                $type = new FirmRecruitmentRegion;
-                $type->firm_id = $firm->id;
-                $type->location_id = $regions[$i];
-                $type->is_active = FirmRecruitmentRegion::FLAG_YES;
-                $type->save();
+            if(count($regions)){
+                for($i=0; $i<count($regions); $i++){
+                    $type = new FirmRecruitmentRegion;
+                    $type->firm_id = $firm->id;
+                    $type->location_id = $regions[$i];
+                    $type->is_active = FirmRecruitmentRegion::FLAG_YES;
+                    $type->save();
+                }
             }
-        }
+        }       
 
         return true;
     }

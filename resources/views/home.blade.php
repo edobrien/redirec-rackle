@@ -15,7 +15,7 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Practice area guides</h5>
                                 <p class="text-light m-0">
-                                    Quick and concise overviews of the different practice areas that lawyers work in
+                                    Overview of the different practice areas that lawyers work in together with updates on the current recruitment market conditions of that practice area.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -28,7 +28,7 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Interviewing resources</h5>
                                 <p class="text-light m-0">
-                                    Helpful resources to use for all levels of interviews from junior to senior level candidates
+                                    Helpful advice and guides for interviews, selecting recruiters, managing processes and EVP propositions
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -41,7 +41,7 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Market reports and analysis</h5>
                                 <p class="text-light m-0">
-                                    Range of reports and analysis on the areas of the legal market that are relevant to resourcing.
+                                    Range of reports and analysis on areas of the legal market that are relevant to resourcing.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -52,9 +52,9 @@
                     <div class="col-lg-4 d-flex align-self-stretch mb-4">
                         <div class="card border-0 w-100 bg-feedback rounded cursor-pointer" onclick="location.href='{{ url('/feedback-surveys') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Feedback / Surveys</h5>
+                                <h5 class="card-title text-white">Surveys/Feedback</h5>
                                 <p class="text-light m-0">
-                                    Take part in our surveys relating to diversity, social mobility and attrition.
+                                    Take part in our surveys relating to diversity, social mobility, attrition and other resourcing related matters. Provide feedback / suggestions on the site.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -78,9 +78,9 @@
                     <div class="col-lg-4 d-flex align-self-stretch mb-4">
                         <div class="card border-0 bg-helpful rounded cursor-pointer" onclick="location.href='{{ url('/helpful-article') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Helpful articles</h5>
+                                <h5 class="card-title text-white">Blog Articles</h5>
                                 <p class="text-light m-0">
-                                    Archive of useful articles that we’ve seen over the years that are relevant to legal resourcing.
+                                    View the latest blog articles from recdirec and their guest bloggers.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
