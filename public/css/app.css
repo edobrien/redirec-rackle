@@ -712,7 +712,7 @@ table.dataTable tbody td {
 .sidebar select {
     background-color: rgba(76,35,161,.02);
     border-color: rgba(76,35,161,.04);
-    color: rgba(76,35,161,.25) !important;
+    color: rgba(0,0,0,0.8) !important;
     font-size: 12px !important;
     width: 100%;
     height: 24px;
@@ -784,3 +784,31 @@ input:-webkit-autofill:active {
     outline: none;
     color: red !important;
 }
+.bg-details {
+    background-color: rgb(173,173,173,0.1);
+    min-height: 100vh;
+}
+.bg-dynamic div:nth-child(1) .card, .bg-dynamic div:nth-child(6n+1) .card {
+    background-color: #AB58D7;
+    background-image: linear-gradient(to left top, #af98e5, #9a7fe7, #8066e8, #614dea, #2e34eb);
+}
+.bg-dynamic div:nth-child(2) .card, .bg-dynamic div:nth-child(6n+2) .card {
+    background-color: #EC6A87;
+    background-image: linear-gradient(to left top, #ee7366, #f4657c, #f15b98, #e35ab7, #c762d6);
+}
+.bg-dynamic div:nth-child(3) .card, .bg-dynamic div:nth-child(6n+3) .card {
+    background-color: #94DA56;
+    background-image: linear-gradient(to left top, #c14fd4, #b456d8, #a85cdb, #9a61dd, #8d66de);
+}
+.bg-dynamic div:nth-child(4) .card, .bg-dynamic div:nth-child(6n+4) .card {
+    background-color: #7C73E9;
+    background-image: linear-gradient(to left top, #ea9184, #ec8682, #ed7a82, #ed6e84, #ec6288);
+}
+.bg-dynamic div:nth-child(5) .card, .bg-dynamic div:nth-child(6n+5) .card {
+    background-color: #65CBDC;
+    background-image: linear-gradient(to left top, #65e3de, #53e4c7, #5be3a7, #74e081, #94da56);
+}
+.bg-dynamic div:nth-child(6) .card, .bg-dynamic div:nth-child(6n+6) .card {
+    background-color: #E7707A;
+    background-image: linear-gradient(to left top, #6cb4e4, #58c1e8, #4acce6, #4cd7df, #5ee1d4);
+}/

@@ -54,16 +54,19 @@
                     <ul class="navbar-nav ml-auto">
                         @if (Auth::user()->is_active == "YES")
                             <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Area Guide</a>
+                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Areas</a>
                             </li>
                             <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/interview-guide') }}">Interview / Resource Guides</a>
+                                <a class="nav-link" href="{{ url('/interview-guide') }}">Advice</a>
                             </li>
                             <li class="nav-item {{ Request::is('reports-analysis') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/reports-analysis') }}">Reports</a>
                             </li>
                             <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/feedback-surveys') }}">Feedback</a>
+                                <a class="nav-link" href="{{ url('/feedback-surveys') }}">Surveys</a>
+                            </li>
+                            <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('/useful-link') }}">Links</a>
                             </li>
                         @endif
                         <!-- Authentication Links -->
