@@ -5,9 +5,9 @@
         <div class="row">
             <div class="col-md-7">
                 <img class="pb-5" src="img/logo.png" alt="Recdirec" width="250">
-                <h5 class="lh5 pb-3">Our goal is to provide law firm and Inhouse Legal resourcing teams with greater knowledge and information about the legal recruitment market to help improve the efficiency, processes and services throughout the recruitment process.</h5>
+                <h5 class="lh5 pb-3">Our goal is to provide law firm and In-house legal resourcing teams with greater knowledge and information about the legal recruitment market to help improve efficiency, transparency and the services provided throughout the recruitment process.</h5>
 
-                <h5 class="lh5 pb-4">If you work within an inhouse resourcing team for a law firm, a company that has an inhouse legal department or are a partner that is in charge of recruiting for law firms and would like to access this information, please register below and we will provide you with a 3 month free trail access.</h5>
+                <h5 class="lh5 pb-4">If you work within an In-house resourcing team for a law firm, a company that has an In-house legal department or are a partner that is in charge of recruiting for law firms and would like to access this information, click below and we will provide you with 3 months' free trail access.</h5>
 
                 <!-- <h5 class="lh5">Register to receive the Recdirec weekly update.</h5>
 

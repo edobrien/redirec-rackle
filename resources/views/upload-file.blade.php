@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form ng-submit="firmSubmit(form_data)" ng-model="form_data" method="post">
+            <form id="upload-form" ng-submit="firmSubmit(form_data)" ng-model="form_data" method="post">
                 <input type="file" class="form-text" 
                     ng-model="form_data.upload_excel" id="upload_excel" file-model="upload_excel" 
                     accept=".xlsx,.xls">
@@ -41,8 +41,8 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-  $('form input').change(function () {
-    $('form div').text(this.files[0].name);
+  $('#upload-form input').change(function () {
+    $('#upload-form div').text(this.files[0].name);
   });
 });
 </script>
@@ -62,7 +62,7 @@
                     $(".bg_load").hide();
                     $scope.form_data = {};
                     $('#upload_excel').val('');
-                    $('form div').text('');
+                    $('#upload-form form div').text('');
                     $scope.successMessage = response.message;
                 }else{
                     var errors = [];
