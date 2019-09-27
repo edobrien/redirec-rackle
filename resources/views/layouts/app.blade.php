@@ -37,6 +37,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="{{ asset('js/firm-search.js') }}"></script>
+
     @yield('head')
     @stack('scripts')
 </head>
@@ -214,9 +215,10 @@
                     <div class="find-recruiters">
                         <p class="text-dark mb-1">Find Recruiters</p>
                         <label for="location">Location</label>
-                        <select class="mb8 selectpicker" title="Any" name="search_locations[]" 
+                        <select class="mb8" name="search_locations" 
                                 ng-model="search_location"
-                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id" multiple>
+                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
+                                <option value="">Any</option>
                         </select>
                         <label for="service">Service</label>
                         <select class="mb8" name="service_id" 
