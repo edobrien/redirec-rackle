@@ -98,9 +98,9 @@
                     </div>
                     <div class="col-md-5 text-right">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey pr-4"><% firm.practice_area %></span>
+                        <span class="text-grey pr-4"><i>Practice Specialism : </i><% firm.practice_area %></span>
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey"><% firm.sector %></span>
+                        <span class="text-grey"><i>Sector Specialism : </i><% firm.sector %></span>
                     </div>
                     <div class="col-md-5 text-right">
                         <i class="fa fa fa-globe" aria-hidden="true"></i>

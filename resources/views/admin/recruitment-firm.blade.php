@@ -88,6 +88,13 @@
                                         <?php echo \App\RecruitmentFirm::SIZE_MEDIUM_TEXT; ?></option>
                                         <option value="<?php echo \App\RecruitmentFirm::SIZE_LARGE; ?>">
                                         <?php echo \App\RecruitmentFirm::SIZE_LARGE_TEXT; ?></option>
+                                        <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL_MEDIUM; ?>">
+                                            <?php echo \App\RecruitmentFirm::SIZE_SMALL_MEDIUM_TEXT; ?></option>
+                                        <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL_LARGE; ?>">
+                                            <?php echo \App\RecruitmentFirm::SIZE_SMALL_LARGE_TEXT; ?></option>
+                                        <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM_LARGE; ?>">
+                                            <?php echo \App\RecruitmentFirm::SIZE_MEDIUM_LARGE_TEXT; ?></option>
+            
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
@@ -102,6 +109,8 @@
                                         <?php echo \App\PracticeArea::AREA_GENERAL_TEXT; ?></option>
                                         <option value="<?php echo \App\PracticeArea::AREA_SPECIAL; ?>">
                                         <?php echo \App\PracticeArea::AREA_SPECIAL_TEXT; ?></option>
+                                        <option value="<?php echo \App\PracticeArea::AREA_GENERAL_AND_SPECIAL; ?>">
+                                            <?php echo \App\PracticeArea::AREA_GENERAL_AND_SPECIAL_TEXT; ?></option>
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
@@ -109,11 +118,12 @@
                                     <select class="form-control" ng-model="form_data.sector" required>
                                         <option value="">Select</option>
                                         <option value="<?php echo \App\Sector::SECTOR_GENERAL; ?>">
-                                        <?php echo \App\Sector::SECTOR_GENERAL_TEXT; ?></option>
-                                        <option value="<?php echo \App\Sector::SECTOR_PRIVATE_PRACTICE; ?>">
-                                        <?php echo \App\Sector::SECTOR_PRIVATE_PRACTICE_TEXT; ?></option>
-                                        <option value="<?php echo \App\Sector::SECTOR_INHOUSE; ?>">
-                                        <?php echo \App\Sector::SECTOR_INHOUSE_TEXT; ?></option>
+                                            <?php echo \App\Sector::SECTOR_GENERAL_TEXT; ?></option>
+                                        <option value="<?php echo \App\Sector::SECTOR_SPECIAL; ?>">
+                                            <?php echo \App\Sector::SECTOR_SPECIAL_TEXT; ?></option>
+                                        <option value="<?php echo \App\Sector::SECTOR_GENERAL_AND_SPECIAL; ?>">
+                                            <?php echo \App\Sector::SECTOR_GENERAL_AND_SPECIAL_TEXT; ?></option>
+                                       
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
