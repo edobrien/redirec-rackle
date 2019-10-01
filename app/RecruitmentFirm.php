@@ -15,6 +15,9 @@ class RecruitmentFirm extends Model
     const SIZE_SMALL = "SMALL";
     const SIZE_MEDIUM = "MEDIUM";
     const SIZE_LARGE = "LARGE";
+    const SIZE_SMALL_MEDIUM = "SMALL_MEDIUM";
+    const SIZE_SMALL_LARGE = "SMALL_LARGE";
+    const SIZE_MEDIUM_LARGE = "MEDIUM_LARGE";
 
     const FLAG_YES = "YES";
     const FLAG_NO = "NO";
@@ -25,6 +28,9 @@ class RecruitmentFirm extends Model
     const SIZE_SMALL_TEXT = "Small";
     const SIZE_MEDIUM_TEXT= "Medium";
     const SIZE_LARGE_TEXT = "Large";
+    const SIZE_SMALL_MEDIUM_TEXT = "Small Medium";
+    const SIZE_SMALL_LARGE_TEXT = "Small Large";
+    const SIZE_MEDIUM_LARGE_TEXT = "Medium Large";
 
     const FLAG_YES_TEXT = "Yes";
     const FLAG_NO_TEXT = "No";
@@ -46,11 +52,20 @@ class RecruitmentFirm extends Model
             case self::SIZE_SMALL:
                 return self::SIZE_SMALL_TEXT;
                 break;
-             case self::SIZE_MEDIUM:
+            case self::SIZE_MEDIUM:
                 return self::SIZE_MEDIUM_TEXT;
-                break;
+                break;          
             case self::SIZE_LARGE:
                 return self::SIZE_LARGE_TEXT;
+                break;
+            case self::SIZE_SMALL_MEDIUM:
+                return self::SIZE_SMALL_MEDIUM_TEXT;
+                break;
+            case self::SIZE_SMALL_LARGE:
+                return self::SIZE_SMALL_LARGE_TEXT;
+                break;
+            case self::SIZE_MEDIUM_LARGE:
+                return self::SIZE_MEDIUM_LARGE_TEXT;
                 break;
         }
     }

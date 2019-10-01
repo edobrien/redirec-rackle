@@ -17,6 +17,7 @@ class PracticeArea extends Model
 
     const AREA_GENERAL = "GENERAL";
     const AREA_SPECIAL = "SPECIAL";
+    const AREA_GENERAL_AND_SPECIAL = "GENERAL_AND_SPECIAL";
 
     const STATUS_ACTIVE_TEXT = "Active";
     const STATUS_IN_ACTIVE_TEXT = "In Active";
@@ -26,6 +27,7 @@ class PracticeArea extends Model
 
     const AREA_GENERAL_TEXT = "Generalist";
     const AREA_SPECIAL_TEXT = "Specialist";
+    const AREA_GENERAL_AND_SPECIAL_TEXT = "Generalist & Specialist";
 
     public static function getDescriptionText($text){
         switch($text){
@@ -47,6 +49,9 @@ class PracticeArea extends Model
             case self::AREA_SPECIAL:
                 return self::AREA_SPECIAL_TEXT;
                 break;
+            case self::GENERAL_AND_SPECIAL:
+                return self::GENERAL_AND_SPECIAL_TEXT;
+                break;    
         }
     }
 

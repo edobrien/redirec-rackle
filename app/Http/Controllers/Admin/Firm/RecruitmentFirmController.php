@@ -48,7 +48,8 @@ class RecruitmentFirmController extends Controller
 
         if(empty($request->telephone)){
             $errors[] = "Telephone is missing";
-        }else if (!ctype_digit($request->telephone)) {
+        }       
+        else if (preg_match('/[^+0-9]/', $request->telephone)) {
             $errors[] = "Telephone should contain only numbers";
         }
 

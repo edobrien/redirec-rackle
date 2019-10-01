@@ -131,7 +131,7 @@ class FirmDataLoadServices{
 
         if(empty(trim($row[4]))){
             $errors[] = "Missing Telephone";          
-        }else if (!ctype_digit(trim($row[4]))) {
+        }else if (preg_match('/[^+0-9]/', trim($row[4]))) {
             $errors[] = "Telephone should contain only numbers";
         }
 
