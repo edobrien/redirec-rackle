@@ -22,13 +22,13 @@
                 <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
                 <% successMessage %>
             </div>
-                <div class="row">
+                <div class="row bg-dynamic">
                     @foreach ($reports as $report)
                     <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail({{$report->id}}, '{{$report->name}}')">
-                        <div class="card bg-lightgrey rounded-0 border-0 w-100 cursor-pointer">
+                        <div class="card rounded-0 border-0 w-100 cursor-pointer">
                             <div class="card-body pb-0">
-                                <h6 class="card-title text-grey">{{$report->name}}</h6>
-                                <p class="text-grey">{{$report->description}}</>
+                                <h6 class="card-title text-white">{{$report->name}}</h6>
+                                <p class="text-white">{{$report->description}}</>
                             </div>
                         </div>
                     </div>

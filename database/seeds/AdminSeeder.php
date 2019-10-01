@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
             'name' => "Ed O'Brien",
             'firm_name' => 'Rec-Direc',
             'position' => 'Owner',
-            'email' => 'eddieob2009@googlemail.com',
+            'email' => 'recdirec@gmail.com',
             'email_verified_at' => now(),
             'contact_number' => '0123456789',
             'password' => bcrypt('recdirec@123'),
