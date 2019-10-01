@@ -26,7 +26,7 @@
                     <div class="col-lg-4 d-flex align-self-stretch mb-4">
                         <div class="card border-0 bg-interview rounded cursor-pointer" onclick="location.href='{{ url('/interview-guide') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Interviewing resources</h5>
+                                <h5 class="card-title text-white">Interview/Resourcing Advice</h5>
                                 <p class="text-light m-0">
                                     Helpful advice and guides for interviews, selecting recruiters, managing processes and EVP propositions
                                 </p>

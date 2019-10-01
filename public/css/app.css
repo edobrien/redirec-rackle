@@ -793,12 +793,12 @@ input:-webkit-autofill:active {
     background-image: linear-gradient(to left top, #af98e5, #9a7fe7, #8066e8, #614dea, #2e34eb);
 }
 .bg-dynamic div:nth-child(2) .card, .bg-dynamic div:nth-child(6n+2) .card {
-    background-color: #EC6A87;
-    background-image: linear-gradient(to left top, #ee7366, #f4657c, #f15b98, #e35ab7, #c762d6);
+    background-color: #94DA56;
+    background-image: linear-gradient(to left top, #c14fd4, #b456d8, #a85cdb, #9a61dd, #8d66de); 
 }
 .bg-dynamic div:nth-child(3) .card, .bg-dynamic div:nth-child(6n+3) .card {
-    background-color: #94DA56;
-    background-image: linear-gradient(to left top, #c14fd4, #b456d8, #a85cdb, #9a61dd, #8d66de);
+    background-color: #EC6A87;
+    background-image: linear-gradient(to left top, #ee7366, #f4657c, #f15b98, #e35ab7, #c762d6);
 }
 .bg-dynamic div:nth-child(4) .card, .bg-dynamic div:nth-child(6n+4) .card {
     background-color: #7C73E9;
@@ -811,4 +811,4 @@ input:-webkit-autofill:active {
 .bg-dynamic div:nth-child(6) .card, .bg-dynamic div:nth-child(6n+6) .card {
     background-color: #E7707A;
     background-image: linear-gradient(to left top, #6cb4e4, #58c1e8, #4acce6, #4cd7df, #5ee1d4);
-}/
+}
