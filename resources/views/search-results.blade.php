@@ -92,17 +92,21 @@
                     </div>
                 </div>
                 <div class="row pt-2 text-footer">
-                    <div class="col-md-2">
+                    <div class="col-md-6">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <span class="text-grey pr-4"><i>Practice Specialism : <% firm.practice_area | areaSpecialismText %></i></span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <span class="text-grey"><i>Sector Specialism : <% firm.sector | sectorSpecialismText %></i></span>
+                    </div>
+                </div>
+                <div class="row pt-2 text-footer">
+                    <div class="col-md-6">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="text-grey"><% firm.location %></span>
                     </div>
-                    <div class="col-md-5 text-right">
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey pr-4"><i>Practice Specialism : </i><% firm.practice_area %></span>
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey"><i>Sector Specialism : </i><% firm.sector %></span>
-                    </div>
-                    <div class="col-md-5 text-right">
+                    <div class="col-md-6 text-right">
                         <i class="fa fa fa-globe" aria-hidden="true"></i>
                         <a href="<% firm.website_link %>" class="text-grey"><% firm.website_link %></a>
                     </div>
@@ -126,11 +130,35 @@
 @push('scripts')
 <script type="text/javascript">
     
+    var specialism = {"GENERAL":"Generalist", 
+                        "SPECIAL":"Specialist", 
+                        "GENERAL_AND_SPECIAL":"Generalist & Specialist"};
+
     app.filter("trust", ['$sce', function($sce) {
       return function(htmlCode){
         return $sce.trustAsHtml(htmlCode);
       }
     }]);
+
+    app.filter('areaSpecialismText', function() {
+        return function(practice_area){
+            txt = specialism[practice_area];
+            if(txt){
+                return txt;
+            }
+            return practice_area;
+        };        
+    });
+
+    app.filter('sectorSpecialismText', function() {
+        return function(sector){
+            txt = specialism[sector];
+            if(txt){
+                return txt;
+            }
+            return sector;
+        };        
+    });
 
     app.controller('DetailListingController', function ($scope, $http, $compile) {
 
