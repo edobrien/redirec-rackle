@@ -119,7 +119,7 @@
                 @else
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card border-0 rounded shadow bg-green pb-0">
+                        <!-- <div class="card border-0 rounded shadow bg-green pb-0">
                             <div class="card-body py-0">
                                 <div class="row">
                                     <div class="col-lg-8 col-md-12 py-3">
@@ -134,7 +134,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        <img src="/img/CB_Conference Banner.jpg" class="w-100" alt="CB_Conference Banner">
                     </div>
                 </div>
                 @endif
