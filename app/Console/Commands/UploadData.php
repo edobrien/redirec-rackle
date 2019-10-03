@@ -57,7 +57,8 @@ class UploadData extends Command
             $formatDate = date("Y-m-d H:i:s", $futureDate);
 
             $file = DataUploadLog::where('status', DataUploadLog::STATUS_UPLOADED)
-                            ->where('created_at', '<', $formatDate)->first();
+                            //->where('created_at', '<', $formatDate)
+                            ->first();
 
             if(!is_null($file)){
                 $file->status = DataUploadLog::STATUS_STARTED;
@@ -167,52 +168,52 @@ class UploadData extends Command
 
             if(count($clients)){
                 for($i=0; $i<count($clients); $i++){
-                    $type = new FirmRecruitmentType;
+                    $type = new FirmClient;
                     $type->firm_id = $firm->id;
                     $type->client_location = $clients[$i];
-                    $type->is_active = FirmRecruitmentType::FLAG_YES;
+                    $type->is_active = FirmClient::FLAG_YES;
                     $type->save();
                 }
             }
         }
 
         //Firm Practice Area Mapping 
-        $areas = explode("&", $row[19]);
+        $areas = explode("&", $row[20]);
 
         if(count($areas)){
             for($i=0; $i<count($areas); $i++){
-                $type = new FirmPracticeArea;
-                $type->firm_id = $firm->id;
-                $type->practice_area_id = $areas[$i];
-                $type->is_active = FirmPracticeArea::FLAG_YES;
-                $type->save();
+                $area = new FirmPracticeArea;
+                $area->firm_id = $firm->id;
+                $area->practice_area_id = $areas[$i];
+                $area->is_active = FirmPracticeArea::FLAG_YES;
+                $area->save();
             }
         }
 
         //Firm Sector Mapping 
-        $sectors = explode("&", $row[19]);
+        $sectors = explode("&", $row[21]);
 
         if(count($sectors)){
             for($i=0; $i<count($sectors); $i++){
-                $type = new FirmSector;
-                $type->firm_id = $firm->id;
-                $type->sector_id = $sectors[$i];
-                $type->is_active = FirmSector::FLAG_YES;
-                $type->save();
+                $sector = new FirmSector;
+                $sector->firm_id = $firm->id;
+                $sector->sector_id = $sectors[$i];
+                $sector->is_active = FirmSector::FLAG_YES;
+                $sector->save();
             }
         }
 
         //Firm Recruitment Region Mapping 
-        if(!empty(trim($row[19]))){
-            $regions = explode("&", $row[19]);
+        if(!empty(trim($row[22]))){
+            $regions = explode("&", $row[22]);
 
             if(count($regions)){
                 for($i=0; $i<count($regions); $i++){
-                    $type = new FirmRecruitmentRegion;
-                    $type->firm_id = $firm->id;
-                    $type->location_id = $regions[$i];
-                    $type->is_active = FirmRecruitmentRegion::FLAG_YES;
-                    $type->save();
+                    $region = new FirmRecruitmentRegion;
+                    $region->firm_id = $firm->id;
+                    $region->location_id = $regions[$i];
+                    $region->is_active = FirmRecruitmentRegion::FLAG_YES;
+                    $region->save();
                 }
             }
         }       
