@@ -37,10 +37,11 @@ class FirmDataLoadServices{
         $this->practiceArea = PracticeArea::pluck('id')->toArray();
         $this->sector = Sector::pluck('id')->toArray();
         $this->practiceAreaType = array(PracticeArea::AREA_GENERAL,
-                                        PracticeArea::AREA_SPECIAL);
+                                        PracticeArea::AREA_SPECIAL,
+                                        PracticeArea::AREA_GENERAL_AND_SPECIAL);
         $this->sectorType = array(Sector::SECTOR_GENERAL,
-                                Sector::SECTOR_PRIVATE_PRACTICE,
-                                Sector::SECTOR_INHOUSE);
+                                Sector::SECTOR_SPECIAL,
+                                Sector::SECTOR_GENERAL_AND_SPECIAL);
     }
 
 	public function downloadTemplate() {
