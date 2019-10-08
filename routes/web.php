@@ -94,6 +94,15 @@ Route::middleware(['auth'])->group(function () {
         return view('feedback-surveys');
     });
 
+    //Search recruitment firm
+    Route::post('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
+    Route::get('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
+    Route::get('/firm-view-count/{id}', 'RecruitmentSearchController@saveViewCount');
+
+    Route::get('/search-recruitment-firm', function () {
+        return view('search-restriction');
+    });
+
     Route::middleware(['approved'])->group(function() {
         Route::get('/home', 'HomeController@index')->name('home');
     });
@@ -270,15 +279,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/firm-client/add-update-client', 'Admin\Firm\FirmClientController@addOrUpdate');
         Route::get('/firm-client/get-info/{id}', 'Admin\Firm\FirmClientController@getInfo');
         Route::get('/firm-client/delete/{id}', 'Admin\Firm\FirmClientController@delete');
-
-        //Search recruitment firm
-        Route::post('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
-        Route::get('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
-        Route::get('/firm-view-count/{id}', 'RecruitmentSearchController@saveViewCount');
-
-        Route::get('/search-recruitment-firm', function () {
-            return view('search-restriction');
-        });
 
         //Import and Export data
         Route::get('/download-template', 'FirmDataLoadController@downloadTemplate');
