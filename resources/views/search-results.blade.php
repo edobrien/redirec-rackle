@@ -26,8 +26,7 @@
             <div class="col-md-9 search-results" ng-show="firm">
                 <div class="firm-header">
                     <h5 class="font-weight-bold"><% firm.name %></h5>
-                    <img src="../img/logo.png" height="46" class="firm-logo">
-                    <img  height="46" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Firm Logo">
+                    <img height="46" class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Firm Logo">
                 </div>
                 <p class="text-grey" ng-bind-html="firm.description | trust"></p>
                 <h5 class="font-weight-bold py-2">Testimonials</h5>
