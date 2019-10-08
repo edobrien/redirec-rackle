@@ -256,7 +256,8 @@
                                 ng-options="sector.id as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">
                                 <option value="">General</option>
                         </select>
-                        <button type="submit" class="btn btn-sm bg-darkblue br-40 w-100">Search</button>
+                        <button type="submit" class="btn btn-sm btn-form br-40 w-100 mb-2">Search</button>
+                        <button type="button" class="btn btn-sm bg-blue br-40 w-100">Clear Search</button>
                         </form>
                     </div>
                 </nav>
