@@ -431,6 +431,10 @@ table.dataTable thead th, table.dataTable thead td {
     padding: 14px 15px;
     border-radius: 50px;
 }
+.fa-trash-o {
+    cursor: pointer;
+    color: red;
+}
 .dropdown-toggle:after{
     color: rgba(76,35,161,.25) !important;
 }
@@ -748,9 +752,10 @@ table.dataTable th, table.dataTable td {
 .no-search-results {
     height: calc(100vh - 160px);
 }
-.ml-n-250 {
-    margin-left: -250px;
-    height: calc(100vh - 160px);
+.ml-n-265 {
+    margin-left: -265px;
+    height: calc(100vh - 54px);
+    background-color: rgb(173,173,173,0.1); 
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -811,4 +816,18 @@ input:-webkit-autofill:active {
 .bg-dynamic div:nth-child(6) .card, .bg-dynamic div:nth-child(6n+6) .card {
     background-color: #E7707A;
     background-image: linear-gradient(to left top, #6cb4e4, #58c1e8, #4acce6, #4cd7df, #5ee1d4);
+}
+.bg-blue {
+    background-color: #603da9;
+    color: #fff;
+}
+.firm-logo {
+    position: absolute;
+    right: 1.5rem!important;
+    top: 3px;
+}
+.firm-header {
+    height: 62px;
+    display: flex;
+    align-items: center;
 }

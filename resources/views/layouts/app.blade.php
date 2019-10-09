@@ -203,7 +203,7 @@
                         <i class="fa fa-times" aria-hidden="true"></i>
                         <span class="close"></span>
                     </button>
-                    <form action="{{ url('/search-recruitment-firm') }}" method="POST">
+                    <form action="{{ url('/search-recruitment-firm') }}" method="POST" id="searchFirm">
                         @csrf
                     <div class="recruitment">
                         <p for="recruitmentFirm" class="text-dark mt-1 mb-2">Recruitment Firm Name</p>
@@ -216,7 +216,7 @@
                         <p class="text-dark mb-1">Find Recruiters</p>
                         <label for="location">Location</label>
                         <select class="mb8" name="search_locations" 
-                                ng-model="search_location"
+                                ng-model="search_data.search_location"
                                 ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
                                 <option value="">Any</option>
                         </select>
@@ -256,7 +256,8 @@
                                 ng-options="sector.id as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">
                                 <option value="">General</option>
                         </select>
-                        <button type="submit" class="btn btn-sm bg-darkblue br-40 w-100">Search</button>
+                        <button type="submit" class="btn btn-sm btn-form br-40 w-100 mb-2">Search</button>
+                        <button type="button" ng-click="clearSearch()" class="btn btn-sm bg-blue br-40 w-100">Clear Search</button>
                         </form>
                     </div>
                 </nav>

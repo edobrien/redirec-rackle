@@ -58,7 +58,7 @@ class UploadData extends Command
 
             $file = DataUploadLog::where('status', DataUploadLog::STATUS_UPLOADED)
                             //->where('created_at', '<', $formatDate)
-                            ->first();
+                            ->latest()->first();
 
             if(!is_null($file)){
                 $file->status = DataUploadLog::STATUS_STARTED;
@@ -125,11 +125,11 @@ class UploadData extends Command
                 if(isset($loc_phones[$i])){
                     $location->telephone = $loc_phones[$i];
                 }
-                if(isset($loc_phones[$i])){
-                    $location->contact_name = $loc_phones[$i];
+                if(isset($loc_contacts[$i])){
+                    $location->contact_name = $loc_contacts[$i];
                 }
-                if(isset($loc_phones[$i])){
-                    $location->email = $loc_phones[$i];
+                if(isset($loc_emails[$i])){
+                    $location->email = $loc_emails[$i];
                 }
                 $location->is_active = FirmLocation::FLAG_YES;
                 $location->save();

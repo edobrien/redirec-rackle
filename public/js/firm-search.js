@@ -37,7 +37,7 @@
                     if(selected){
                         index = $scope.getSelectedItem($scope.search_locations, 
                                                         selected);
-                        $scope.search_location = $scope.search_locations[index];
+                        $scope.search_data.search_location = $scope.search_locations[index];
                     }
                     // if(selected){
                     //     var multi_select = selected.split(",");
@@ -161,6 +161,10 @@
             if($scope.errors){
                 delete $scope.errors;
             }
+        }
+
+        $scope.clearSearch = function(){
+            $scope.search_data = {};
         }
 
         $scope.init = function () {
