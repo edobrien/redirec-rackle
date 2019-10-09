@@ -165,7 +165,6 @@
 
         $scope.clearSearch = function(){
             $scope.search_data = {};
-            window.location.reload();
         }
 
         $scope.init = function () {

@@ -203,7 +203,7 @@
                         <i class="fa fa-times" aria-hidden="true"></i>
                         <span class="close"></span>
                     </button>
-                    <form action="{{ url('/search-recruitment-firm') }}" method="POST">
+                    <form action="{{ url('/search-recruitment-firm') }}" method="POST" id="searchFirm">
                         @csrf
                     <div class="recruitment">
                         <p for="recruitmentFirm" class="text-dark mt-1 mb-2">Recruitment Firm Name</p>
