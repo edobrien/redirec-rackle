@@ -431,6 +431,10 @@ table.dataTable thead th, table.dataTable thead td {
     padding: 14px 15px;
     border-radius: 50px;
 }
+.fa-trash-o {
+    cursor: pointer;
+    color: red;
+}
 .dropdown-toggle:after{
     color: rgba(76,35,161,.25) !important;
 }

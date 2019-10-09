@@ -216,7 +216,7 @@
                         <p class="text-dark mb-1">Find Recruiters</p>
                         <label for="location">Location</label>
                         <select class="mb8" name="search_locations" 
-                                ng-model="search_location"
+                                ng-model="search_data.search_location"
                                 ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
                                 <option value="">Any</option>
                         </select>
@@ -257,7 +257,7 @@
                                 <option value="">General</option>
                         </select>
                         <button type="submit" class="btn btn-sm btn-form br-40 w-100 mb-2">Search</button>
-                        <button type="button" class="btn btn-sm bg-blue br-40 w-100">Clear Search</button>
+                        <button type="button" ng-click="clearSearch()" class="btn btn-sm bg-blue br-40 w-100">Clear Search</button>
                         </form>
                     </div>
                 </nav>

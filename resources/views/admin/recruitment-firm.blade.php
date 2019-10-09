@@ -154,7 +154,10 @@
                                 <div class="form-group col-md-6" 
                                         ng-if="form_data.logo">
                                     <div>
-                                        <div>Current Logo</div>
+                                        <div>
+                                            <span>Current Logo</span>
+                                            <i class="fa fa-trash-o pl-4 ml-1" ng-click="deleteLogo(form_data.id)" aria-hidden="true"></i>
+                                        </div>
                                         <div><img style="height:125px;width: 125px" ng-src="{{asset('asset/img/firm-logo').'/'}}<%form_data.logo%>" alt="Logo not available"></div>
                                     </div>
                                 </div>
@@ -354,6 +357,23 @@
                 }
             });
         };
+        $scope.deleteLogo = function(id){
+            var url = 'recruitment-firm/delete-logo/'+id;
+            $http.get(url).then(function (response) {
+                if (response.data.status == 'SUCCESS') {
+                    $scope.successMessage = response.data.message;
+                    $scope.editFirm(id);
+                }else{
+                    var errors = [];
+                    $.each(response.data.errors, function (key, value) {
+                        errors.push(value);
+                    });
+                    $scope.errors = errors;
+                }
+            }).finally(function(){
+                $(".bg_load").hide();
+            });
+        }
         $scope.init();
     });
 
