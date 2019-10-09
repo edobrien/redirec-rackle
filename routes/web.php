@@ -229,6 +229,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/recruitment-firm/get-info/{id}', 'Admin\Firm\RecruitmentFirmController@getInfo');
         Route::get('/recruitment-firm/can-delete-firm/{id}', 'Admin\Firm\RecruitmentFirmController@canDeleteFirm');
         Route::get('/recruitment-firm/delete/{id}', 'Admin\Firm\RecruitmentFirmController@delete');
+        Route::get('/recruitment-firm/delete-logo/{id}', 'Admin\Firm\RecruitmentFirmController@deleteLogo');
         
         //Recruitment firm pivot tables
         //Firm location mapping

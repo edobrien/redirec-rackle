@@ -141,6 +141,19 @@ class RecruitmentServices{
         }
     }
 
+    public function deleteLogo($id){
+        try{
+            $firm = RecruitmentFirm::find($id);
+            if(isset($firm->logo)){
+                unlink(public_path().'/asset/img/firm-logo/'.$firm->logo);
+            }
+            return true;
+        }catch(\Exception $e){
+            \Illuminate\Support\Facades\Log::error($e->getMessage());
+            return false; 
+        }
+    }
+
     public function getActiveFirms(){
         return RecruitmentFirm::select('id','name')
 			        ->where('is_active', RecruitmentFirm::FLAG_YES)
