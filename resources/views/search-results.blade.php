@@ -24,7 +24,10 @@
                 <h2 class="font-weight-bold text-grey"> Click on recruiters to see detailed description</h2>
             </div>
             <div class="col-md-9 search-results" ng-show="firm">
-                <h5 class="font-weight-bold py-2"><% firm.name %></h5>
+                <div class="firm-header">
+                    <h5 class="font-weight-bold"><% firm.name %></h5>
+                    <img height="46" class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Firm Logo">
+                </div>
                 <p class="text-grey" ng-bind-html="firm.description | trust"></p>
                 <h5 class="font-weight-bold py-2">Testimonials</h5>
                 <p class="text-grey" ng-bind-html="firm.testimonials | trust"></p>
@@ -78,7 +81,7 @@
                 </div>
                 <h5 class="font-weight-bold py-2">Regions recruited for</h5>
                 <ul class="text-grey pl-4">
-                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> <br> <% region.location.name %></li>
+                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> - <% region.location.name %></li>
                 </ul>
                 <h5 class="font-weight-bold pb-2">Contact Details</h5>
                 <div class="row">

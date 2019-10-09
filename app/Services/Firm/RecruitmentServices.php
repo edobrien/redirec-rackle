@@ -88,7 +88,7 @@ class RecruitmentServices{
 
             //Upload Image
             $image = $datas->logo;
-            if($image != 'undefined'){
+            if($image != 'undefined' && $image != 'null'){
                 $logo_name = time().'.'.$image->getClientOriginalExtension();
                 $image->move(public_path().'/asset/img/firm-logo/', $logo_name);
 
@@ -135,6 +135,21 @@ class RecruitmentServices{
         try{
         	RecruitmentFirm::destroy($id); 
         	return true;        
+        }catch(\Exception $e){
+            \Illuminate\Support\Facades\Log::error($e->getMessage());
+            return false; 
+        }
+    }
+
+    public function deleteLogo($id){
+        try{
+            $firm = RecruitmentFirm::find($id);
+            if(isset($firm->logo)){
+                unlink(public_path().'/asset/img/firm-logo/'.$firm->logo);
+                $firm->logo = NULL;
+                $firm->save();
+            }
+            return true;
         }catch(\Exception $e){
             \Illuminate\Support\Facades\Log::error($e->getMessage());
             return false; 

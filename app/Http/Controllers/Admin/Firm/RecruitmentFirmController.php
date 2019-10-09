@@ -104,6 +104,17 @@ class RecruitmentFirmController extends Controller
         return response()->json($rv);
     }
 
+    public function deleteLogo($id){
+
+        $firm = $this->recruitmentServices->deleteLogo($id);
+        if($firm){
+            $rv = array('status' =>  "SUCCESS", "message" => "Logo deleted successfully");
+        }else{
+            $rv = array('status' =>  "FAILURE");
+        }
+        return response()->json($rv);
+    }
+
     public function getActiveFirms(){
 
         $firms = $this->recruitmentServices->getActiveFirms();
