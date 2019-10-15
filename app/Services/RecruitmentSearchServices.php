@@ -109,7 +109,7 @@ class RecruitmentSearchServices{
 
                 $general = FirmSector::select('sector_id')
                             ->join('sectors','sectors.id','=','firm_sectors.sector_id')
-                            ->leftJoin('recruitment_firms','recruitment_firms.id','=','firm_practice_areas.firm_id')
+                            ->leftJoin('recruitment_firms','recruitment_firms.id','=','firm_sectors.firm_id')
                             ->where('sectors.type', Sector::SECTOR_GENERAL)
                             ->where('firm_sectors.is_active', RecruitmentFirm::FLAG_YES)
                             ->orderBy('general_ranking', 'ASC');
