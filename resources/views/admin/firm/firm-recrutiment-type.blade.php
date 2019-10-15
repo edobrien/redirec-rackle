@@ -250,7 +250,7 @@
                 },
                 columns: [
                     {data: 'firm.name', name:'firm.name'},
-                    {data: 'recruitment_type.name',name: 'recruitment_type.name'},
+                    {data: 'recruitment_type.name',name: 'recruitmentType.name'},
                     {data: 'status_text', searchable: false, orderable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],
