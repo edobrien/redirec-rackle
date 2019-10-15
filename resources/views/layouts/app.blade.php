@@ -17,7 +17,7 @@
     <link rel="dns-prefetch"href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito"rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"rel="stylesheet">
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
      
     <!-- Script - Jquery, Popper and Bootstrap -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -44,7 +44,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand py-0" href="{{ url('/home') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
-                    <img src="../img/logo.png" alt="Recdirec" width="130">
+                    <img src="../img/logo-header.png" alt="Recdirec">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -86,7 +86,7 @@
                                 </a> -->
 
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <ion-icon name="ios-more" size="small" class="pt-1 text-grey"></ion-icon>
+                                    <i class="icon ion-md-more pt-1 text-grey"></i>
                                 </a>
 
                                 <div class="dropdown-menu rounded-0 mddp dropdown-menu-right" aria-labelledby="navbarDropdown">

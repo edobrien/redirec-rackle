@@ -19,7 +19,7 @@
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
-                                <ion-icon name="arrow-round-forward" class="text-white"></ion-icon>
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
-                                <ion-icon name="arrow-round-forward" class="text-white"></ion-icon>
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
-                                <ion-icon name="arrow-round-forward" class="text-white"></ion-icon>
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
-                                <ion-icon name="arrow-round-forward" class="text-white"></ion-icon>
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
-                                <ion-icon name="arrow-round-forward" class="text-white"></ion-icon>
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
-                                <ion-icon name="arrow-round-forward" class="text-white"></ion-icon>
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
                             </div>
                         </div>
                     </div>
