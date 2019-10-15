@@ -21,7 +21,7 @@
                 @endforeach
             </div>
             <div ng-show="!firm" class="col-md-9 d-flex justify-content-center mt-18">
-                <h2 class="font-weight-bold text-grey"> Click on recruiters to see detailed description</h2>
+                <h2 class="font-weight-bold text-grey text-center"> Click on recruiters to see detailed description</h2>
             </div>
             <div class="col-md-9 search-results" ng-show="firm">
                 <div class="firm-header">

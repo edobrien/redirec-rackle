@@ -59,11 +59,17 @@ body {
     background: url(../img/register.svg) no-repeat fixed;
     background-position: center center;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 .bg-signin {
     background: url(../img/signin.svg) no-repeat fixed;
-    background-position: right center;
+    background-position: center center;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 .signin-Button {
     background-color: #ffffff;
@@ -622,7 +628,7 @@ table.dataTable tbody td {
 }
 /* Search Page */
 .search-results {
-    height: calc(100vh - 136px);
+    height: calc(100vh - 160px);
     overflow: hidden auto;
 }
 .search-results::-webkit-scrollbar-track {
@@ -830,4 +836,41 @@ input:-webkit-autofill:active {
     height: 62px;
     display: flex;
     align-items: center;
+}
+.ion-md-more {
+    transform: rotate(90deg);
+    position: absolute;
+    font-size: 18px;
+    top: 4px;
+}
+
+/* Internet Explorer */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    html{
+        overflow: hidden;
+        height: 100%;    
+    }
+    body{
+        overflow: auto;
+        height: 100%;
+    }
+    .d-flex {
+        display: block !important;
+    }
+    .pt-9 {
+        padding-top: 9%;
+    }
+    .bg-signin, .bg-register {
+        background-size: 120%;
+    }
+    .bg-practice .card-body, .bg-interview .card-body , .bg-market .card-body, .bg-useful .card-body, .bg-helpful .card-body, .bg-feedback .card-body {
+        min-height: 110px !important;
+    }
+    .no-search-results {
+        text-align: center;
+        padding-top: 13%;
+    }
+    .search-results {
+        overflow-y: auto;
+    }
 }

@@ -35,7 +35,7 @@ class UserServices{
                     $buttons = ' <button ng-click="editUser(' . $user->id . ')"  '
                             . 'title="Edit" alt="Edit" '
                             . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-                            . '<ion-icon name="create"></ion-icon></button>';
+                            . '<i class="icon ion-md-create"></i></button>';
 
                     return $buttons;
                 })->make(true);

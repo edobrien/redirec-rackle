@@ -25,7 +25,7 @@ class FeedbackServices{
                     $buttons = ' <button ng-click="viewFeedBack(' . $feedbacks->id . ')"  '
                             . 'title="Edit" alt="Edit" '
                             . 'class="btn pb-0 btn-circle btn-mn bg-transparent fs-20 text-blue pr-0">'
-                            . '<ion-icon name="eye"></ion-icon></button>';
+                            . '<i class="icon ion-md-eye"></i></button>';
                     return $buttons;
                 })->make(true);
 

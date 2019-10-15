@@ -27,7 +27,7 @@ class DataUploadServices{
 	                    $buttons = ' <button ng-click="downloadFile(' . $dataUpload->id . ')" '
 	                            . 'title="Download" alt="Download" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                  
                     return $buttons;
