@@ -19,7 +19,7 @@
                                 @if(Auth::user()->is_admin == "YES")
                                 <small class="text-white"><strong>{{$guide->view_count}}</strong></small>
                                 @endif
-                                <ion-icon name="arrow-round-forward" class="float-right mt-1 text-white"></ion-icon>
+                                <i class="icon ion-md-arrow-round-forward float-right mt-1 text-white"></i>
                             </div>
                         </div>
                     </div>

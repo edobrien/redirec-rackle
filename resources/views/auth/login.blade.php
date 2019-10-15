@@ -2,9 +2,9 @@
 @section('content')
 <div class="bg-signin">
     <div class="container d-flex align-items-center w-100 h-100 p-3 mx-auto signIn">
-        <div class="row">
+        <div class="row pt-9">
             <div class="col-md-7">
-                <img class="pb-5" src="img/logo.png" alt="Recdirec" width="250">
+                <img class="pb-5" src="img/logo-login.png" alt="Recdirec">
                 <h5 class="lh5 pb-3">Our goal is to provide law firm and In-house legal resourcing teams with greater knowledge and information about the legal recruitment market to help improve efficiency, transparency and the services provided throughout the recruitment process.</h5>
 
                 <h5 class="lh5 pb-4">If you work within an In-house resourcing team for a law firm, a company that has an In-house legal department or are a partner that is in charge of recruiting for law firms and would like to access this information, click below and we will provide you with 3 months' free trail access.</h5>
@@ -13,9 +13,11 @@
 
                 <h6 class="lh5 pb-4 text-muted">A quick and easy to read review of all the main stories in the legal press <br/>most relevant to legal resourcing teams.</h6> -->
 
-                <button type="button" class="btn btn-form br-40 px-5 mb-4">
-                    <a class="text-white" href="{{ route('register') }}">Get Started</a>
-                </button>
+                <a class="text-white" href="{{ route('register') }}">
+                    <button type="button" class="btn btn-form br-40 px-5 mb-4">
+                        <span class="text-white">Get Started</span>
+                    </button>
+                </a>
 
                 <!-- <footer class="footer">
                     <small class="text-muted">info@legalrecruitmentmadeclear.com</small>

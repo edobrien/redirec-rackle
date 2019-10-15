@@ -4,7 +4,7 @@
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column signIn">
         <div class="row">
             <div class="col-md-7">
-                <img class="pt-5 pb-4" src="img/logo.png" alt="Recdirec" width="250">
+                <img class="pt-5 pb-4" src="img/logo-login.png" alt="Recdirec">
                 <h1 class="display-3 text-white">Legal recruitment made clear</h1>
             </div>
             <div class="col-md-5">
