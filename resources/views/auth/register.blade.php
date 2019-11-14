@@ -6,6 +6,8 @@
             <div class="col-md-7">
                 <img class="pt-5 pb-4" src="img/logo-login.png" alt="Recdirec">
                 <h1 class="display-3 text-white">Legal recruitment made clear</h1>
+
+                <h5 class="lh5 pb-4 text-white">We believe providing relevant, objective information and coordinated content in an easily accessible format, for a specific target audience, will help reduce time spent on recruitment activities and improve their outcome.  If you work within a law firm resourcing team, or are a partner/member of an in-house legal team involved in the recruitment process, we encourage you to register and benefit from the free access to this information.</h5>
             </div>
             <div class="col-md-5">
                 <div class="row">
@@ -17,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 class="text-white py-2 lh5">{{ __('Register for three months free trial access') }}</h4>
+                                <h4 class="text-white py-2 lh5">{{ __('Please register to join recdirec') }}</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -122,7 +124,7 @@
                                     @endif
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-primary w-100 signin-Button">
-                                            {{ __('Get your access') }}
+                                            {{ __('Join recdirec') }}
                                         </button>
                                     </div>
                                     <div class="row mb-0">

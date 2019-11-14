@@ -8,7 +8,7 @@
                 <div class="card-body">
                     Thank you for registering.
                     <br />
-                    Recdirec will be going live in early November and we welcome you to our beta community. Once live we will email you and you will be able to access your account from then.
+                    As one of our early users, we welcome you to the recdirec community. Recdirec will shortly be going live and we will email you as soon as this happens to let you know you are able to access all of our content for free.
                 </div>
             </div>
         </div>
