@@ -12,14 +12,14 @@
                         <p class="m-0 user-name" data-toggle="tooltip" data-placement="top" title="{{$firm->name}}">
                             {{$firm->name}}  
                             <div class="pull-right" style="margin-top:-21px">
-                                @if($firm->is_verified== \App\RecruitmentFirm::FLAG_YES)
+                                @if($firm->is_verified == \App\RecruitmentFirm::FLAG_YES)
                                 <img src="/img/is_verified_logo.png" height="17" alt="Verified"> 
                                 @endif  
         
-                                @if(($firm->practice_area != \App\PracticeArea :: AREA_GENERAL)||($firm->sector != \App\PracticeArea :: AREA_GENERAL))
+                                @if($firm->is_specialism == \App\RecruitmentFirm::FLAG_YES)
                                 <img src="/img/specialist_logo.png" height="17" alt="Specialist"> 
                                 @endif
-                                </div>                          
+                            </div>                          
                         </p>
                           
                        
@@ -32,15 +32,15 @@
                 </div>
                 @endforeach
             </div>
-            <div ng-show="!firm" class="col-md-9 d-flex justify-content-center mt-18">
+            <div ng-show="!firm" class="col-md-9 d-flex justify-content-center mt-8">
                 <h4 class="font-weight-bold text-grey"> Click on recruiters to see detailed information about the recruitment firm’s:<br/><br/>
                     <ul> 
-                            <li>Background</li>
-                            <li>Services offered</li>
-                            <li>Specialisms – Practice area or sectors</li>
-                            <li>Market knowledge and reach</li>
-                            <li>Charity partners / CSR activities</li>
-                        </ul>
+                        <li>Background</li>
+                        <li>Services offered</li>
+                        <li>Specialisms – Practice area or sectors</li>
+                        <li>Market knowledge and reach</li>
+                        <li>Charity partners / CSR activities</li>
+                    </ul>
                 </h4>
             </div>
                

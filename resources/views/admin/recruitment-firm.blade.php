@@ -142,7 +142,7 @@
                                     <input type="number" class="form-text" ng-model="form_data.general_ranking" required>
                                     </select>
                                 </div>
-                                <div class="form-group form-animate-checkbox col-md-6">
+                                <div class="form-group form-animate-checkbox col-md-4">
                                     <label class="mb-0">Active</label><br>
                                     <label class="switch">
                                         <input type="checkbox" class="switch-input checkbox"
@@ -154,13 +154,25 @@
                                         <span class="switch-handle"></span>
                                     </label>
                                 </div>
-                                <div class="form-group form-animate-checkbox col-md-6">
+                                <div class="form-group form-animate-checkbox col-md-4">
                                     <label class="mb-0">Verified</label><br>
                                     <label class="switch">
                                         <input type="checkbox" class="switch-input checkbox"
                                             ng-true-value="'<?php echo \App\RecruitmentFirm::FLAG_YES; ?>'"
                                             ng-false-value="'<?php echo \App\RecruitmentFirm::FLAG_NO; ?>'"
                                             ng-model="form_data.is_verified" 
+                                        />
+                                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group form-animate-checkbox col-md-4">
+                                    <label class="mb-0">Specialism</label><br>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch-input checkbox"
+                                            ng-true-value="'<?php echo \App\RecruitmentFirm::FLAG_YES; ?>'"
+                                            ng-false-value="'<?php echo \App\RecruitmentFirm::FLAG_NO; ?>'"
+                                            ng-model="form_data.is_specialism" 
                                         />
                                         <span class="switch-label" data-on="Yes" data-off="No"></span>
                                         <span class="switch-handle"></span>

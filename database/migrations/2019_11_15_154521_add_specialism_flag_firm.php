@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnIsVerifiedToRecruitmentFirms extends Migration
+class AddSpecialismFlagFirm extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddColumnIsVerifiedToRecruitmentFirms extends Migration
     public function up()
     {
         Schema::table('recruitment_firms', function (Blueprint $table) {
-            $table->string('is_verified')->default('NO')->after('is_active');
-
+            $table->string('is_specialism')->default('NO')->after('is_verified');
         });
     }
 
@@ -27,7 +26,7 @@ class AddColumnIsVerifiedToRecruitmentFirms extends Migration
     public function down()
     {
         Schema::table('recruitment_firms', function (Blueprint $table) {
-            $table->dropColumn('is_verified');
+            $table->dropColumn('is_specialism');
         });
     }
 }
