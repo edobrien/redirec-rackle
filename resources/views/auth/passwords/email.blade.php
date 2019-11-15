@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
 
-                                @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
+                                {{-- @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
                                 <div class="form-group row">
                                     <!-- <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label> -->
 
@@ -54,7 +54,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                @endif
+                                @endif --}}
                                 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12">

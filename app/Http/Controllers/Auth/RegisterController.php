@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'contact_number' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'accepted_terms' => ['required'],
-            'g-recaptcha-response' => new Captcha(),
+            // 'g-recaptcha-response' => new Captcha(),
         ]);
     }
 

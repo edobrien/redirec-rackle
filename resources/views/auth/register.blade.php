@@ -112,7 +112,7 @@
                                             @enderror
                                         </div>
                                     </div> -->
-                                    @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
+                                    {{-- @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
                                     <div class="form-group">
                                         <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="{!! \App\SiteConstants::CAPTCHA_SITE_KEY !!}"></div>
                                         @if ($errors->has('g-recaptcha-response'))
@@ -121,7 +121,7 @@
                                             </span>
                                         @endif
                                     </div>
-                                    @endif
+                                    @endif --}}
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-primary w-100 signin-Button">
                                             {{ __('Join recdirec') }}
