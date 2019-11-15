@@ -56,6 +56,9 @@ class Sector extends Model
                 break;
             case self::SECTOR_SPECIAL:
                 return self::SECTOR_SPECIAL_TEXT;
+                break;
+            case self::SECTOR_PRIVATE_PRACTICE:
+                return self::SECTOR_PRIVATE_PRACTICE_TEXT;
                 break;           
             case self::SECTOR_GENERAL_AND_SPECIAL:
                 return self::SECTOR_GENERAL_AND_SPECIAL_TEXT;

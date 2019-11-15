@@ -36,14 +36,14 @@ class AuthController extends Controller
             }           
         }
 
-        if(!empty($data['g-recaptcha-response'])){
-            $result = captcha_validation($data['g-recaptcha-response']);
-            if(!$result->success){
-                return redirect()->route('login')->withErrors(['Invalid captcha']);
-            }
-        }else{
-            return redirect()->route('login')->withErrors(['Please select captcha']);
-        }
+        // if(!empty($data['g-recaptcha-response'])){
+        //     $result = captcha_validation($data['g-recaptcha-response']);
+        //     if(!$result->success){
+        //         return redirect()->route('login')->withErrors(['Invalid captcha']);
+        //     }
+        // }else{
+        //     return redirect()->route('login')->withErrors(['Please select captcha']);
+        // }
         
 
         if (Auth::attempt(['email' => $request->email, 

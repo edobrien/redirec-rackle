@@ -10,19 +10,40 @@
                 <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
                     <div class="card-body p-2 pl-3">
                         <p class="m-0 user-name" data-toggle="tooltip" data-placement="top" title="{{$firm->name}}">
-                            {{$firm->name}}
+                            {{$firm->name}}  
+                            <div class="pull-right" style="margin-top:-21px">
+                                @if($firm->is_verified== \App\RecruitmentFirm::FLAG_YES)
+                                <img src="/img/is_verified_logo.png" height="17" alt="Verified"> 
+                                @endif  
+        
+                                @if(($firm->practice_area != \App\PracticeArea :: AREA_GENERAL)||($firm->sector != \App\PracticeArea :: AREA_GENERAL))
+                                <img src="/img/specialist_logo.png" height="17" alt="Specialist"> 
+                                @endif
+                                </div>                          
                         </p>
+                          
+                       
+                      
                         <small class="text-muted mb-0">{{$firm->location}}</small>
                         @if(Auth::user()->is_admin == "YES")
                         <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small>
-                        @endif
+                       @endif
                     </div>
                 </div>
                 @endforeach
             </div>
             <div ng-show="!firm" class="col-md-9 d-flex justify-content-center mt-18">
-                <h2 class="font-weight-bold text-grey text-center"> Click on recruiters to see detailed description</h2>
+                <h4 class="font-weight-bold text-grey"> Click on recruiters to see detailed information about the recruitment firm’s:<br/><br/>
+                    <ul> 
+                            <li>Background</li>
+                            <li>Services offered</li>
+                            <li>Specialisms – Practice area or sectors</li>
+                            <li>Market knowledge and reach</li>
+                            <li>Charity partners / CSR activities</li>
+                        </ul>
+                </h4>
             </div>
+               
             <div class="col-md-9 search-results" ng-show="firm">
                 <div class="firm-header">
                     <h5 class="font-weight-bold"><% firm.name %></h5>

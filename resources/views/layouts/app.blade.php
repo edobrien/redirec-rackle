@@ -238,11 +238,6 @@
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL; ?>"><?php echo \App\RecruitmentFirm::SIZE_SMALL_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM; ?>"><?php echo \App\RecruitmentFirm::SIZE_MEDIUM_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_LARGE; ?>"><?php echo \App\RecruitmentFirm::SIZE_LARGE_TEXT; ?></option>
-                            <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL_MEDIUM; ?>"><?php echo \App\RecruitmentFirm::SIZE_SMALL_MEDIUM_TEXT; ?></option>
-                            <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL_LARGE; ?>"><?php echo \App\RecruitmentFirm::SIZE_SMALL_LARGE_TEXT; ?></option>
-                            <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM_LARGE; ?>"><?php echo \App\RecruitmentFirm::SIZE_MEDIUM_LARGE_TEXT; ?></option>
-
-
                         </select>
                         <label for="practiceArea">Practice Area</label>
                         <select class="mb8" name="practice_area_id"
