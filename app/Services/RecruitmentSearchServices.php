@@ -22,7 +22,10 @@ class RecruitmentSearchServices{
         $firms = DB::table('recruitment_firms')->select('recruitment_firms.id',
                                         'recruitment_firms.name',
                                         'recruitment_firms.location',
-                                        'recruitment_firms.view_count');
+                                        'recruitment_firms.view_count',
+                                        'recruitment_firms.is_verified',
+                                        'recruitment_firms.practice_area',
+                                        'recruitment_firms.sector');
 
         //Search by firm name or other filters
         if(isset($filters->firm_id)){
@@ -98,8 +101,12 @@ class RecruitmentSearchServices{
                     ->where('practice_areas.type', '=',PracticeArea::AREA_GENERAL)
                     ->where('firm_practice_areas.is_active','=', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_practice_areas.deleted_at')
-                    ->whereNull('practice_areas.deleted_at')
-                    ->orderBy('general_ranking', 'ASC');
+                    ->whereNull('practice_areas.deleted_at');
+
+                // TO order by special sector
+                if(!isset($filters->sector_id)){
+                    $firms->orderBy('general_ranking', 'ASC');
+                }
             }
 
             if(isset($filters->sector_id)){
@@ -143,12 +150,17 @@ class RecruitmentSearchServices{
                     ->where('sectors.type', '=',Sector::SECTOR_GENERAL)
                     ->where('firm_sectors.is_active','=', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_sectors.deleted_at')
-                    ->whereNull('sectors.deleted_at')
-                    ->orderBy('general_ranking', 'ASC');
+                    ->whereNull('sectors.deleted_at');
+                    // ->orderBy('general_ranking', 'ASC');
+
+                    if(!isset($filters->practice_area_id)){
+                        $firms->orderBy('general_ranking', 'ASC');
+                    }
             }
         }        
-
+        // print_r($firms->distinct('recruitment_firms.*')->toSql());
         return $firms->distinct('recruitment_firms.*')->get();
+
 	}
 
     public function saveViewCount($id){

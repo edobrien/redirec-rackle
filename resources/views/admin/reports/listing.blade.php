@@ -214,7 +214,7 @@
                 },
                 columns: [
                     {data: 'name'},
-                    {data: 'description'},
+                    {data: 'description',width:'63%'},
                     {data: 'ordering'},
                     {data: 'status_text', searchable: false, orderable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},

@@ -154,6 +154,18 @@
                                         <span class="switch-handle"></span>
                                     </label>
                                 </div>
+                                <div class="form-group form-animate-checkbox col-md-6">
+                                    <label class="mb-0">Verified</label><br>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch-input checkbox"
+                                            ng-true-value="'<?php echo \App\RecruitmentFirm::FLAG_YES; ?>'"
+                                            ng-false-value="'<?php echo \App\RecruitmentFirm::FLAG_NO; ?>'"
+                                            ng-model="form_data.is_verified" 
+                                        />
+                                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
                                 <!-- current image -->
                                 <div class="form-group col-md-6 firm-logo-section" 
                                         ng-if="form_data.logo">

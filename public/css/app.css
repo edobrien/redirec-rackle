@@ -496,6 +496,7 @@ table.dataTable thead th, table.dataTable thead td {
 }
 table.dataTable tbody td {
     padding: 2px 10px !important;
+    
 }
 .dataTables_wrapper label {
     color: #212529 !important;
@@ -744,7 +745,7 @@ table.dataTable tbody td {
     font-size: 13px;
 }
 table.dataTable th, table.dataTable td {
-    white-space: nowrap !important;
+    white-space: normal !important;
 }
 .mt-18 {
     margin-top: 18%;
