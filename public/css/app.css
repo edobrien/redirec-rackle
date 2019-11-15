@@ -750,6 +750,9 @@ table.dataTable th, table.dataTable td {
 .mt-18 {
     margin-top: 18%;
 }
+.mt-8 {
+    margin-top: 8%;
+}
 .list-style-none {
     list-style-type: none;
 }

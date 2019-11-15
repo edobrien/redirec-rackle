@@ -85,10 +85,17 @@ class RecruitmentServices{
             }else{
                 $firm->is_active = RecruitmentFirm::FLAG_NO;
             }
+
             if($datas->is_verified == RecruitmentFirm::FLAG_YES){
                 $firm->is_verified = RecruitmentFirm::FLAG_YES;
             }else{
                 $firm->is_verified = RecruitmentFirm::FLAG_NO;
+            }
+
+            if($datas->is_specialism == RecruitmentFirm::FLAG_YES){
+                $firm->is_specialism = RecruitmentFirm::FLAG_YES;
+            }else{
+                $firm->is_specialism = RecruitmentFirm::FLAG_NO;
             }
 
             //Upload Image
