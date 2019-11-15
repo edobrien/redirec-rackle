@@ -7,7 +7,7 @@
                 <img class="pt-5 pb-4" src="img/logo-login.png" alt="Recdirec">
                 <h1 class="display-3 text-white">Legal recruitment made clear</h1>
 
-                <h5 class="lh5 pb-4 text-white">We believe providing relevant, objective information and coordinated content in an easily accessible format, for a specific target audience, will help reduce time spent on recruitment activities and improve their outcome.  If you work within a law firm resourcing team, or are a partner/member of an in-house legal team involved in the recruitment process, we encourage you to register and benefit from the free access to this information.</h5>
+                <h5 class="lh5 pb-4 text-white">Thank you for registering to join recdirec.  This is a free to use site for relevant individuals in law firms / in-house who are involved in the recruitment process. We ask for details of your current firm and position to ensure that you fit within this community, and request your mobile and work email in case we need to verify information. </h5>
             </div>
             <div class="col-md-5">
                 <div class="row">
