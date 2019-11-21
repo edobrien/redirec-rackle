@@ -25,13 +25,19 @@ class RecruitmentSearchServices{
                                         'recruitment_firms.view_count',
                                         'recruitment_firms.is_verified',
                                         'recruitment_firms.is_specialism');
-
         //Search by firm name or other filters
-        if(isset($filters->firm_id)){
+       
+
+        
+        if(((isset($filters->firm_id))&&(((!isset($filters->search_locations))&&(!isset($filters->service_id))&&(!isset($filters->recruitment_id))&&(!isset($filters->size))&&(!isset($filters->practice_area_id))&&(!isset($filters->sector_id))))))
+        {
             $firms->where('recruitment_firms.id', $filters->firm_id)
             ->where('recruitment_firms.is_active', RecruitmentFirm::FLAG_YES)
             ->whereNull('recruitment_firms.deleted_at');
-        }else{
+        }
+        
+        
+        else{
             if(isset($filters->search_locations)){
                 $firms->join('firm_locations','recruitment_firms.id', '=','firm_locations.firm_id')
                     ->where('location_id', $filters->search_locations)

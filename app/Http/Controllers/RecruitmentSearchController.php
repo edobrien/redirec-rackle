@@ -18,8 +18,15 @@ class RecruitmentSearchController extends Controller
     public function searchFirm(Request $request)
     {
         if(isset($request->firm_id)){
-            $request->session()->put('firm_id',$request->firm_id);
-        }else{
+
+            if((isset($request->search_locations))||(isset($request->service_id))||(isset($request->recruitment_id))||(isset($request->size))||(isset($request->practice_area_id))||(isset($request->sector_id))){
+
+                $request->session()->put('firm_id','');
+            }else{
+                $request->session()->put('firm_id',$request->firm_id);
+
+            }
+    }else{
             $request->session()->forget('firm_id');
         }
         
