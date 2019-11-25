@@ -67,9 +67,9 @@
                 <p>A cookie is information which is sent to and stored on your computer's hard drive when you first visit the website, and allows us to identify your computer (but not you) the next time you visit the website. We may use the information collected in this way to (i) track website usage (though we will not use an IP address to track an individual's specific usage of the website); and (ii) adapt the website so that it better suits you and your interests. </p>
                 <p>Most internet browsers give you the option to reject all cookies, accept all cookies, erase cookies stored on your computer or be notified before a cookie is stored on your computer. Your ease of use of the website may be reduced if you reject all cookies. You will need to refer to your internet browser instructions to find out more about these options and how to use them. For more information please see our Cookie policy. </p>
 
-                <h2 class="pt-4 pb-2">9. Where can I find more information about how RPC businesses handle my data?</h2>
+                <h2 class="pt-4 pb-2">9. Where can I find more information about how recdirec handle my data?</h2>
                 <p>From time to time we may need to make changes to this notice. This may happen as the result of government regulation, new technologies, or other developments in the area of data protection. Any updates to our privacy notice will be clearly posted on this website. We advise you to regularly review this notice when you visit the website to learn more about how we are safeguarding your privacy. </p>
-                <p>If you have any queries please contact us on recdirec@rmclegal.com or by writing to RMC Legal Limited, 16 Martindale Road, London SW12 9PW.      </p>
+                <p>If you have any queries please contact us on recdirec@gmail.com or by writing to RMC Legal Limited, 16 Martindale Road, London SW12 9PW.      </p>
                 <p>If you are not happy with our response, you can contact the Information Commissioner's Office : <a href="https://ico.org.uk/" target="blank"> https://ico.org.uk/ .</a> </p>
             </div>
         </div>
