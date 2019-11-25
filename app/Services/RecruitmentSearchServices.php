@@ -128,10 +128,17 @@ class RecruitmentSearchServices{
 
                 $firms->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
                     ->join('sectors','sectors.id','=','firm_sectors.sector_id')
-                    ->orWhereIn('sector_id', $sector_ids)
                     ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
                     ->whereNull('firm_sectors.deleted_at')
                     ->whereNull('sectors.deleted_at');
+
+                    if(isset($filters->practice_area_id)){
+                        $firms->orWhereIn('sector_id', $sector_ids);
+                    }else{
+                         $firms->whereIn('sector_id', $sector_ids);
+                    }
+
+
             }else{
                
 
