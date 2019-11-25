@@ -33,7 +33,7 @@
                     <li>remove or change any content of the Site or attempt to circumvent security or interfere with the proper working of the Site or the servers on which it is hosted; or </li>
                     <li>create links to the Site from any other website, without our prior written consent.</li>
                 </ul>
-                <p>If you wish to reproduce or use information from this website beyond the terms of this licence, please contact us for express consent. You can do this by addressing your request to recdirec@rmclegal.com. </p>
+                <p>If you wish to reproduce or use information from this website beyond the terms of this licence, please contact us for express consent. You can do this by addressing your request to recdirec@gmail.com. </p>
 
                 <h2 class="pt-4 pb-2">Access to this website</h2>
                 <p>Access to this website is permitted on a temporary basis and we reserve the right to withdraw or amend the service without notice. You are responsible for making all arrangements necessary for you to have access to our website. You are also responsible for ensuring that all persons accessing the website through your connection are aware of these terms and that they comply with them. Where you are provided with a user ID, password or any other piece of information as part of our security procedures you must treat such information as confidential and you must not disclose it to any third party. </p>
@@ -44,7 +44,7 @@
                 <p>We reserve the right in our absolute discretion to prohibit any link from another website to materials or information on this website without notice. Any link to material or information on this website must be neither misleading nor deceptive and must fairly indicate this website as the destination of the link. You must not establish a link in such a way as to suggest any form of association, approval or endorsement on our part where none exists.</p>
 
                 <h2 class="pt-4 pb-2">Further information or concerns</h2>
-                <p>If you have any questions in relation to this policy or have any concerns over any information which appears on this website please submit your query to recdirec@rmclegal.com.</p>
+                <p>If you have any questions in relation to this policy or have any concerns over any information which appears on this website please submit your query to recdirec@gmail.com.</p>
 
                 <h2 class="pt-4 pb-2">General</h2>
                 <p>We reserve the right to vary or amend these terms and conditions from time to time and any such variations or amendments shall take effect upon posting to this website. Accordingly, we recommend that you revisit these terms and conditions on a regular basis.</p>

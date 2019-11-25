@@ -164,6 +164,7 @@
         }
 
         $scope.clearSearch = function(){
+            $scope.size='';
             $scope.search_data = {};
         }
 

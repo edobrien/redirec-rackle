@@ -208,7 +208,7 @@
                     <div class="recruitment">
                         <p for="recruitmentFirm" class="text-dark mt-1 mb-2">Recruitment Firm Name</p>
                         <select ng-model="search_data.firm_id" name="firm_id"
-                                ng-options="firm.id as firm.name for firm in search_firms track by firm.id">
+                                ng-options="firm as firm.name for firm in search_firms track by firm.id">
                                 <option value="">Any</option>
                         </select>
                     </div>
@@ -223,13 +223,13 @@
                         <label for="service">Service</label>
                         <select class="mb8" name="service_id" 
                                 ng-model="search_data.service_id" 
-                                ng-options="service.id as service.name for service in search_services track by service.id">
+                                ng-options="service as service.name for service in search_services track by service.id">
                                 <option value="">Any</option>
                         </select>
                         <label for="roleType">Type of Role</label>
                         <select class="mb8" name="recruitment_id" 
                                 ng-model="search_data.recruitment_id" 
-                                ng-options="rt.id as rt.name for rt in search_roletypes track by rt.id">
+                                ng-options="rt as rt.name for rt in search_roletypes track by rt.id">
                                 <option value="">Any</option>
                         </select>
                         <label for="recruitmentSize">Size of Recruitment Firm</label>
@@ -242,13 +242,13 @@
                         <label for="practiceArea">Practice Area</label>
                         <select class="mb8" name="practice_area_id"
                                 ng-model="search_data.practice_area_id" 
-                                ng-options="area.id as area.name for area in search_areas  | filter: { type: 'SPECIAL' } track by area.id">
+                                ng-options="area as area.name for area in search_areas  | filter: { type: 'SPECIAL' } track by area.id">
                                 <option value="">General</option>
                         </select>
                         <label for="sector">Sector</label>
                         <select class="mb8" name="sector_id" 
                                 ng-model="search_data.sector_id" 
-                                ng-options="sector.id as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">
+                                ng-options="sector as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">
                                 <option value="">General</option>
                         </select>
                         <button type="submit" class="btn btn-sm btn-form br-40 w-100 mb-2">Search</button>
