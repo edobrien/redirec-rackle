@@ -15,13 +15,13 @@
     </div>
     <div class="responsive-table">
         <div ng-hide="!errors" class="alert alert-danger">
-            <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-            <ul>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <ul class="pl-2 mb-0">
                 <li ng-repeat="error in errors"><% error %></li>
             </ul>
         </div>
         <div ng-hide="!successMessage"  class="alert alert-success">
-            <a href="#"  class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
             <% successMessage %>
         </div>
         <table id="recruitment-type-listing" class="table table-striped table-responsive-sm" width="100%" cellspacing="0">
@@ -29,7 +29,7 @@
                 <tr>
                     <th>Firm Name</th>
                     <th>Recruitment Type</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -45,7 +45,8 @@
                         <div class="modal-body">
                             <div class="form-row">
                                 <div ng-if="modalErrors" class="alert alert-danger col-md-12">
-                                    <ul>
+                                    <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                    <ul class="pl-2 mb-0">
                                         <li ng-repeat="error in modalErrors"><% error %></li>
                                     </ul>
                                 </div>
@@ -249,7 +250,7 @@
                 },
                 columns: [
                     {data: 'firm.name', name:'firm.name'},
-                    {data: 'recruitment_type.name',name: 'recruitment_type.name'},
+                    {data: 'recruitment_type.name',name: 'recruitmentType.name'},
                     {data: 'status_text', searchable: false, orderable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],

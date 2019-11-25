@@ -13,6 +13,8 @@ use App\FirmLocation;
 use App\FirmService;
 use App\FirmRecruitmentType;
 use App\FirmSector;
+use App\FirmClient;
+use App\FirmRecruitmentRegion;
 
 use Yajra\Datatables\Datatables;
 
@@ -34,12 +36,12 @@ class RecruitmentServices{
 	                    $buttons = ' <button ng-click="editFirm(' . $firms->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteFirm(' . $firms->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-	                            . '<ion-icon name="close"></ion-icon></button>';
+	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
 
@@ -72,6 +74,7 @@ class RecruitmentServices{
             }
             
             $firm->location = $datas->location;
+            $firm->general_ranking = $datas->general_ranking;
             $firm->practice_area = $datas->practice_area;
             $firm->sector = $datas->sector;
             $firm->established_year = $datas->established_year;
@@ -83,9 +86,21 @@ class RecruitmentServices{
                 $firm->is_active = RecruitmentFirm::FLAG_NO;
             }
 
+            if($datas->is_verified == RecruitmentFirm::FLAG_YES){
+                $firm->is_verified = RecruitmentFirm::FLAG_YES;
+            }else{
+                $firm->is_verified = RecruitmentFirm::FLAG_NO;
+            }
+
+            if($datas->is_specialism == RecruitmentFirm::FLAG_YES){
+                $firm->is_specialism = RecruitmentFirm::FLAG_YES;
+            }else{
+                $firm->is_specialism = RecruitmentFirm::FLAG_NO;
+            }
+
             //Upload Image
             $image = $datas->logo;
-            if($image != 'undefined'){
+            if($image != 'undefined' && $image != 'null'){
                 $logo_name = time().'.'.$image->getClientOriginalExtension();
                 $image->move(public_path().'/asset/img/firm-logo/', $logo_name);
 
@@ -115,6 +130,8 @@ class RecruitmentServices{
                     FirmLocation::where('firm_id', $id)->count() +
                     FirmService::where('firm_id', $id)->count() +
                     FirmRecruitmentType::where('firm_id', $id)->count() +
+                    FirmRecruitmentRegion::where('firm_id', $id)->count() +
+                    FirmClient::where('firm_id', $id)->count() +
                     FirmSector::where('firm_id', $id)->count();
 
         if($mappings){
@@ -130,6 +147,21 @@ class RecruitmentServices{
         try{
         	RecruitmentFirm::destroy($id); 
         	return true;        
+        }catch(\Exception $e){
+            \Illuminate\Support\Facades\Log::error($e->getMessage());
+            return false; 
+        }
+    }
+
+    public function deleteLogo($id){
+        try{
+            $firm = RecruitmentFirm::find($id);
+            if(isset($firm->logo)){
+                unlink(public_path().'/asset/img/firm-logo/'.$firm->logo);
+                $firm->logo = NULL;
+                $firm->save();
+            }
+            return true;
         }catch(\Exception $e){
             \Illuminate\Support\Facades\Log::error($e->getMessage());
             return false; 

@@ -35,12 +35,7 @@ class UserServices{
                     $buttons = ' <button ng-click="editUser(' . $user->id . ')"  '
                             . 'title="Edit" alt="Edit" '
                             . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-                            . '<ion-icon name="create"></ion-icon></button>';
-
-                    $buttons .= ' <button ng-click="deleteUser(' . $user->id . ')"  '
-                            . 'title="Delete" alt="Delete" '
-                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-                            . '<ion-icon name="close"></ion-icon></button>';
+                            . '<i class="icon ion-md-create"></i></button>';
 
                     return $buttons;
                 })->make(true);
@@ -90,14 +85,27 @@ class UserServices{
 
     public function delete($id){
         try{
-
-        User::destroy($id); 
-        return true;
-        
+            User::destroy($id); 
+            return true;
         }catch(\Exception $e){
             \Illuminate\Support\Facades\Log::error($e->getMessage());
-            return false;
- 
+            return false; 
         }
+    }
+
+    public function emailExists($data){
+        if(isset($data)){
+            $mapping = User::where('email', $data->email)
+                            ->where('id', '!=', $data->id)
+                            ->count();
+        }else{
+            $mapping = User::where('email', $data->email)
+                            ->count();
+        }
+
+        if($mapping){
+            return true;
+        }
+        return false;
     }
 }

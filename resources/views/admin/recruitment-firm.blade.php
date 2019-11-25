@@ -13,13 +13,13 @@
     </div>
     <div class="responsive-table">
         <div ng-hide="!errors" class="alert alert-danger">
-            <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-            <ul>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <ul class="pl-2 mb-0">
                 <li ng-repeat="error in errors"><% error %></li>
             </ul>
         </div>
         <div ng-hide="!successMessage"  class="alert alert-success">
-            <a href="#"  class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
             <% successMessage %>
         </div>
         <table id="firm-listing" class="table table-striped table-responsive-sm table-responsive-md  table-responsive-lg" width="100%" cellspacing="0">
@@ -31,7 +31,7 @@
                     <th>View Count</th>
                     <th>Firm Size</th>
                     <th>Establihsed Year</th>
-                    <th>Status</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -47,9 +47,14 @@
                         <div class="modal-body">
                             <div class="form-row">
                                 <div ng-if="modalErrors" class="alert alert-danger col-md-12">
-                                    <ul>
+                                    <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                    <ul class="pl-2 mb-0">
                                         <li ng-repeat="error in modalErrors"><% error %></li>
                                     </ul>
+                                </div>
+                                <div ng-hide="!successLogoMessage"  class="alert alert-success col-md-12">
+                                    <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                    <% successLogoMessage %>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
                                     <label class="mb-0">Name</label>
@@ -87,6 +92,13 @@
                                         <?php echo \App\RecruitmentFirm::SIZE_MEDIUM_TEXT; ?></option>
                                         <option value="<?php echo \App\RecruitmentFirm::SIZE_LARGE; ?>">
                                         <?php echo \App\RecruitmentFirm::SIZE_LARGE_TEXT; ?></option>
+                                        <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL_MEDIUM; ?>">
+                                            <?php echo \App\RecruitmentFirm::SIZE_SMALL_MEDIUM_TEXT; ?></option>
+                                        <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL_LARGE; ?>">
+                                            <?php echo \App\RecruitmentFirm::SIZE_SMALL_LARGE_TEXT; ?></option>
+                                        <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM_LARGE; ?>">
+                                            <?php echo \App\RecruitmentFirm::SIZE_MEDIUM_LARGE_TEXT; ?></option>
+            
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
@@ -101,6 +113,8 @@
                                         <?php echo \App\PracticeArea::AREA_GENERAL_TEXT; ?></option>
                                         <option value="<?php echo \App\PracticeArea::AREA_SPECIAL; ?>">
                                         <?php echo \App\PracticeArea::AREA_SPECIAL_TEXT; ?></option>
+                                        <option value="<?php echo \App\PracticeArea::AREA_GENERAL_AND_SPECIAL; ?>">
+                                            <?php echo \App\PracticeArea::AREA_GENERAL_AND_SPECIAL_TEXT; ?></option>
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
@@ -108,20 +122,27 @@
                                     <select class="form-control" ng-model="form_data.sector" required>
                                         <option value="">Select</option>
                                         <option value="<?php echo \App\Sector::SECTOR_GENERAL; ?>">
-                                        <?php echo \App\Sector::SECTOR_GENERAL_TEXT; ?></option>
-                                        <option value="<?php echo \App\Sector::SECTOR_PRIVATE_PRACTICE; ?>">
-                                        <?php echo \App\Sector::SECTOR_PRIVATE_PRACTICE_TEXT; ?></option>
-                                        <option value="<?php echo \App\Sector::SECTOR_INHOUSE; ?>">
-                                        <?php echo \App\Sector::SECTOR_INHOUSE_TEXT; ?></option>
+                                            <?php echo \App\Sector::SECTOR_GENERAL_TEXT; ?></option>
+                                        <option value="<?php echo \App\Sector::SECTOR_SPECIAL; ?>">
+                                            <?php echo \App\Sector::SECTOR_SPECIAL_TEXT; ?></option>
+                                        <option value="<?php echo \App\Sector::SECTOR_GENERAL_AND_SPECIAL; ?>">
+                                            <?php echo \App\Sector::SECTOR_GENERAL_AND_SPECIAL_TEXT; ?></option>
+                                       
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
                                     <label class="mb-0">Established Year</label>
                                     <select class="form-control" ng-model="form_data.established_year">
+                                        <option value="">Select</option>
                                         <option ng-repeat="x in established_years"><% x %></option>
                                     </select>
                                 </div>
-                                <div class="form-group form-animate-checkbox col-md-6">
+                                <div class="form-group form-animate-text col-md-6">
+                                    <label class="mb-0">General Ranking</label>
+                                    <input type="number" class="form-text" ng-model="form_data.general_ranking" required>
+                                    </select>
+                                </div>
+                                <div class="form-group form-animate-checkbox col-md-4">
                                     <label class="mb-0">Active</label><br>
                                     <label class="switch">
                                         <input type="checkbox" class="switch-input checkbox"
@@ -133,11 +154,38 @@
                                         <span class="switch-handle"></span>
                                     </label>
                                 </div>
+                                <div class="form-group form-animate-checkbox col-md-4">
+                                    <label class="mb-0">Verified</label><br>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch-input checkbox"
+                                            ng-true-value="'<?php echo \App\RecruitmentFirm::FLAG_YES; ?>'"
+                                            ng-false-value="'<?php echo \App\RecruitmentFirm::FLAG_NO; ?>'"
+                                            ng-model="form_data.is_verified" 
+                                        />
+                                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group form-animate-checkbox col-md-4">
+                                    <label class="mb-0">Specialism</label><br>
+                                    <label class="switch">
+                                        <input type="checkbox" class="switch-input checkbox"
+                                            ng-true-value="'<?php echo \App\RecruitmentFirm::FLAG_YES; ?>'"
+                                            ng-false-value="'<?php echo \App\RecruitmentFirm::FLAG_NO; ?>'"
+                                            ng-model="form_data.is_specialism" 
+                                        />
+                                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
                                 <!-- current image -->
-                                <div class="form-group col-md-6" 
+                                <div class="form-group col-md-6 firm-logo-section" 
                                         ng-if="form_data.logo">
                                     <div>
-                                        <div>Current Logo</div>
+                                        <div>
+                                            <span>Current Logo</span>
+                                            <i class="fa fa-trash-o pl-4 ml-1" ng-click="deleteLogo(form_data.id)" aria-hidden="true"></i>
+                                        </div>
                                         <div><img style="height:125px;width: 125px" ng-src="{{asset('asset/img/firm-logo').'/'}}<%form_data.logo%>" alt="Logo not available"></div>
                                     </div>
                                 </div>
@@ -177,6 +225,26 @@
             </div>
         </div>
         <!--  delete modal ends -->
+
+        <!-- delete Logo Modal begins -->
+        <div id="delete-logo" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content rounded-0">
+                <div class="modal-header">
+                  <h4 class="modal-title font-weight-bold">Alert</h4>
+                </div>
+                <div class="modal-body pt-4">
+                    <p><% messageToshow %></p>
+                </div>
+                <div class="modal-footer border-0">
+                  <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">No</button>
+                  <button type="button" ng-click="deleteLogoConfirmed()" 
+                          class="btn btn-danger br-40 px-4" data-dismiss="modal">Yes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--  delete Logo Modal ends -->
     </div>
 </div>
 @endsection
@@ -288,6 +356,9 @@
             if($scope.errors){
                 delete $scope.errors;
             }
+            if($scope.successLogoMessage){
+                delete $scope.successLogoMessage;
+            }
         }
 
         $scope.graduationYears = function(){
@@ -302,7 +373,7 @@
 
         $scope.init = function () {
             $scope.form_data = {};
-            $scope.errors = $scope.successMessage = $scope.modalErrors = null;
+            $scope.errors = $scope.successMessage = $scope.modalErrors = $scope.successLogoMessage = null;
             $scope.listFirms();
             $scope.graduationYears();
             if (!CKEDITOR.instances["description"]){
@@ -337,6 +408,34 @@
                 }
             });
         };
+        $scope.deleteLogo = function(id){
+            $scope.reference_to_delete_logo = id;
+            $scope.messageToshow = 'You are going to remove this logo. Are you sure?';
+            $("#delete-logo").modal('show');
+        }
+        $scope.deleteLogoConfirmed = function(){
+            $(".bg_load").show();
+            var url = 'recruitment-firm/delete-logo/'+$scope.reference_to_delete_logo;
+            $http.get(url).then(function (response) {
+                if (response.data.status == 'SUCCESS') {
+                    $scope.successLogoMessage = response.data.message;
+                    $scope.form_data.logo = null;
+                    $scope.logo = null;
+                    $('#logo').val('');
+                    $(".firm-logo-section").hide();
+                }else{
+                    var errors = [];
+                    $.each(response.data.errors, function (key, value) {
+                        errors.push(value);
+                    });
+                    $scope.errors = errors;
+                }
+            }).finally(function(){
+                $(".bg_load").hide();
+                $("#firm-modal").animate({ scrollTop: 0 }, "slow");
+                $("#firm-modal").css("overflow-y", "auto");
+            });
+        }
         $scope.init();
     });
 

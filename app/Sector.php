@@ -15,9 +15,12 @@ class Sector extends Model
     const FLAG_YES = "YES";
     const FLAG_NO = "NO";
 
-    const SECTOR_GENERAL = "GENERAL";
     const SECTOR_PRIVATE_PRACTICE = "PRIVATE_PRACTICE";
     const SECTOR_INHOUSE = "INHOUSE";
+    
+    const SECTOR_GENERAL = "GENERAL";
+    const SECTOR_SPECIAL = "SPECIAL";
+    const SECTOR_GENERAL_AND_SPECIAL = "GENERAL_AND_SPECIAL";
 
     const STATUS_ACTIVE_TEXT = "Active";
     const STATUS_IN_ACTIVE_TEXT = "In Active";
@@ -25,9 +28,14 @@ class Sector extends Model
     const FLAG_YES_TEXT = "Yes";
     const FLAG_NO_TEXT = "No";
 
-    const SECTOR_GENERAL_TEXT = "General";
     const SECTOR_PRIVATE_PRACTICE_TEXT = "Private Practice";
     const SECTOR_INHOUSE_TEXT = "InHouse";
+
+    const SECTOR_GENERAL_TEXT = "Generalist";
+    const SECTOR_SPECIAL_TEXT = "Specialist";
+    const SECTOR_GENERAL_AND_SPECIAL_TEXT = "Generalist & Specialist";
+
+
 
     public static function getDescriptionText($text){
         switch($text){
@@ -46,8 +54,14 @@ class Sector extends Model
             case self::SECTOR_GENERAL:
                 return self::SECTOR_GENERAL_TEXT;
                 break;
+            case self::SECTOR_SPECIAL:
+                return self::SECTOR_SPECIAL_TEXT;
+                break;
             case self::SECTOR_PRIVATE_PRACTICE:
                 return self::SECTOR_PRIVATE_PRACTICE_TEXT;
+                break;           
+            case self::SECTOR_GENERAL_AND_SPECIAL:
+                return self::SECTOR_GENERAL_AND_SPECIAL_TEXT;
                 break;
             case self::SECTOR_INHOUSE:
                 return self::SECTOR_INHOUSE_TEXT;

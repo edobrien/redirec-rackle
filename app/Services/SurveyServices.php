@@ -14,7 +14,8 @@ class SurveyServices{
 
 	public function listSurvies(){
 
-		$surveys = Survey::select(['id','title','url','ordering','is_active']);
+        $surveys = Survey::select(['id','title','url','ordering','is_active'])
+                        ->orderBy('ordering', 'ASC');
 
 		return Datatables::of($surveys)
         			->addColumn('status_text',function($surveys){
@@ -24,12 +25,12 @@ class SurveyServices{
 	                    $buttons = ' <button ng-click="editSurvey(' . $surveys->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteSurvey(' . $surveys->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-	                            . '<ion-icon name="close"></ion-icon></button>';
+	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
 
@@ -85,7 +86,8 @@ class SurveyServices{
 
     public function getActiveSurveys(){
         return Survey::select('id','title','url')
-			        ->where('is_active', Survey::FLAG_YES)
+                    ->where('is_active', Survey::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

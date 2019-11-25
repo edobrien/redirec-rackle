@@ -15,7 +15,7 @@ class UsefulLinksServices{
 	public function listLinks(){
 
 		$links = UsefulLink::select(['id','title','description','is_active',
-												'ordering']);
+												'ordering'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($links)
         			->addColumn('status_text',function($links){
@@ -25,12 +25,12 @@ class UsefulLinksServices{
 	                    $buttons = ' <button ng-click="editLink(' . $links->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteLink(' . $links->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-	                            . '<ion-icon name="close"></ion-icon></button>';
+	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
 
@@ -85,7 +85,8 @@ class UsefulLinksServices{
 
     public function getActiveUsefulLinks(){
         return UsefulLink::select('id','title','description')
-			        ->where('is_active', UsefulLink::FLAG_YES)
+                    ->where('is_active', UsefulLink::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

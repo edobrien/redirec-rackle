@@ -48,7 +48,8 @@ class RecruitmentFirmController extends Controller
 
         if(empty($request->telephone)){
             $errors[] = "Telephone is missing";
-        }else if (!ctype_digit($request->telephone)) {
+        }       
+        else if (preg_match('/[^+0-9]/', $request->telephone)) {
             $errors[] = "Telephone should contain only numbers";
         }
 
@@ -62,6 +63,10 @@ class RecruitmentFirmController extends Controller
 
         if(empty($request->location)){
             $errors[] = "Location is missing";
+        }
+
+        if(empty($request->general_ranking)){
+            $errors[] = "General ranking is missing";
         }
 
         if(empty($request->practice_area)){
@@ -95,6 +100,17 @@ class RecruitmentFirmController extends Controller
         }else{
             $errors[] = "Please contact administrator";
             $rv = array("status" => "FAILED", "errors" => $errors);
+        }
+        return response()->json($rv);
+    }
+
+    public function deleteLogo($id){
+
+        $firm = $this->recruitmentServices->deleteLogo($id);
+        if($firm){
+            $rv = array('status' =>  "SUCCESS", "message" => "Logo deleted successfully");
+        }else{
+            $rv = array('status' =>  "FAILURE");
         }
         return response()->json($rv);
     }

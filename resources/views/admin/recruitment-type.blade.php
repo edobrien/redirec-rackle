@@ -15,20 +15,20 @@
     </div>
     <div class="responsive-table">
         <div ng-hide="!errors" class="alert alert-danger">
-            <a href="#" class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
-            <ul>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <ul class="pl-2 mb-0">
                 <li ng-repeat="error in errors"><% error %></li>
             </ul>
         </div>
         <div ng-hide="!successMessage"  class="alert alert-success">
-            <a href="#"  class="close" ng-click="hideMessage()" aria-label="close">&times;</a>
+            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
             <% successMessage %>
         </div>
         <table id="recruitment-listing" class="table table-striped" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Status</th>
+                    <th>Recruitment Type Name</th>
+                    <th>IsActive</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -44,12 +44,13 @@
                         <div class="modal-body">
                             <div class="form-row">
                                 <div ng-if="modalErrors" class="alert alert-danger">
-                                    <ul>
+                                    <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                                    <ul class="pl-2 mb-0">
                                         <li ng-repeat="error in modalErrors"><% error %></li>
                                     </ul>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
-                                    <label class="mb-0">Recruitment Type</label>
+                                    <label class="mb-0">Name</label>
                                     <input type="text" class="form-text" ng-model="form_data.name" required>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">

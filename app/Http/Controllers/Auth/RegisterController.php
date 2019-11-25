@@ -54,12 +54,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'firm_name' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,deleted_at,NULL'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'contact_number' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'accepted_terms' => ['required'],
-            'privacy_policy' => ['required'],
-            'g-recaptcha-response' => new Captcha(),
+            // 'g-recaptcha-response' => new Captcha(),
         ]);
     }
 
@@ -79,7 +78,6 @@ class RegisterController extends Controller
             'contact_number' => $data['contact_number'],
             'password' => Hash::make($data['password']),
             'accepted_terms' => $data['accepted_terms'],
-            'privacy_policy' => $data['privacy_policy'],
         ]);
 
         $admin = User::where('is_admin', User::FLAG_YES)->first();

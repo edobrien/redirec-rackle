@@ -5,7 +5,7 @@
     <div class="row mt-170">
         <div class="col-lg-7 col-md-6 p-28 d-flex justify-content-center">
             <a class="navbar-brand pb-4" href="{{ url('/') }}">
-                <img src="../../img/logo.png" alt="Recdirec" width="300">
+                <img src="../../img/logo-login.png" alt="Recdirec">
             </a>
         </div>
         <div class="col-lg-5 col-md-6">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
 
-                        @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
+                        {{-- @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
                         <div class="form-group row">
                             <!-- <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label> -->
 
@@ -72,7 +72,7 @@
                                 @endif
                             </div>
                         </div>
-                        @endif
+                        @endif --}}
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-12">

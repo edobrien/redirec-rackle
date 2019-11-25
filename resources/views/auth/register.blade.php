@@ -4,8 +4,10 @@
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column signIn">
         <div class="row">
             <div class="col-md-7">
-                <img class="pt-5 pb-4" src="img/logo.png" alt="Recdirec" width="250">
+                <img class="pt-5 pb-4" src="img/logo-login.png" alt="Recdirec">
                 <h1 class="display-3 text-white">Legal recruitment made clear</h1>
+
+                <h5 class="lh5 pb-4 text-white">Thank you for registering to join recdirec.  This is a free to use site for relevant individuals in law firms / in-house who are involved in the recruitment process. We ask for details of your current firm and position to ensure that you fit within this community, and request your mobile and work email in case we need to verify information. </h5>
             </div>
             <div class="col-md-5">
                 <div class="row">
@@ -17,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 class="text-white py-2 lh5">{{ __('Register for three months free trial access') }}</h4>
+                                <h4 class="text-white py-2 lh5">{{ __('Please register to join recdirec') }}</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -110,7 +112,7 @@
                                             @enderror
                                         </div>
                                     </div> -->
-                                    @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
+                                    {{-- @if(\App\SiteConstants::CAPTCHA_SITE_KEY)
                                     <div class="form-group">
                                         <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="{!! \App\SiteConstants::CAPTCHA_SITE_KEY !!}"></div>
                                         @if ($errors->has('g-recaptcha-response'))
@@ -119,10 +121,10 @@
                                             </span>
                                         @endif
                                     </div>
-                                    @endif
+                                    @endif --}}
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-primary w-100 signin-Button">
-                                            {{ __('Get your access') }}
+                                            {{ __('Join recdirec') }}
                                         </button>
                                     </div>
                                     <div class="row mb-0">

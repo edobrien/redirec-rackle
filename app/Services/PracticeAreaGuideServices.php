@@ -15,7 +15,7 @@ class PracticeAreaGuideServices{
 	public function listGuides(){
 
 		$guides = PracticeAreaGuide::select(['id','title','description','is_active',
-												'ordering','view_count']);
+												'ordering','view_count'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($guides)
         			->addColumn('status_text',function($guides){
@@ -25,12 +25,12 @@ class PracticeAreaGuideServices{
 	                    $buttons = ' <button ng-click="editGuide(' . $guides->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteGuide(' . $guides->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-	                            . '<ion-icon name="close"></ion-icon></button>';
+	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
 
@@ -83,7 +83,8 @@ class PracticeAreaGuideServices{
 
     public function getActiveGuides(){
         return PracticeAreaGuide::select('id','title','view_count')
-			        ->where('is_active', PracticeAreaGuide::FLAG_YES)
+                    ->where('is_active', PracticeAreaGuide::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

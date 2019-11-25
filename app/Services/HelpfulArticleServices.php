@@ -15,7 +15,7 @@ class HelpfulArticleServices{
 	public function listArticles(){
 
 		$articles = HelpfulArticle::select(['id','title','description','is_active',
-												'ordering']);
+												'ordering'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($articles)
         			->addColumn('status_text',function($articles){
@@ -25,12 +25,12 @@ class HelpfulArticleServices{
 	                    $buttons = ' <button ng-click="editArticle(' . $articles->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteArticle(' . $articles->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-	                            . '<ion-icon name="close"></ion-icon></button>';
+	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
 
@@ -85,9 +85,9 @@ class HelpfulArticleServices{
 
     public function getActiveArticles(){
         return HelpfulArticle::select('id','title','description')
-			        ->where('is_active', HelpfulArticle::FLAG_YES)
+                    ->where('is_active', HelpfulArticle::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
-
     }
 
 }

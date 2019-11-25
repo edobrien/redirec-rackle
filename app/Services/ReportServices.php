@@ -17,7 +17,8 @@ class ReportServices{
 
 	public function listReports(){
 
-		$reports = Report::select(['id','name','description','is_active','ordering']);
+        $reports = Report::select(['id','name','description','is_active',
+                    'ordering'])->orderBy('ordering', 'ASC');
 
 		return Datatables::of($reports)
         			->addColumn('status_text',function($reports){
@@ -27,12 +28,12 @@ class ReportServices{
 	                    $buttons = ' <button ng-click="editReport(' . $reports->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteReport(' . $reports->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-	                            . '<ion-icon name="close"></ion-icon></button>';
+	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
 
@@ -87,7 +88,8 @@ class ReportServices{
 
     public function getActiveReports(){
         return Report::select('id','name','description')
-			        ->where('is_active', Report::FLAG_YES)
+                    ->where('is_active', Report::FLAG_YES)
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

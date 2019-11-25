@@ -26,12 +26,12 @@ class LocationServices{
 	                    $buttons = ' <button ng-click="editLocation(' . $locations->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<ion-icon name="create"></ion-icon></button>';
+	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteLocation(' . $locations->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
-	                            . '<ion-icon name="close"></ion-icon></button>';
+	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
 
@@ -71,7 +71,7 @@ class LocationServices{
         }
     }
 
-    public function canDeleteRegion($id){
+    public function canDeleteLocation($id){
         $mappings = FirmRecruitmentRegion::where('location_id', $id)->count() + 
                         FirmLocation::where('location_id', $id)->count();
         if($mappings){
