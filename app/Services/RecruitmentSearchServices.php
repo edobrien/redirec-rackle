@@ -91,8 +91,7 @@ class RecruitmentSearchServices{
                     ->whereIn('practice_area_id', $area_ids)
                     ->where('firm_practice_areas.is_active', FirmPracticeArea::FLAG_YES)
                     ->whereNull('firm_practice_areas.deleted_at')
-                    ->whereNull('practice_areas.deleted_at')
-                    ->orderByRaw($queryOrder);
+                    ->whereNull('practice_areas.deleted_at');
 
             }else{
                 if(!isset($filters->sector_id)){
@@ -101,7 +100,7 @@ class RecruitmentSearchServices{
                     ->where('practice_areas.type', '=',PracticeArea::AREA_GENERAL)
                     ->where('firm_practice_areas.is_active','=', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_practice_areas.deleted_at')
-                    ->whereNull('practice_areas.deleted_at')->orderBy('general_ranking', 'ASC');
+                    ->whereNull('practice_areas.deleted_at');
                 }
             }
 
@@ -132,8 +131,7 @@ class RecruitmentSearchServices{
                     ->orWhereIn('sector_id', $sector_ids)
                     ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
                     ->whereNull('firm_sectors.deleted_at')
-                    ->whereNull('sectors.deleted_at')
-                    ->orderByRaw($queryOrder);
+                    ->whereNull('sectors.deleted_at');
             }else{
                
 
@@ -143,13 +141,12 @@ class RecruitmentSearchServices{
                     ->where('sectors.type', '=',Sector::SECTOR_GENERAL)
                     ->where('firm_sectors.is_active','=', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_sectors.deleted_at')
-                    ->whereNull('sectors.deleted_at')
-                     ->orderBy('general_ranking', 'ASC');
+                    ->whereNull('sectors.deleted_at');
                     }
             }
         }        
         //  print_r($firms->distinct('recruitment_firms.*')->toSql());
-        return $firms->distinct('recruitment_firms.*')->get();
+        return $firms ->orderBy('general_ranking', 'ASC')->distinct('recruitment_firms.*')->get();
 
 	}
 
