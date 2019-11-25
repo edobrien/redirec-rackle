@@ -242,7 +242,7 @@
                         <label for="practiceArea">Practice Area</label>
                         <select class="mb8" name="practice_area_id"
                                 ng-model="search_data.practice_area_id" 
-                                ng-options="area.id as area.name for area in search_areas  | filter: { type: 'SPECIAL' } track by area.id">
+                                ng-options="area as area.name for area in search_areas  | filter: { type: 'SPECIAL' } track by area.id">
                                 <option value="">General</option>
                         </select>
                         <label for="sector">Sector</label>
