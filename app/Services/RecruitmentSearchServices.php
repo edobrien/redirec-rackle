@@ -63,95 +63,66 @@ class RecruitmentSearchServices{
                 $firms->where('firm_size', $filters->size);
             }
 
-            if(isset($filters->practice_area_id)){
+            // print_r($filters->practice_area_id);exit;
+            if((isset($filters->practice_area_id))&&(isset($filters->sector_id))){
 
-                $specialist = FirmPracticeArea::select('practice_area_id')
-                                ->where('practice_area_id', $filters->practice_area_id)
-                                ->where('firm_practice_areas.is_active', RecruitmentFirm::FLAG_YES);
-                            
-                // $general = FirmPracticeArea::select('practice_area_id')
-                //             ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
-                //             ->leftJoin('recruitment_firms','recruitment_firms.id','=','firm_practice_areas.firm_id')
-                //             ->where('practice_areas.type', PracticeArea::AREA_GENERAL)
-                //             ->where('firm_practice_areas.is_active', RecruitmentFirm::FLAG_YES)
-                //             ->orderBy('general_ranking', 'ASC');
-                         
-                $areas = $specialist->get();
-              
-                
-                $area_ids = array();
-                foreach($areas as $area){
-                    array_push($area_ids, $area->practice_area_id);
-                }
-                $queryOrder = "CASE WHEN practice_areas.type = 'SPECIAL' THEN 1 ";
-                $queryOrder .= "ELSE 2 END";
 
                 $firms->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
                     ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
-                    ->whereIn('practice_area_id', $area_ids)
+                    ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
+                    ->join('sectors','sectors.id','=','firm_sectors.sector_id')
+                    ->where(function($query) use ($filters){
+                        $query-> where('practice_area_id', $filters->practice_area_id)
+                        ->orWhere('sector_id', $filters->sector_id);   
+                    })
+                    ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
                     ->where('firm_practice_areas.is_active', FirmPracticeArea::FLAG_YES)
                     ->whereNull('firm_practice_areas.deleted_at')
-                    ->whereNull('practice_areas.deleted_at');
+                    ->whereNull('practice_areas.deleted_at')
+                    ->whereNull('firm_sectors.deleted_at')
+                    ->whereNull('sectors.deleted_at');
 
-            }else{
-                if(!isset($filters->sector_id)){
+            }
+            if((isset($filters->practice_area_id))&&(!isset($filters->sector_id))){
                 $firms->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
                     ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
-                    ->where('practice_areas.type', '=',PracticeArea::AREA_GENERAL)
+                    ->where('practice_area_id', $filters->practice_area_id)  
                     ->where('firm_practice_areas.is_active','=', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_practice_areas.deleted_at')
                     ->whereNull('practice_areas.deleted_at');
-                }
             }
-
-            if(isset($filters->sector_id)){
-                $specialist = FirmSector::select('sector_id')
-                                ->where('sector_id', $filters->sector_id)
-                                ->where('firm_sectors.is_active', RecruitmentFirm::FLAG_YES);
-
-                // $general = FirmSector::select('sector_id')
-                //             ->join('sectors','sectors.id','=','firm_sectors.sector_id')
-                //             ->leftJoin('recruitment_firms','recruitment_firms.id','=','firm_sectors.firm_id')
-                //             ->where('sectors.type', Sector::SECTOR_GENERAL)
-                //             ->where('firm_sectors.is_active', RecruitmentFirm::FLAG_YES)
-                //             ->orderBy('general_ranking', 'ASC');
-
-                    $areas = $specialist->get();
-              
-                $sector_ids = array();
-                foreach($areas as $area){
-                    array_push($sector_ids, $area->sector_id);
-                }
-
-                $queryOrder = "CASE WHEN sectors.type = 'SPECIAL' THEN 1 ";
-                $queryOrder .= "ELSE 2 END";
+            if((isset($filters->sector_id))&&(!isset($filters->practice_area_id))){
 
                 $firms->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
                     ->join('sectors','sectors.id','=','firm_sectors.sector_id')
+                    ->where('sector_id', $filters->sector_id)
                     ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
                     ->whereNull('firm_sectors.deleted_at')
                     ->whereNull('sectors.deleted_at');
 
-                    if(isset($filters->practice_area_id)){
-                        $firms->orWhereIn('sector_id', $sector_ids);
-                    }else{
-                         $firms->whereIn('sector_id', $sector_ids);
-                    }
+            }
+            
+            if((!isset($filters->sector_id))&&(!isset($filters->practice_area_id))){
 
-
-            }else{
-               
-
-                    if(!isset($filters->practice_area_id)){
-                        $firms->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
+                    $firms->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
+                    ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
+                    ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
                     ->join('sectors','sectors.id','=','firm_sectors.sector_id')
-                    ->where('sectors.type', '=',Sector::SECTOR_GENERAL)
+                   
+                    ->where(function($query) use ($filters){
+                        $query ->where('practice_areas.type', '=',PracticeArea::AREA_GENERAL)
+                        ->orWhere('sectors.type', '=',Sector::SECTOR_GENERAL);
+   
+                    })
+                    ->where('firm_practice_areas.is_active','=', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('firm_practice_areas.deleted_at')
+                    ->whereNull('practice_areas.deleted_at')
                     ->where('firm_sectors.is_active','=', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_sectors.deleted_at')
                     ->whereNull('sectors.deleted_at');
-                    }
             }
-        }        
+
+        }
         //  print_r($firms->distinct('recruitment_firms.*')->toSql());
         return $firms ->orderBy('general_ranking', 'ASC')->distinct('recruitment_firms.*')->get();
 
