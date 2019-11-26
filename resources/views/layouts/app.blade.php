@@ -86,7 +86,8 @@
                                 </a> -->
 
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="icon ion-md-more pt-1 text-grey"></i>
+                                    <i class="icon ion-md-more pt-1 text-grey" style = "padding: 6px;
+                                    margin-top: -3px;"></i>
                                 </a>
 
                                 <div class="dropdown-menu rounded-0 mddp dropdown-menu-right" aria-labelledby="navbarDropdown">
