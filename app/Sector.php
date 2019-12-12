@@ -31,7 +31,7 @@ class Sector extends Model
 
     const SECTOR_PRIVATE_PRACTICE_TEXT = "Private Practice";
     const SECTOR_INHOUSE_TEXT = "InHouse";
-    const SECTOR_GENERAL_ALL_TEXT = "Generalist All";
+    const SECTOR_ALL_TEXT = "Generalist All";
 
     const SECTOR_GENERAL_TEXT = "Generalist";
     const SECTOR_SPECIAL_TEXT = "Specialist";
