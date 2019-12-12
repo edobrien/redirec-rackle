@@ -16,6 +16,7 @@ class PracticeArea extends Model
     const FLAG_NO = "NO";
 
     const AREA_GENERAL = "GENERAL";
+    const AREA_ALL = "ALL";
     const AREA_SPECIAL = "SPECIAL";
     const AREA_GENERAL_AND_SPECIAL = "GENERAL_AND_SPECIAL";
 
@@ -26,6 +27,7 @@ class PracticeArea extends Model
     const FLAG_NO_TEXT = "No";
 
     const AREA_GENERAL_TEXT = "Generalist";
+    const AREA_ALL_TEXT = "Generalist All";
     const AREA_SPECIAL_TEXT = "Specialist";
     const AREA_GENERAL_AND_SPECIAL_TEXT = "Generalist & Specialist";
 
@@ -45,6 +47,9 @@ class PracticeArea extends Model
                 break;
             case self::AREA_GENERAL:
                 return self::AREA_GENERAL_TEXT;
+                break;
+            case self::AREA_ALL:
+                return self::AREA_ALL_TEXT;
                 break;
             case self::AREA_SPECIAL:
                 return self::AREA_SPECIAL_TEXT;
