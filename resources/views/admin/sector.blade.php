@@ -64,6 +64,8 @@
                                         <?php echo \App\Sector::SECTOR_PRIVATE_PRACTICE_TEXT; ?></option>
                                         <option value="<?php echo \App\Sector::SECTOR_INHOUSE; ?>">
                                         <?php echo \App\Sector::SECTOR_INHOUSE_TEXT; ?></option>
+                                        <option value="<?php echo \App\Sector::SECTOR_ALL; ?>">
+                                        <?php echo \App\Sector::SECTOR_ALL_TEXT; ?></option>
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">

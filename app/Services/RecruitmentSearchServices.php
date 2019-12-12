@@ -19,6 +19,7 @@ class RecruitmentSearchServices{
 
 	public function listFirms($filters){
 
+        $generalists = array();
         $firms = DB::table('recruitment_firms')->select('recruitment_firms.id',
                                         'recruitment_firms.name',
                                         'recruitment_firms.location',
@@ -63,7 +64,6 @@ class RecruitmentSearchServices{
                 $firms->where('firm_size', $filters->size);
             }
 
-            // print_r($filters->practice_area_id);exit;
             if((isset($filters->practice_area_id))&&(isset($filters->sector_id))){
 
 
@@ -82,6 +82,29 @@ class RecruitmentSearchServices{
                     ->whereNull('firm_sectors.deleted_at')
                     ->whereNull('sectors.deleted_at');
 
+                $generalists = DB::table('recruitment_firms')
+                                    ->select('recruitment_firms.id',
+                                            'recruitment_firms.name',
+                                            'recruitment_firms.location',
+                                            'recruitment_firms.view_count',
+                                            'recruitment_firms.is_verified',
+                                            'recruitment_firms.is_specialism')
+                                ->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
+                                ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
+                                ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
+                                ->join('sectors','sectors.id','=','firm_sectors.sector_id')
+                                ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
+                                ->where('firm_practice_areas.is_active', FirmPracticeArea::FLAG_YES)
+                                ->where('practice_areas.type', PracticeArea::AREA_ALL)
+                                ->where('sectors.type', Sector::SECTOR_ALL)
+                                ->whereNull('firm_practice_areas.deleted_at')
+                                ->whereNull('practice_areas.deleted_at')
+                                ->whereNull('firm_sectors.deleted_at')
+                                ->whereNull('sectors.deleted_at')
+                                ->orderBy('general_ranking', 'ASC')
+                                ->distinct('recruitment_firms.*')
+                                ->get();
+
             }
             if((isset($filters->practice_area_id))&&(!isset($filters->sector_id))){
                 $firms->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
@@ -90,6 +113,23 @@ class RecruitmentSearchServices{
                     ->where('firm_practice_areas.is_active','=', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_practice_areas.deleted_at')
                     ->whereNull('practice_areas.deleted_at');
+
+                    $generalists = DB::table('recruitment_firms')
+                                        ->select('recruitment_firms.id',
+                                                'recruitment_firms.name',
+                                                'recruitment_firms.location',
+                                                'recruitment_firms.view_count',
+                                                'recruitment_firms.is_verified',
+                                                'recruitment_firms.is_specialism')
+                                    ->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
+                                    ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
+                                    ->where('firm_practice_areas.is_active', FirmPracticeArea::FLAG_YES)
+                                    ->where('practice_areas.type', PracticeArea::AREA_ALL)
+                                    ->whereNull('firm_practice_areas.deleted_at')
+                                    ->whereNull('practice_areas.deleted_at')
+                                    ->orderBy('general_ranking', 'ASC')
+                                    ->distinct('recruitment_firms.*')
+                                    ->get();
             }
             if((isset($filters->sector_id))&&(!isset($filters->practice_area_id))){
 
@@ -99,6 +139,24 @@ class RecruitmentSearchServices{
                     ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
                     ->whereNull('firm_sectors.deleted_at')
                     ->whereNull('sectors.deleted_at');
+
+
+                    $generalists = DB::table('recruitment_firms')
+                                        ->select('recruitment_firms.id',
+                                                'recruitment_firms.name',
+                                                'recruitment_firms.location',
+                                                'recruitment_firms.view_count',
+                                                'recruitment_firms.is_verified',
+                                                'recruitment_firms.is_specialism')
+                                    ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
+                                    ->join('sectors','sectors.id','=','firm_sectors.sector_id')
+                                    ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
+                                    ->where('sectors.type', Sector::SECTOR_ALL)
+                                    ->whereNull('firm_sectors.deleted_at')
+                                    ->whereNull('sectors.deleted_at')
+                                    ->orderBy('general_ranking', 'ASC')
+                                    ->distinct('recruitment_firms.*')
+                                    ->get();
 
             }
             
@@ -124,8 +182,22 @@ class RecruitmentSearchServices{
 
         }
         //  print_r($firms->distinct('recruitment_firms.*')->toSql());
-        return $firms ->orderBy('general_ranking', 'ASC')->distinct('recruitment_firms.*')->get();
+        $filter_query = $firms->orderBy('general_ranking', 'ASC')
+                            ->distinct('recruitment_firms.*')
+                            ->get();
 
+        $resultSet = array();
+        foreach($filter_query as $query){
+            array_push($resultSet, $query);
+        }
+
+        //If specialism is selected add generalist data to end
+        if(count($generalists)){
+            foreach ($generalists as $list) {
+                array_push($resultSet, $query);
+            }
+        }
+        return $resultSet;
 	}
 
     public function saveViewCount($id){
