@@ -100,10 +100,7 @@ class RecruitmentSearchServices{
                                 ->whereNull('firm_practice_areas.deleted_at')
                                 ->whereNull('practice_areas.deleted_at')
                                 ->whereNull('firm_sectors.deleted_at')
-                                ->whereNull('sectors.deleted_at')
-                                ->orderBy('general_ranking', 'ASC')
-                                ->distinct('recruitment_firms.*')
-                                ->get();
+                                ->whereNull('sectors.deleted_at');
 
             }
             if((isset($filters->practice_area_id))&&(!isset($filters->sector_id))){
@@ -126,10 +123,9 @@ class RecruitmentSearchServices{
                                     ->where('firm_practice_areas.is_active', FirmPracticeArea::FLAG_YES)
                                     ->where('practice_areas.type', PracticeArea::AREA_ALL)
                                     ->whereNull('firm_practice_areas.deleted_at')
-                                    ->whereNull('practice_areas.deleted_at')
-                                    ->orderBy('general_ranking', 'ASC')
-                                    ->distinct('recruitment_firms.*')
-                                    ->get();
+                                    ->whereNull('practice_areas.deleted_at');
+                                    
+
             }
             if((isset($filters->sector_id))&&(!isset($filters->practice_area_id))){
 
@@ -153,11 +149,7 @@ class RecruitmentSearchServices{
                                     ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
                                     ->where('sectors.type', Sector::SECTOR_ALL)
                                     ->whereNull('firm_sectors.deleted_at')
-                                    ->whereNull('sectors.deleted_at')
-                                    ->orderBy('general_ranking', 'ASC')
-                                    ->distinct('recruitment_firms.*')
-                                    ->get();
-
+                                    ->whereNull('sectors.deleted_at');
             }
             
             if((!isset($filters->sector_id))&&(!isset($filters->practice_area_id))){
@@ -181,20 +173,30 @@ class RecruitmentSearchServices{
             }
 
         }
+
+        
         //  print_r($firms->distinct('recruitment_firms.*')->toSql());
         $filter_query = $firms->orderBy('general_ranking', 'ASC')
                             ->distinct('recruitment_firms.*')
                             ->get();
-
-        $resultSet = array();
+                            
+        $resultSet = array();$specialism = array();
         foreach($filter_query as $query){
             array_push($resultSet, $query);
+            array_push($specialism, $query->id);
         }
-
         //If specialism is selected add generalist data to end
+        //Remove duplicates
+        if($specialism){
+            $generalists = $generalists->whereNotIn('recruitment_firms.id', $specialism);
+        }
+        $generalists = $generalists->orderBy('general_ranking', 'ASC')
+                            ->distinct('recruitment_firms.*')
+                            ->get();
+        
         if(count($generalists)){
             foreach ($generalists as $list) {
-                array_push($resultSet, $query);
+                array_push($resultSet, $list);
             }
         }
         return $resultSet;
