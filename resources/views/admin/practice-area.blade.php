@@ -62,6 +62,8 @@
                                         <?php echo \App\PracticeArea::AREA_GENERAL_TEXT; ?></option>
                                         <option value="<?php echo \App\PracticeArea::AREA_SPECIAL; ?>">
                                         <?php echo \App\PracticeArea::AREA_SPECIAL_TEXT; ?></option>
+                                        <option value="<?php echo \App\PracticeArea::AREA_ALL; ?>">
+                                        <?php echo \App\PracticeArea::AREA_ALL_TEXT; ?></option>
                                     </select>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
