@@ -73,7 +73,7 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Law Firm Clients</h6>
+                        <h6 class="font-weight-bold text-grey">Clients</h6>
                         <ul class="text-grey pl-4">
                             <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
                         </ul>
