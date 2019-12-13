@@ -3,7 +3,7 @@
 <div class="row" ng-cloak ng-controller="DetailListingController">
     <div class="col-md-12 pt-4 pb-3 px-4">
         @if(count($firms))
-        <h4 class="font-weight-bold text-blue pb-2">Recruiters</h4>
+        <h4 class="font-weight-bold text-blue pb-2">Recruiters({{count($firms)}})</h4>
         <div class="row">
             <div class="col-md-3 search-results">
                 @foreach($firms as $firm)
