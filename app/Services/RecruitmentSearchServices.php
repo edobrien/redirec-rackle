@@ -30,7 +30,7 @@ class RecruitmentSearchServices{
        
 
         
-        if(((isset($filters->firm_id))&&(((!isset($filters->search_locations))&&(!isset($filters->service_id))&&(!isset($filters->recruitment_id))&&(!isset($filters->size))&&(!isset($filters->practice_area_id))&&(!isset($filters->sector_id))))))
+        if(isset($filters->firm_id))
         {
             $firms->where('recruitment_firms.id', $filters->firm_id)
             ->where('recruitment_firms.is_active', RecruitmentFirm::FLAG_YES)
@@ -190,6 +190,29 @@ class RecruitmentSearchServices{
         if(!empty($generalists)){
             if($specialism){
                 $generalists = $generalists->whereNotIn('recruitment_firms.id', $specialism);
+            }
+            if(isset($filters->search_locations)){
+                $generalists->join('firm_locations','recruitment_firms.id', '=','firm_locations.firm_id')
+                    ->where('location_id', $filters->search_locations)
+                    ->where('firm_locations.is_active', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('firm_locations.deleted_at');
+            }
+
+            if(isset($filters->service_id)){
+                $generalists->join('firm_services','recruitment_firms.id', '=','firm_services.firm_id')
+                    ->where('service_id', $filters->service_id)
+                    ->where('firm_services.is_active', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('firm_services.deleted_at');
+            }
+
+            if(isset($filters->recruitment_id)){
+                $generalists->join('firm_recruitment_types','recruitment_firms.id', '=','firm_recruitment_types.firm_id')
+                    ->where('recruitment_id', $filters->recruitment_id)
+                    ->where('firm_recruitment_types.is_active', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('firm_recruitment_types.deleted_at');
+            }
+            if(isset($filters->size)){
+                $generalists->where('firm_size', $filters->size);
             }
             $generalists = $generalists->orderBy('general_ranking', 'ASC')
                                 ->distinct('recruitment_firms.*')
