@@ -10,17 +10,8 @@
 
     </div>
     <div class="responsive-table">
-        <div ng-hide="!errors" class="alert alert-danger">
-            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
-            <ul class="pl-2 mb-0">
-                <li ng-repeat="error in errors"><% error %></li>
-            </ul>
-        </div>
-        <div ng-hide="!successMessage"  class="alert alert-success">
-            <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</ul>
-            <% successMessage %>
-        </div>
-        <table id="data-upload-listing" class="table table-striped table-responsive-sm" width="100%" cellspacing="0">
+        <table id="data-upload-listing" class="table table-striped table-responsive-sm" 
+                width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>File Name</th>
@@ -29,28 +20,26 @@
                 </tr>
             </thead>
         </table>
-
-        
-        <!-- delete modal begins -->
-        <div id="delete-confirm" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content rounded-0">
-                <div class="modal-header">
-                  <h4 class="modal-title font-weight-bold">Alert</h4>
-                </div>
-                <div class="modal-body pt-4">
-                    <p><% messageToshow %></p>
-                </div>
-                <div class="modal-footer border-0">
-                  <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">No</button>
-                  <button type="button" ng-if="showDelete" ng-click="deleteAreaConfirmed()" 
-                          class="btn btn-danger br-40 px-4" data-dismiss="modal">Yes</button>
-                </div>
-              </div>
+    </div>
+    <!-- delete modal begins -->
+    <div id="delete-confirm" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h4 class="modal-title font-weight-bold">Alert</h4>
+            </div>
+            <div class="modal-body pt-4">
+                <p><% messageToshow %></p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">No</button>
+                <button type="button" ng-if="showDelete" ng-click="deleteAreaConfirmed()" 
+                        class="btn btn-danger br-40 px-4" data-dismiss="modal">Yes</button>
+            </div>
             </div>
         </div>
-        <!--  delete modal ends -->
     </div>
+    <!--  delete modal ends -->
 </div>
 @endsection
 @push('scripts')
@@ -58,8 +47,6 @@
 
     app.controller('DataUploadController', function ($scope, $http, $compile) {
 
-             
-        
         $scope.hideMessage = function(){
             if($scope.modalErrors){
                 delete $scope.modalErrors;

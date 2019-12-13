@@ -24,12 +24,12 @@ class FirmClientServices{
                 	->addColumn('action', function ($clients) {
 	                    $buttons = ' <button ng-click="editFirmClientLocation(' . $clients->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
-	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
+	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pl-0">'
 	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteFirmClientLocation(' . $clients->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
-	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
+	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pl-0">'
 	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
