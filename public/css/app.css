@@ -15,6 +15,11 @@
     opacity:0.2;
     z-index:9999;
 }
+thead tr {
+    color: #fff;
+    background-color: #4C23A1;
+    border-color: #454d55;
+  }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
