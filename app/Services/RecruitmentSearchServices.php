@@ -187,18 +187,20 @@ class RecruitmentSearchServices{
         }
         //If specialism is selected add generalist data to end
         //Remove duplicates
-        if($specialism){
-            $generalists = $generalists->whereNotIn('recruitment_firms.id', $specialism);
-        }
-        $generalists = $generalists->orderBy('general_ranking', 'ASC')
-                            ->distinct('recruitment_firms.*')
-                            ->get();
-        
-        if(count($generalists)){
-            foreach ($generalists as $list) {
-                array_push($resultSet, $list);
+        if(!empty($generalists)){
+            if($specialism){
+                $generalists = $generalists->whereNotIn('recruitment_firms.id', $specialism);
             }
-        }
+            $generalists = $generalists->orderBy('general_ranking', 'ASC')
+                                ->distinct('recruitment_firms.*')
+                                ->get();
+            
+            if(count($generalists)){
+                foreach ($generalists as $list) {
+                    array_push($resultSet, $list);
+                }
+            }
+        }        
         return $resultSet;
 	}
 

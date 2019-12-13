@@ -24,12 +24,12 @@ class RecruitmentTypeServices{
                 	->addColumn('action', function ($types) {
 	                    $buttons = ' <button ng-click="editType(' . $types->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
-	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
+	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pl-0">'
 	                            . '<i class="icon ion-md-create"></i></button>';
 
 	                    $buttons .= ' <button ng-click="deleteType(' . $types->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
-	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pr-0">'
+	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pl-0">'
 	                            . '<i class="icon ion-md-close"></i></button>';
                     return $buttons;
                 })->make(true);
