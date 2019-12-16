@@ -132,7 +132,7 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <i class="fa fa fa-globe" aria-hidden="true"></i>
-                        <a href="<% firm.website_link %>" class="text-grey"><% firm.website_link %></a>
+                        <a href="http://<% firm.website_link %>" target="_blank" class="text-grey"><% firm.website_link %></a>
                     </div>
                 </div>
             </div>
