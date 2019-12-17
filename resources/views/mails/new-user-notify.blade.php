@@ -6,9 +6,9 @@
       <td>
          <h3 style="padding:7px 0px 7px 0px;">Hi,</h3>
          <br/>
-         <p>New user have registered with <a href="{{ \App\SiteConstants::APP_URL }}">RecDirec.</a></p>
+         <p>New user have registered with <a href="{{ \App\SiteConstants::APP_URL }}" target="_blank">RecDirec.</a></p>
          <br/>
-         <p>Login and <a href="{{ url('users') }}">click here</a> to launch approval screen.</p>
+         <p>Login and <a href="{{ url('users') }}" target="_blank">click here</a> to launch approval screen.</p>
          <br/>
          <p >Best Wishes,</p>
          <p >Recdirec</p>

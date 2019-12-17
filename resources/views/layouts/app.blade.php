@@ -86,7 +86,8 @@
                                 </a> -->
 
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="icon ion-md-more pt-1 text-grey"></i>
+                                    <i class="icon ion-md-more pt-1 text-grey" style = "padding: 6px;
+                                    margin-top: -3px;"></i>
                                 </a>
 
                                 <div class="dropdown-menu rounded-0 mddp dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -242,7 +243,7 @@
                         <label for="practiceArea">Practice Area</label>
                         <select class="mb8" name="practice_area_id"
                                 ng-model="search_data.practice_area_id" 
-                                ng-options="area as area.name for area in search_areas  | filter: { type: 'SPECIAL' } track by area.id">
+                                ng-options="area as area.name group by area.type for area in search_areas  | filter: { type: '!GENERAL' } track by area.id">
                                 <option value="">General</option>
                         </select>
                         <label for="sector">Sector</label>

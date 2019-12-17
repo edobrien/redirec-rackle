@@ -26,8 +26,8 @@ class DataUploadServices{
                 	->addColumn('action', function ($dataUpload) {
 	                    $buttons = ' <button ng-click="downloadFile(' . $dataUpload->id . ')" '
 	                            . 'title="Download" alt="Download" '
-	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pr-0">'
-	                            . '<i class="icon ion-md-create"></i></button>';
+	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pl-0">'
+	                            . '<i class="icon ion-md-download"></i></button>';
 
 	                  
                     return $buttons;

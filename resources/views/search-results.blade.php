@@ -3,7 +3,7 @@
 <div class="row" ng-cloak ng-controller="DetailListingController">
     <div class="col-md-12 pt-4 pb-3 px-4">
         @if(count($firms))
-        <h4 class="font-weight-bold text-blue pb-2">Recruiters</h4>
+        <h4 class="font-weight-bold text-blue pb-2">Recruiters({{count($firms)}})</h4>
         <div class="row">
             <div class="col-md-3 search-results">
                 @foreach($firms as $firm)
@@ -73,7 +73,7 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Law Firm Clients</h6>
+                        <h6 class="font-weight-bold text-grey">Clients</h6>
                         <ul class="text-grey pl-4">
                             <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
                         </ul>
@@ -132,7 +132,7 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <i class="fa fa fa-globe" aria-hidden="true"></i>
-                        <a href="<% firm.website_link %>" class="text-grey"><% firm.website_link %></a>
+                        <a href="http://<% firm.website_link %>" target="_blank" class="text-grey"><% firm.website_link %></a>
                     </div>
                 </div>
             </div>
