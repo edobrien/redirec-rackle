@@ -4,7 +4,7 @@
     <div class="col-md-12 pt-4 pb-3 px-4">
         @if(count($firms))
         <h4 class="font-weight-bold text-blue pb-2">Recruiters({{count($firms)}})</h4>
-        <div class="row">
+        <div class="row capture-ext-links">
             <div class="col-md-3 search-results">
                 @foreach($firms as $firm)
                 <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
