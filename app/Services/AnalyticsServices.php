@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 
 use App\AnalyticsCaptureClick;
+use App\User;
 use App\Exports\MasterAnalyticsClicksExport;
 
 class AnalyticsServices{
@@ -26,6 +27,13 @@ class AnalyticsServices{
                 ->addColumn('count',function($links){
                     return $links->total;
                 })->make(true);
+    }
+    
+    public function listUserLogins(){
+
+        $logins = User::select('name','firm_name','position','last_login_at','successful_login_count');
+
+        return Datatables::of($logins)->make(true);
 	}
 
 	public function getInfo($id) {

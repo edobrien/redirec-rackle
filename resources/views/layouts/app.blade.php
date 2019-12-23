@@ -123,6 +123,9 @@
                                             <a class="dropdown-item text-muted {{ Request::is('reports') ? 'active' : '' }}" href="{{ url('/reports') }}">
                                             Reports 
                                             </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('login-count') ? 'active' : '' }}" href="{{ url('/login-count') }}">
+                                            Login Count 
+                                            </a>
                                         </div>
                                         <div class="col-md-4 border-right">
                                             <a class="dropdown-item text-muted {{ Request::is('upload-file') ? 'active' : '' }}" href="{{ url('/upload-file') }}">
