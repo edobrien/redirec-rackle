@@ -285,6 +285,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/download-template', 'FirmDataLoadController@downloadTemplate');
         Route::post('/upload-firms', 'FirmDataLoadController@uploadData');
         Route::get('/read-uploaded-file', 'FirmDataLoadController@importTemplate');
+
+        //Analytics - Capture external links in pages - Surveys, Recruitment listing page
+        //Practice area and interview guide details, useful links and blog articles
+        Route::get('/click-analytics', 'AnalyticsController@index');
+        Route::get('/click-analytics/list-clicks', 'AnalyticsController@listCaptureClicks');
+        Route::post('/click-analytics/capture-external-links', 'AnalyticsController@captureClicks');
+        Route::get('/click-analytics/download-report', 'AnalyticsController@downloadClickReport');
     });
     
 });

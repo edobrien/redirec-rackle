@@ -146,6 +146,9 @@
                                             <a class="dropdown-item text-muted {{ Request::is('sector') ? 'active' : '' }}" href="{{ url('/sector') }}">
                                             Sector
                                             </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('click-analytics') ? 'active' : '' }}" href="{{ url('/click-analytics') }}">
+                                            Click Analytics
+                                            </a>
                                         </div>
                                         <div class="col-md-4 pr-4">
                                             <a class="dropdown-item text-muted {{ Request::is('recruitment-firm') ? 'active' : '' }}" href="{{ url('/recruitment-firm') }}">
@@ -301,6 +304,27 @@
         $(document).ajaxStart(function () {
             $('.bg_load').show();
         });
-    })
+
+        $('.capture-ext-links').on('click', 'a', function(e) {
+            e.preventDefault();
+            var link = $(this).attr('href');
+            $.ajax({
+                url: '/click-analytics/capture-external-links',
+                method: "POST",
+                data : {
+                    href: link,
+                    "_token": "{{ csrf_token() }}",
+                },
+                success :  function(data){
+                    window.location = link;
+                }
+             })
+        });
+    });
+
+    
+
+
+    
 </script>
 </html>

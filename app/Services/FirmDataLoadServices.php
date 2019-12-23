@@ -14,6 +14,7 @@ use SimpleXLSX;
 use DB;
 
 use App\DataUploadLog;
+use App\RecruitmentFirm;
 use App\Location;
 use App\Service;
 use App\RecruitmentType;
@@ -22,6 +23,7 @@ use App\Sector;
 
 class FirmDataLoadServices{
 
+    private $recruitmentName;
     private $location;
     private $service;
     private $recruitmentType;
@@ -50,6 +52,13 @@ class FirmDataLoadServices{
 
     public function uploadExcel($data){
         try{
+            $firm_arr = array();
+            $firms = DB::select("SELECT upper(REPLACE(TRIM(name), ' ', ''))  name FROM recruitment_firms");
+            foreach($firms as $firm){
+                array_push($firm_arr, $firm->name);
+            }
+            $this->recruitmentName = $firm_arr;
+
             DB::transaction(function () use($data) {
                 $log = new DataUploadLog;
                 $excel = $data->upload_excel;
@@ -116,6 +125,8 @@ class FirmDataLoadServices{
 
         if(empty(trim($row[0]))){
             $errors[] = "Missing recruitment firm";          
+        }else if(in_array(strtoupper(str_replace(' ', '', $row[0])),$this->recruitmentName)){
+            $errors[] = "Duplicate recruitment firm";
         }
         
         if(empty(trim($row[1]))){
