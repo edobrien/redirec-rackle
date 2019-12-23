@@ -5,7 +5,7 @@
         <div class="col-md-12 p-4">
             <h4 class="font-weight-bold text-blue pb-2">Helpful Articles</h4>
             <div id="accordion-list">
-                <ul>
+                <ul class="capture-ext-links">
                     @foreach ($articles as $article)
                     <li>
                         <a class="expand">
