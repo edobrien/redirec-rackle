@@ -19,12 +19,22 @@ class AnalyticsController extends Controller
 
     public function index()
     {
-        return view('admin.analytics-clicks.listing');
+        return view('admin.analytics.clicks-listing');
+    }
+
+    public function indexLoginCount()
+    {
+        return view('admin.analytics.login-count-listing');
     }
 
     public function listCaptureClicks()
     {
         return $this->analyticsServices->listCaptureClicks();
+    }
+
+    public function listUserLogins()
+    {
+        return $this->analyticsServices->listUserLogins();
     }
 
     public function captureClicks(Request $request)

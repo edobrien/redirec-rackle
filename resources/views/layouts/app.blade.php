@@ -92,9 +92,18 @@
 
                                 <div class="dropdown-menu rounded-0 mddp dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Auth::user()->is_admin == "YES")
-                                    <a class="dropdown-item mt-1">
-                                        <h5 class="text-blue m-0 p-0"><strong>{{ Auth::user()->name }}</strong></h5>
-                                        <small class="text-muted">Administrator</small>
+                                    <a class="mt-1" style="padding: .5rem 2rem .5rem 1rem !important;">
+                                        <span style="font-size: large;" class="text-blue"><strong>{{ Auth::user()->name }}</strong></span>
+                                        <a style="padding:15px" class="pull-right text-muted" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                        <br>
+                                        <small style="padding:15px" class="text-muted">Administrator</small>
                                     </a>
                                     <hr class="style-dashed">
                                     <div class="row py-2 w-640">
@@ -146,9 +155,6 @@
                                             <a class="dropdown-item text-muted {{ Request::is('sector') ? 'active' : '' }}" href="{{ url('/sector') }}">
                                             Sector
                                             </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('click-analytics') ? 'active' : '' }}" href="{{ url('/click-analytics') }}">
-                                            Click Analytics
-                                            </a>
                                         </div>
                                         <div class="col-md-4 pr-4">
                                             <a class="dropdown-item text-muted {{ Request::is('recruitment-firm') ? 'active' : '' }}" href="{{ url('/recruitment-firm') }}">
@@ -178,16 +184,29 @@
                                         </div>
                                     </div>
                                     <hr class="style-dashed">
-                                    @endif
+                                    <div class="row py-2 w-640">
+                                        <div class="col-md-4 border-right pl-4">
+                                            <a class="dropdown-item text-muted {{ Request::is('click-analytics') ? 'active' : '' }}" href="{{ url('/click-analytics') }}">
+                                            Click Analytics
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4 border-right">
+                                            <a class="dropdown-item text-muted {{ Request::is('login-count') ? 'active' : '' }}" href="{{ url('/login-count') }}">
+                                            Login Count 
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @else
                                     <a class="dropdown-item text-muted" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    @endif
                                 </div>
                             </li>
                         @endguest

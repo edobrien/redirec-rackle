@@ -292,6 +292,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/click-analytics/list-clicks', 'AnalyticsController@listCaptureClicks');
         Route::post('/click-analytics/capture-external-links', 'AnalyticsController@captureClicks');
         Route::get('/click-analytics/download-report', 'AnalyticsController@downloadClickReport');
+
+        //Analytics - Registered user login count
+        Route::get('/login-count', 'AnalyticsController@indexLoginCount');
+        Route::get('/login-count/list-user-count', 'AnalyticsController@listUserLogins');
     });
     
 });
