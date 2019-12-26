@@ -42,9 +42,9 @@
                     url: '/login-count/list-user-count',
                 },
                 columns: [
-                    {data: 'name', name:'name'},
-                    {data: 'firm_name', name:'firm_name'},
-                    {data: 'position', name:'position'},
+                    {data: 'name', name:'name', width: '20%'},
+                    {data: 'firm_name', name:'firm_name', width: '25%'},
+                    {data: 'position', name:'position', width: '25%'},
                     {data: 'last_login_at', name:'last_login_at'},
                     {data: 'successful_login_count', name:'successful_login_count'},
                 ],
