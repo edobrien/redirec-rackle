@@ -23,6 +23,6 @@ class AnalyticsClicksExport implements FromArray, WithTitle
      */
     public function title(): string
     {
-        return 'Click Logs';
+        return 'Click Log';
     }
 }

@@ -12,7 +12,7 @@ class AnalyticsClickCountExport implements FromArray, WithTitle
 {
     public function array(): array
     {
-        $output = [['link','clicked_count']];
+        $output = [['link','click_count']];
         $links = AnalyticsCaptureClick::groupBy('link')
                         ->select('link', DB::raw('count(*) as total'))
                         ->get();
@@ -27,6 +27,6 @@ class AnalyticsClickCountExport implements FromArray, WithTitle
      */
     public function title(): string
     {
-        return 'Click count';
+        return 'Click Count';
     }
 }
