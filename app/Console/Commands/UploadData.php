@@ -53,7 +53,7 @@ class UploadData extends Command
         try{
             //Take file which is uploaded 5 minutes before
             $currentDate = strtotime(date('Y-m-d H:i:s'));
-            $futureDate = $currentDate-(60*5);
+            $futureDate = $currentDate - (60 * 5);
             $formatDate = date("Y-m-d H:i:s", $futureDate);
 
             $file = DataUploadLog::where('status', DataUploadLog::STATUS_UPLOADED)

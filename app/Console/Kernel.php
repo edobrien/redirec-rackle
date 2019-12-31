@@ -24,7 +24,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('upload:data')->everyMinute();
+        $filePath = "/var/log/data_upload_cron.log";
+
+        $schedule->command('upload:data')->everyMinute()->before(function () {
+            $this->logMsg('data upload','STARTED');
+         })
+         ->after(function () {
+             $this->logMsg('data upload', 'ENDING');
+
+         }); ;
     }
 
     /**
@@ -37,5 +45,9 @@ class Kernel extends ConsoleKernel
         $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
+    }
+
+    private function logMsg($type, $status){
+        echo  "\n".$status . ":" . $type . " at " . date("Y-m-d H:i:s") . "\n"; 
     }
 }
