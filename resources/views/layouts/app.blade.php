@@ -327,17 +327,21 @@
         $('.capture-ext-links').on('click', 'a', function(e) {
             e.preventDefault();
             var link = $(this).attr('href');
-            $.ajax({
-                url: '/click-analytics/capture-external-links',
-                method: "POST",
-                data : {
-                    href: link,
-                    "_token": "{{ csrf_token() }}",
-                },
-                success :  function(data){
-                    window.location = link;
-                }
-             })
+            if(link){
+                if(link.startsWith("http")){
+                    $.ajax({
+                        url: '/click-analytics/capture-external-links',
+                        method: "POST",
+                        data : {
+                            href: link,
+                            "_token": "{{ csrf_token() }}",
+                        },
+                        success :  function(data){
+                            window.open(link, "_blank");
+                        }
+                    })
+                } 
+            }                       
         });
     });
 

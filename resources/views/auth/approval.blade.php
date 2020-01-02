@@ -8,7 +8,7 @@
                 <div class="card-body">
                     Thank you for registering.
                     <br />
-                    As one of our early users, we welcome you to the recdirec community. Recdirec will shortly be going live and we will email you as soon as this happens to let you know you are able to access all of our content for free.
+                    We are approving your registration and will shortly send an email welcoming you to the platform.
                 </div>
             </div>
         </div>
