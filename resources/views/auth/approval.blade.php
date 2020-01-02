@@ -8,7 +8,7 @@
                 <div class="card-body">
                     Thank you for registering.
                     <br />
-                    we are approving your registration and will shortly send an email welcoming you to the platform.
+                    We are approving your registration and will shortly send an email welcoming you to the platform.
                 </div>
             </div>
         </div>
