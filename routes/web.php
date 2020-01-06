@@ -98,6 +98,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
     Route::get('/search-recruitment-firm', 'RecruitmentSearchController@searchFirm');
     Route::get('/firm-view-count/{id}', 'RecruitmentSearchController@saveViewCount');
+    Route::post('/click-analytics/capture-external-links', 'AnalyticsController@captureClicks');
 
     Route::get('/search-recruitment-firm', function () {
         return view('search-restriction');
@@ -290,7 +291,6 @@ Route::middleware(['auth'])->group(function () {
         //Practice area and interview guide details, useful links and blog articles
         Route::get('/click-analytics', 'AnalyticsController@index');
         Route::get('/click-analytics/list-clicks', 'AnalyticsController@listCaptureClicks');
-        Route::post('/click-analytics/capture-external-links', 'AnalyticsController@captureClicks');
         Route::get('/click-analytics/download-report', 'AnalyticsController@downloadClickReport');
 
         //Analytics - Registered user login count
