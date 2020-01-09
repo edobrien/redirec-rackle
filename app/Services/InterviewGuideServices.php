@@ -8,6 +8,7 @@ Interview guide services class to hold the related action logics
 namespace App\Services;
 
 use App\InterviewGuide;
+use App\InterviewGuideSection;
 use Yajra\Datatables\Datatables;
 
 class InterviewGuideServices{
@@ -55,6 +56,7 @@ class InterviewGuideServices{
             
             $guide->title = $datas->title;
             $guide->description = $datas->description;
+            $guide->section_id = $datas->section_id;
             $guide->ordering = $datas->ordering;
 
             if($datas->is_active == InterviewGuide::FLAG_YES){
@@ -82,11 +84,25 @@ class InterviewGuideServices{
     }
 
     public function getActiveGuides(){
-        return InterviewGuide::select('id','title','view_count')
-                    ->where('is_active', InterviewGuide::FLAG_YES)
-                    ->orderBy('ordering', 'ASC')
-			        ->get();
-
+        //Get active section
+        $sections = InterviewGuideSection::select('id','title')
+                        ->where('is_active', InterviewGuideSection::FLAG_YES)
+                        ->orderBy('title', 'ASC')
+                        ->get();
+        
+        $output = array();
+        foreach ($sections as $section) {
+            $guides = InterviewGuide::select('id','title','view_count')
+                        ->where('section_id', $section->id)
+                        ->where('is_active', InterviewGuide::FLAG_YES)
+                        ->orderBy('ordering', 'ASC')
+                        ->get();
+                        
+            if(count($guides)){
+                $output[$section->title] = $guides;
+            }
+        }
+        return $output;
     }
 
     public function saveViewCount($id){

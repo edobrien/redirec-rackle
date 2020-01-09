@@ -243,6 +243,12 @@
                                 ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
                                 <option value="">Any</option>
                         </select>
+                        <label for="location_role">Location of role</label>
+                        <select class="mb8" name="search_regions" 
+                                ng-model="search_data.search_regions"
+                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
+                                <option value="">Any</option>
+                        </select>
                         <label for="service">Service</label>
                         <select class="mb8" name="service_id" 
                                 ng-model="search_data.service_id" 
@@ -294,6 +300,9 @@
      @endif
      @if (session('location_id'))
      <input type="text" style="display:none;" name="location" id="location" value="{{ session('location_id') }}"><br>
+     @endif
+     @if (session('region_id'))
+     <input type="text" style="display:none;" name="region" id="region" value="{{ session('region_id') }}"><br>
      @endif
      @if (session('service_id'))
      <input type="text" style="display:none;" name="service" id="service" value="{{ session('service_id') }}"><br>

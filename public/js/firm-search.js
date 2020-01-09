@@ -33,6 +33,7 @@
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $scope.search_locations = response.data.locations;
+                    $scope.getActiveRegions();
                     selected = $('#location').val();
                     if(selected){
                         index = $scope.getSelectedItem($scope.search_locations, 
@@ -55,6 +56,15 @@
             }).finally(function(){
                 //$(".bg_load").hide();
             });
+        }
+
+        $scope.getActiveRegions = function(){
+            selected = $('#region').val();
+            if(selected){
+                index = $scope.getSelectedItem($scope.search_locations, 
+                                                selected);
+                $scope.search_data.search_regions = $scope.search_locations[index];
+            }
         }
 
         $scope.getActiveServices = function(){

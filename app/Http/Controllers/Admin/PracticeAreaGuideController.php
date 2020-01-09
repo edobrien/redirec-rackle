@@ -38,6 +38,10 @@ class PracticeAreaGuideController extends Controller
             $errors[] = "Title is missing";
         }
 
+        if(empty($request->section_id)){
+            $errors[] = "Section is missing";
+        }
+
         if(empty($request->description)){
             $errors[] = "Description is missing";
         }else if($request->description == ""){
