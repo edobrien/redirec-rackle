@@ -119,6 +119,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('user/update', 'UserController@updateUser');
         Route::get('user/delete/{id}', 'UserController@delete');
 
+        //Practice area sections
+        Route::get('/practice-area-sections', 'Admin\PracticeAreaSectionController@index');
+        Route::get('/practice-area-sections/list-sections', 'Admin\PracticeAreaSectionController@listSections');
+        Route::post('/practice-area-sections/add-update-section', 'Admin\PracticeAreaSectionController@addOrUpdate');
+        Route::get('/practice-area-sections/get-info/{id}', 'Admin\PracticeAreaSectionController@getInfo');
+        Route::get('/practice-area-sections/delete/{id}', 'Admin\PracticeAreaSectionController@delete');
+        Route::get('/practice-area-sections/get-active-list', 'Admin\PracticeAreaSectionController@getActiveSections');
+
         //Practice area guides
         Route::get('/practice-area-guides', 'Admin\PracticeAreaGuideController@index');
         Route::get('/practice-area-guides/list-guides', 'Admin\PracticeAreaGuideController@listGuides');
@@ -126,6 +134,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/practice-area-guides/get-info/{id}', 'Admin\PracticeAreaGuideController@getInfo');
         Route::get('/practice-area-guides/delete/{id}', 'Admin\PracticeAreaGuideController@delete');
 
+        //Interview guide section
+        Route::get('/interview-guide-sections', 'Admin\InterviewGuideSectionController@index');
+        Route::get('/interview-guide-sections/list-sections', 'Admin\InterviewGuideSectionController@listSections');
+        Route::post('/interview-guide-sections/add-update-sections', 'Admin\InterviewGuideSectionController@addOrUpdate');
+        Route::get('/interview-guide-sections/get-info/{id}', 'Admin\InterviewGuideSectionController@getInfo');
+        Route::get('/interview-guide-sections/delete/{id}', 'Admin\InterviewGuideSectionController@delete');
+        Route::get('/interview-guide-sections/get-active-list', 'Admin\InterviewGuideSectionController@getActiveSections');
+        
         //Interview guides
         Route::get('/interview-guides', 'Admin\InterviewGuideController@index');
         Route::get('/interview-guides/list-guides', 'Admin\InterviewGuideController@listGuides');

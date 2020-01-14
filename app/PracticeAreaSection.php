@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PracticeAreaGuide extends Model
+class PracticeAreaSection extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
     const STATUS_ACTIVE = "ACTIVE";
     const STATUS_IN_ACTIVE = "IN_ACTIVE";
@@ -38,7 +38,7 @@ class PracticeAreaGuide extends Model
         }
     }
 
-    public function section(){
-        return $this->belongsTo('App\PracticeAreaSection','section_id');
+    public function guide(){
+        return $this->hasMany('App\PracticeAreaGuide','section_id');
     }
 }

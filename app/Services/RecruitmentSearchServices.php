@@ -41,9 +41,16 @@ class RecruitmentSearchServices{
         else{
             if(isset($filters->search_locations)){
                 $firms->join('firm_locations','recruitment_firms.id', '=','firm_locations.firm_id')
-                    ->where('location_id', $filters->search_locations)
+                    ->where('firm_locations.location_id', $filters->search_locations)
                     ->where('firm_locations.is_active', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_locations.deleted_at');
+            }
+
+            if(isset($filters->search_regions)){
+                $firms->join('firm_recruitment_regions','recruitment_firms.id', '=','firm_recruitment_regions.firm_id')
+                    ->where('firm_recruitment_regions.location_id', $filters->search_regions)
+                    ->where('firm_recruitment_regions.is_active', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('firm_recruitment_regions.deleted_at');
             }
 
             if(isset($filters->service_id)){
@@ -198,6 +205,13 @@ class RecruitmentSearchServices{
                     ->whereNull('firm_locations.deleted_at');
             }
 
+            if(isset($filters->search_regions)){
+                $firms->join('firm_recruitment_regions','recruitment_firms.id', '=','firm_recruitment_regions.firm_id')
+                    ->where('firm_recruitment_regions.location_id', $filters->search_regions)
+                    ->where('firm_recruitment_regions.is_active', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('firm_recruitment_regions.deleted_at');
+            }
+            
             if(isset($filters->service_id)){
                 $generalists->join('firm_services','recruitment_firms.id', '=','firm_services.firm_id')
                     ->where('service_id', $filters->service_id)

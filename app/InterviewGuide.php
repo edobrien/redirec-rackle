@@ -37,4 +37,8 @@ class InterviewGuide extends Model
                 break;
         }
     }
+
+    public function section(){
+        return $this->belongsTo('App\InterviewGuideSection','section_id');
+    }
 }

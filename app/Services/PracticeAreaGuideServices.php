@@ -8,6 +8,7 @@ Practice area guide services class to hold the related action logics
 namespace App\Services;
 
 use App\PracticeAreaGuide;
+use App\PracticeAreaSection;
 use Yajra\Datatables\Datatables;
 
 class PracticeAreaGuideServices{
@@ -54,6 +55,7 @@ class PracticeAreaGuideServices{
             }
             
             $guide->title = $datas->title;
+            $guide->section_id = $datas->section_id;
             $guide->description = $datas->description;
             $guide->ordering = $datas->ordering;
 
@@ -82,11 +84,25 @@ class PracticeAreaGuideServices{
     }
 
     public function getActiveGuides(){
-        return PracticeAreaGuide::select('id','title','view_count')
-                    ->where('is_active', PracticeAreaGuide::FLAG_YES)
-                    ->orderBy('ordering', 'ASC')
-			        ->get();
-
+        //Get active section
+        $sections = PracticeAreaSection::select('id','title')
+                        ->where('is_active', PracticeAreaSection::FLAG_YES)
+                        ->orderBy('title', 'ASC')
+                        ->get();
+        
+        $output = array();
+        foreach ($sections as $section) {
+            $guides = PracticeAreaGuide::select('id','title','view_count')
+                        ->where('section_id', $section->id)
+                        ->where('is_active', PracticeAreaGuide::FLAG_YES)
+                        ->orderBy('ordering', 'ASC')
+                        ->get();
+                        
+            if(count($guides)){
+                $output[$section->title] = $guides;
+            }            
+        }
+        return $output;
     }
 
     public function saveViewCount($id){
