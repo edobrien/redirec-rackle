@@ -115,30 +115,30 @@
                                                     </a>
                                                 </li>
                                                 <li class="dropdown-submenu list-style">
-                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-guides') || Request::is('interview-guides')) ? 'text-blue' : 'text-muted' }}">Guides</a>
+                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-guides') || Request::is('interview-guides')) ? 'active' : 'text-muted' }}">Guides</a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li>
-                                                            <a class="dropdown-item text-muted {{ Request::is('practice-area-guides') ? 'active' : '' }}" href="{{ url('/practice-area-guides') }}">
+                                                            <a class="dropdown-item {{ Request::is('practice-area-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-guides') }}">
                                                                 Practice area guides
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a class="dropdown-item text-muted {{ Request::is('interview-guides') ? 'active' : '' }}" href="{{ url('/interview-guides') }}"> 
+                                                            <a class="dropdown-item {{ Request::is('interview-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guides') }}"> 
                                                                 Interview guides
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="dropdown-submenu list-style">
-                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-guides') || Request::is('interview-guides')) ? 'text-blue' : 'text-muted' }}">Sections</a>
+                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-guides') || Request::is('interview-guides')) ? 'active' : 'text-muted' }}">Sections</a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li>
-                                                            <a class="dropdown-item text-muted {{ Request::is('practice-area-guides') ? 'active' : '' }}" href="{{ url('/practice-area-guides') }}">
+                                                            <a class="dropdown-item {{ Request::is('practice-area-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-guides') }}">
                                                                 Practice area guides
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a class="dropdown-item text-muted {{ Request::is('interview-guides') ? 'active' : '' }}" href="{{ url('/interview-guides') }}"> 
+                                                            <a class="dropdown-item {{ Request::is('interview-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guides') }}"> 
                                                                 Interview guides
                                                             </a>
                                                         </li>

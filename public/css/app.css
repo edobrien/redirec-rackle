@@ -893,6 +893,7 @@ input:-webkit-autofill:active {
 }
 .dropdown-submenu {
     position:relative;
+    cursor: pointer;
 }
 .dropdown-submenu>.dropdown-menu {
     top: 0;
