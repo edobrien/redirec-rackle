@@ -130,16 +130,16 @@
                                                     </ul>
                                                 </li>
                                                 <li class="dropdown-submenu list-style">
-                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-guides') || Request::is('interview-guides')) ? 'active' : 'text-muted' }}">Sections</a>
+                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-sections') || Request::is('interview-guide-sections')) ? 'active' : 'text-muted' }}">Sections</a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li>
-                                                            <a class="dropdown-item {{ Request::is('practice-area-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-guides') }}">
-                                                                Practice area guides
+                                                            <a class="dropdown-item {{ Request::is('practice-area-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-sections') }}">
+                                                                Practice area sections
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a class="dropdown-item {{ Request::is('interview-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guides') }}"> 
-                                                                Interview guides
+                                                            <a class="dropdown-item {{ Request::is('interview-guide-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guide-sections') }}"> 
+                                                                Interview sections
                                                             </a>
                                                         </li>
                                                     </ul>
