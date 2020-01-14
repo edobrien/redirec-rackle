@@ -55,6 +55,16 @@
                                     <label class="mb-0">Title</label>
                                     <input type="text" class="form-text" ng-model="form_data.title" required>
                                 </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                    <label class="mb-0">Section</label>
+                                    <select class="form-control" 
+                                            ng-model="form_data.section_id" >
+                                            <option ng-repeat="section in interview_sections"
+                                                    ng-value="section.id">
+                                            <% section.title %>
+                                            </option>
+                                    </select>
+                                </div>
                                 <div class="form-group form-animate-text col-md-12">
                                     <label class="mb-0">Description</label><br>
                                     <textarea ng-model="form_data.description" name="description" 
@@ -116,6 +126,7 @@
     app.controller('InterviewGuideController', function ($scope, $http, $compile) {
 
         $scope.addInterviewGuide = function(){
+            $scope.getActiveInterviewSection();
             $scope.form_data = $scope.modalErrors  = null;
             $("#interview-guide-modal").modal('show');
             CKEDITOR.instances["description"].setData('');
@@ -145,6 +156,7 @@
         }
 
         $scope.editGuide = function(guide_id){
+            $scope.getActiveInterviewSection();
             $(".bg_load").show();
             $scope.modalErrors = null;
             var url = 'interview-guides/get-info/' + guide_id;
@@ -194,6 +206,25 @@
             });
         }
         
+        $scope.getActiveInterviewSection = function(){
+            $(".bg_load").show();
+            var url = 'interview-guide-sections/get-active-list';
+            $http.get(url).then(function (response) {
+                if (response.data.status == 'SUCCESS') {
+                    $scope.interview_sections = response.data.interview_sections;
+                }else{
+                    var errors = [];
+                    $.each(response.data.errors, function (key, value) {
+                        errors.push(value);
+                    });
+                    $scope.errors = errors;
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                }
+            }).finally(function(){
+                $(".bg_load").hide();
+            })
+        }
+
         $scope.hideMessage = function(){
             if($scope.modalErrors){
                 delete $scope.modalErrors;
