@@ -1,4 +1,14 @@
 @extends('layouts.app')
+<style>
+    .some-pdf-container { width: 100%; height: 100%; }
+</style>
+@push('scripts')
+<style src="css/viewer.css"></style>
+<script src="js/pdf.js"></script>
+<script src="js/dist/angular-pdfjs-viewer.js"></script>
+
+<script src="js/pdf.worker.js"></script>
+@endpush
 @section('content')
 <div ng-cloak ng-controller="ReportController">
     <div class="row">
@@ -40,18 +50,16 @@
     @endif
     <!-- confirm modal begins -->
     <div id="confirm-mail" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog  modal-lg">
             <div class="modal-content rounded-0">
             <div class="modal-header">
                 <h4 class="modal-title font-weight-bold">Report Request</h4>
             </div>
             <div class="modal-body pt-4">
-                <p><% messageToshow %></p>
+                
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
-                <button type="button" ng-click="sendReportEmail()" 
-                        class="btn btn-success br-40 px-4" >Send Request</button>
             </div>
             </div>
         </div>
@@ -73,10 +81,15 @@
     </div>
 </div>
 <!--  confirm modal ends -->
+@endsection
+@push('scripts')
+<style src="css/viewer.css"></style>
+<script src="js/pdf.js"></script>
+<script src="js/dist/angular-pdfjs-viewer.js"></script>
+<script src="js/pdf_app.js"></script>
+<script src="js/pdf.worker.js"></script>
 <script type="text/javascript">
-    
     app.controller('ReportController', function ($scope, $http, $compile) {
-
         $scope.confirmEmail = function(report_id, report_name){
             $scope.modalErrors = $scope.messageToshow = null;
             $scope.form_data = {};
@@ -129,4 +142,4 @@
         $scope.init();
     });
 </script>
-@endsection
+@endpush

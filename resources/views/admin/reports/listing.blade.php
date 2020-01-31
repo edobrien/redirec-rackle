@@ -45,7 +45,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-row">
-                                <div ng-if="modalErrors" class="alert alert-danger">
+                                <div ng-if="modalErrors" class="alert alert-danger col-md-12">
                                     <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
                                     <ul class="pl-2 mb-0">
                                         <li ng-repeat="error in modalErrors"><% error %></li>
@@ -55,13 +55,17 @@
                                     <label class="mb-0">Report Name</label>
                                     <input type="text" class="form-text" ng-model="form_data.name" required>
                                 </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                    <label class="mb-0">Ordering</label>
+                                    <input type="number" class="form-text" ng-model="form_data.ordering" required>
+                                </div>
                                 <div class="form-group form-animate-text col-md-12">
                                     <label class="mb-0">Description</label><br>
                                     <textarea rows="4" ng-model="form_data.description" required style="width: 100%" class="form-text"></textarea>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
-                                    <label class="mb-0">Ordering</label>
-                                    <input type="number" class="form-text" ng-model="form_data.ordering" required>
+                                    <label class="mb-0">Report Document</label>
+                                    <input type="file" accept="application/pdf"  ng-model="form_data.report_doc" id="report_doc" file-model="report_doc"><br>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>
@@ -74,6 +78,10 @@
                                         <span class="switch-label" data-on="Yes" data-off="No"></span>
                                         <span class="switch-handle"></span>
                                     </label>
+                                </div>
+                                <div class="form-group form-animate-text col-md-2" ng-if="form_data.report_doc">
+                                    <input class="btn btn-sm bg-blue br-40 w-100" ng-click="getReport(form_data.report_doc)" 
+                                        type="button" value="Download">
                                 </div>
                             </div>
                         </div>
@@ -111,32 +119,54 @@
 @push('scripts')
 <script type="text/javascript">
 
-    app.controller('ReportController', function ($scope, $http, $compile) {
+    app.controller('ReportController', function ($scope, $http, $compile, fileUpload) {
 
         $scope.addReport = function(){
-            $scope.form_data = $scope.modalErrors  = null;
+            $scope.form_data = {};
+            $('#report_doc').val('');
+            $scope.modalErrors  = null;
             $("#report-modal").modal('show');
         }
 
+        $scope.getReport = function(report_doc){
+            if(report_doc){
+                window.open(window.location.origin+'<?php echo \App\SiteConstants::APP_ASSET_REPORT; ?>'+report_doc, '_blank');
+            } else {
+                alert("File not found");
+            }
+        }
+
         $scope.reportSubmit = function(form_data){
-            $(".bg_load").show();
+            var errors = [];
             $scope.modalErrors = null;
-            var url = 'reports/add-update-report';
-            $http.post(url,form_data).then(function (response) {
-                if (response.data.status == 'SUCCESS') {
+            form_data.report_doc = $scope.report_doc;
+            if(form_data.report_doc == null || form_data.report_doc == undefined){
+                errors.push('Please select report document');
+            }
+            if(errors != ''){
+                $scope.modalErrors = errors;
+                $('html, body').animate({scrollTop : 0},400);
+            }else{
+                $(".bg_load").show();
+                fileUpload.uploadFileToUrl(form_data, 'reports/add-update-report').then(function(response) {
+                    if (response.data.status == 'SUCCESS') {
+                        $scope.form_data = {};
+                        $('#report_doc').val('');
+                        $scope.successMessage = response.data.message;
+                        $scope.listReports();
+                    } else {
+                        var errors = [];
+                        $.each(response.data.errors, function (key, value) {
+                            errors.push(value);
+                        });
+                        $scope.modalErrors = errors;
+                        $('html, body').animate({scrollTop : 0},400);
+                    }
+                }).finally(function() {
                     $("#report-modal").modal('hide');
-                    $scope.successMessage = response.data.message;
-                    $scope.listReports();
-                } else {
-                    var errors = [];
-                    $.each(response.data.errors, function (key, value) {
-                        errors.push(value);
-                    });
-                    $scope.modalErrors = errors;
-                }
-            }).finally(function(){
-                $(".bg_load").hide();
-            });
+                    $(".bg_load").hide();
+                });
+            }
         }
 
         $scope.editReport = function(report_id){
@@ -199,6 +229,7 @@
 
         $scope.init = function () {
             $scope.form_data = {};
+            $scope.form_data.report_doc = {};
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.listReports();
         }
@@ -232,5 +263,40 @@
         };
         $scope.init();
     });
+
+    app.service('fileUpload', ['$http', function ($http) {
+        this.uploadFileToUrl = function(form_data, url){
+            var fd = new FormData();
+            for (var key in form_data) {
+                fd.append(key, form_data[key]);
+            }
+            return $http.post(url,fd ,{
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            });
+        }
+    }]);
+
+    app.directive('fileModel', ['$parse', function ($parse) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                var model = $parse(attrs.fileModel);
+                var modelSetter = model.assign;
+                element.bind('change', function(){
+                    scope.$apply(function(){
+                        // file size kb to mb convert 
+                        var fileSize=((element[0].files[0].size)/1048576);
+                        if(parseInt(fileSize)>4){
+                            alert("File size too large"); 
+                            $('#report_doc').val('');
+                        }else{
+                            modelSetter(scope, element[0].files[0]);    
+                        }
+                    });
+                });
+            }
+        };
+    }]);
 </script>
 @endpush

@@ -12,6 +12,7 @@ use App\User;
 use App\Mail\NotifyReport;
 use Yajra\Datatables\Datatables;
 use Mail;
+use App\SiteConstants;
 
 class ReportServices{
 
@@ -47,22 +48,34 @@ class ReportServices{
     }
 
 
-    public function addOrUpdate($datas) {
+    public function addOrUpdate($data) {
         try {
 
-            if (isset($datas->id)) {
-                $report = Report::find($datas->id);
+            if (isset($data->id)) {
+                $report = Report::find($data->id);
             } else {
                 $report = new Report;
             }
             
-            $report->name = $datas->name;
-            $report->description = $datas->description;
-            if(isset($datas->ordering)){
-                $report->ordering = $datas->ordering;
-            }            
+            $report->name = $data->name;
+            $report->description = $data->description;
+            if(isset($data->ordering)){
+                $report->ordering = $data->ordering;
+            }
 
-            if($datas->is_active == Report::FLAG_YES){
+            $report_doc = $data->report_doc;
+            if($report_doc !="" && $report_doc != 'undefined'){
+                $file_name = time() . '.' . $report_doc->getClientOriginalExtension();
+                $report_doc->move(public_path(). SiteConstants::APP_ASSET_REPORT, $file_name);
+
+                //Delete old file if exists
+                if($data->id && !empty($report->report_doc)){
+                    unlink(public_path().SiteConstants::APP_ASSET_REPORT. $report->report_doc);
+                }
+                $report->report_doc = $file_name;
+            }
+
+            if($data->is_active == Report::FLAG_YES){
                 $report->is_active = Report::FLAG_YES;
             }else{
                 $report->is_active = Report::FLAG_NO;
