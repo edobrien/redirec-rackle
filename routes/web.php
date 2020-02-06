@@ -19,9 +19,6 @@ Route::get('practice-guide-details', function () {
     return view('practice-area-guide.practice-guide-details');
 });
 
-Route::get('/pdfviewer', function () {
-    return view('pdfviewer');
-});
 // Route::get('interview-guides-details', function () {
 //     return view('interview-guides.interview-guides-details');
 // });

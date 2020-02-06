@@ -100,7 +100,7 @@ class ReportServices{
     }
 
     public function getActiveReports(){
-        return Report::select('id','name','description')
+        return Report::select('id','name','description','report_doc')
                     ->where('is_active', Report::FLAG_YES)
                     ->orderBy('ordering', 'ASC')
 			        ->get();
