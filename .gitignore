@@ -3,6 +3,7 @@
 /public/storage
 public/img/firm-logo/*
 public/imports/*
+public/asset/report-docs/*
 storage/app/*
 storage/app/public/*
 storage/framework/cache/*

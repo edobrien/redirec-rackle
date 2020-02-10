@@ -24,7 +24,7 @@
             </div>
                 <div class="row bg-dynamic">
                     @foreach ($reports as $report)
-                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail({{$report->id}}, '{{$report->name}}')">
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail('{{$report->report_doc}}')">
                         <div class="card rounded-0 border-0 w-100 cursor-pointer">
                             <div class="card-body pb-0">
                                 <h6 class="card-title text-white">{{$report->name}}</h6>
@@ -40,18 +40,18 @@
     @endif
     <!-- confirm modal begins -->
     <div id="confirm-mail" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content rounded-0">
             <div class="modal-header">
                 <h4 class="modal-title font-weight-bold">Report Request</h4>
             </div>
             <div class="modal-body pt-4">
-                <p><% messageToshow %></p>
+                <iframe id="pdfView" src="" width="700" height="500">
+                    <p>Your browser does not support iframes.</p>
+                </iframe>
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
-                <button type="button" ng-click="sendReportEmail()" 
-                        class="btn btn-success br-40 px-4" >Send Request</button>
             </div>
             </div>
         </div>
@@ -73,17 +73,15 @@
     </div>
 </div>
 <!--  confirm modal ends -->
+@endsection
+@push('scripts')
+<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
-    
     app.controller('ReportController', function ($scope, $http, $compile) {
-
-        $scope.confirmEmail = function(report_id, report_name){
+        $scope.confirmEmail = function(report_name){
             $scope.modalErrors = $scope.messageToshow = null;
-            $scope.form_data = {};
-            $scope.form_data.report_id = report_id;
-            $scope.form_data.report_name = report_name;
             $('#confirm-mail').modal('show');
-            $scope.messageToshow = "If you would like to receive "+report_name+", please click the Send Request button below.";
+            document.getElementById("pdfView").src = window.location.origin+"/asset/report-docs/"+report_name+"#view=FitH&toolbar=0";
         }
 
         $scope.sendReportEmail = function(report_name){
@@ -129,4 +127,4 @@
         $scope.init();
     });
 </script>
-@endsection
+@endpush
