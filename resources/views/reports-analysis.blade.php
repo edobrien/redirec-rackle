@@ -44,6 +44,7 @@
             <div class="modal-content rounded-0">
             <div class="modal-header">
                 <h4 class="modal-title font-weight-bold">Report Request</h4>
+                <a class="close" data-dismiss="modal">×</a>
             </div>
             <div class="modal-body pt-4">
                 <iframe id="pdfView" src="" width="700" height="500">
@@ -81,7 +82,8 @@
         $scope.confirmEmail = function(report_name){
             $scope.modalErrors = $scope.messageToshow = null;
             $('#confirm-mail').modal('show');
-            document.getElementById("pdfView").src = window.location.origin+"/asset/report-docs/"+report_name+"#view=FitH&toolbar=0";
+            var url = window.location.origin+"/asset/report-docs/"+report_name+"#view=FitH&toolbar=0&page=1";
+            document.getElementById("pdfView").src = url;
         }
 
         $scope.sendReportEmail = function(report_name){
@@ -126,5 +128,6 @@
 
         $scope.init();
     });
+
 </script>
 @endpush
