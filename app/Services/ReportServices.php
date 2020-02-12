@@ -91,6 +91,9 @@ class ReportServices{
 
     public function delete($id){
         try{
+            //Delete file and delete record
+            $report = Report::find($id);
+            unlink(public_path().SiteConstants::APP_ASSET_REPORT. $report->report_doc);
         	Report::destroy($id); 
         	return true;        
         }catch(\Exception $e){
