@@ -199,6 +199,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/location/can-delete-location/{id}', 'Admin\LocationController@canDeleteLocation');
         Route::get('/location/delete/{id}', 'Admin\LocationController@delete');
 
+        //Hire-Locations
+        Route::get('/hire-location', 'Admin\HireLocationController@index');
+        Route::get('/hire-location/list-locations', 'Admin\HireLocationController@listLocations');
+        Route::post('/hire-location/add-update-location', 'Admin\HireLocationController@addOrUpdate');
+        Route::get('/hire-location/get-info/{id}', 'Admin\HireLocationController@getInfo');
+        Route::get('/hire-location/can-delete-location/{id}', 'Admin\HireLocationController@canDeleteLocation');
+        Route::get('/hire-location/delete/{id}', 'Admin\HireLocationController@delete');
+
         //Service
         Route::get('/service', 'Admin\ServiceController@index');
         Route::get('/service/list-services', 'Admin\ServiceController@listServices');
