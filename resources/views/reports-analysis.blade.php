@@ -128,6 +128,14 @@
 
         $scope.init();
     });
-
+    
+</script>
+<script>
+//clear iframe source once modal closes
+$(document).ready(function(){
+    $('#confirm-mail').on('hide.bs.modal', function () {
+        document.getElementById("pdfView").src = '';
+    });
+});
 </script>
 @endpush
