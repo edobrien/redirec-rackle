@@ -181,6 +181,9 @@
                                             <a class="dropdown-item text-muted {{ Request::is('location') ? 'active' : '' }}" href="{{ url('/location') }}">
                                             Location
                                             </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('hire-location') ? 'active' : '' }}" href="{{ url('/hire-location') }}">
+                                            Hire Location
+                                            </a>
                                             <a class="dropdown-item text-muted {{ Request::is('service') ? 'active' : '' }}" href="{{ url('/service') }}">
                                             Service
                                             </a>

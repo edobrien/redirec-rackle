@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Region extends Model
+class HireLocation extends Model
 {
     use SoftDeletes;
 
@@ -38,11 +38,15 @@ class Region extends Model
         }
     }
 
-    public function location(){
-        return $this->hasMany('App\Location','region_id');
+    public function region(){
+        return $this->belongsto('App\Region','region_id');
     }
-    
-    public function hireLocation(){
-        return $this->hasMany('App\HireLocation','region_id');
-    }
+
+    // public function firmLocation(){
+    //     return $this->hasMany('App\FirmLocation','location_id');
+    // }
+
+    // public function firmRecruitmentRegion(){
+    //     return $this->hasMany('App\FirmRecruitmentRegion','location_id');
+    // }
 }
