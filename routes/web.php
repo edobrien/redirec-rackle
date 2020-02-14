@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     //Search page data
     Route::get('/recruitment-firm/get-active-firms', 'Admin\Firm\RecruitmentFirmController@getActiveFirms');
     Route::get('/location/get-active-locations', 'Admin\LocationController@getActiveLocations');
+    Route::get('/hire-location/get-active-locations', 'Admin\HireLocationController@getActiveLocations');
     Route::get('/service/get-active-services', 'Admin\ServiceController@getActiveServices');
     Route::get('/recruitment-type/get-active-types', 'Admin\RecruitmentTypeController@getActiveRecruitmentTypes');
     Route::get('/practice-area/get-active-areas', 'Admin\PracticeAreaController@getActivePracticeAreas');
@@ -262,6 +263,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/firm-location/add-update-firm-location', 'Admin\Firm\FirmLocationController@addOrUpdate');
         Route::get('/firm-location/get-info/{id}', 'Admin\Firm\FirmLocationController@getInfo');
         Route::get('/firm-locations/delete/{id}', 'Admin\Firm\FirmLocationController@delete');
+
+        Route::get('/firm-hire-location', 'Admin\Firm\FirmHireLocationController@index');
+        Route::get('/firm-hire-location/list-firm-locations', 'Admin\Firm\FirmHireLocationController@listFirmlocations');
+        Route::post('/firm-hire-location/add-update-firm-location', 'Admin\Firm\FirmHireLocationController@addOrUpdate');
+        Route::get('/firm-hire-location/get-info/{id}', 'Admin\Firm\FirmHireLocationController@getInfo');
+        Route::get('/firm-hire-locations/delete/{id}', 'Admin\Firm\FirmHireLocationController@delete');
 
         //Firm service mapping
         Route::get('/firm-service', 'Admin\Firm\FirmServiceController@index');

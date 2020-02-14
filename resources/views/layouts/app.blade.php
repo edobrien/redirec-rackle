@@ -204,6 +204,9 @@
                                             <a class="dropdown-item text-muted {{ Request::is('firm-location') ? 'active' : '' }}" href="{{ url('/firm-location') }}">
                                             Firm Location
                                             </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('firm-hire-location') ? 'active' : '' }}" href="{{ url('/firm-hire-location') }}">
+                                            Firm Hire Location
+                                            </a>
                                             <a class="dropdown-item text-muted {{ Request::is('firm-service') ? 'active' : '' }}" href="{{ url('/firm-service') }}">
                                             Firm Service
                                             </a>
