@@ -166,10 +166,10 @@
         
         $scope.getActiveLocations = function(){
             $(".bg_load").show();
-            var url = 'hire-location/get-active-locations';
+            var url = 'hire-location/get-active-hire-locations';
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
-                    $scope.locations = response.data.locations;
+                    $scope.locations = response.data.hire_locations;
                 } else {
                     alert("Error in fetching active locations");
                 }

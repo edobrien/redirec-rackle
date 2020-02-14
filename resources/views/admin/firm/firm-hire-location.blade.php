@@ -59,7 +59,7 @@
                                     <label class="mb-0">Hire Location Name</label>
                                     
                                     <select class="form-control" ng-model="form_data.hire_location_id" 
-                                            ng-options="hire_location.id as hire_location.name for hire_location in locations" required>
+                                            ng-options="hire_location.id as hire_location.name for hire_location in hire_locations" required>
                                         <option value="">Select</option>
                                     </select>
                                 </div>                                
@@ -123,7 +123,7 @@
         $scope.firmLocationSubmit = function(form_data){
             $(".bg_load").show();
             $scope.modalErrors = null;
-            var url = 'firm-hire-location/add-update-firm-location';
+            var url = '/firm-hire-location/add-update-firm-location';
             $http.post(url,form_data).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $("#firm-location-modal").modal('hide');
@@ -147,7 +147,7 @@
             $scope.modalErrors = null;
             $scope.getActiveLocations();
             $scope.getActiveFirms();
-            var url = 'firm-hire-location/get-info/' + firm_location_id;
+            var url = '/firm-hire-location/get-info/' + firm_location_id;
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $("#firm-location-modal").modal('show');
@@ -167,10 +167,11 @@
         
         $scope.getActiveLocations = function(){
             $(".bg_load").show();
-            var url = 'hire-location/get-active-locations';
+            var url = '/hire-location/get-active-hire-locations';
+            console.log(url);
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
-                    $scope.locations = response.data.locations;
+                    $scope.hire_locations = response.data.hire_locations;
                 } else {
                     alert("Error in fetching active locations");
                 }
@@ -181,7 +182,7 @@
 
         $scope.getActiveFirms = function(){
             $(".bg_load").show();
-            var url = 'recruitment-firm/get-active-firms';
+            var url = '/recruitment-firm/get-active-firms';
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $scope.firms = response.data.firms;
@@ -202,7 +203,7 @@
 
         $scope.deleteFirmLocationConfirmed = function(){
             $(".bg_load").show();
-            var url = 'firm-hire-locations/delete/'+$scope.reference_to_delete;
+            var url = '/firm-hire-locations/delete/'+$scope.reference_to_delete;
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $scope.successMessage = response.data.message;
@@ -245,7 +246,7 @@
                 serverSide: true,
                 destroy: true,
                 ajax: {
-                    url: 'firm-hire-location/list-firm-locations',
+                    url: '/firm-hire-location/list-firm-locations',
                 },
                 columns: [
                     {data: 'firm.name', name:'firm.name'},

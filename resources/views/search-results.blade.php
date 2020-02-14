@@ -102,7 +102,7 @@
                 </div>
                 <h5 class="font-weight-bold py-2">Regions recruited for</h5>
                 <ul class="text-grey pl-4">
-                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.location.region.name %> - <% region.location.name %></li>
+                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.hire_location.region.name %> - <% region.hire_location.name %></li>
                 </ul>
                 <h5 class="font-weight-bold pb-2">Contact Details</h5>
                 <div class="row">

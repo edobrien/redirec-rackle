@@ -82,9 +82,9 @@
         $scope.getActiveRegions = function(){
             selected = $('#region').val();
             if(selected){
-                index = $scope.getSelectedItem($scope.hire_locations, 
+                index = $scope.getSelectedItem($scope.search_locations, 
                                                 selected);
-                $scope.search_data.search_regions = $scope.hire_locations[index];
+                $scope.search_data.search_regions = $scope.search_locations[index];
             }
         }
 
@@ -204,7 +204,7 @@
             //$scope.search_location = [];
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.getActiveFirms();
-            //$scope.getActiveLocations();
+            $scope.getActiveLocations();
             $scope.getActiveHireLocations();
             $scope.getActiveServices();
             $scope.getActiveRoleTypes();
