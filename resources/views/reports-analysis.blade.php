@@ -46,10 +46,7 @@
                 <h4 class="modal-title font-weight-bold">Report Request</h4>
                 <a class="close" data-dismiss="modal">×</a>
             </div>
-            <div class="modal-body pt-4">
-                <iframe id="pdfView" src="" width="700" height="500">
-                    <p>Your browser does not support iframes.</p>
-                </iframe>
+            <div class="modal-body pt-4" id="modalBody">
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
@@ -82,8 +79,8 @@
         $scope.confirmEmail = function(report_name){
             $scope.modalErrors = $scope.messageToshow = null;
             $('#confirm-mail').modal('show');
-            var url = window.location.origin+"/asset/report-docs/"+report_name+"#view=FitH&toolbar=0&page=1";
-            document.getElementById("pdfView").src = url;
+            var url = "/asset/report-docs/"+report_name+"#view=FitH&toolbar=0&page=1";
+            //document.getElementById("pdfView").src = url;
         }
 
         $scope.sendReportEmail = function(report_name){

@@ -26,30 +26,52 @@
             });
         }
 
-        $scope.getActiveLocations = function(){
+        // $scope.getActiveLocations = function(){
+        //     //$(".bg_load").show();
+        //     $scope.search_locations = {};
+        //     var url = '/location/get-active-locations';
+        //     $http.get(url).then(function (response) {
+        //         if (response.data.status == 'SUCCESS') {
+        //             $scope.search_locations = response.data.locations;
+        //             $scope.getActiveRegions();
+        //             selected = $('#location').val();
+        //             if(selected){
+        //                 index = $scope.getSelectedItem($scope.search_locations, 
+        //                                                 selected);
+        //                 $scope.search_data.search_location = $scope.search_locations[index];
+        //             }
+        //             // if(selected){
+        //             //     var multi_select = selected.split(",");
+        //             //     var selectedArray = [];
+        //             //     for (i=0; i< multi_select.length; i++) {
+        //             //         index = $scope.getSelectedItem($scope.search_locations, 
+        //             //             multi_select[i]);
+        //             //             selectedArray.push($scope.search_locations[index]);
+        //             //     }
+        //             //     $scope.search_location = selectedArray;                
+        //             // }
+        //         } else {
+        //             alert("Error in fetching active locations");
+        //         }
+        //     }).finally(function(){
+        //         //$(".bg_load").hide();
+        //     });
+        // }
+
+        $scope.getActiveHireLocations = function(){
             //$(".bg_load").show();
-            $scope.search_locations = {};
-            var url = '/location/get-active-locations';
+            $scope.hire_locations = {};
+            var url = '/hire-location/get-active-hire-locations';
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
-                    $scope.search_locations = response.data.locations;
+                    $scope.hire_locations = response.data.hire_locations;
                     $scope.getActiveRegions();
-                    selected = $('#location').val();
+                    selected = $('#hire_location').val();
                     if(selected){
-                        index = $scope.getSelectedItem($scope.search_locations, 
+                        index = $scope.getSelectedItem($scope.hire_locations, 
                                                         selected);
-                        $scope.search_data.search_location = $scope.search_locations[index];
+                        $scope.search_data.hire_location = $scope.hire_locations[index];
                     }
-                    // if(selected){
-                    //     var multi_select = selected.split(",");
-                    //     var selectedArray = [];
-                    //     for (i=0; i< multi_select.length; i++) {
-                    //         index = $scope.getSelectedItem($scope.search_locations, 
-                    //             multi_select[i]);
-                    //             selectedArray.push($scope.search_locations[index]);
-                    //     }
-                    //     $scope.search_location = selectedArray;                
-                    // }
                 } else {
                     alert("Error in fetching active locations");
                 }
@@ -61,9 +83,9 @@
         $scope.getActiveRegions = function(){
             selected = $('#region').val();
             if(selected){
-                index = $scope.getSelectedItem($scope.search_locations, 
+                index = $scope.getSelectedItem($scope.hire_locations, 
                                                 selected);
-                $scope.search_data.search_regions = $scope.search_locations[index];
+                $scope.search_data.search_regions = $scope.hire_locations[index];
             }
         }
 
@@ -183,7 +205,8 @@
             //$scope.search_location = [];
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.getActiveFirms();
-            $scope.getActiveLocations();
+            //$scope.getActiveLocations();
+            $scope.getActiveHireLocations();
             $scope.getActiveServices();
             $scope.getActiveRoleTypes();
             $scope.getActivePracticeAreas();

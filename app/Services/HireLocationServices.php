@@ -93,7 +93,7 @@ class HireLocationServices{
         }
     }
 
-    public function getActiveLocations(){
+    public function getActiveHireLocations(){
         return HireLocation::with('region')
 			        ->where('is_active', HireLocation::FLAG_YES)
 			        ->get();

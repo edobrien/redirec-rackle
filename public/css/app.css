@@ -919,3 +919,11 @@ input:-webkit-autofill:active {
     top: 2px;
     color: #4c22a1 !important;
 }
+
+.overlay {
+    position:absolute;
+    width:84%;
+    height:100%;
+    top:6px;
+    background:transparent;
+}

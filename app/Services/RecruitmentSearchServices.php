@@ -46,6 +46,13 @@ class RecruitmentSearchServices{
                     ->whereNull('firm_locations.deleted_at');
             }
 
+            if(isset($filters->hire_locations)){
+                $firms->join('firm_hire_locations','recruitment_firms.id', '=','firm_hire_locations.firm_id')
+                    ->where('firm_hire_locations.location_id', $filters->hire_locations)
+                    ->where('firm_hire_locations.is_active', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('firm_hire_locations.deleted_at');
+            }
+
             if(isset($filters->search_regions)){
                 $firms->join('firm_recruitment_regions','recruitment_firms.id', '=','firm_recruitment_regions.firm_id')
                     ->where('firm_recruitment_regions.location_id', $filters->search_regions)

@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     //Search page data
     Route::get('/recruitment-firm/get-active-firms', 'Admin\Firm\RecruitmentFirmController@getActiveFirms');
     Route::get('/location/get-active-locations', 'Admin\LocationController@getActiveLocations');
+    Route::get('/hire-location/get-active-hire-locations', 'Admin\HireLocationController@getActiveHireLocations');
     Route::get('/service/get-active-services', 'Admin\ServiceController@getActiveServices');
     Route::get('/recruitment-type/get-active-types', 'Admin\RecruitmentTypeController@getActiveRecruitmentTypes');
     Route::get('/practice-area/get-active-areas', 'Admin\PracticeAreaController@getActivePracticeAreas');
