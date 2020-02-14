@@ -46,7 +46,7 @@ class HireLocation extends Model
          return $this->hasMany('App\FirmHireLocation','hire_location_id');
      }
 
-    //   public function firmRecruitmentRegion(){
-    //       return $this->hasMany('App\FirmRecruitmentRegion','location_id');
-    //   }
+       public function firmRecruitmentRegion(){
+           return $this->hasMany('App\FirmRecruitmentRegion','hire_location_id');
+       }
 }

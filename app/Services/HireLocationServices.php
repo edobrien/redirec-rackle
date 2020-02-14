@@ -72,8 +72,7 @@ class HireLocationServices{
     }
 
     public function canDeleteLocation($id){
-        $mappings =FirmRecruitmentRegion::where('hire_location_id', $id)->count() +
-        FirmHireLocation::where('hire_location_id', $id)->count();
+        $mappings =FirmRecruitmentRegion::where('hire_location_id', $id)->count();
         if($mappings){
             $error = "Sorry. There are  {$mappings} mappings available.";
             $rv = array("status" => "FAILED", "error" => $error );

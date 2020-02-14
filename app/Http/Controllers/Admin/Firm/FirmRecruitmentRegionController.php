@@ -36,8 +36,8 @@ class FirmRecruitmentRegionController extends Controller
             $errors[] = "Firm is missing";
         }
 
-        if(empty($request->location_id)){
-            $errors[] = "Location is missing";
+        if(empty($request->hire_location_id)){
+            $errors[] = "hire Location is missing";
         }
 
         //Check mapping already exists

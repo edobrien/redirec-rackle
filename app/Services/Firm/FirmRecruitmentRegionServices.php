@@ -14,7 +14,7 @@ class FirmRecruitmentRegionServices{
 
 	public function listFirmRegions(){
 
-		$locations = FirmRecruitmentRegion::with('firm','location')->select('firm_recruitment_regions.*');
+		$locations = FirmRecruitmentRegion::with('firm','hireLocation')->select('firm_recruitment_regions.*');
 
 		return Datatables::of($locations)
         			->addColumn('status_text',function($locations){
@@ -54,7 +54,7 @@ class FirmRecruitmentRegionServices{
             }
             
             $firm_region->firm_id = $datas->firm_id;
-            $firm_region->location_id = $datas->location_id;
+            $firm_region->hire_location_id = $datas->hire_location_id;
 
             if($datas->is_active == FirmRecruitmentRegion::FLAG_YES){
                 $firm_region->is_active = FirmRecruitmentRegion::FLAG_YES;
@@ -84,12 +84,12 @@ class FirmRecruitmentRegionServices{
 
         if(isset($data)){
             $mapping = FirmRecruitmentRegion::where('firm_id', $data->firm_id)
-                            ->where('location_id', $data->location_id)
+                            ->where('hire_location_id', $data->hire_location_id)
                             ->where('id', '!=', $data->id)
                             ->count();
         }else{
             $mapping = FirmRecruitmentRegion::where('firm_id', $data->firm_id)
-                            ->where('location_id', $data->location_id)
+                            ->where('hire_location_id', $data->hire_location_id)
                             ->count();
         }
 
@@ -101,7 +101,7 @@ class FirmRecruitmentRegionServices{
     }
 
     public function getActiveRecruitmentRegions(){
-        return FirmRecruitmentRegion::with('firm','location')
+        return FirmRecruitmentRegion::with('firm','hireLocation')
 			        ->where('is_active', FirmLocation::FLAG_YES)
 			        ->get();
 

@@ -28,7 +28,7 @@
             <thead>
                 <tr>
                     <th>Firm Name</th>
-                    <th>Location Name</th>
+                    <th>Hire Location Name</th>
                     <th>IsActive</th>
                     <th>Action</th>
                 </tr>
@@ -56,8 +56,8 @@
                                             ng-options="firm.id as firm.name for firm in firms" required></select>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
-                                    <label class="mb-0">Location Name</label>
-                                    <select class="form-control" ng-model="form_data.location_id" 
+                                    <label class="mb-0">Hire Location Name</label>
+                                    <select class="form-control" ng-model="form_data.hire_location_id" 
                                             ng-options="location.id as location.name for location in locations" required>
                                         <option value="">Select</option>
                                     </select>
@@ -166,7 +166,7 @@
         
         $scope.getActiveLocations = function(){
             $(".bg_load").show();
-            var url = 'location/get-active-locations';
+            var url = 'hire-location/get-active-locations';
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $scope.locations = response.data.locations;
@@ -248,7 +248,7 @@
                 },
                 columns: [
                     {data: 'firm.name', name:'firm.name'},
-                    {data: 'location.name',name: 'location.name'},
+                    {data: 'hire_location.name',name: 'hireLocation.name'},
                     {data: 'status_text', searchable: false, orderable: false},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],
