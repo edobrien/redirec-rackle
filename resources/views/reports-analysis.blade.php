@@ -41,7 +41,7 @@
     <!-- confirm modal begins -->
     <div id="confirm-mail" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content rounded-0">
+            <div class="modal-content rounded-0" style="height:600px;">
             <div class="modal-header">
                 <h4 class="modal-title font-weight-bold">Report Request</h4>
                 <a class="close" data-dismiss="modal">×</a>
@@ -76,11 +76,13 @@
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
     app.controller('ReportController', function ($scope, $http, $compile) {
-        $scope.confirmEmail = function(report_name){
+        $scope.confirmEmail = function(report_url){
             $scope.modalErrors = $scope.messageToshow = null;
             $('#confirm-mail').modal('show');
-            var url = "/asset/report-docs/"+report_name+"#view=FitH&toolbar=0&page=1";
-            //document.getElementById("pdfView").src = url;
+            $('#modalBody').empty();
+            $('#modalBody').html(report_url);
+            $('iframe').css('height', '100%');
+            $('iframe').css('width', '100%');
         }
 
         $scope.sendReportEmail = function(report_name){
@@ -126,13 +128,5 @@
         $scope.init();
     });
     
-</script>
-<script>
-//clear iframe source once modal closes
-$(document).ready(function(){
-    $('#confirm-mail').on('hide.bs.modal', function () {
-        document.getElementById("pdfView").src = '';
-    });
-});
 </script>
 @endpush
