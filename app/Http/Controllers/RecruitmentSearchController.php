@@ -21,7 +21,6 @@ class RecruitmentSearchController extends Controller
         if(isset($request->firm_id)){
             $request->session()->put('firm_id',$request->firm_id);
             $request->session()->forget('location_id');
-            $request->session()->forget('region_id');
             $request->session()->forget('hire_loc_id');
             $request->session()->forget('service_id');
             $request->session()->forget('recruitment_id');
@@ -42,12 +41,6 @@ class RecruitmentSearchController extends Controller
                 $request->session()->put('hire_loc_id',$request->hire_locations);
             }else{
                 $request->session()->forget('hire_loc_id');
-            }
-
-            if(isset($request->search_regions)){
-                $request->session()->put('region_id',$request->search_regions);
-            }else{
-                $request->session()->forget('region_id');
             }
     
             if(isset($request->service_id)){

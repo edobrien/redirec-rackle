@@ -281,21 +281,15 @@
                     </div>
                     <div class="find-recruiters">
                         <p class="text-dark mb-1">Find Recruiters</p>
-                        <!-- <label for="location">Location</label>
+                        <label for="location">Location of recruiter</label>
                         <select class="mb8" name="search_locations" 
                                 ng-model="search_data.search_location"
                                 ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
                                 <option value="">Any</option>
-                        </select> -->
-                        <label for="location_role">Hire Locations</label>
+                        </select>
+                        <label for="location_role">Location of hire</label>
                         <select class="mb8" name="hire_locations" 
                                 ng-model="search_data.hire_location"
-                                ng-options="loc as loc.name group by loc.region.name for loc in hire_locations track by loc.id">
-                                <option value="">Any</option>
-                        </select>
-                        <label for="location_role">Location of role</label>
-                        <select class="mb8" name="search_regions" 
-                                ng-model="search_data.search_regions"
                                 ng-options="loc as loc.name group by loc.region.name for loc in hire_locations track by loc.id">
                                 <option value="">Any</option>
                         </select>
@@ -348,14 +342,11 @@
      @if (session('firm_id'))
      <input type="text" style="display:none;" name="firm" id="firm" value="{{ session('firm_id') }}"><br>
      @endif
-     <!-- @if (session('location_id'))
+     @if (session('location_id'))
      <input type="text" style="display:none;" name="location" id="location" value="{{ session('location_id') }}"><br>
-     @endif -->
+     @endif
      @if (session('hire_loc_id'))
      <input type="text" style="display:none;" name="hire_location" id="hire_location" value="{{ session('hire_loc_id') }}"><br>
-     @endif
-     @if (session('region_id'))
-     <input type="text" style="display:none;" name="region" id="region" value="{{ session('region_id') }}"><br>
      @endif
      @if (session('service_id'))
      <input type="text" style="display:none;" name="service" id="service" value="{{ session('service_id') }}"><br>
