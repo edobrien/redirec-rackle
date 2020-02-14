@@ -10,6 +10,7 @@ namespace App\Services\Firm;
 use App\RecruitmentFirm;
 use App\FirmPracticeArea;
 use App\FirmLocation;
+use App\FirmHireLocation;
 use App\FirmService;
 use App\FirmRecruitmentType;
 use App\FirmSector;
@@ -128,6 +129,7 @@ class RecruitmentServices{
 
         $mappings = FirmPracticeArea::where('firm_id', $id)->count() +
                     FirmLocation::where('firm_id', $id)->count() +
+                    FirmHireLocation::where('firm_id', $id)->count() +
                     FirmService::where('firm_id', $id)->count() +
                     FirmRecruitmentType::where('firm_id', $id)->count() +
                     FirmRecruitmentRegion::where('firm_id', $id)->count() +

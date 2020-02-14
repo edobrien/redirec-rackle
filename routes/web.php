@@ -264,6 +264,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/firm-location/get-info/{id}', 'Admin\Firm\FirmLocationController@getInfo');
         Route::get('/firm-locations/delete/{id}', 'Admin\Firm\FirmLocationController@delete');
 
+        Route::get('/firm-hire-location', 'Admin\Firm\FirmHireLocationController@index');
+        Route::get('/firm-hire-location/list-firm-locations', 'Admin\Firm\FirmHireLocationController@listFirmlocations');
+        Route::post('/firm-hire-location/add-update-firm-location', 'Admin\Firm\FirmHireLocationController@addOrUpdate');
+        Route::get('/firm-hire-location/get-info/{id}', 'Admin\Firm\FirmHireLocationController@getInfo');
+        Route::get('/firm-hire-locations/delete/{id}', 'Admin\Firm\FirmHireLocationController@delete');
+
         //Firm service mapping
         Route::get('/firm-service', 'Admin\Firm\FirmServiceController@index');
         Route::get('/firm-service/list-firm-services', 'Admin\Firm\FirmServiceController@listFirmServices');

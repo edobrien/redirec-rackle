@@ -7,7 +7,7 @@ HireLocation services class to hold the related action logics
 
 namespace App\Services;
 
-use App\FirmLocation;
+use App\FirmHireLocation;
 use App\FirmRecruitmentRegion;
 use App\HireLocation;
 use Yajra\Datatables\Datatables;
@@ -72,8 +72,8 @@ class HireLocationServices{
     }
 
     public function canDeleteLocation($id){
-        $mappings = FirmRecruitmentRegion::where('location_id', $id)->count() + 
-                        FirmLocation::where('location_id', $id)->count();
+        $mappings =FirmRecruitmentRegion::where('hire_location_id', $id)->count() +
+        FirmHireLocation::where('hire_location_id', $id)->count();
         if($mappings){
             $error = "Sorry. There are  {$mappings} mappings available.";
             $rv = array("status" => "FAILED", "error" => $error );
