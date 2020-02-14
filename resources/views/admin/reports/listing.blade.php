@@ -64,8 +64,8 @@
                                     <textarea rows="4" ng-model="form_data.description" required style="width: 100%" class="form-text"></textarea>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
-                                    <label class="mb-0">Report Document</label>
-                                    <input type="file" accept="application/pdf"  ng-model="form_data.report_doc" id="report_doc" file-model="report_doc"><br>
+                                    <label class="mb-0">Report Url</label>
+                                    <input type="text" class="form-text"  ng-model="form_data.report_doc" required><br>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>
@@ -78,11 +78,7 @@
                                         <span class="switch-label" data-on="Yes" data-off="No"></span>
                                         <span class="switch-handle"></span>
                                     </label>
-                                </div>
-                                <div class="form-group form-animate-text col-md-2" ng-if="form_data.report_doc">
-                                    <input class="btn btn-sm bg-blue br-40 w-100" ng-click="getReport(form_data.report_doc)" 
-                                        type="button" value="Download">
-                                </div>
+                                </div>                              
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -119,39 +115,27 @@
 @push('scripts')
 <script type="text/javascript">
 
-    app.controller('ReportController', function ($scope, $http, $compile, fileUpload) {
+    app.controller('ReportController', function ($scope, $http, $compile) {
 
         $scope.addReport = function(){
             $scope.form_data = {};
-            $('#report_doc').val('');
             $scope.modalErrors  = null;
             $("#report-modal").modal('show');
-        }
-
-        $scope.getReport = function(report_doc){
-            if(report_doc){
-                window.open(window.location.origin+'<?php echo \App\SiteConstants::APP_ASSET_REPORT; ?>'+report_doc, '_blank');
-            } else {
-                alert("File not found");
-            }
         }
 
         $scope.reportSubmit = function(form_data){
             var errors = [];
             $scope.modalErrors = null;
-            form_data.report_doc = $scope.report_doc;
-            if(form_data.report_doc == null || form_data.report_doc == undefined){
-                errors.push('Please select report document');
-            }
+           
             if(errors != ''){
                 $scope.modalErrors = errors;
                 $('html, body').animate({scrollTop : 0},400);
             }else{
                 $(".bg_load").show();
-                fileUpload.uploadFileToUrl(form_data, 'reports/add-update-report').then(function(response) {
+                var url = 'reports/add-update-report';
+                $http.post(url,form_data).then(function(response) {
                     if (response.data.status == 'SUCCESS') {
                         $scope.form_data = {};
-                        $('#report_doc').val('');
                         $scope.successMessage = response.data.message;
                         $scope.listReports();
                     } else {
@@ -263,40 +247,6 @@
         };
         $scope.init();
     });
-
-    app.service('fileUpload', ['$http', function ($http) {
-        this.uploadFileToUrl = function(form_data, url){
-            var fd = new FormData();
-            for (var key in form_data) {
-                fd.append(key, form_data[key]);
-            }
-            return $http.post(url,fd ,{
-                transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
-            });
-        }
-    }]);
-
-    app.directive('fileModel', ['$parse', function ($parse) {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                var model = $parse(attrs.fileModel);
-                var modelSetter = model.assign;
-                element.bind('change', function(){
-                    scope.$apply(function(){
-                        // file size kb to mb convert 
-                        var fileSize=((element[0].files[0].size)/1048576);
-                        if(parseInt(fileSize)>4){
-                            alert("File size too large"); 
-                            $('#report_doc').val('');
-                        }else{
-                            modelSetter(scope, element[0].files[0]);    
-                        }
-                    });
-                });
-            }
-        };
-    }]);
+ 
 </script>
 @endpush

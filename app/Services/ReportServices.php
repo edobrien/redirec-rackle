@@ -61,20 +61,9 @@ class ReportServices{
             $report->description = $data->description;
             if(isset($data->ordering)){
                 $report->ordering = $data->ordering;
-            }
-
-            $report_doc = $data->report_doc;
-            if($report_doc !="" && $report_doc != 'undefined'){
-                $file_name = time() . '.' . $report_doc->getClientOriginalExtension();
-                $report_doc->move(public_path(). SiteConstants::APP_ASSET_REPORT, $file_name);
-
-                //Delete old file if exists
-                if($data->id && !empty($report->report_doc)){
-                    unlink(public_path().SiteConstants::APP_ASSET_REPORT. $report->report_doc);
-                }
-                $report->report_doc = $file_name;
-            }
-
+            }            
+            $report->report_doc = $data->report_doc;
+            
             if($data->is_active == Report::FLAG_YES){
                 $report->is_active = Report::FLAG_YES;
             }else{
@@ -93,7 +82,6 @@ class ReportServices{
         try{
             //Delete file and delete record
             $report = Report::find($id);
-            unlink(public_path().SiteConstants::APP_ASSET_REPORT. $report->report_doc);
         	Report::destroy($id); 
         	return true;        
         }catch(\Exception $e){
