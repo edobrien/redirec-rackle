@@ -87,7 +87,7 @@ class PracticeAreaGuideServices{
         //Get active section
         $sections = PracticeAreaSection::select('id','title')
                         ->where('is_active', PracticeAreaSection::FLAG_YES)
-                        ->orderBy('title', 'ASC')
+                        ->orderBy('ordering', 'ASC')
                         ->get();
         
         $output = array();

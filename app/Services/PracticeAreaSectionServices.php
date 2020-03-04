@@ -15,7 +15,7 @@ class PracticeAreaSectionServices{
 
 	public function listSections(){
 
-        $sections = PracticeAreaSection::select(['id','title','is_active'])
+        $sections = PracticeAreaSection::select(['id','title','is_active','ordering'])
                     ->orderBy('title', 'ASC');
 
 		return Datatables::of($sections)
@@ -55,6 +55,10 @@ class PracticeAreaSectionServices{
             
             $section->title = $datas->title;
 
+            if(isset($datas->ordering)){
+                $section->ordering = $datas->ordering;
+            }
+            
             if($datas->is_active == PracticeAreaSection::FLAG_YES){
                 $section->is_active = PracticeAreaSection::FLAG_YES;
             }else{
@@ -91,7 +95,7 @@ class PracticeAreaSectionServices{
     public function getActiveSections(){
         return PracticeAreaSection::select('id','title')
                     ->where('is_active', PracticeAreaSection::FLAG_YES)
-                    ->orderBy('title', 'ASC')
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

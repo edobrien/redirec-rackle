@@ -87,7 +87,7 @@ class InterviewGuideServices{
         //Get active section
         $sections = InterviewGuideSection::select('id','title')
                         ->where('is_active', InterviewGuideSection::FLAG_YES)
-                        ->orderBy('title', 'ASC')
+                        ->orderBy('ordering', 'ASC')
                         ->get();
         
         $output = array();

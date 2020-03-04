@@ -15,7 +15,7 @@ class PracticeAreaServices{
 
 	public function listPracticeAreas(){
 
-		$areas = PracticeArea::select('id','name','type','is_active');
+		$areas = PracticeArea::select('id','name','type','is_active','ordering');
 
 		return Datatables::of($areas)
         			->addColumn('status_text',function($areas){
@@ -58,6 +58,11 @@ class PracticeAreaServices{
             $area->name = $datas->name;
             $area->type = $datas->type;
 
+            if(isset($datas->ordering)){
+                $area->ordering = $datas->ordering;
+
+            }
+
             if($datas->is_active == PracticeArea::FLAG_YES){
                 $area->is_active = PracticeArea::FLAG_YES;
             }else{
@@ -95,7 +100,8 @@ class PracticeAreaServices{
 
     public function getActivePracticeAreas(){
         return PracticeArea::select('id','name', 'type')
-			        ->where('is_active', PracticeArea::FLAG_YES)
+                    ->where('is_active', PracticeArea::FLAG_YES)
+                    ->orderby('ordering','ASC')
 			        ->get();
 
     }

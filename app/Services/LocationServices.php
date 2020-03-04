@@ -56,7 +56,9 @@ class LocationServices{
             
             $location->name = $datas->name;
             $location->region_id = $datas->region_id;
-
+            // if(isset($datas->ordering)){
+            //     $location->ordering = $datas->ordering;
+            // }
             if($datas->is_active == Location::FLAG_YES){
                 $location->is_active = Location::FLAG_YES;
             }else{
@@ -95,8 +97,8 @@ class LocationServices{
 
     public function getActiveLocations(){
         return Location::with('region')
-			        ->where('is_active', Location::FLAG_YES)
-			        ->get();
+                    ->where('is_active', Location::FLAG_YES)
+                    ->orderBy('name')->get();
 
     }
 

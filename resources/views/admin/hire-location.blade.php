@@ -60,6 +60,10 @@
                                     <option value="">Select</option>
                                     </select>
                                 </div>
+                                {{-- <div class="form-group form-animate-text col-md-6">
+                                        <label class="mb-0">Ordering</label>
+                                        <input type="number" class="form-text" ng-model="form_data.ordering" required>
+                                    </div> --}}
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>
                                     <label class="switch">
@@ -72,6 +76,7 @@
                                         <span class="switch-handle"></span>
                                     </label>
                                 </div>
+
                             </div>
                         </div>
                         <div class="modal-footer">

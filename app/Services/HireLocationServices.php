@@ -56,7 +56,9 @@ class HireLocationServices{
             
             $location->name = $datas->name;
             $location->region_id = $datas->region_id;
-
+            // if(isset($datas->ordering)){
+            //     $location->ordering = $datas->ordering;
+            // }
             if($datas->is_active == HireLocation::FLAG_YES){
                 $location->is_active = HireLocation::FLAG_YES;
             }else{
@@ -94,8 +96,9 @@ class HireLocationServices{
 
     public function getActiveHireLocations(){
         return HireLocation::with('region')
-			        ->where('is_active', HireLocation::FLAG_YES)
-			        ->get();
+                    ->where('is_active', HireLocation::FLAG_YES)
+                    ->orderBy('name')
+                    ->get();
 
     }
 

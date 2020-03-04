@@ -43,7 +43,6 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content rounded-0" style="height:600px;">
             <div class="modal-header">
-                <h4 class="modal-title font-weight-bold">Report Request</h4>
                 <a class="close" data-dismiss="modal">×</a>
             </div>
             <div class="modal-body pt-4" id="modalBody">
