@@ -45,6 +45,7 @@
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">×</a>
             </div>
+            <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
             <div class="modal-body pt-4" id="modalBody">
             </div>
             <div class="modal-footer border-0">
