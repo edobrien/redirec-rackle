@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddOrderingToPracticeAreaSectionsTable extends Migration
+class AddOrderingToRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddOrderingToPracticeAreaSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('practice_area_sections', function (Blueprint $table) {
+        Schema::table('regions', function (Blueprint $table) {
             $table->integer('ordering')->nullable()->default(0)->after('is_active');
 
         });
@@ -26,7 +26,7 @@ class AddOrderingToPracticeAreaSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('practice_area_sections', function (Blueprint $table) {
+        Schema::table('regions', function (Blueprint $table) {
             $table->dropColumn('ordering');
 
         });

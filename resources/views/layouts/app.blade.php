@@ -284,13 +284,13 @@
                         <label for="location">Location of recruiter</label>
                         <select class="mb8" name="search_locations" 
                                 ng-model="search_data.search_location"
-                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
+                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations  | orderBy:['loc.name','region.ordering']  track by loc.id ">
                                 <option value="">Any</option>
                         </select>
                         <label for="location_role">Location of hire</label>
                         <select class="mb8" name="hire_locations" 
                                 ng-model="search_data.hire_location"
-                                ng-options="loc as loc.name group by loc.region.name for loc in hire_locations track by loc.id">
+                                ng-options="loc as loc.name group by loc.region.name for loc in hire_locations  | orderBy:['loc.name','region.ordering'] track by loc.id" >
                                 <option value="">Any</option>
                         </select>
                         <label for="service">Service</label>

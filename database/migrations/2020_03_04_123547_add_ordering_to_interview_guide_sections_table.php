@@ -27,8 +27,7 @@ class AddOrderingToInterviewGuideSectionsTable extends Migration
     public function down()
     {
         Schema::table('interview_guide_sections', function (Blueprint $table) {
-            $table->integer('ordering')->nullable()->default(0)->after('is_active');
-
+            $table->dropColumn('ordering');
         });
     }
 }

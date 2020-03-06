@@ -15,7 +15,7 @@ class RegionServices{
 
 	public function listRegions(){
 
-		$regions = Region::select(['id','name','is_active']);
+		$regions = Region::select(['id','name','is_active','ordering']);
 
 		return Datatables::of($regions)
         			->addColumn('status_text',function($regions){
@@ -61,6 +61,10 @@ class RegionServices{
                 $report->is_active = Region::FLAG_NO;
             }
 
+            if(isset($datas->ordering)){
+                $report->ordering = $datas->ordering;
+            }
+
             $report->save();           
             return true;
         } catch (\Exception $e) {
@@ -92,7 +96,8 @@ class RegionServices{
 
     public function getActiveRegions(){
         return Region::select('id','name')
-			        ->where('is_active', Region::FLAG_YES)
+                    ->where('is_active', Region::FLAG_YES)
+                    ->orderBy('ordering','ASC')
 			        ->get();
 
     }
