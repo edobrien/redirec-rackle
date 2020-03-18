@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12 pt-4 pb-3 px-4">
             <h4 class="font-weight-bold text-blue pb-2">Reports / Analysis</h4>
-            <p class="text-grey">Below a list of reports that we have compiled. To request a report please click on the relevant card. If you have any thoughts / requests for us to compile any other reports /analysis that would be helpful, please do let us know through our feeback page.</p>
+            <p class="text-grey">Below a list of reports that we have compiled. Please click on the relevant card to see the report. If you would like a copy emailed to you, please email <a href="mailto:edobrien@recdirec.com">edobrien@recdirec.com</a> naming the report that you would like to be sent. If you have any thoughts / requests for us to compile any other reports /analysis that would be helpful, please do let us know through our feeback page.</p>
         </div>
     </div>
     @if(count($reports))
