@@ -41,7 +41,7 @@
     <!-- confirm modal begins -->
     <div id="confirm-mail" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content rounded-0" style="height:600px;">
+            <div class="modal-content rounded-0" style="height:600px;width:1000px">
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">×</a>
             </div>
