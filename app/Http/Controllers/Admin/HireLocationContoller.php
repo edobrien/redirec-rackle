@@ -67,8 +67,8 @@ class HireLocationController extends Controller
         return response()->json($rv);
     }
 
-    public function getActiveLocations(){
-        $locations = $this->locationServices->getActiveLocations();
+    public function getActiveHireLocations(){
+        $locations = $this->locationServices->getActiveHireLocations();
         $rv = array('status' =>  "SUCCESS", "locations" => $locations );
         return response()->json($rv);
     }
