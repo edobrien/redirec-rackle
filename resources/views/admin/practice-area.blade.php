@@ -30,6 +30,7 @@
                     <th>Practice Area Name</th>
                     <th>Type</th>
                     <th>IsActive</th>
+                    <th>Ordering</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -65,6 +66,10 @@
                                         <option value="<?php echo \App\PracticeArea::AREA_ALL; ?>">
                                         <?php echo \App\PracticeArea::AREA_ALL_TEXT; ?></option>
                                     </select>
+                                </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                        <label class="mb-0">Ordering</label>
+                                        <input type="number" class="form-text" ng-model="form_data.ordering" required>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>
@@ -231,6 +236,7 @@
                     {data: 'name', name:'name'},
                     {data: 'type_text',data: 'type_text'},
                     {data: 'status_text', searchable: false, orderable: false},
+                    {data: 'ordering',data: 'ordering'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],
                 createdRow: function (row, data, dataIndex) {

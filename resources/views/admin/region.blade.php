@@ -29,6 +29,7 @@
                 <tr>
                     <th>Region Name</th>
                     <th>IsActive</th>
+                    <th>Ordering</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -53,6 +54,10 @@
                                     <label class="mb-0">Name</label>
                                     <input type="text" class="form-text" ng-model="form_data.name" required>
                                 </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                        <label class="mb-0">Ordering</label>
+                                        <input type="number" class="form-text" ng-model="form_data.ordering" required>
+                                </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>
                                     <label class="switch">
@@ -65,6 +70,7 @@
                                         <span class="switch-handle"></span>
                                     </label>
                                 </div>
+                               
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -214,6 +220,7 @@
                 columns: [
                     {data: 'name'},
                     {data: 'status_text', searchable: false, orderable: false},
+                    {data:'ordering'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],
                 createdRow: function (row, data, dataIndex) {

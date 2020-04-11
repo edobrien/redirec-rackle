@@ -1,22 +1,22 @@
 <?php
 /**
 
-Location services class to hold the related action logics
+HireLocation services class to hold the related action logics
 
 */
 
 namespace App\Services;
 
-use App\FirmLocation;
+use App\FirmHireLocation;
 use App\FirmRecruitmentRegion;
-use App\Location;
+use App\HireLocation;
 use Yajra\Datatables\Datatables;
 
-class LocationServices{
+class HireLocationServices{
 
 	public function listLocations(){
 
-		$locations = Location::with('region');
+		$locations = HireLocation::with('region');
 
 		return Datatables::of($locations)
         			->addColumn('status_text',function($locations){
@@ -38,8 +38,8 @@ class LocationServices{
 	}
 
 	public function getInfo($id) {
-
-        $location = Location::find($id);
+    
+        $location = HireLocation::find($id);
         $rv = array("status" => "SUCCESS", "location" => $location);
         return response()->json($rv);
     }
@@ -49,9 +49,9 @@ class LocationServices{
         try {
 
             if (isset($datas->id)) {
-                $location = Location::find($datas->id);
+                $location = HireLocation::find($datas->id);
             } else {
-                $location = new Location;
+                $location = new HireLocation;
             }
             
             $location->name = $datas->name;
@@ -59,10 +59,10 @@ class LocationServices{
             // if(isset($datas->ordering)){
             //     $location->ordering = $datas->ordering;
             // }
-            if($datas->is_active == Location::FLAG_YES){
-                $location->is_active = Location::FLAG_YES;
+            if($datas->is_active == HireLocation::FLAG_YES){
+                $location->is_active = HireLocation::FLAG_YES;
             }else{
-                $location->is_active = Location::FLAG_NO;
+                $location->is_active = HireLocation::FLAG_NO;
             }
 
             $location->save();           
@@ -74,8 +74,7 @@ class LocationServices{
     }
 
     public function canDeleteLocation($id){
-        $mappings = FirmRecruitmentRegion::where('location_id', $id)->count() + 
-                        FirmLocation::where('location_id', $id)->count();
+        $mappings =FirmRecruitmentRegion::where('hire_location_id', $id)->count();
         if($mappings){
             $error = "Sorry. There are  {$mappings} mappings available.";
             $rv = array("status" => "FAILED", "error" => $error );
@@ -87,7 +86,7 @@ class LocationServices{
 
     public function delete($id){
         try{
-        	Location::destroy($id); 
+        	HireLocation::destroy($id); 
         	return true;
         }catch(\Exception $e){
             \Illuminate\Support\Facades\Log::error($e->getMessage());
@@ -95,10 +94,11 @@ class LocationServices{
         }
     }
 
-    public function getActiveLocations(){
-        return Location::with('region')
-                    ->where('is_active', Location::FLAG_YES)
-                    ->orderBy('name')->get();
+    public function getActiveHireLocations(){
+        return HireLocation::with('region')
+                    ->where('is_active', HireLocation::FLAG_YES)
+                    ->orderBy('name')
+                    ->get();
 
     }
 

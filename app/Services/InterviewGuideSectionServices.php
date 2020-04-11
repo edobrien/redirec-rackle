@@ -15,7 +15,7 @@ class InterviewGuideSectionServices{
 
 	public function listSections(){
 
-        $sections = InterviewGuideSection::select(['id','title','is_active'])
+        $sections = InterviewGuideSection::select(['id','title','is_active','ordering'])
                     ->orderBy('title', 'ASC');
 
 		return Datatables::of($sections)
@@ -61,6 +61,10 @@ class InterviewGuideSectionServices{
                 $section->is_active = InterviewGuideSection::FLAG_NO;
             }
 
+            if(isset($datas->ordering)){
+                $section->ordering = $datas->ordering;
+            }
+
             $section->save();           
             return true;
         } catch (\Exception $e) {
@@ -91,7 +95,7 @@ class InterviewGuideSectionServices{
     public function getActiveSections(){
         return InterviewGuideSection::select('id','title')
                     ->where('is_active', InterviewGuideSection::FLAG_YES)
-                    ->orderBy('title', 'ASC')
+                    ->orderBy('ordering', 'ASC')
 			        ->get();
 
     }

@@ -4,51 +4,51 @@ namespace App\Http\Controllers\Admin\Firm;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Firm\FirmRecruitmentRegionServices;
+use App\Services\Firm\FirmHireLocationServices;
 
-class FirmRecruitmentRegionController extends Controller
+class FirmHireLocationController extends Controller
 {
-    private $firmRecruitmentServices;
+    private $firmHireLocationsServices;
 
     public function __construct(){
-        $this->firmRecruitmentServices = new FirmRecruitmentRegionServices;
+        $this->firmHireLocationsServices = new FirmHireLocationServices;
     }
 
     public function index(){
-        return view('admin.firm.firm-recruitment-region');
+        return view('admin.firm.firm-hire-location');
     }
 
     public function getInfo($id)
     {
-        return $this->firmRecruitmentServices->getInfo($id);
+        return $this->firmHireLocationsServices->getInfo($id);
     }
 
-    public function listFirmRegions() {
+    public function listFirmlocations() {
         
-        return $this->firmRecruitmentServices->listFirmRegions();
+        return $this->firmHireLocationsServices->listFirmlocations();
     }
 
     public function addOrUpdate(Request $request){
 
         $errors = array();
 
-        if(empty($request->firm_id)){
+         if(empty($request->firm_id)){
             $errors[] = "Firm is missing";
-        }
+         }
 
-        if(empty($request->hire_location_id)){
-            $errors[] = "hire Location is missing";
-        }
+         if(empty($request->hire_location_id)){
+             $errors[] = "Location is missing";
+         }
 
         //Check mapping already exists
-        if($this->firmRecruitmentServices->mappingExists($request)){
+        if($this->firmHireLocationsServices->mappingExists($request)){
             $errors[] = "Mapping already exists";
         }
 
         if(!empty($errors)){
             $rv = array("status" => "FAILED", "errors" => $errors);
         }else{
-            if($this->firmRecruitmentServices->addOrUpdate($request)){
+            if($this->firmHireLocationsServices->addOrUpdate($request)){
                 $rv = array("status" => "SUCCESS", "message" =>"Mapping added/updated successfully");
             }else{               
                 $errors[] = "Please contact administrator";
@@ -59,7 +59,7 @@ class FirmRecruitmentRegionController extends Controller
     }
 
     public function delete($id){
-        if($this->firmRecruitmentServices->delete($id)){
+        if($this->firmHireLocationsServices->delete($id)){
             $rv = array("status" => "SUCCESS", "message" => "Mapping deleted successfully");
         }else{
             $errors[] = "Please contact administrator";

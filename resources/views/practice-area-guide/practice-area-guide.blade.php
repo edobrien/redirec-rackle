@@ -12,7 +12,7 @@
                             <h6 class="text-dark mb-0 font-weight-bold">{{$key}}</h6>
                         </div>
                         @foreach ($section as $guide)
-                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-self-stretch">
+                        <div class="col-lg-3 col-md-6 mb-3 d-flex align-self-stretch">
                             <div class="card rounded-0 border-0 w-100 cursor-pointer" 
                                 ng-click="getDetailPage({{$guide->id}})">
                                 <div class="card-body pb-0">

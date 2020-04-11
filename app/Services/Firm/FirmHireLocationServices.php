@@ -7,27 +7,28 @@ Firm Location services class to hold the related action logics
 
 namespace App\Services\Firm;
 
-use App\FirmRecruitmentRegion;
+use App\FirmHireLocation;
 use Yajra\Datatables\Datatables;
 
-class FirmRecruitmentRegionServices{
+class FirmHireLocationServices{
 
-	public function listFirmRegions(){
+	public function listFirmlocations(){
 
-		$locations = FirmRecruitmentRegion::with('firm','hireLocation')->select('firm_recruitment_regions.*');
-
+        $locations = FirmHireLocation::with('firm','hireLocation')->select('firm_hire_locations.*');
+        
+        //print_r($locations);exit;
 		return Datatables::of($locations)
         			->addColumn('status_text',function($locations){
                             
                 		return $locations->getDescriptionText($locations->is_active);
         			})
                 	->addColumn('action', function ($locations) {
-	                    $buttons = ' <button ng-click="editFirmRegion(' . $locations->id . ')" '
+	                    $buttons = ' <button ng-click="editFirmLocation(' . $locations->id . ')" '
 	                            . 'title="Edit" alt="Edit" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-blue pl-0">'
 	                            . '<i class="icon ion-md-create"></i></button>';
 
-	                    $buttons .= ' <button ng-click="deleteFirmRegion(' . $locations->id . ')" '
+	                    $buttons .= ' <button ng-click="deleteFirmLocation(' . $locations->id . ')" '
 	                            . 'title="Delete" alt="Delete" '
 	                            . 'class="btn btn-circle btn-mn bg-transparent fs-18 text-danger pl-0">'
 	                            . '<i class="icon ion-md-close"></i></button>';
@@ -38,8 +39,9 @@ class FirmRecruitmentRegionServices{
 
 	public function getInfo($id) {
 
-        $firm_region = FirmRecruitmentRegion::find($id);
-        $rv = array("status" => "SUCCESS", "firm_region" => $firm_region);
+        $firm_location = FirmHireLocation::find($id);
+        
+        $rv = array("status" => "SUCCESS", "firm_location" => $firm_location);
         return response()->json($rv);
     }
 
@@ -47,22 +49,22 @@ class FirmRecruitmentRegionServices{
     public function addOrUpdate($datas) {
         try {
 
-            if (isset($datas->id)) {
-                $firm_region = FirmRecruitmentRegion::find($datas->id);
+            if(isset($datas->id)) {
+                $firm_location = FirmHireLocation::find($datas->id);
             } else {
-                $firm_region = new FirmRecruitmentRegion;
+                $firm_location = new FirmHireLocation;
             }
             
-            $firm_region->firm_id = $datas->firm_id;
-            $firm_region->hire_location_id = $datas->hire_location_id;
+            $firm_location->firm_id = $datas->firm_id;
+            $firm_location->hire_location_id = $datas->hire_location_id;
 
-            if($datas->is_active == FirmRecruitmentRegion::FLAG_YES){
-                $firm_region->is_active = FirmRecruitmentRegion::FLAG_YES;
+            if($datas->is_active == FirmHireLocation::FLAG_YES){
+                $firm_location->is_active = FirmHireLocation::FLAG_YES;
             }else{
-                $firm_region->is_active = FirmRecruitmentRegion::FLAG_NO;
+                $firm_location->is_active = FirmHireLocation::FLAG_NO;
             }
 
-            $firm_region->save();           
+            $firm_location->save();           
             return true;
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error($e->getMessage());
@@ -72,7 +74,7 @@ class FirmRecruitmentRegionServices{
 
     public function delete($id){
         try{
-        	FirmRecruitmentRegion::destroy($id); 
+        	FirmHireLocation::destroy($id); 
         	return true;
         }catch(\Exception $e){
             \Illuminate\Support\Facades\Log::error($e->getMessage());
@@ -83,12 +85,12 @@ class FirmRecruitmentRegionServices{
     public function mappingExists($data){
 
         if(isset($data)){
-            $mapping = FirmRecruitmentRegion::where('firm_id', $data->firm_id)
+            $mapping = FirmHireLocation::where('firm_id', $data->firm_id)
                             ->where('hire_location_id', $data->hire_location_id)
                             ->where('id', '!=', $data->id)
                             ->count();
         }else{
-            $mapping = FirmRecruitmentRegion::where('firm_id', $data->firm_id)
+            $mapping = FirmHireLocation::where('firm_id', $data->firm_id)
                             ->where('hire_location_id', $data->hire_location_id)
                             ->count();
         }
@@ -100,9 +102,9 @@ class FirmRecruitmentRegionServices{
         
     }
 
-    public function getActiveRecruitmentRegions(){
-        return FirmRecruitmentRegion::with('firm','hireLocation')
-			        ->where('is_active', FirmLocation::FLAG_YES)
+    public function getActiveLocations(){
+        return FirmHireLocation::with('firm','hireLocation')
+			        ->where('is_active', FirmHireLocation::FLAG_YES)
 			        ->get();
 
     }

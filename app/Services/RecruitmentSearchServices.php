@@ -27,17 +27,13 @@ class RecruitmentSearchServices{
                                         'recruitment_firms.is_verified',
                                         'recruitment_firms.is_specialism');
         //Search by firm name or other filters
-       
-
         
         if(isset($filters->firm_id))
         {
             $firms->where('recruitment_firms.id', $filters->firm_id)
-            ->where('recruitment_firms.is_active', RecruitmentFirm::FLAG_YES)
-            ->whereNull('recruitment_firms.deleted_at');
+                    ->where('recruitment_firms.is_active', RecruitmentFirm::FLAG_YES)
+                    ->whereNull('recruitment_firms.deleted_at');
         }
-        
-        
         else{
             if(isset($filters->search_locations)){
                 $firms->join('firm_locations','recruitment_firms.id', '=','firm_locations.firm_id')
@@ -46,9 +42,9 @@ class RecruitmentSearchServices{
                     ->whereNull('firm_locations.deleted_at');
             }
 
-            if(isset($filters->search_regions)){
+            if(isset($filters->hire_locations)){
                 $firms->join('firm_recruitment_regions','recruitment_firms.id', '=','firm_recruitment_regions.firm_id')
-                    ->where('firm_recruitment_regions.location_id', $filters->search_regions)
+                    ->where('firm_recruitment_regions.hire_location_id', $filters->hire_locations)
                     ->where('firm_recruitment_regions.is_active', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_recruitment_regions.deleted_at');
             }
@@ -180,7 +176,6 @@ class RecruitmentSearchServices{
             }
 
         }
-
         
         //  print_r($firms->distinct('recruitment_firms.*')->toSql());
         $filter_query = $firms->orderBy('general_ranking', 'ASC')
@@ -205,9 +200,9 @@ class RecruitmentSearchServices{
                     ->whereNull('firm_locations.deleted_at');
             }
 
-            if(isset($filters->search_regions)){
+            if(isset($filters->hire_locations)){
                 $firms->join('firm_recruitment_regions','recruitment_firms.id', '=','firm_recruitment_regions.firm_id')
-                    ->where('firm_recruitment_regions.location_id', $filters->search_regions)
+                    ->where('firm_recruitment_regions.hire_location_id', $filters->hire_locations)
                     ->where('firm_recruitment_regions.is_active', RecruitmentFirm::FLAG_YES)
                     ->whereNull('firm_recruitment_regions.deleted_at');
             }
@@ -272,9 +267,9 @@ class RecruitmentSearchServices{
                                     },'firmRegion' => function($q) {
                                         $q->where('is_active', RecruitmentFirm::FLAG_YES);
                                     },
-                                    'firmRegion.location' => function($q) {
+                                    'firmRegion.hireLocation' => function($q) {
                                         $q->where('is_active', RecruitmentFirm::FLAG_YES);
-                                    },'firmRegion.location.region' => function($q) {
+                                    },'firmRegion.hireLocation.region' => function($q) {
                                         $q->where('is_active', RecruitmentFirm::FLAG_YES);
                                     }])
                     ->find($id);

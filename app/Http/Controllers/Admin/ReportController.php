@@ -41,17 +41,9 @@ class ReportController extends Controller
         }
 
         if(empty($request->report_doc) || $request->report_doc == 'undefined'){
-            $errors= "Please upload report document";
-        }else {
-            $size = $request->report_doc->getSize();
-            $validator = $request->report_doc->getClientOriginalExtension();
-            if(!in_array($validator, ['pdf'])){
-                $errors = "Please upload report in pdf format";
-            }else if (round($size / 1024 / 1024, 1)>10){
-                $errors = "Please upload a smaller file (Less than 10 MB)" ;            
-            }
+            $errors= "Please add report link";
         }
-
+        
         if(!empty($errors)){
             $rv = array("status" => "FAILED", "errors" => $errors);
         }else{
