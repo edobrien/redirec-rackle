@@ -12,6 +12,7 @@ use App\User;
 use App\Mail\NotifyReport;
 use Yajra\Datatables\Datatables;
 use Mail;
+use App\SiteConstants;
 
 class ReportServices{
 
@@ -47,22 +48,23 @@ class ReportServices{
     }
 
 
-    public function addOrUpdate($datas) {
+    public function addOrUpdate($data) {
         try {
 
-            if (isset($datas->id)) {
-                $report = Report::find($datas->id);
+            if (isset($data->id)) {
+                $report = Report::find($data->id);
             } else {
                 $report = new Report;
             }
             
-            $report->name = $datas->name;
-            $report->description = $datas->description;
-            if(isset($datas->ordering)){
-                $report->ordering = $datas->ordering;
+            $report->name = $data->name;
+            $report->description = $data->description;
+            if(isset($data->ordering)){
+                $report->ordering = $data->ordering;
             }            
-
-            if($datas->is_active == Report::FLAG_YES){
+            $report->report_doc = $data->report_doc;
+            
+            if($data->is_active == Report::FLAG_YES){
                 $report->is_active = Report::FLAG_YES;
             }else{
                 $report->is_active = Report::FLAG_NO;
@@ -78,6 +80,8 @@ class ReportServices{
 
     public function delete($id){
         try{
+            //Delete file and delete record
+            $report = Report::find($id);
         	Report::destroy($id); 
         	return true;        
         }catch(\Exception $e){
@@ -87,7 +91,7 @@ class ReportServices{
     }
 
     public function getActiveReports(){
-        return Report::select('id','name','description')
+        return Report::select('id','name','description','report_doc')
                     ->where('is_active', Report::FLAG_YES)
                     ->orderBy('ordering', 'ASC')
 			        ->get();

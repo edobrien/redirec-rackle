@@ -8,7 +8,7 @@
     <meta name="csrf-token"content="{{ csrf_token() }}">
     <link rel="icon"href="../img/fav.png">
     <title>Recdirec</title>
-     
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}"rel="stylesheet">
     <link href="{{ asset('css/jquery.dataTables.min.css') }}"rel="stylesheet">
@@ -108,32 +108,70 @@
                                     <hr class="style-dashed">
                                     <div class="row py-2 w-640">
                                         <div class="col-md-4 border-right pl-4">
-                                            <a class="dropdown-item text-muted {{ Request::is('users') ? 'active' : '' }}" href="{{ url('/users') }}">
-                                            Users
-                                            </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('practice-area-guides') ? 'active' : '' }}" href="{{ url('/practice-area-guides') }}">
-                                            Practice area guides
-                                            </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('interview-guides') ? 'active' : '' }}" href="{{ url('/interview-guides') }}">
-                                            Interview guides
-                                            </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('survey') ? 'active' : '' }}" href="{{ url('/survey') }}">
-                                            Survey
-                                            </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('useful-links') ? 'active' : '' }}" href="{{ url('/useful-links') }}">
-                                            Useful links
-                                            </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('helpful-articles') ? 'active' : '' }}" href="{{ url('/helpful-articles') }}">
-                                            Helpful articles
-                                            </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('feedbacks') ? 'active' : '' }}" href="{{ url('/feedbacks') }}">
-                                            Feedback
-                                            </a>
-                                            <a class="dropdown-item text-muted {{ Request::is('reports') ? 'active' : '' }}" href="{{ url('/reports') }}">
-                                            Reports 
-                                            </a>
+                                            <ul class="list-group">
+                                                <li class="list-style">
+                                                    <a class="dropdown-item text-muted {{ Request::is('users') ? 'active' : '' }}" href="{{ url('/users') }}">
+                                                        Users
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-submenu list-style">
+                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-sections') || Request::is('interview-guide-sections')) ? 'active' : 'text-muted' }}">Sections</a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li>
+                                                            <a class="dropdown-item {{ Request::is('practice-area-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-sections') }}">
+                                                                Practice area sections
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item {{ Request::is('interview-guide-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guide-sections') }}"> 
+                                                                Interview sections
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-submenu list-style">
+                                                    <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-guides') || Request::is('interview-guides')) ? 'active' : 'text-muted' }}">Guides</a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li>
+                                                            <a class="dropdown-item {{ Request::is('practice-area-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-guides') }}">
+                                                                Practice area guides
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item {{ Request::is('interview-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guides') }}"> 
+                                                                Interview guides
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="list-style">
+                                                    <a class="dropdown-item text-muted {{ Request::is('survey') ? 'active' : '' }}" href="{{ url('/survey') }}">
+                                                        Survey
+                                                    </a>
+                                                </li>
+                                                <li class="list-style">
+                                                    <a class="dropdown-item text-muted {{ Request::is('useful-links') ? 'active' : '' }}" href="{{ url('/useful-links') }}">
+                                                        Useful links
+                                                    </a>
+                                                </li>
+                                                <li class="list-style">
+                                                    <a class="dropdown-item text-muted {{ Request::is('helpful-articles') ? 'active' : '' }}" href="{{ url('/helpful-articles') }}">
+                                                        Helpful articles
+                                                    </a>
+                                                </li>
+                                                <li class="list-style">
+                                                    <a class="dropdown-item text-muted {{ Request::is('feedbacks') ? 'active' : '' }}" href="{{ url('/feedbacks') }}">
+                                                        Feedback
+                                                    </a>
+                                                </li>
+                                                <li class="list-style">
+                                                    <a class="dropdown-item text-muted {{ Request::is('reports') ? 'active' : '' }}" href="{{ url('/reports') }}">
+                                                        Reports 
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <div class="col-md-4 border-right">
+                                        <div class="col-md-4 border-right">                                           
                                             <a class="dropdown-item text-muted {{ Request::is('upload-file') ? 'active' : '' }}" href="{{ url('/upload-file') }}">
                                             Upload File 
                                             </a>
@@ -142,6 +180,9 @@
                                             </a>
                                             <a class="dropdown-item text-muted {{ Request::is('location') ? 'active' : '' }}" href="{{ url('/location') }}">
                                             Location
+                                            </a>
+                                            <a class="dropdown-item text-muted {{ Request::is('hire-location') ? 'active' : '' }}" href="{{ url('/hire-location') }}">
+                                            Hire Location
                                             </a>
                                             <a class="dropdown-item text-muted {{ Request::is('service') ? 'active' : '' }}" href="{{ url('/service') }}">
                                             Service
@@ -163,6 +204,9 @@
                                             <a class="dropdown-item text-muted {{ Request::is('firm-location') ? 'active' : '' }}" href="{{ url('/firm-location') }}">
                                             Firm Location
                                             </a>
+                                            <!-- <a class="dropdown-item text-muted {{ Request::is('firm-hire-location') ? 'active' : '' }}" href="{{ url('/firm-hire-location') }}">
+                                            Firm Hire Location
+                                            </a> -->
                                             <a class="dropdown-item text-muted {{ Request::is('firm-service') ? 'active' : '' }}" href="{{ url('/firm-service') }}">
                                             Firm Service
                                             </a>
@@ -237,10 +281,16 @@
                     </div>
                     <div class="find-recruiters">
                         <p class="text-dark mb-1">Find Recruiters</p>
-                        <label for="location">Location</label>
+                        <label for="location">Location of recruiter</label>
                         <select class="mb8" name="search_locations" 
                                 ng-model="search_data.search_location"
-                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations track by loc.id">
+                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations  | orderBy:['loc.name','region.ordering']  track by loc.id ">
+                                <option value="">Any</option>
+                        </select>
+                        <label for="location_role">Location of hire</label>
+                        <select class="mb8" name="hire_locations" 
+                                ng-model="search_data.hire_location"
+                                ng-options="loc as loc.name group by loc.region.name for loc in hire_locations  | orderBy:['loc.name','region.ordering'] track by loc.id" >
                                 <option value="">Any</option>
                         </select>
                         <label for="service">Service</label>
@@ -294,6 +344,9 @@
      @endif
      @if (session('location_id'))
      <input type="text" style="display:none;" name="location" id="location" value="{{ session('location_id') }}"><br>
+     @endif
+     @if (session('hire_loc_id'))
+     <input type="text" style="display:none;" name="hire_location" id="hire_location" value="{{ session('hire_loc_id') }}"><br>
      @endif
      @if (session('service_id'))
      <input type="text" style="display:none;" name="service" id="service" value="{{ session('service_id') }}"><br>

@@ -41,4 +41,8 @@ class Region extends Model
     public function location(){
         return $this->hasMany('App\Location','region_id');
     }
+    
+    public function hireLocation(){
+        return $this->hasMany('App\HireLocation','region_id');
+    }
 }

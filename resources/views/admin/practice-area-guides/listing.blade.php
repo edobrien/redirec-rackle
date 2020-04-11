@@ -55,6 +55,16 @@
                                     <label class="mb-0">Title</label>
                                     <input type="text" class="form-text" ng-model="form_data.title" required>
                                 </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                    <label class="mb-0">Section</label>
+                                    <select class="form-control" 
+                                            ng-model="form_data.section_id" >
+                                            <option ng-repeat="section in practice_sections"
+                                                    ng-value="section.id">
+                                            <% section.title %>
+                                            </option>
+                                    </select>
+                                </div>
                                 <div class="form-group form-animate-text col-md-12">
                                     <label class="mb-0">Description</label><br>
                                     <textarea ng-model="form_data.description" name="description" 
@@ -116,6 +126,7 @@
     app.controller('PracticeGuideController', function ($scope, $http, $compile) {
 
         $scope.addPracticeGuide = function(){
+            $scope.getActivePracticeSection();
             $scope.form_data = $scope.modalErrors  = null;
             $("#practice-guide-modal").modal('show');
             CKEDITOR.instances["description"].setData('');
@@ -145,6 +156,7 @@
         }
 
         $scope.editGuide = function(guide_id){
+            $scope.getActivePracticeSection();
             $(".bg_load").show();
             $scope.modalErrors = null;
             var url = 'practice-area-guides/get-info/' + guide_id;
@@ -152,6 +164,7 @@
                 if (response.data.status == 'SUCCESS') {
                     $("#practice-guide-modal").modal('show');
                     $scope.form_data  = response.data.practice_guide;
+                    console.log($scope.form_data);
                     CKEDITOR.instances["description"].setData($scope.form_data.description);
                 } else {
                     var errors = [];
@@ -181,6 +194,26 @@
                     $scope.showDelete = false;
                     $scope.successMessage = response.data.message;
                     $scope.listPracticeGuides();
+                }else{
+                    var errors = [];
+                    $.each(response.data.errors, function (key, value) {
+                        errors.push(value);
+                    });
+                    $scope.errors = errors;
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                }
+            }).finally(function(){
+                $(".bg_load").hide();
+            })
+        }
+
+        $scope.getActivePracticeSection = function(){
+            $scope.practice_sections = null;
+            $(".bg_load").show();
+            var url = 'practice-area-sections/get-active-list';
+            $http.get(url).then(function (response) {
+                if (response.data.status == 'SUCCESS') {
+                    $scope.practice_sections = response.data.practice_sections;
                 }else{
                     var errors = [];
                     $.each(response.data.errors, function (key, value) {

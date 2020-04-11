@@ -368,7 +368,7 @@ table.dataTable thead th, table.dataTable thead td {
     color: #AFADAD;
 }
 .text-blue {
-    color: #4c22a1;
+    color: #4c22a1 !important;
 }
 .text-grey {
     color: #979797;
@@ -882,4 +882,48 @@ input:-webkit-autofill:active {
     .search-results {
         overflow-y: auto;
     }
+}
+
+/* Dropdown Sub-menu */
+.list-style {
+    list-style-type: none
+}
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position:relative;
+    cursor: pointer;
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    right: 100%;
+}
+
+/* rotate caret on hover */
+.dropdown-submenu > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(90deg);
+}
+
+/* Dropdown arrow */
+.dropdown-submenu > .dropdown-toggle:after{
+    position: relative;
+    right: -10px;
+    top: 2px;
+    color: #9c9c9c !important;
+}
+.dropdown-submenu > .text-blue.dropdown-toggle:after{
+    position: relative;
+    right: -10px;
+    top: 2px;
+    color: #4c22a1 !important;
+}
+
+.overlay {
+    position:absolute;
+    width:84%;
+    height:100%;
+    top:6px;
+    background:transparent;
 }

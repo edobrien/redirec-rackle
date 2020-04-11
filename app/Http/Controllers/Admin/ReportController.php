@@ -38,8 +38,12 @@ class ReportController extends Controller
 
         if(empty($request->description)){
             $errors[] = "Description is missing";
-        }   
+        }
 
+        if(empty($request->report_doc) || $request->report_doc == 'undefined'){
+            $errors= "Please add report link";
+        }
+        
         if(!empty($errors)){
             $rv = array("status" => "FAILED", "errors" => $errors);
         }else{

@@ -33,6 +33,7 @@
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $scope.search_locations = response.data.locations;
+                    $scope.getActiveRegions();
                     selected = $('#location').val();
                     if(selected){
                         index = $scope.getSelectedItem($scope.search_locations, 
@@ -55,6 +56,36 @@
             }).finally(function(){
                 //$(".bg_load").hide();
             });
+        }
+
+        $scope.getActiveHireLocations = function(){
+            //$(".bg_load").show();
+            $scope.hire_locations = {};
+            var url = '/hire-location/get-active-hire-locations';
+            $http.get(url).then(function (response) {
+                if (response.data.status == 'SUCCESS') {
+                    $scope.hire_locations = response.data.hire_locations;
+                    selected = $('#hire_location').val();
+                    if(selected){
+                        index = $scope.getSelectedItem($scope.hire_locations, 
+                                                        selected);
+                        $scope.search_data.hire_location = $scope.hire_locations[index];
+                    }
+                } else {
+                    alert("Error in fetching active locations");
+                }
+            }).finally(function(){
+                //$(".bg_load").hide();
+            });
+        }
+
+        $scope.getActiveRegions = function(){
+            selected = $('#region').val();
+            if(selected){
+                index = $scope.getSelectedItem($scope.search_locations, 
+                                                selected);
+                $scope.search_data.search_regions = $scope.search_locations[index];
+            }
         }
 
         $scope.getActiveServices = function(){
@@ -174,6 +205,7 @@
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.getActiveFirms();
             $scope.getActiveLocations();
+            $scope.getActiveHireLocations();
             $scope.getActiveServices();
             $scope.getActiveRoleTypes();
             $scope.getActivePracticeAreas();

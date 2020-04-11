@@ -37,4 +37,8 @@ class PracticeAreaGuide extends Model
                 break;
         }
     }
+
+    public function section(){
+        return $this->belongsTo('App\PracticeAreaSection','section_id');
+    }
 }

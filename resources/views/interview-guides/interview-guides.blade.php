@@ -6,23 +6,29 @@
             <h4 class="font-weight-bold text-blue pb-2">Interview/Resourcing Advice</h4>
             <div class="practice-area">
                 <div class="row bg-dynamic">
-                    @foreach ($guides as $guide)
-                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch">
-                        <div class="card rounded-0 border-0 w-100 cursor-pointer" 
-                            ng-click="getDetailPage({{$guide->id}})">
-                            <div class="card-body pb-0">
-                                <h6 class="card-title lh5 text-white">
-                                    {{$guide->title}}
-                                </h6>
-                            </div>
-                            <div class="card-footer bg-transparent border-0 pt-0">
-                                @if(Auth::user()->is_admin == "YES")
-                                <small class="text-white"><strong>{{$guide->view_count}}</strong></small>
-                                @endif
-                                <i class="icon ion-md-arrow-round-forward float-right mt-1 text-white"></i>
+                    @foreach ($guides as $key => $section)
+                        <div class="col-md-12 mb-3" 
+                            style="background-color: #F2F3F9;display:block;padding: 14px;">
+                            <h6 class="text-dark mb-0 font-weight-bold">{{$key}}</h6>
+                        </div>
+                        @foreach ($section as $guide)
+                        <div class="col-lg-3 col-md-6 mb-4 d-flex align-self-stretch">
+                            <div class="card rounded-0 border-0 w-100 cursor-pointer" 
+                                ng-click="getDetailPage({{$guide->id}})">
+                                <div class="card-body pb-0">
+                                    <h6 class="card-title lh5 text-white">
+                                        {{$guide->title}}
+                                    </h6>
+                                </div>
+                                <div class="card-footer bg-transparent border-0 pt-0">
+                                    @if(Auth::user()->is_admin == "YES")
+                                    <small class="text-white"><strong>{{$guide->view_count}}</strong></small>
+                                    @endif
+                                    <i class="icon ion-md-arrow-round-forward float-right mt-1 text-white"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        @endforeach
                     @endforeach
                 </div>
             </div>

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12 pt-4 pb-3 px-4">
             <h4 class="font-weight-bold text-blue pb-2">Reports / Analysis</h4>
-            <p class="text-grey">Below a list of reports that we have compiled. To request a report please click on the relevant card. If you have any thoughts / requests for us to compile any other reports /analysis that would be helpful, please do let us know through our feeback page.</p>
+            <p class="text-grey">Below a list of reports that we have compiled. Please click on the relevant card to see the report. If you would like a copy emailed to you, please email <a href="mailto:edobrien@recdirec.com">edobrien@recdirec.com</a> naming the report that you would like to be sent. If you have any thoughts / requests for us to compile any other reports /analysis that would be helpful, please do let us know through our feeback page.</p>
         </div>
     </div>
     @if(count($reports))
@@ -24,7 +24,7 @@
             </div>
                 <div class="row bg-dynamic">
                     @foreach ($reports as $report)
-                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail({{$report->id}}, '{{$report->name}}')">
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail('{{$report->report_doc}}')">
                         <div class="card rounded-0 border-0 w-100 cursor-pointer">
                             <div class="card-body pb-0">
                                 <h6 class="card-title text-white">{{$report->name}}</h6>
@@ -40,18 +40,16 @@
     @endif
     <!-- confirm modal begins -->
     <div id="confirm-mail" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-0">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content rounded-0" style="height:600px;width:1000px;margin-left: -90px;">
             <div class="modal-header">
-                <h4 class="modal-title font-weight-bold">Report Request</h4>
+                <a class="close" data-dismiss="modal">×</a>
             </div>
-            <div class="modal-body pt-4">
-                <p><% messageToshow %></p>
+            <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
+            <div class="modal-body pt-4" id="modalBody">
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
-                <button type="button" ng-click="sendReportEmail()" 
-                        class="btn btn-success br-40 px-4" >Send Request</button>
             </div>
             </div>
         </div>
@@ -73,17 +71,18 @@
     </div>
 </div>
 <!--  confirm modal ends -->
+@endsection
+@push('scripts')
+<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
-    
     app.controller('ReportController', function ($scope, $http, $compile) {
-
-        $scope.confirmEmail = function(report_id, report_name){
+        $scope.confirmEmail = function(report_url){
             $scope.modalErrors = $scope.messageToshow = null;
-            $scope.form_data = {};
-            $scope.form_data.report_id = report_id;
-            $scope.form_data.report_name = report_name;
             $('#confirm-mail').modal('show');
-            $scope.messageToshow = "If you would like to receive "+report_name+", please click the Send Request button below.";
+            $('#modalBody').empty();
+            $('#modalBody').html(report_url);
+            $('iframe').css('height', '100%');
+            $('iframe').css('width', '100%');
         }
 
         $scope.sendReportEmail = function(report_name){
@@ -128,5 +127,6 @@
 
         $scope.init();
     });
+    
 </script>
-@endsection
+@endpush

@@ -19,7 +19,6 @@ Route::get('practice-guide-details', function () {
     return view('practice-area-guide.practice-guide-details');
 });
 
-
 // Route::get('interview-guides-details', function () {
 //     return view('interview-guides.interview-guides-details');
 // });
@@ -51,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     //Search page data
     Route::get('/recruitment-firm/get-active-firms', 'Admin\Firm\RecruitmentFirmController@getActiveFirms');
     Route::get('/location/get-active-locations', 'Admin\LocationController@getActiveLocations');
+    Route::get('/hire-location/get-active-hire-locations', 'Admin\HireLocationController@getActiveHireLocations');
     Route::get('/service/get-active-services', 'Admin\ServiceController@getActiveServices');
     Route::get('/recruitment-type/get-active-types', 'Admin\RecruitmentTypeController@getActiveRecruitmentTypes');
     Route::get('/practice-area/get-active-areas', 'Admin\PracticeAreaController@getActivePracticeAreas');
@@ -119,6 +119,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('user/update', 'UserController@updateUser');
         Route::get('user/delete/{id}', 'UserController@delete');
 
+        //Practice area sections
+        Route::get('/practice-area-sections', 'Admin\PracticeAreaSectionController@index');
+        Route::get('/practice-area-sections/list-sections', 'Admin\PracticeAreaSectionController@listSections');
+        Route::post('/practice-area-sections/add-update-section', 'Admin\PracticeAreaSectionController@addOrUpdate');
+        Route::get('/practice-area-sections/get-info/{id}', 'Admin\PracticeAreaSectionController@getInfo');
+        Route::get('/practice-area-sections/delete/{id}', 'Admin\PracticeAreaSectionController@delete');
+        Route::get('/practice-area-sections/get-active-list', 'Admin\PracticeAreaSectionController@getActiveSections');
+
         //Practice area guides
         Route::get('/practice-area-guides', 'Admin\PracticeAreaGuideController@index');
         Route::get('/practice-area-guides/list-guides', 'Admin\PracticeAreaGuideController@listGuides');
@@ -126,6 +134,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/practice-area-guides/get-info/{id}', 'Admin\PracticeAreaGuideController@getInfo');
         Route::get('/practice-area-guides/delete/{id}', 'Admin\PracticeAreaGuideController@delete');
 
+        //Interview guide section
+        Route::get('/interview-guide-sections', 'Admin\InterviewGuideSectionController@index');
+        Route::get('/interview-guide-sections/list-sections', 'Admin\InterviewGuideSectionController@listSections');
+        Route::post('/interview-guide-sections/add-update-sections', 'Admin\InterviewGuideSectionController@addOrUpdate');
+        Route::get('/interview-guide-sections/get-info/{id}', 'Admin\InterviewGuideSectionController@getInfo');
+        Route::get('/interview-guide-sections/delete/{id}', 'Admin\InterviewGuideSectionController@delete');
+        Route::get('/interview-guide-sections/get-active-list', 'Admin\InterviewGuideSectionController@getActiveSections');
+        
         //Interview guides
         Route::get('/interview-guides', 'Admin\InterviewGuideController@index');
         Route::get('/interview-guides/list-guides', 'Admin\InterviewGuideController@listGuides');
@@ -184,6 +200,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/location/can-delete-location/{id}', 'Admin\LocationController@canDeleteLocation');
         Route::get('/location/delete/{id}', 'Admin\LocationController@delete');
 
+        //Hire-Locations
+        Route::get('/hire-location', 'Admin\HireLocationController@index');
+        Route::get('/hire-location/list-locations', 'Admin\HireLocationController@listLocations');
+        Route::post('/hire-location/add-update-location', 'Admin\HireLocationController@addOrUpdate');
+        Route::get('/hire-location/get-info/{id}', 'Admin\HireLocationController@getInfo');
+        Route::get('/hire-location/can-delete-location/{id}', 'Admin\HireLocationController@canDeleteLocation');
+        Route::get('/hire-location/delete/{id}', 'Admin\HireLocationController@delete');
+
         //Service
         Route::get('/service', 'Admin\ServiceController@index');
         Route::get('/service/list-services', 'Admin\ServiceController@listServices');
@@ -239,6 +263,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/firm-location/add-update-firm-location', 'Admin\Firm\FirmLocationController@addOrUpdate');
         Route::get('/firm-location/get-info/{id}', 'Admin\Firm\FirmLocationController@getInfo');
         Route::get('/firm-locations/delete/{id}', 'Admin\Firm\FirmLocationController@delete');
+
+        Route::get('/firm-hire-location', 'Admin\Firm\FirmHireLocationController@index');
+        Route::get('/firm-hire-location/list-firm-locations', 'Admin\Firm\FirmHireLocationController@listFirmlocations');
+        Route::post('/firm-hire-location/add-update-firm-location', 'Admin\Firm\FirmHireLocationController@addOrUpdate');
+        Route::get('/firm-hire-location/get-info/{id}', 'Admin\Firm\FirmHireLocationController@getInfo');
+        Route::get('/firm-hire-locations/delete/{id}', 'Admin\Firm\FirmHireLocationController@delete');
 
         //Firm service mapping
         Route::get('/firm-service', 'Admin\Firm\FirmServiceController@index');

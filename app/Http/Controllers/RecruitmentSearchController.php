@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Services\RecruitmentSearchServices;
 
 class RecruitmentSearchController extends Controller
@@ -18,15 +19,14 @@ class RecruitmentSearchController extends Controller
     public function searchFirm(Request $request)
     {
         if(isset($request->firm_id)){
-
-                $request->session()->put('firm_id',$request->firm_id);
-                $request->session()->forget('location_id');
-                $request->session()->forget('service_id');
-                $request->session()->forget('recruitment_id');
-                $request->session()->forget('firm_size');
-                $request->session()->forget('practice_area_id');
-                $request->session()->forget('sector_id');
-          
+            $request->session()->put('firm_id',$request->firm_id);
+            $request->session()->forget('location_id');
+            $request->session()->forget('hire_loc_id');
+            $request->session()->forget('service_id');
+            $request->session()->forget('recruitment_id');
+            $request->session()->forget('firm_size');
+            $request->session()->forget('practice_area_id');
+            $request->session()->forget('sector_id');
         }
         else{
             $request->session()->forget('firm_id');
@@ -35,6 +35,12 @@ class RecruitmentSearchController extends Controller
                 $request->session()->put('location_id',$request->search_locations);
             }else{
                 $request->session()->forget('location_id');
+            }
+
+            if(isset($request->hire_locations)){
+                $request->session()->put('hire_loc_id',$request->hire_locations);
+            }else{
+                $request->session()->forget('hire_loc_id');
             }
     
             if(isset($request->service_id)){

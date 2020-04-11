@@ -42,6 +42,10 @@ class FirmRecruitmentRegion extends Model
         return $this->belongsto('App\Location','location_id');
     }
 
+    public function hireLocation(){
+        return $this->belongsto('App\HireLocation','hire_location_id');
+    }
+
     public function firm(){
         return $this->belongsto('App\RecruitmentFirm','firm_id');
     }

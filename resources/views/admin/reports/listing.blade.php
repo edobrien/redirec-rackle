@@ -45,7 +45,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-row">
-                                <div ng-if="modalErrors" class="alert alert-danger">
+                                <div ng-if="modalErrors" class="alert alert-danger col-md-12">
                                     <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
                                     <ul class="pl-2 mb-0">
                                         <li ng-repeat="error in modalErrors"><% error %></li>
@@ -55,13 +55,17 @@
                                     <label class="mb-0">Report Name</label>
                                     <input type="text" class="form-text" ng-model="form_data.name" required>
                                 </div>
+                                <div class="form-group form-animate-text col-md-6">
+                                    <label class="mb-0">Ordering</label>
+                                    <input type="number" class="form-text" ng-model="form_data.ordering" required>
+                                </div>
                                 <div class="form-group form-animate-text col-md-12">
                                     <label class="mb-0">Description</label><br>
                                     <textarea rows="4" ng-model="form_data.description" required style="width: 100%" class="form-text"></textarea>
                                 </div>
                                 <div class="form-group form-animate-text col-md-6">
-                                    <label class="mb-0">Ordering</label>
-                                    <input type="number" class="form-text" ng-model="form_data.ordering" required>
+                                    <label class="mb-0">Report Url</label>
+                                    <input type="text" class="form-text"  ng-model="form_data.report_doc" required><br>
                                 </div>
                                 <div class="form-group form-animate-checkbox col-md-6">
                                     <label class="mb-0">Active</label><br>
@@ -74,7 +78,7 @@
                                         <span class="switch-label" data-on="Yes" data-off="No"></span>
                                         <span class="switch-handle"></span>
                                     </label>
-                                </div>
+                                </div>                              
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -114,29 +118,39 @@
     app.controller('ReportController', function ($scope, $http, $compile) {
 
         $scope.addReport = function(){
-            $scope.form_data = $scope.modalErrors  = null;
+            $scope.form_data = {};
+            $scope.modalErrors  = null;
             $("#report-modal").modal('show');
         }
 
         $scope.reportSubmit = function(form_data){
-            $(".bg_load").show();
+            var errors = [];
             $scope.modalErrors = null;
-            var url = 'reports/add-update-report';
-            $http.post(url,form_data).then(function (response) {
-                if (response.data.status == 'SUCCESS') {
+           
+            if(errors != ''){
+                $scope.modalErrors = errors;
+                $('html, body').animate({scrollTop : 0},400);
+            }else{
+                $(".bg_load").show();
+                var url = 'reports/add-update-report';
+                $http.post(url,form_data).then(function(response) {
+                    if (response.data.status == 'SUCCESS') {
+                        $scope.form_data = {};
+                        $scope.successMessage = response.data.message;
+                        $scope.listReports();
+                    } else {
+                        var errors = [];
+                        $.each(response.data.errors, function (key, value) {
+                            errors.push(value);
+                        });
+                        $scope.modalErrors = errors;
+                        $('html, body').animate({scrollTop : 0},400);
+                    }
+                }).finally(function() {
                     $("#report-modal").modal('hide');
-                    $scope.successMessage = response.data.message;
-                    $scope.listReports();
-                } else {
-                    var errors = [];
-                    $.each(response.data.errors, function (key, value) {
-                        errors.push(value);
-                    });
-                    $scope.modalErrors = errors;
-                }
-            }).finally(function(){
-                $(".bg_load").hide();
-            });
+                    $(".bg_load").hide();
+                });
+            }
         }
 
         $scope.editReport = function(report_id){
@@ -199,6 +213,7 @@
 
         $scope.init = function () {
             $scope.form_data = {};
+            $scope.form_data.report_doc = {};
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
             $scope.listReports();
         }
@@ -232,5 +247,6 @@
         };
         $scope.init();
     });
+ 
 </script>
 @endpush

@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <img src="/img/CB_Conference Banner.jpg" class="w-100" alt="CB_Conference Banner">
+                        <img src="/img/Legal_Monitor_Banner.jpg" class="w-100" alt="CB_Conference Banner">
                     </div>
                 </div>
                 {{--  @endif  --}}
