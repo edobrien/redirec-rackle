@@ -59,7 +59,7 @@
    <body bgcolor="#FFFFFF">
       <table class="head-wrap" bgcolor="#2196f3">
          <tr>
-            <td class="header container">
+            <td class="header-container">
                <div class="content">
                   <table bgcolor="#2196f3">
                      <tr>
