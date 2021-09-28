@@ -19,8 +19,10 @@
                                     <h6 class="card-title text-white">{{$guide->title}}</h6>
                                 </div>
                                 <div class="card-footer bg-transparent border-0 pt-0">
-                                    @if(Auth::user()->is_admin == "YES")
-                                    <small class="text-white"><strong>{{$guide->view_count}}</strong></small>
+                                    @if(Auth::user())
+                                        @if(Auth::user()->is_admin == "YES")
+                                        <small class="text-white"><strong>{{$guide->view_count}}</strong></small>
+                                        @endif
                                     @endif
                                     <i class="icon ion-md-arrow-round-forward float-right mt-1 text-white"></i>
                                 </div>

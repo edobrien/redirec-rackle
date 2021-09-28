@@ -42,7 +42,7 @@
     <div id="app" ng-app="recdirecApp">
         <nav class="navbar navbar-expand-sm navbar-light navbar-border shadow static-top">
             <div class="container-fluid">
-                <a class="navbar-brand py-0" href="{{ url('/home') }}">
+                <a class="navbar-brand py-0" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     <img src="../img/logo-header.png" alt="Recdirec">
                 </a>
@@ -52,7 +52,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        @if (Auth::user()->is_active == "YES")
+                    {{-- @if (Auth::user()->is_active == "YES") --}} 
                             <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Areas</a>
                             </li>
@@ -68,17 +68,23 @@
                             <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/useful-link') }}">Links</a>
                             </li>
-                        @endif
+                            <li class="nav-item {{ Request::is('helpful-article') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
+                            </li>
+
+                           
+                            {{-- @endif --}}
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            
+                           <!-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif -->
                         @else
                             <li class="nav-item dropdown">
                                 <!-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -264,7 +270,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </button>
             <div class="container-fluid">
-                @if (Auth::user()->is_active == "YES")
+               {{-- @if (Auth::user()->is_active == "YES") --}} 
                 <nav class="sidebar pt-3 pb-2 collapse navbar-collapse" id="sidebar" ng-controller="SearchDataController">
                     <button type="button" class="close" data-toggle="collapse" data-target="#sidebar" aria-expanded="false" aria-label="Close">
                         <i class="fa fa-times" aria-hidden="true"></i>
@@ -287,12 +293,12 @@
                                 ng-options="loc as loc.name group by loc.region.name for loc in search_locations  | orderBy:['loc.name','region.ordering']  track by loc.id ">
                                 <option value="">Any</option>
                         </select>
-                        <label for="location_role">Location of hire</label>
+                        <!-- <label for="location_role">Location of hire</label>
                         <select class="mb8" name="hire_locations" 
                                 ng-model="search_data.hire_location"
                                 ng-options="loc as loc.name group by loc.region.name for loc in hire_locations  | orderBy:['loc.name','region.ordering'] track by loc.id" >
                                 <option value="">Any</option>
-                        </select>
+                        </select> -->
                         <label for="service">Service</label>
                         <select class="mb8" name="service_id" 
                                 ng-model="search_data.service_id" 
@@ -318,18 +324,18 @@
                                 ng-options="area as area.name group by area.type for area in search_areas  | filter: { type: '!GENERAL' } track by area.id">
                                 <option value="">General</option>
                         </select>
-                        <label for="sector">Sector</label>
+                        <!-- <label for="sector">Sector</label>
                         <select class="mb8" name="sector_id" 
                                 ng-model="search_data.sector_id" 
                                 ng-options="sector as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">
                                 <option value="">General</option>
-                        </select>
+                        </select> -->
                         <button type="submit" class="btn btn-sm btn-form br-40 w-100 mb-2">Search</button>
                         <button type="button" ng-click="clearSearch()" class="btn btn-sm bg-blue br-40 w-100">Clear Search</button>
                         </form>
                     </div>
                 </nav>
-                @endif
+                {{-- @endif --}}
                 <div class="content">
                     @yield('content')
                 </div>

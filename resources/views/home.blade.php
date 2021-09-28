@@ -4,11 +4,13 @@
     <div class="row">
         <div class="col-md-12 p-4">
             <div class="landing-page">
+             @if (Auth::user())   
                 <div class="row">
                     <div class="col-md-12 py-2">
                         <h2><span class="text-muted">Welcome</span> <strong>{{ Auth::user()->name }}</strong>,</h2>
                     </div>
                 </div>
+                @endif
                 <div class="row pt-2">
                     <div class="col-lg-4 d-flex align-self-stretch mb-4">
                         <div class="card border-0 bg-practice rounded cursor-pointer" onclick="location.href='{{ url('/practice-area-guide') }}';">

@@ -25,8 +25,10 @@
                        
                       
                         <small class="text-muted mb-0">{{$firm->location}}</small>
-                        @if(Auth::user()->is_admin == "YES")
-                        <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small>
+                        @if(Auth::user())
+                            @if(Auth::user()->is_admin == "YES")
+                                <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small>
+                            @endif
                        @endif
                     </div>
                 </div>
