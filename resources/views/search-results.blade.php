@@ -52,6 +52,7 @@
                 <p class="text-grey" ng-bind-html="firm.description | trust"></p>
                 <h5 class="font-weight-bold py-2">Testimonials</h5>
                 <p class="text-grey" ng-bind-html="firm.testimonials | trust"></p>
+                <!--
                 <h5 class="font-weight-bold py-2">Facts and Figures</h5>
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
@@ -114,7 +115,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="row pt-2 text-footer">
                     <div class="col-md-6">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>

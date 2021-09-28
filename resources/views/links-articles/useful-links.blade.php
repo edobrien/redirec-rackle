@@ -3,7 +3,7 @@
 <div ng-cloak ng-controller="UsefulController">
     <div class="row">
         <div class="col-md-12 p-4">
-            <h4 class="font-weight-bold text-blue pb-2">Useful Links</h4>
+            <h4 class="font-weight-bold text-blue pb-2">Job Opportunities</h4>
             <div id="accordion-list">
                 <ul class="capture-ext-links">
                     @foreach ($links as $link)
