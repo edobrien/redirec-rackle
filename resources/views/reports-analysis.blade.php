@@ -23,7 +23,7 @@
                 <% successMessage %>
             </div>
                 <div class="row bg-dynamic">
-                    @foreach ($reports as $report)
+                    @foreach ($reports as $report)                   
                     <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail('{{$report->report_doc}}')">
                         <div class="card rounded-0 border-0 w-100 cursor-pointer">
                             <div class="card-body pb-0">
@@ -47,6 +47,19 @@
             </div>
             <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
             <div class="modal-body pt-4" id="modalBody">
+
+
+            @foreach ($reports as $report)                   
+                <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch">
+                    <div class="card rounded-0 border-0 w-100 cursor-pointer">
+                        <div class="card-body pb-0">
+                            <input type="checkbox" ng-click="('{{$report->report_doc}}')">
+                            <h6 class="card-title text-white">{{$report->name}}</h6>                            
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
@@ -76,7 +89,7 @@
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
     app.controller('ReportController', function ($scope, $http, $compile) {
-        $scope.confirmEmail = function(report_url){
+        $scope.confirmEmail = function(report_url){           
             $scope.modalErrors = $scope.messageToshow = null;
             $('#confirm-mail').modal('show');
             $('#modalBody').empty();

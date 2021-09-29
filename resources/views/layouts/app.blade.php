@@ -56,6 +56,9 @@
                             <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Areas</a>
                             </li>
+                            <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ url('/useful-link') }}">Jobs</a>
+                            </li>
                             <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/interview-guide') }}">Advice</a>
                             </li>
@@ -66,7 +69,7 @@
                                 <a class="nav-link" href="{{ url('/feedback-surveys') }}">Surveys</a>
                             </li>
                             <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/useful-link') }}">Links</a>
+                                <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
                             </li>
                             <li class="nav-item {{ Request::is('helpful-article') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
@@ -279,52 +282,54 @@
                     <form action="{{ url('/search-recruitment-firm') }}" method="POST" id="searchFirm">
                         @csrf
                     <div class="recruitment">
-                        <p for="recruitmentFirm" class="text-dark mt-1 mb-2">Recruitment Firm Name</p>
+                        <p for="recruitmentFirm" class="text-dark mt-1 mb-2">Search recruiter</p>
                         <select ng-model="search_data.firm_id" name="firm_id"
                                 ng-options="firm as firm.name for firm in search_firms track by firm.id">
                                 <option value="">Any</option>
                         </select>
                     </div>
                     <div class="find-recruiters">
-                        <p class="text-dark mb-1">Find Recruiters</p>
-                        <label for="location">Location of recruiter</label>
+                        <p class="text-dark mb-1">Suggest a recruiter</p>
+                        <label for="location">I am looking for a recruiter in…</label>
                         <select class="mb8" name="search_locations" 
                                 ng-model="search_data.search_location"
                                 ng-options="loc as loc.name group by loc.region.name for loc in search_locations  | orderBy:['loc.name','region.ordering']  track by loc.id ">
                                 <option value="">Any</option>
                         </select>
-                        <!-- <label for="location_role">Location of hire</label>
+                        <!--
+                        <label for="location_role">Location of hire</label>
                         <select class="mb8" name="hire_locations" 
                                 ng-model="search_data.hire_location"
                                 ng-options="loc as loc.name group by loc.region.name for loc in hire_locations  | orderBy:['loc.name','region.ordering'] track by loc.id" >
                                 <option value="">Any</option>
                         </select> -->
-                        <label for="service">Service</label>
-                        <select class="mb8" name="service_id" 
-                                ng-model="search_data.service_id" 
-                                ng-options="service as service.name for service in search_services track by service.id">
-                                <option value="">Any</option>
-                        </select>
-                        <label for="roleType">Type of Role</label>
+                        <label for="roleType">I am currently a…</label>
                         <select class="mb8" name="recruitment_id" 
                                 ng-model="search_data.recruitment_id" 
                                 ng-options="rt as rt.name for rt in search_roletypes track by rt.id">
                                 <option value="">Any</option>
                         </select>
-                        <label for="recruitmentSize">Size of Recruitment Firm</label>
+                        <label for="service">I am looking for a role in…</label>
+                        <select class="mb8" name="service_id" 
+                                ng-model="search_data.service_id" 
+                                ng-options="service as service.name for service in search_services track by service.id">
+                                <option value="">Any</option>
+                        </select>
+                        <label for="practiceArea">My main practice area is….</label>
+                        <select class="mb8" name="practice_area_id"
+                                ng-model="search_data.practice_area_id" 
+                                ng-options="area as area.name group by area.type for area in search_areas  | filter: { type: '!GENERAL' } track by area.id">
+                                <option value="">General</option>
+                        </select>
+                        <label for="recruitmentSize">I would prefer the recruitment firm to be…</label>
                         <select class="mb8" ng-model="size" name="size" id="size">
                             <option value="">Any</option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL; ?>"><?php echo \App\RecruitmentFirm::SIZE_SMALL_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM; ?>"><?php echo \App\RecruitmentFirm::SIZE_MEDIUM_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_LARGE; ?>"><?php echo \App\RecruitmentFirm::SIZE_LARGE_TEXT; ?></option>
                         </select>
-                        <label for="practiceArea">Practice Area</label>
-                        <select class="mb8" name="practice_area_id"
-                                ng-model="search_data.practice_area_id" 
-                                ng-options="area as area.name group by area.type for area in search_areas  | filter: { type: '!GENERAL' } track by area.id">
-                                <option value="">General</option>
-                        </select>
-                        <!-- <label for="sector">Sector</label>
+                        <!--
+                        <label for="sector">Sector</label>
                         <select class="mb8" name="sector_id" 
                                 ng-model="search_data.sector_id" 
                                 ng-options="sector as sector.name group by sector.type for sector in search_sectors  | filter: { type: '!GENERAL' } track by sector.id">

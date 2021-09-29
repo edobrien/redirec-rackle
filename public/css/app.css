@@ -111,7 +111,7 @@ a:hover {
     position: fixed;
     width: 100%;
     z-index: 1;
-    background-color: #ffffff !important;
+    background-color: #08293c !important;
 }
 .nav-item {
     padding-right: 20px;
@@ -123,16 +123,16 @@ a:hover {
     color: #9C9C9C !important;
 }
 .nav-item.active > a {
-    color: #4c22a1 !important;
+    color: #29ace4 !important;
 }
 .dropdown-menu  a.active{
     color: #fff !important;
-    background-color: #4c22a1 !important;
+    background-color: #29ace4 !important;
 }
 
 /* Sidebar */
 .sidebar {
-    background-color: rgba(154, 107, 248, 0.05);
+    background-color: rgba(41, 172, 228, 0.05);
     height: calc(100vh - 54px);
     width: 250px;
     padding: 0 26px;
@@ -197,7 +197,7 @@ a:hover {
     background-color: #fff;
 }
 .sidebar::-webkit-scrollbar-thumb {
-    background-color: #4c22a1;
+    background-color: #29ACE4;
     border-radius: 10px;
 }
 .filter-option-inner-inner {
@@ -255,11 +255,11 @@ a:hover {
 /* Landing Page */
 .bg-practice {
     background-color: #AB58D7;
-    background-image: linear-gradient(to left top, #af98e5, #9a7fe7, #8066e8, #614dea, #2e34eb);
+    background-image: linear-gradient(to left top, #2e34eb, #614dea, #8066e8, #9a7fe7, #af98e5);
 }
 .bg-market {
     background-color: #EC6A87;
-    background-image: linear-gradient(to left top, #ee7366, #f4657c, #f15b98, #e35ab7, #c762d6);
+    background-image: linear-gradient(to left top, #c762d6, #e35ab7, #f15b98, #f4657c, #ee7366);
 }
 .bg-interview {
     background-color: #94DA56;
@@ -267,15 +267,15 @@ a:hover {
 }
 .bg-feedback {
     background-color: #7C73E9;
-    background-image: linear-gradient(to left top, #ea9184, #ec8682, #ed7a82, #ed6e84, #ec6288);
+    background-image: linear-gradient(to left top, #ec6288, #ed6e84, #ed7a82, #ec8682, #ea9184);    
 }
 .bg-useful {
     background-color: #65CBDC;
-    background-image: linear-gradient(to left top, #65e3de, #53e4c7, #5be3a7, #74e081, #94da56);
+    background-image: linear-gradient(to left top, #94da56, #74e081, #5be3a7, #53e4c7, #65e3de);
 }
 .bg-helpful {
     background-color: #E7707A;
-    background-image: linear-gradient(to left top, #6cb4e4, #58c1e8, #4acce6, #4cd7df, #5ee1d4);
+    background-image: linear-gradient(to left top, #5ee1d4, #4cd7df, #4acce6, #58c1e8, #6cb4e4);
     
 }
 .landing-page hr {
@@ -368,7 +368,7 @@ table.dataTable thead th, table.dataTable thead td {
     color: #AFADAD;
 }
 .text-blue {
-    color: #4c22a1 !important;
+    color: #29ACE4 !important;
 }
 .text-grey {
     color: #979797;
@@ -648,7 +648,7 @@ table.dataTable tbody td {
     background-color: #fff;
 }
 .search-results::-webkit-scrollbar-thumb {
-    background-color: #4c22a1;
+    background-color: #29ACE4;
     border-radius: 10px;
 }
 .user-profile {
@@ -833,7 +833,7 @@ input:-webkit-autofill:active {
     background-image: linear-gradient(to left top, #6cb4e4, #58c1e8, #4acce6, #4cd7df, #5ee1d4);
 }
 .bg-blue {
-    background-color: #603da9;
+    background-color: #29ACE4;
     color: #fff;
 }
 .firm-logo {

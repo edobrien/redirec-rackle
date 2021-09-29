@@ -3,7 +3,7 @@
 <div ng-cloak ng-controller="InterviewDetailController">
     <div class="row">
         <div class="col-md-12 p-4">
-            <h4 class="font-weight-bold text-blue pb-2">Interview/Resourcing Advice</h4>
+            <h4 class="font-weight-bold text-blue pb-2">General Advice and Insights</h4>
             <div class="practice-area">
                 <div class="row bg-dynamic">
                     @foreach ($guides as $key => $section)
