@@ -68,7 +68,7 @@
                             <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/feedback-surveys') }}">Surveys</a>
                             </li>
-                            <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
+                            <li class="nav-item {{ Request::is('helpful-article') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
                             </li>
                         @endif
