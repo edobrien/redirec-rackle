@@ -17,7 +17,7 @@
 }
 thead tr {
     color: #fff;
-    background-color: #4C23A1;
+    background-color: #29ACE4;
     border-color: #454d55;
   }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -383,7 +383,7 @@ table.dataTable thead th, table.dataTable thead td {
     background-color: rgb(76,35,161,.03) !important;
 }
 .bg-darkblue {
-    background-color: #4C23A1;
+    background-color: #29ACE4;
     color: #ffffff;
 }
 .bg-darkblue {
@@ -485,7 +485,7 @@ table.dataTable thead th, table.dataTable thead td {
     float: right;
     font-weight: bold;
     font-size: 20px;
-    color: #4c22a1;
+    color: #29ACE4;
 }
 .mb8 {
     margin-bottom: .8rem !important;
@@ -710,7 +710,7 @@ table.dataTable tbody td {
     margin: 0 15px !important;
 }
 .text-footer .fa {
-    color: #4c22a1 !important;
+    color: #29ACE4 !important;
 }
 .w-640 {
     width: 640px;
@@ -762,7 +762,12 @@ table.dataTable th, table.dataTable td {
     list-style-type: none;
 }
 .bg-green {
-    background-color: #074E62;
+    /*background-color: #074E62;*/
+    background-image: linear-gradient(to bottom, rgba(23, 56, 69,.5), rgba(23, 56, 69, 0.73)),url("/img/bg-our-offering.jpg"); /* The image used */
+    /*height: 250px;  You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
 .no-search-results {
     height: calc(100vh - 160px);
@@ -838,8 +843,11 @@ input:-webkit-autofill:active {
 }
 .firm-logo {
     position: absolute;
-    right: 1.5rem!important;
-    top: 3px;
+    /*right: 1.5rem!important;
+    top: 3px;                                    Old design    -----------------*/
+    top: 2px;
+    left: 2px;
+    padding: 7px;
 }
 .firm-header {
     height: 62px;
