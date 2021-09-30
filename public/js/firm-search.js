@@ -7,7 +7,7 @@
 
         $scope.getActiveFirms = function(){
             //$(".bg_load").show();
-            $scope.search_firms = {};
+            $scope.search_firms = [];
             var url = '/recruitment-firm/get-active-firms';
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
@@ -28,17 +28,17 @@
 
         $scope.getActiveLocations = function(){
             //$(".bg_load").show();
-            $scope.search_locations = {};
+            $scope.search_locations = [];
             var url = '/location/get-active-locations';
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $scope.search_locations = response.data.locations;
                     $scope.getActiveRegions();
                     selected = $('#location').val();
+
                     if(selected){
-                        index = $scope.getSelectedItem($scope.search_locations, 
-                                                        selected);
-                        $scope.search_data.search_location = $scope.search_locations[index];
+                        index = $scope.getSelectedItem($scope.search_locations,selected);
+                        $scope.search_data.search_location = $scope.search_locations[index];                       
                     }
                     // if(selected){
                     //     var multi_select = selected.split(",");

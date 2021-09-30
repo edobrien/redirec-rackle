@@ -4,11 +4,13 @@
     <div class="row">
         <div class="col-md-12 p-4">
             <div class="landing-page">
+             @if (Auth::user())   
                 <!--<div class="row">
                     <div class="col-md-12 py-2">
                         <h2><span class="text-muted">Welcome</span> <strong>{{ Auth::user()->name }}</strong>,</h2>
                     </div>
                 </div>-->
+                @endif
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card border-0 rounded bg-green">
