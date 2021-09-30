@@ -2,22 +2,6 @@
 @section('content')
 <div ng-cloak ng-controller="HomeController">
     <div class="row">
-        <div class="col-md-12 p-0">
-            <div class="card border-0 rounded-0 bg-green pb-0">
-                <div class="card-body py-0">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-12 py-5">
-                            <h3 class="text-white pl-3">Empowering our clients to enhance business outcomes through data and analytics</h3>
-                        </div>
-                        <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center">
-                            <img src="/img/jman_group.png" height="35">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-12 p-4">
             <div class="landing-page">
                 <!--<div class="row">
@@ -25,7 +9,23 @@
                         <h2><span class="text-muted">Welcome</span> <strong>{{ Auth::user()->name }}</strong>,</h2>
                     </div>
                 </div>-->
-                <div class="row pt-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card border-0 rounded bg-green">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-12 py-4">
+                                        <h3 class="text-g pl-3 mb-0">Empowering our clients to enhance business outcomes through data and analytics</h3>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center">
+                                        <img src="/img/jman-group-w.png" height="45">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
                     <div class="col-lg-4 d-flex align-self-stretch mb-4">
                         <div class="card border-0 bg-helpful rounded cursor-pointer" onclick="location.href='{{ url('/practice-area-guide') }}';">
                             <div class="card-body pb-0">

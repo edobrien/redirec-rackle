@@ -16,7 +16,6 @@
                                 @if($firm->is_verified == \App\RecruitmentFirm::FLAG_YES)
                                 <img src="/img/is_verified_logo.png" height="17" alt="Verified"> 
                                 @endif  
-        
                                 @if($firm->is_specialism == \App\RecruitmentFirm::FLAG_YES)
                                 <img src="/img/specialist_logo.png" height="17" alt="Specialist"> 
                                 @endif
@@ -30,9 +29,7 @@
                 </div>
                 @endforeach
             </div>
-            <div ng-show="!firm" class="col-md-9">
-                Des
-            </div>
+            <!--<div ng-show="!firm" class="col-md-9">Des</div>-->
             <div class="col-md-9 search-results" ng-show="firm">
                 <div class="firm-header">
                     <h5 class="font-weight-bold"><% firm.name %></h5>

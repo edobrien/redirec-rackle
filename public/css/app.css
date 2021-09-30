@@ -117,10 +117,10 @@ a:hover {
     padding-right: 20px;
 }
 .nav-item:last-child {
-    padding-right: 0;
+    /*padding-right: 0;*/
 }
 .nav-link {
-    color: #9C9C9C !important;
+    color: rgba(255, 255, 255, .5) !important;
 }
 .nav-item.active > a {
     color: #29ace4 !important;
@@ -390,7 +390,7 @@ table.dataTable thead th, table.dataTable thead td {
     color: #ffffff !important;
 }
 .br-40 {
-    border-radius: 40px;
+    border-radius: .25rem;
 }
 .rounded {
     border-radius: .3rem!important;
@@ -402,7 +402,7 @@ table.dataTable thead th, table.dataTable thead td {
         padding-bottom: 6px;
     } */
 .btn-form {
-    background-color: #21B825;
+    background-color: #08293c;
     color: #ffffff;
 }
 .fs-18 {
@@ -763,12 +763,28 @@ table.dataTable th, table.dataTable td {
 }
 .bg-green {
     /*background-color: #074E62;*/
-    background-image: linear-gradient(to bottom, rgba(23, 56, 69,.5), rgba(23, 56, 69, 0.73)),url("/img/bg-our-offering.jpg"); /* The image used */
-    /*height: 250px;  You must set a specified height */
-    background-position: center; /* Center the image */
+    background-image: linear-gradient(to bottom, rgba(23, 56, 69, 1), rgba(23, 56, 69, 0.5)),url("/img/bg-our-offering.jpg"); /* The image used */
+    /*height: 180px;  /*You must set a specified height */
+    background-position: left; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+    /*background-size: cover; /*Resize the background image to cover the entire container */
 }
+.text-g {
+    color: #4cd4e2;
+    line-height: 1.4;
+    z-index: 1;
+}
+ /*.text-g::before {
+    content: open-quote;
+   font-size: 100px;
+    position: fixed;
+    top:110px;
+    left:290px;
+    color: rgba(255,255,255,1) !important;
+}
+.text-g::after {
+    content: close-quote;
+}*/
 .no-search-results {
     height: calc(100vh - 160px);
 }
