@@ -96,6 +96,8 @@ class LocationServices{
     }
 
     public function getActiveLocations(){
+      
+
         return Location::with('region')
                     ->where('is_active', Location::FLAG_YES)
                     ->orderBy('name')->get();

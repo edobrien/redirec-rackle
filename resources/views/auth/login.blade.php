@@ -4,20 +4,20 @@
     <div class="container d-flex align-items-center w-100 h-100 p-3 mx-auto signIn">
         <div class="row pt-9">
             <div class="col-md-7">
-                <img class="pb-5" src="img/logo-login.png" alt="Recdirec">
+               
                 <h5 class="lh5 pb-3">Our goal is to provide law firm and in-house legal resourcing teams with greater knowledge and information about the legal recruitment market, to help improve efficiency, transparency and the services provided throughout the recruitment process.</h5>
 
-                <h5 class="lh5 pb-4">We believe providing relevant, objective information and coordinated content in an easily accessible format, for a specific target audience, will help reduce time spent on recruitment activities and improve their outcome.  If you work within a law firm resourcing team, or are a partner/member of an in-house legal team involved in the recruitment process, we encourage you to register and benefit from the free access to this information.</h5>
+                <h5 class="lh5 pb-4">We believe providing relevant, objective information and coordinated content in an easily accessible format, for a specific target audience, will help reduce time spent on recruitment activities and improve their outcome.  If you work within a law firm resourcing team, or are a partner/member of an in-house legal team involved in the recruitment process, we encourage you to register and benefit from the free access to this information.</h5>  
 
                 <!-- <h5 class="lh5">Register to receive the Recdirec weekly update.</h5>
 
                 <h6 class="lh5 pb-4 text-muted">A quick and easy to read review of all the main stories in the legal press <br/>most relevant to legal resourcing teams.</h6> -->
 
-                <a class="text-white" href="{{ route('register') }}">
+                <!--- <a class="text-white" href="{{ route('register') }}">
                     <button type="button" class="btn btn-form br-40 px-5 mb-4">
                         <span class="text-white">Register here</span>
                     </button>
-                </a>
+                </a> --->
 
                 <!-- <footer class="footer">
                     <small class="text-muted">info@legalrecruitmentmadeclear.com</small>
@@ -28,7 +28,7 @@
                     <div class="col-md-9 offset-md-3">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <small><a class="text-white" href="{{ route('register') }}">REGISTER</a></small>
+                                <small> <img class="pb-5" src="../img/logo-header.png" alt="Recdirec"></small>
                             </div>
                         </div>
                         <div class="row">
@@ -93,7 +93,7 @@
                                         </small>
                                         @endif
                                     </div>
-                                    <div class="row mb-0">
+                                    <!--- <div class="row mb-0">
                                         <div class="col-7">
                                             <small>
                                                 <a href="{{ url('/terms') }}" class="text-signIn">Terms & Conditions</a>
@@ -106,7 +106,7 @@
                                             <i class="fa fa-twitter px-2" aria-hidden="true"></i>
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
                                         </div>
-                                    </div>
+                                    </div>  --->
                                 </form>
                             </div>
                         </div>

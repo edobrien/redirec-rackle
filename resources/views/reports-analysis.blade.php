@@ -24,7 +24,7 @@
             </div>
                 <div class="row bg-dynamic">
                     @foreach ($reports as $report)                   
-                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail('{{$report->report_doc}}')">
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail('{{$report->description}}', '{{$report->id}}')">
                         <div class="card rounded-0 border-0 w-100 cursor-pointer">
                             <div class="card-body pb-0">
                                 <h6 class="card-title text-white">{{$report->name}}</h6>
@@ -48,17 +48,47 @@
             <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
             <div class="modal-body pt-4" id="modalBody">
 
-
-            @foreach ($reports as $report)                   
-                <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch">
-                    <div class="card rounded-0 border-0 w-100 cursor-pointer">
-                        <div class="card-body pb-0">
-                            <input type="checkbox" ng-click="('{{$report->report_doc}}')">
-                            <h6 class="card-title text-white">{{$report->name}}</h6>                            
+            
+                <div><% selectedReportDescription %></div>
+                          
+                @foreach ($reports as $report)                   
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" >
+                        <div class="card rounded-0 border-0 w-100 cursor-pointer">
+                            <div class="card-body pb-0" >
+                                <input
+                                    type="checkbox"                                   
+                                    value="{{$report->id}}"      
+                                    ng-click="addRemoveSelection({{$report->id}})" 
+                                    ng-checked="selectedReport.indexOf('{{$report->id}}') > -1"                               
+                                > {{$report->name}}                                                            
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+           
+                <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
+                                        @csrf
+                    <div class="form-group">
+
+                        <input id="name" type="text" class="form-control mb-1" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
+
+                        <input id="firm_name" type="text" class="form-control mb-1" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+
+                        <input id="position" type="text" class="form-control mb-1" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
+
+
+                        <input id="email" type="text" class="form-control mb-1" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
+
+
+                        <input id="contact_number" type="text" class="form-control mb-1" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
+
+                        <button type="submit" class="btn btn-form br-40 mt-3 px-4">Submit</button>
+                       
+                    </div>
+
+
+               
+                </form>
 
             </div>
             <div class="modal-footer border-0">
@@ -89,14 +119,71 @@
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
     app.controller('ReportController', function ($scope, $http, $compile) {
-        $scope.confirmEmail = function(report_url){           
+        $scope.confirmEmail = function(report_description,report_id){
             $scope.modalErrors = $scope.messageToshow = null;
-            $('#confirm-mail').modal('show');
-            $('#modalBody').empty();
-            $('#modalBody').html(report_url);
-            $('iframe').css('height', '100%');
-            $('iframe').css('width', '100%');
+            $('#confirm-mail').modal('show');  
+            $scope.addReportSelection(report_id);      
+            $scope.selectedReportDescription = report_description;
+        //    $('iframe').css('height', '100%');
+           // $('iframe').css('width', '100%');
         }
+
+        //On card click for the checkbox select and push if not exists. 
+        $scope.addReportSelection = function  (report_id) {         
+
+            var exists = false;
+            angular.forEach($scope.selectedReport, function (value, key) {
+                if(value == report_id){
+                    exists = true;
+                }
+            }); 
+
+            if (!exists) {  // If not currently selected              
+                $scope.selectedReport.push(report_id);
+            }
+        };
+
+        //On checkbox click handle both add/remove for checkbox and card as well
+        $scope.addRemoveSelection = function (report_id) { 
+
+            var exists = false;
+            angular.forEach($scope.selectedReport, function (value, key) {
+                if(value == report_id){
+                    exists = true;
+                }
+            }); 
+           
+            if (exists) {  // Is currently selected    
+                var idx = $scope.selectedReport.indexOf(report_id);           
+                $scope.selectedReport.splice(idx, 1);
+            }else {  // Is newly selected                   
+                $scope.selectedReport.push(report_id);
+            }
+        };
+
+        $scope.reportRequestSubmit = function(form_data){
+
+            form_data.selectedReport = $scope.selectedReport;
+           
+            $(".bg_load").show();
+            $scope.modalErrors = null;
+            var url = 'feedback/save-form';
+            $http.post(url,form_data).then(function (response) {
+                if (response.data.status == 'SUCCESS') {
+                    $(".bg_load").hide();
+                    $scope.form_data = {};
+                    $scope.successMessage = response.data.message;
+                } else {
+                    var errors = [];
+                    $.each(response.data.errors, function (key, value) {
+                        errors.push(value);
+                    });
+                    $scope.modalErrors = errors;
+                    $(".bg_load").hide();
+                }
+            });
+        }
+
 
         $scope.sendReportEmail = function(report_name){
             $(".bg_load").show();
@@ -133,9 +220,17 @@
             }
         }
 
+       
+
         $scope.init = function () {
-            $scope.form_data = {};
+            $scope.selectedReport = [];
+
+            $scope.reportList = '<?php echo $reports; ?>';
+            $scope.selectedReportDescription = '';
+            
+            $scope.form_data = {};  
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
+           
         }
 
         $scope.init();

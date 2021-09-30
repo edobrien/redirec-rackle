@@ -68,13 +68,9 @@
                             <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/feedback-surveys') }}">Surveys</a>
                             </li>
-                            <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
-                            </li>
                             <li class="nav-item {{ Request::is('helpful-article') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
                             </li>
-
                            
                             {{-- @endif --}}
                         <!-- Authentication Links -->
@@ -291,11 +287,13 @@
                     <div class="find-recruiters">
                         <p class="text-dark mb-1">Suggest a recruiter</p>
                         <label for="location">I am looking for a recruiter in…</label>
-                        <select class="mb8" name="search_locations" 
+                        <select  class="mb8" name="search_locations" 
                                 ng-model="search_data.search_location"
-                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations  | orderBy:['loc.name','region.ordering']  track by loc.id ">
+                                ng-options="loc as loc.name group by loc.region.name for loc in search_locations 
+                                | orderBy:['loc.name','region.ordering'] track by loc.id">
                                 <option value="">Any</option>
                         </select>
+
                         <!--
                         <label for="location_role">Location of hire</label>
                         <select class="mb8" name="hire_locations" 

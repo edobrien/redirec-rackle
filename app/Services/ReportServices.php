@@ -9,7 +9,7 @@ namespace App\Services;
 
 use App\Report;
 use App\User;
-use App\Mail\NotifyReport;
+use App\Mail\SelectedReportNotify;
 use Yajra\Datatables\Datatables;
 use Mail;
 use App\SiteConstants;
@@ -103,6 +103,25 @@ class ReportServices{
             $user = \Illuminate\Support\Facades\Auth::user();
 
             Mail::send(new NotifyReport(User::find($user->id), $data->report_name));
+
+            return true;
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error($e->getMessage());
+            return false;
+        }
+        
+    }
+
+    public function notifySelectedReport($data){
+
+        try {
+
+            if (count($data->selectedReport)) {
+                $requestedReport = Reports::select('name')->whereIn('id',$data->selectedReport);
+            }
+
+            //Send mail to admin on successful submission
+            Mail::send(new SelectedReportNotify($data));
 
             return true;
         } catch (\Exception $e) {

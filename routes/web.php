@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/rec-admin', function () {
+Route::get('/lm-admin', function () {
     return view('auth.login');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('practice-guide-details', function () {
     return view('practice-area-guide.practice-guide-details');
