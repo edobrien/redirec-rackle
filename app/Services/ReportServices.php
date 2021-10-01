@@ -101,9 +101,7 @@ class ReportServices{
     public function notifyReportRequest($data){
         try {
             $user = \Illuminate\Support\Facades\Auth::user();
-
             Mail::send(new NotifyReport(User::find($user->id), $data->report_name));
-
             return true;
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error($e->getMessage());
@@ -112,16 +110,18 @@ class ReportServices{
         
     }
 
-    public function notifySelectedReport($data){
+    public function notifySelectedReportRequest($data){
 
         try {
 
+            $requestedReport = array();
+
             if (count($data->selectedReport)) {
-                $requestedReport = Reports::select('name')->whereIn('id',$data->selectedReport);
+                $requestedReport = Report::whereIn('id',$data->selectedReport)->pluck('name');
             }
 
             //Send mail to admin on successful submission
-            Mail::send(new SelectedReportNotify($data));
+            Mail::send(new SelectedReportNotify($data,$requestedReport));
 
             return true;
         } catch (\Exception $e) {

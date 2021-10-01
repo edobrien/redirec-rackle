@@ -48,9 +48,13 @@
             <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
             <div class="modal-body pt-4" id="modalBody">
 
+
             
                 <div><% selectedReportDescription %></div>
-                          
+                
+                <ul ng-if="modalErrors">
+                        <li ng-repeat="error in modalErrors" ><% error %></li>
+                </ul>
                 @foreach ($reports as $report)                   
                     <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" >
                         <div class="card rounded-0 border-0 w-100 cursor-pointer">
@@ -163,24 +167,27 @@
 
         $scope.reportRequestSubmit = function(form_data){
 
-            form_data.selectedReport = $scope.selectedReport;
-           
+            form_data.selectedReport = $scope.selectedReport;           
             $(".bg_load").show();
             $scope.modalErrors = null;
-            var url = 'feedback/save-form';
+            var url = 'reports-analysis/send-selected-report-email';
             $http.post(url,form_data).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $(".bg_load").hide();
+                    $('#confirm-mail').modal('hide');  
                     $scope.form_data = {};
+                    $scope.selectedReport = [];
                     $scope.successMessage = response.data.message;
-                } else {
+                } 
+            }).catch(function(response) {               
                     var errors = [];
                     $.each(response.data.errors, function (key, value) {
-                        errors.push(value);
+                        errors.push(value[0]);
                     });
+                    
                     $scope.modalErrors = errors;
-                    $(".bg_load").hide();
-                }
+            }).finally(function(){
+                $(".bg_load").hide();
             });
         }
 
@@ -197,11 +204,8 @@
                     $scope.messageToshow = "We have received your request for "+$scope.form_data.report_name+". A copy of this will be sent to you via email.";
                     $scope.form_data = {};
                 } else {
-                    var errors = [];
-                    $.each(response.data.errors, function (key, value) {
-                        errors.push(value);
-                    });
-                    $scope.modalErrors = errors;
+                   
+                    $scope.modalErrors = response.data.errors;
                 }
             }).finally(function(){
                 $(".bg_load").hide();

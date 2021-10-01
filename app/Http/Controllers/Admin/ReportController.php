@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\ReportServices;
 
+use App\Http\Requests\NotifySelectedReportRequest;
+
 class ReportController extends Controller
 {
     private $reportServices;
@@ -76,9 +78,11 @@ class ReportController extends Controller
 
     //Listing view
     public function getActiveReportListing(){
+        
         $reports =  $this->reportServices->getActiveReports();
         return view('reports-analysis', compact('reports'));
     }
+
     public function notifyReportRequest(Request $request){
         if($this->reportServices->notifyReportRequest($request)){
             $rv = array("status" => "SUCCESS", "message" => "Report requested to Admin");
@@ -86,6 +90,22 @@ class ReportController extends Controller
             $errors[] = "Please contact administrator. Error in notifying Admin";
                 $rv = array("status" => "FAILED", "errors" => $errors);
         }
+        return response()->json($rv);
+    }
+
+
+    public function notifySelectedReport(NotifySelectedReportRequest $request){
+
+    
+        $validated = $request->validated();
+      
+        if($this->reportServices->notifySelectedReportRequest($request)){
+            $rv = array("status" => "SUCCESS", "message" => "Report requested to Admin");
+        }else{
+            $errors[] = "Please contact administrator. Error in notifying Admin";
+                $rv = array("status" => "FAILED", "errors" => $errors);
+        }
+
         return response()->json($rv);
     }
 

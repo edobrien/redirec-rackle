@@ -10,16 +10,24 @@
          <br/>
          <p>Name: {{$name}}</p>
          <br/>
-          <p>Firm Name: {{$firm}}</p>
+          <p>Firm Name: {{$firm_name}}</p>
          <br/>
           <p>Position: {{$position}}</p>
+         <br/>        
+          <p>Email: {{$email}}</p>
          <br/>
           <p>Contact Number: {{$contact_number}}</p>
          <br/>
-         <p>Reports Selected: {{$selected_report}}</p>
+         <p>Reports Selected: </p>
+         <ul>
+              @foreach($selected_report as $report)
+              <li> {{$report}}</li>
+              @endforeach
+
+         </ul>
          <br/>
-         <p >Best Wishes,</p>
-         <p >Recdirec</p>
+         <p >Best Regards,</p>
+         <p >The Rackle/p>
          <br>
       </td>
    </tr>
