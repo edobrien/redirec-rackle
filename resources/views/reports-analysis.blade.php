@@ -40,63 +40,103 @@
     @endif
     <!-- confirm modal begins -->
     <div id="confirm-mail" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content rounded-0" style="height:600px;width:1000px;margin-left: -90px;">
-            <div class="modal-header">
-                <a class="close" data-dismiss="modal">×</a>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content rounded-0">
+            <div class="modal-header rhead border-0">
+                <h4 class="modal-title text-blue" id="exampleModalLabel">Request a Report</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
-            <div class="modal-body pt-4" id="modalBody">
-
-            
-                <div><% selectedReportDescription %></div>
-                          
-                @foreach ($reports as $report)                   
-                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" >
-                        <div class="card rounded-0 border-0 w-100 cursor-pointer">
-                            <div class="card-body pb-0" >
-                                <input
-                                    type="checkbox"                                   
-                                    value="{{$report->id}}"      
-                                    ng-click="addRemoveSelection({{$report->id}})" 
-                                    ng-checked="selectedReport.indexOf('{{$report->id}}') > -1"                               
-                                > {{$report->name}}                                                            
-                            </div>
+            <div class="modal-body pt-1" id="modalBody">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6 class="modal-title" id="exampleModalLabel"><% selectedReportDescription %></h6>
                         </div>
                     </div>
-                @endforeach
-           
-                <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
-                                        @csrf
-                    <div class="form-group">
-
-                        <input id="name" type="text" class="form-control mb-1" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
-
-                        <input id="firm_name" type="text" class="form-control mb-1" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
-
-                        <input id="position" type="text" class="form-control mb-1" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
-
-
-                        <input id="email" type="text" class="form-control mb-1" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
-
-
-                        <input id="contact_number" type="text" class="form-control mb-1" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
-
-                        <button type="submit" class="btn btn-form br-40 mt-3 px-4">Submit</button>
-                       
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2 py-3">
+                            <h6 class="modal-title pb-1"><b>Partnership romotions</b></h6>
+                            @foreach ($reports as $report) 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="{{$report->id}}" id="defaultCheck1" ng-click="addRemoveSelection({{$report->id}})" ng-checked="selectedReport.indexOf('{{$report->id}}') > -1">  
+                                <label class="form-check-label" for="defaultCheck1">
+                                    {{$report->name}}
+                                </label>
+                            </div>                                                
+                            @endforeach
+                        </div>
                     </div>
-
-
-               
-                </form>
-
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
-            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name" class="col-form-label">Name</label>
+                                    <input id="name" type="text" class="form-control mb-1" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="firm_name" class="col-form-label">Firm Name</label>
+                                    <input id="firm_name" type="text" class="form-control mb-1" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+                                </div>
+                                <div class="form-group">
+                                    <label for="position" class="col-form-label">Position</label>
+                                    <input id="position" type="text" class="form-control mb-1" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">Email Id</label>
+                                    <input id="email" type="text" class="form-control mb-1" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact_number" class="col-form-label">Contact Number</label>
+                                    <input id="contact_number" type="text" class="form-control mb-1" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
+                                </div>
+                                <button type="submit" class="btn btn-form">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Sachin
+    <div id="confirm-mail" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content rounded-0"style="height:600px;width:1000px;margin-left: -90px;">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                </div>
+                <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
+                <div class="modal-body pt-4" id="modalBody">
+                    <div><% selectedReportDescription %></div>
+                    @foreach ($reports as $report)                   
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch">
+                        <div class="card rounded-0 border-0 w-100 cursor-pointer">
+                            <div class="card-body pb-0">
+                                <input type="checkbox" value="{{$report->id}}" ng-click="addRemoveSelection({{$report->id}})" ng-checked="selectedReport.indexOf('{{$report->id}}') > -1"> {{$report->name}}                                                            
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
+                        @csrf
+                        <div class="form-group">
+                            <input id="name" type="text" class="form-control mb-1" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
+                            <input id="firm_name" type="text" class="form-control mb-1" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+                            <input id="position" type="text" class="form-control mb-1" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
+                            <input id="email" type="text" class="form-control mb-1" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
+                            <input id="contact_number" type="text" class="form-control mb-1" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
+                            <button type="submit" class="btn btn-form br-40 mt-3 px-4">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <div id="confirm-done" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
