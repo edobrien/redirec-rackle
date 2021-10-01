@@ -86,7 +86,9 @@ Route::post('/login' , 'Auth\AuthController@authenticate');
 
     //Report Listing
     Route::get('reports-analysis', 'Admin\ReportController@getActiveReportListing');
-    Route::post('reports-analysis/send-report-email', 'Admin\ReportController@notifyReportRequest');
+    Route::post('reports-analysis/send-selected-report-email', 'Admin\ReportController@notifySelectedReport');
+
+    Route::post('reports-analysis/send-report-email', 'Admin\ReportController@notifySelectedReport');
 
     //Useful link listing
     Route::get('useful-link', 'Admin\UsefulLinksController@getActiveUsefulLinksListing');

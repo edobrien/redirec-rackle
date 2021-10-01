@@ -24,14 +24,14 @@ class SelectedReportNotify extends Mailable
     private $contact_number;
     private $selected_report = [];
 
-    public function __construct($requestData)
+    public function __construct($requestData,$requestedReport)
     {
         $this->name = $requestData->name;
-        $this->firm = $requestData->firm;
+        $this->firm_name = $requestData->firm_name;
         $this->position = $requestData->position;
         $this->email = $requestData->email;
         $this->contact_number = $requestData->contact_number;
-        $this->selected_report = $requestData->selected_report;
+        $this->selected_report = $requestedReport;
 
     }
 
@@ -43,13 +43,14 @@ class SelectedReportNotify extends Mailable
     public function build()
     {
         return $this->view('mails.selected-report-notify')
-                ->from('noreply@redirec.com')
+                ->from('noreply@therackle.com')
                 ->to(SiteConstants::ADMIN_EMAIL)
-                ->subject("Recdirec: Report request Submission!")
+                ->subject("The Rackle: Report request Submission!")
                 ->with([
                     "name" => $this->name,
-                    "firm_name" => $this->firm,
+                    "firm_name" => $this->firm_name,
                     "position" => $this->position,
+                    'email'=>$this->email,
                     "contact_number" => $this->contact_number,
                     "selected_report" => $this->selected_report,
                 ]);

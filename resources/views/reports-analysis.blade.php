@@ -58,6 +58,9 @@
                     <div class="row">
                         <div class="col-md-8 offset-md-2 py-3">
                             <h6 class="modal-title pb-1"><b>Partnership romotions</b></h6>
+                            <ul ng-if="modalErrors">
+                                <li ng-repeat="error in modalErrors" ><% error %></li>
+                            </ul>
                             @foreach ($reports as $report) 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="{{$report->id}}" id="defaultCheck1" ng-click="addRemoveSelection({{$report->id}})" ng-checked="selectedReport.indexOf('{{$report->id}}') > -1">  
@@ -203,24 +206,27 @@
 
         $scope.reportRequestSubmit = function(form_data){
 
-            form_data.selectedReport = $scope.selectedReport;
-           
+            form_data.selectedReport = $scope.selectedReport;           
             $(".bg_load").show();
             $scope.modalErrors = null;
-            var url = 'feedback/save-form';
+            var url = 'reports-analysis/send-selected-report-email';
             $http.post(url,form_data).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
                     $(".bg_load").hide();
+                    $('#confirm-mail').modal('hide');  
                     $scope.form_data = {};
+                    $scope.selectedReport = [];
                     $scope.successMessage = response.data.message;
-                } else {
+                } 
+            }).catch(function(response) {               
                     var errors = [];
                     $.each(response.data.errors, function (key, value) {
-                        errors.push(value);
+                        errors.push(value[0]);
                     });
+                    
                     $scope.modalErrors = errors;
-                    $(".bg_load").hide();
-                }
+            }).finally(function(){
+                $(".bg_load").hide();
             });
         }
 
@@ -237,11 +243,8 @@
                     $scope.messageToshow = "We have received your request for "+$scope.form_data.report_name+". A copy of this will be sent to you via email.";
                     $scope.form_data = {};
                 } else {
-                    var errors = [];
-                    $.each(response.data.errors, function (key, value) {
-                        errors.push(value);
-                    });
-                    $scope.modalErrors = errors;
+                   
+                    $scope.modalErrors = response.data.errors;
                 }
             }).finally(function(){
                 $(".bg_load").hide();
