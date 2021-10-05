@@ -952,5 +952,14 @@ input:-webkit-autofill:active {
     background:transparent;
 }
 .rhead {
-    padding: 16px 30px 0 30px !important;
+    padding: 16px 30px 16px 30px !important;
+}
+.mtc {
+    background-color: rgba(76,35,161,.02) !important;
+    border-color: rgba(76,35,161,.1) !important;
+    color: rgba(0,0,0,0.8) !important;
+    font-size: 12px !important;
+}
+.text-dblue {
+    color: #08293c !important;
 }

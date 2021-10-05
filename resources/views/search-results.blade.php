@@ -11,7 +11,7 @@
                     <div class="card-body p-2 pl-3">
                         <p class="m-0 user-name" data-toggle="tooltip" data-placement="top" title="{{$firm->name}}">
                             <!--{{$firm->name}}  -->
-                            <img height="46" class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Recruiters Firm Logo">
+                            <img class="firm-logo" src="https://recdirec.com/img/logo-header.png" alt="Recruiters Firm Logo">
                             <div class="pull-right" style="margin-top:-21px">
                                 @if($firm->is_verified == \App\RecruitmentFirm::FLAG_YES)
                                 <img src="/img/is_verified_logo.png" height="17" alt="Verified"> 
@@ -31,7 +31,48 @@
                 </div>
                 @endforeach
             </div>
-            <!--<div ng-show="!firm" class="col-md-9">Des</div>-->
+            <div ng-show="!firm" class="col-md-9">
+                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-2 pl-3">
+                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
+                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+                    </div>
+                </div>
+                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-2 pl-3">
+                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
+                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+                    </div>
+                </div>
+                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-2 pl-3">
+                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
+                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+                    </div>
+                </div>
+                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-2 pl-3">
+                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
+                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+                    </div>
+                </div>
+                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-2 pl-3">
+                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
+                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+                    </div>
+                </div>
+                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-2 pl-3">
+                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
+                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+                    </div>
+                </div>
+            </div>
+            <!--<div ng-show="!firm" class="col-md-9 text-center pt-3">
+                <h3 class="font-weight-bold">Click on the cards below <span class="text-blue">Recruiters</span></br> to know more...</h3>
+                <img width="50%" src="/img/4703436.jpg" alt="Click on the card to read more">
+            </div>-->
             <div class="col-md-9 search-results" ng-show="firm">
                 <div class="firm-header">
                     <h5 class="font-weight-bold"><% firm.name %></h5>

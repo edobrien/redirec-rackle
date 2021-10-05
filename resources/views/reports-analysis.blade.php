@@ -42,29 +42,27 @@
     <div id="confirm-mail" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content rounded-0">
-            <div class="modal-header rhead border-0">
-                <h4 class="modal-title text-blue" id="exampleModalLabel">Request a Report</h4>
+            <div class="modal-header border-0 rhead">
+                <h4 class="modal-title text-blue mb-0" id="exampleModalLabel">Request a Report</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body pt-1" id="modalBody">
-                <div class="container-fluid">
+                <div class="container-fluid rounded">
                     <div class="row">
                         <div class="col-md-12">
                             <h6 class="modal-title" id="exampleModalLabel"><% selectedReportDescription %></h6>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-8 offset-md-2 py-3">
-                            <h6 class="modal-title pb-1"><b>Partnership romotions</b></h6>
-                            <ul ng-if="modalErrors">
-                                <li ng-repeat="error in modalErrors" ><% error %></li>
-                            </ul>
+                    <div class="row py-3">
+                        <div class="col-md-8 offset-md-2 py-3 rounded" style="background-color: #f4fbfe;">
+                            <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6>
+                            <hr/ class="mt-2">
                             @foreach ($reports as $report) 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="{{$report->id}}" id="defaultCheck1" ng-click="addRemoveSelection({{$report->id}})" ng-checked="selectedReport.indexOf('{{$report->id}}') > -1">  
-                                <label class="form-check-label" for="defaultCheck1">
+                                <label class="form-check-label">
                                     {{$report->name}}
                                 </label>
                             </div>                                                
@@ -72,30 +70,61 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div ng-if="modalErrors" class="card border-danger mb-3">
+                                <div class="card-body text-danger">
+                                    <ul class="mb-0">
+                                        <li ng-repeat="error in modalErrors" ><% error %></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="name" class="col-form-label">Name</label>
-                                    <input id="name" type="text" class="form-control mb-1" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="name" class="col-form-label">Name</label>
+                                            <input id="name" type="text" class="form-control mb-1 mtc" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="firm_name" class="col-form-label">Firm Name</label>
+                                            <input id="firm_name" type="text" class="form-control mb-1 mtc" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="position" class="col-form-label">Position</label>
+                                            <input id="position" type="text" class="form-control mb-1 mtc" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="firm_name" class="col-form-label">Firm Name</label>
-                                    <input id="firm_name" type="text" class="form-control mb-1" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="email" class="col-form-label">Email Id</label>
+                                            <input id="email" type="text" class="form-control mb-1 mtc" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="contact_number" class="col-form-label">Contact Number</label>
+                                            <input id="contact_number" type="text" class="form-control mb-1 mtc" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-right align-self-center">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="position" class="col-form-label">Position</label>
-                                    <input id="position" type="text" class="form-control mb-1" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-form">Submit</button>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="email" class="col-form-label">Email Id</label>
-                                    <input id="email" type="text" class="form-control mb-1" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact_number" class="col-form-label">Contact Number</label>
-                                    <input id="contact_number" type="text" class="form-control mb-1" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
-                                </div>
-                                <button type="submit" class="btn btn-form">Submit</button>
                             </form>
                         </div>
                     </div>
