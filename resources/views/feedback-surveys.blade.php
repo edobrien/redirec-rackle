@@ -8,6 +8,7 @@
             <a href="<% link.url %>" target="_blank" class="btn btn-outline-secondary btn-sm br-40 mr-2 mb-2 px-3 fs-12" ng-repeat="link in survey_links"><% link.title %></a>
         </div>
     </div>
+    <!--
     <div class="row">
         <div class="col-md-12 px-4 pb-3">
             <h4 class="font-weight-bold text-blue pb-2">Feedback</h4>
@@ -27,7 +28,7 @@
                 <button type="submit" class="btn btn-form br-40 mt-3 px-4">Submit</button>
             </form>
         </div>
-    </div>
+    </div>-->
 </div>
 <script type="text/javascript">
     

@@ -55,23 +55,23 @@
                             <h6 class="modal-title" id="exampleModalLabel"><% selectedReportDescription %></h6>
                         </div>
                     </div>
+                    <hr/ class="mb-0">
                     <div class="row py-3">
-                        <div class="col-md-8 offset-md-2 py-3 rounded" style="background-color: #f4fbfe;">
-                            <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6>
-                            <hr/ class="mt-2">
-                            @foreach ($reports as $report) 
+                        @foreach ($reports as $report) 
+                        <div class="col-md-6">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="{{$report->id}}" id="defaultCheck1" ng-click="addRemoveSelection({{$report->id}})" ng-checked="selectedReport.indexOf('{{$report->id}}') > -1">  
                                 <label class="form-check-label">
                                     {{$report->name}}
                                 </label>
-                            </div>                                                
-                            @endforeach
-                        </div>
+                            </div>  
+                        </div>                                              
+                        @endforeach
                     </div>
+                    <hr/ class="mt-0">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <div ng-if="modalErrors" class="card border-danger mb-3">
+                            <div ng-if="modalErrors" class="card border-0 mb-3">
                                 <div class="card-body text-danger">
                                     <ul class="mb-0">
                                         <li ng-repeat="error in modalErrors" ><% error %></li>
