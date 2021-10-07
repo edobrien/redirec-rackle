@@ -865,6 +865,24 @@ input:-webkit-autofill:active {
     left: 2px;
     padding: 7px;
 }
+.bg-lightblue {
+    background-color: rgba(41, 172, 228, 0.05) !important;
+}
+.result-logo {
+    top: 15px;
+    left: 15px;
+    padding: 0 0 1rem;
+    width: 100px;
+}
+.des-txt {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
 .firm-header {
     height: 62px;
     display: flex;

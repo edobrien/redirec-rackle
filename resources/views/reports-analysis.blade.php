@@ -12,23 +12,23 @@
         <div class="col-md-12 px-4 pb-3">
             <h4 class="font-weight-bold text-blue pb-2">Request a Report</h4>
             <div class="practice-area">
-            <div ng-hide="!errors" class="alert alert-danger">
-                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
-                <ul class="pl-2 mb-0">
-                    <li ng-repeat="error in errors"><% error %></li>
-                </ul>
-            </div>
-            <div ng-hide="!successMessage"  class="alert alert-success">
-                <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
-                <% successMessage %>
-            </div>
+                <div ng-hide="!errors" class="alert alert-danger">
+                    <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                    <ul class="pl-2 mb-0">
+                        <li ng-repeat="error in errors"><% error %></li>
+                    </ul>
+                </div>
+                <div ng-hide="!successMessage"  class="alert alert-success">
+                    <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                    <% successMessage %>
+                </div>
                 <div class="row bg-dynamic">
                     @foreach ($reports as $report)                   
                     <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail('{{$report->description}}', '{{$report->id}}')">
                         <div class="card rounded-0 border-0 w-100 cursor-pointer">
                             <div class="card-body pb-0">
                                 <h6 class="card-title text-white">{{$report->name}}</h6>
-                                <p class="text-white">{{$report->description}}</>
+                                <p class="text-white">{{$report->description}}</p>
                             </div>
                         </div>
                     </div>

@@ -4,24 +4,22 @@
     <div class="col-md-12 pt-4 pb-3 px-4">
         @if(count($firms))
         <h4 class="font-weight-bold text-blue pb-2">Recruiters({{count($firms)}})</h4>
-        <div class="row capture-ext-links">
-            <div class="col-md-3 search-results">
-                @foreach($firms as $firm)
-                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
-                    <div class="card-body p-2 pl-3">
-                        <p class="m-0 user-name" data-toggle="tooltip" data-placement="top" title="{{$firm->name}}">
-                            <!--{{$firm->name}}  -->
-                            <img class="firm-logo" src="https://recdirec.com/img/logo-header.png" alt="Recruiters Firm Logo">
-                            <div class="pull-right" style="margin-top:-21px">
-                                @if($firm->is_verified == \App\RecruitmentFirm::FLAG_YES)
-                                <img src="/img/is_verified_logo.png" height="17" alt="Verified"> 
-                                @endif  
-                                @if($firm->is_specialism == \App\RecruitmentFirm::FLAG_YES)
-                                <img src="/img/specialist_logo.png" height="17" alt="Specialist"> 
-                                @endif
-                            </div>                          
-                        </p>
-                        <!--- <small class="text-muted mb-0">{{$firm->location}}</small> --->
+        <div class="row">  
+            @foreach($firms as $firm)                 
+            <div class="card-deck ml-1 mb-3" style="width: 17.2rem;">
+                <div class="card rounded bg-lightblue border w-100 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+                    <div class="card-body p-3">
+                    <img class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Recruiters Firm Logo">
+                        <div class="pull-right">
+                            @if($firm->is_verified == \App\RecruitmentFirm::FLAG_YES)
+                                <img width="15" src="/img/is_verified_logo.png" alt="Verified"> 
+                            @endif  
+                            @if($firm->is_specialism == \App\RecruitmentFirm::FLAG_YES)
+                                <img width="15" src="/img/specialist_logo.png" alt="Specialist">
+                            @endif
+                        </div>   
+                        <p class="text-dark des-txt mb-2" ng-bind-html="firm.description | trust"></p>
+                        <small class="pull-right"><a href="#" class="card-link">Read more</a></small>
                         @if(Auth::user())
                             @if(Auth::user()->is_admin == "YES")
                                 <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small>
@@ -29,140 +27,47 @@
                        @endif
                     </div>
                 </div>
-                @endforeach
-            </div>
-            <div ng-show="!firm" class="col-md-9">
-                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
-                    <div class="card-body p-2 pl-3">
-                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
-                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+            </div> 
+            @endforeach
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document" ng-show="firm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img class="" src="https://recdirec.com/img/logo-header.png">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
-                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
-                    <div class="card-body p-2 pl-3">
-                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
-                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
+                    <div class="modal-body">
+                        <h5 class="text-blue">Background</h5>
+                        <p>gmk is a London based boutique legal recruitment company, set up in 1998 by its founding directors Lynne McCarroll and Jon Garrett. For the last 20 years, their focus has been purely on the legal recruitment market, specialising in fee-earner recruitment (NQ to partner level) and related non fee earning professionals, including KM/PSLs, Training and Development, and Risk Management Lawyers. They have a team of 10 consultants (many of whom are ex-lawyers), all of whom have been with them for over 5 years, which ensures their clients have continuity in their relationships with individuals at gmk.</p>
+                        <p class="text-grey" ng-bind-html="firm.description | trust"></p>
+                        <h5 class="font-weight-bold py-2">Testimonials</h5>
+                        <p class="text-grey" ng-bind-html="firm.testimonials | trust"></p>
+                        <div class="row pt-2 text-footer">
+                            <div class="col-md-6">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <span class="text-grey pr-4"><i>Practice Specialism : <% firm.practice_area | areaSpecialismText %></i></span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <span class="text-grey"><i>Sector Specialism : <% firm.sector | sectorSpecialismText %></i></span>
+                            </div>
+                        </div>
+                        <div class="row pt-2 text-footer">
+                            <div class="col-md-6">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span class="text-grey"><% firm.location %></span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <i class="fa fa fa-globe" aria-hidden="true"></i>
+                                <a href="http://<% firm.website_link %>" target="_blank" class="text-grey"><% firm.website_link %></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
-                    <div class="card-body p-2 pl-3">
-                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
-                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
-                    </div>
-                </div>
-                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
-                    <div class="card-body p-2 pl-3">
-                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
-                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
-                    </div>
-                </div>
-                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
-                    <div class="card-body p-2 pl-3">
-                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
-                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
-                    </div>
-                </div>
-                <div class="card bg-lightgrey rounded-0 border-0 mb-2 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
-                    <div class="card-body p-2 pl-3">
-                        <p class="text-grey mb-0">Established in 2013, Ardent Recruitment is led by Jane Gaunt and Gerry Arbuckle who have a combined 22 years of experience in legal recruitment.</p>
-                        <small class="text-blue pull-right pr-2"><strong>Read more</strong></small>
-                    </div>
-                </div>
-            </div>
-            <!--<div ng-show="!firm" class="col-md-9 text-center pt-3">
-                <h3 class="font-weight-bold">Click on the cards below <span class="text-blue">Recruiters</span></br> to know more...</h3>
-                <img width="50%" src="/img/4703436.jpg" alt="Click on the card to read more">
-            </div>-->
-            <div class="col-md-9 search-results" ng-show="firm">
-                <div class="firm-header">
-                    <h5 class="font-weight-bold"><% firm.name %></h5>
-                    <!--<img height="46" class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Firm Logo">-->
-                </div>
-                <p class="text-grey" ng-bind-html="firm.description | trust"></p>
-                <h5 class="font-weight-bold py-2">Testimonials</h5>
-                <p class="text-grey" ng-bind-html="firm.testimonials | trust"></p>
-                <!--
-                <h5 class="font-weight-bold py-2">Facts and Figures</h5>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Office Location</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="location in firm.firm_location"><% location.location.name %></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Services</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="service in firm.firm_service"><% service.service.name %></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Types of recruitment</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="type in firm.firm_recruitment_type"><% type.recruitment_type.name %></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Clients</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="client in firm.firm_client"><% client.client_location %></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Practice area specialisms</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="area in firm.firm_practice_area" 
-                                ng-show="area.practice_area.type!='GENERAL'"><% area.practice_area.name %></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Private Practice Sector specialisms</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" 
-                                ng-show="sector.sector.type=='PRIVATE_PRACTICE'"><% sector.sector.name %>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <h6 class="font-weight-bold text-grey">Inhouse Sector specialisms</h6>
-                        <ul class="text-grey pl-4">
-                            <li class="pb-1" ng-repeat="sector in firm.firm_sector" 
-                                ng-show="sector.sector.type=='INHOUSE'"><% sector.sector.name %>
-                        </ul>
-                    </div>
-                </div>
-                <h5 class="font-weight-bold py-2">Regions recruited for</h5>
-                <ul class="text-grey pl-4">
-                    <li class="pb-2" ng-repeat="region in firm.firm_region"><% region.hire_location.region.name %> - <% region.hire_location.name %></li>
-                </ul>
-                <h5 class="font-weight-bold pb-2">Contact Details</h5>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4" ng-repeat="location in firm.firm_location">
-                        <ul class="text-grey list-style-none pl-0">
-                            <li class="pb-1">
-                                <h6 class="font-weight-bold text-grey"><% location.location.name %></h6>
-                                <% location.contact_name %> <br> <% location.telephone %> <br> <% location.email %>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
-                <div class="row pt-2 text-footer">
-                    <div class="col-md-6">
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey pr-4"><i>Practice Specialism : <% firm.practice_area | areaSpecialismText %></i></span>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <span class="text-grey"><i>Sector Specialism : <% firm.sector | sectorSpecialismText %></i></span>
-                    </div>
-                </div>
-                <div class="row pt-2 text-footer">
-                    <div class="col-md-6">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="text-grey"><% firm.location %></span>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <i class="fa fa fa-globe" aria-hidden="true"></i>
-                        <a href="http://<% firm.website_link %>" target="_blank" class="text-grey"><% firm.website_link %></a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
