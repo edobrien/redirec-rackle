@@ -59,9 +59,20 @@
                         <div class="col-md-8 offset-md-2 py-3 rounded" style="background-color: #f4fbfe;">
                             <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6>
                             <hr/ class="mt-2">
+                            
+                            <div class="form-check form-check-inline" ng-repeat="report in reportList track by $index">
+                                <input class="form-check-input" type="checkbox" 
+                                value="report.id " ng-click="addRemoveSelection( report.id )" 
+                                ng-checked="selectedReport.indexOf(report.id) > -1">  
+                                <label class="form-check-label">
+                                    <% report.name %>
+                                </label>
+                            </div>       
                             @foreach ($reports as $report) 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="{{$report->id}}" id="defaultCheck1" ng-click="addRemoveSelection({{$report->id}})" ng-checked="selectedReport.indexOf('{{$report->id}}') > -1">  
+                                <input class="form-check-input" type="checkbox" 
+                                value="{{$report->id}}" id="defaultCheck_{{$report->id}}" ng-click="addRemoveSelection({{$report->id}},event)" 
+                                ng-checked="selectedReport.indexOf('{{$report->id}}') > -1">  
                                 <label class="form-check-label">
                                     {{$report->name}}
                                 </label>
@@ -191,9 +202,11 @@
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
     app.controller('ReportController', function ($scope, $http, $compile) {
-        $scope.confirmEmail = function(report_description,report_id){
+        $scope.confirmEmail = function(report_description,report_id){            
             $scope.modalErrors = $scope.messageToshow = null;
-            $('#confirm-mail').modal('show');  
+            $scope.selectedReport = [];
+            $scope.selectedReport.push(report_id);
+            $('#confirm-mail').modal('show'); 
             $scope.addReportSelection(report_id);      
             $scope.selectedReportDescription = report_description;
         //    $('iframe').css('height', '100%');
@@ -201,36 +214,34 @@
         }
 
         //On card click for the checkbox select and push if not exists. 
-        $scope.addReportSelection = function  (report_id) {         
+        $scope.addReportSelection = function  (report_id) {
+           
+            // var exists = false;
+            // angular.forEach($scope.selectedReport, function (value, key) {
+            //     if(value == report_id){
+            //         exists = true;
+                    
+            //     }
+            // }); 
 
-            var exists = false;
-            angular.forEach($scope.selectedReport, function (value, key) {
-                if(value == report_id){
-                    exists = true;
-                }
-            }); 
-
-            if (!exists) {  // If not currently selected              
-                $scope.selectedReport.push(report_id);
-            }
+            // if (!exists) {  // If not currently selected              
+            //     $scope.selectedReport.push(report_id);
+            // }
         };
 
         //On checkbox click handle both add/remove for checkbox and card as well
-        $scope.addRemoveSelection = function (report_id) { 
-
-            var exists = false;
+        $scope.addRemoveSelection = function (report_id,event) {
+            console.log(event);
             angular.forEach($scope.selectedReport, function (value, key) {
                 if(value == report_id){
-                    exists = true;
+                    var idx = $scope.selectedReport.indexOf(report_id);           
+                    $scope.selectedReport.splice(idx, 1);
+                }else{
+                    $scope.selectedReport.push(report_id);
+                    
                 }
-            }); 
+            });           
            
-            if (exists) {  // Is currently selected    
-                var idx = $scope.selectedReport.indexOf(report_id);           
-                $scope.selectedReport.splice(idx, 1);
-            }else {  // Is newly selected                   
-                $scope.selectedReport.push(report_id);
-            }
         };
 
         $scope.reportRequestSubmit = function(form_data){
@@ -296,12 +307,11 @@
 
         $scope.init = function () {
             $scope.selectedReport = [];
-
-            $scope.reportList = '<?php echo $reports; ?>';
-            $scope.selectedReportDescription = '';
-            
+            $scope.reportList = '<?php $reports; ?>';
+            $scope.selectedReportDescription = '';           
             $scope.form_data = {};  
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
+
            
         }
 
