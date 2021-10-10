@@ -12,23 +12,23 @@
         <div class="col-md-12 px-4 pb-3">
             <h4 class="font-weight-bold text-blue pb-2">Request a Report</h4>
             <div class="practice-area">
-            <div ng-hide="!errors" class="alert alert-danger">
-                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
-                <ul class="pl-2 mb-0">
-                    <li ng-repeat="error in errors"><% error %></li>
-                </ul>
-            </div>
-            <div ng-hide="!successMessage"  class="alert alert-success">
-                <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
-                <% successMessage %>
-            </div>
+                <div ng-hide="!errors" class="alert alert-danger">
+                    <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                    <ul class="pl-2 mb-0">
+                        <li ng-repeat="error in errors"><% error %></li>
+                    </ul>
+                </div>
+                <div ng-hide="!successMessage"  class="alert alert-success">
+                    <a href="#"  class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
+                    <% successMessage %>
+                </div>
                 <div class="row bg-dynamic">
                     @foreach ($reports as $report)                   
                     <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch" ng-click="confirmEmail('{{$report->description}}', '{{$report->id}}')">
                         <div class="card rounded-0 border-0 w-100 cursor-pointer">
                             <div class="card-body pb-0">
                                 <h6 class="card-title text-white">{{$report->name}}</h6>
-                                <p class="text-white">{{$report->description}}</>
+                                <p class="text-white">{{$report->description}}</p>
                             </div>
                         </div>
                     </div>
@@ -55,34 +55,31 @@
                             <h6 class="modal-title" id="exampleModalLabel"><% selectedReportDescription %></h6>
                         </div>
                     </div>
+                    <hr/ class="mb-0">
                     <div class="row py-3">
                         <div class="col-md-8 offset-md-2 py-3 rounded" style="background-color: #f4fbfe;">
                             <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6>
                             <hr/ class="mt-2">
-                            
-                            <div class="form-check form-check-inline" ng-repeat="report in reportList track by $index">
-                                <input class="form-check-input" type="checkbox" 
-                                value="report.id " ng-click="addRemoveSelection( report.id )" 
-                                ng-checked="selectedReport.indexOf(report.id) > -1">  
-                                <label class="form-check-label">
-                                    <% report.name %>
-                                </label>
-                            </div>       
+                                                         
                             @foreach ($reports as $report) 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" 
-                                value="{{$report->id}}" id="defaultCheck_{{$report->id}}" ng-click="addRemoveSelection({{$report->id}},event)" 
-                                ng-checked="selectedReport.indexOf('{{$report->id}}') > -1">  
+                                <input class="form-check-input" type="checkbox"
+                                ng-model="report_{{$report->id}}.isChecked"
+                                value="{{$report->id}}"  
+                                id="{{$report->id}}_check"                                                             
+                                ng-change="addRemoveSelection({{$report->id}},report_{{$report->id}})" 
+                                >  
                                 <label class="form-check-label">
                                     {{$report->name}}
                                 </label>
-                            </div>                                                
-                            @endforeach
-                        </div>
+                            </div>  
+                        </div>                                              
+                        @endforeach
                     </div>
+                    <hr/ class="mt-0">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <div ng-if="modalErrors" class="card border-danger mb-3">
+                            <div ng-if="modalErrors" class="card border-0 mb-3">
                                 <div class="card-body text-danger">
                                     <ul class="mb-0">
                                         <li ng-repeat="error in modalErrors" ><% error %></li>
@@ -143,43 +140,7 @@
             </div>
         </div>
     </div>
-    <!-- Sachin
-    <div id="confirm-mail" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content rounded-0"style="height:600px;width:1000px;margin-left: -90px;">
-                <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                </div>
-                <div style='background-color: white; opacity:0;height: 43px; position: absolute; right: 30px; top:92px; width: 43px;z-index: 2147483647;'> </div>
-                <div class="modal-body pt-4" id="modalBody">
-                    <div><% selectedReportDescription %></div>
-                    @foreach ($reports as $report)                   
-                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch">
-                        <div class="card rounded-0 border-0 w-100 cursor-pointer">
-                            <div class="card-body pb-0">
-                                <input type="checkbox" value="{{$report->id}}" ng-click="addRemoveSelection({{$report->id}})" ng-checked="selectedReport.indexOf('{{$report->id}}') > -1"> {{$report->name}}                                                            
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
-                        @csrf
-                        <div class="form-group">
-                            <input id="name" type="text" class="form-control mb-1" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
-                            <input id="firm_name" type="text" class="form-control mb-1" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
-                            <input id="position" type="text" class="form-control mb-1" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
-                            <input id="email" type="text" class="form-control mb-1" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
-                            <input id="contact_number" type="text" class="form-control mb-1" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
-                            <button type="submit" class="btn btn-form br-40 mt-3 px-4">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
     <div id="confirm-done" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
@@ -202,50 +163,37 @@
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
     app.controller('ReportController', function ($scope, $http, $compile) {
-        $scope.confirmEmail = function(report_description,report_id){            
-            $scope.modalErrors = $scope.messageToshow = null;
-            $scope.selectedReport = [];
-            $scope.selectedReport.push(report_id);
-            $('#confirm-mail').modal('show'); 
-            $scope.addReportSelection(report_id);      
-            $scope.selectedReportDescription = report_description;
-        //    $('iframe').css('height', '100%');
-           // $('iframe').css('width', '100%');
+        $scope.confirmEmail = function(report_description,report_id){  
+
+            $('#confirm-mail').modal('show');        
+            $scope.modalErrors = $scope.messageToshow = null;  
+
+            //Hack to remove and clean selected report
+            angular.forEach($scope.selectedReport, function(value, key) {
+                document.getElementById(value+'_check').click(); 
+            });           
+            //Make sure you cleaned it   
+            $scope.selectedReport = [];            
+            //Hack to handle the checkbox, trigger to add
+            document.getElementById(report_id+'_check').click(); 
+
+            $scope.selectedReportDescription = report_description;          
+      
         }
-
-        //On card click for the checkbox select and push if not exists. 
-        $scope.addReportSelection = function  (report_id) {
-           
-            // var exists = false;
-            // angular.forEach($scope.selectedReport, function (value, key) {
-            //     if(value == report_id){
-            //         exists = true;
-                    
-            //     }
-            // }); 
-
-            // if (!exists) {  // If not currently selected              
-            //     $scope.selectedReport.push(report_id);
-            // }
-        };
+      
 
         //On checkbox click handle both add/remove for checkbox and card as well
-        $scope.addRemoveSelection = function (report_id,event) {
-            console.log(event);
-            angular.forEach($scope.selectedReport, function (value, key) {
-                if(value == report_id){
-                    var idx = $scope.selectedReport.indexOf(report_id);           
-                    $scope.selectedReport.splice(idx, 1);
-                }else{
-                    $scope.selectedReport.push(report_id);
-                    
-                }
-            });           
-           
-        };
+        $scope.addRemoveSelection = function (report_id,report) {  
+           if(!report.isChecked){
+                var idx = $scope.selectedReport.indexOf(report_id);           
+                $scope.selectedReport.splice(idx, 1);                       
+            }else{                   
+                $scope.selectedReport.push(report_id);
+            }  
+        }
 
         $scope.reportRequestSubmit = function(form_data){
-
+           
             form_data.selectedReport = $scope.selectedReport;           
             $(".bg_load").show();
             $scope.modalErrors = null;
@@ -306,8 +254,8 @@
        
 
         $scope.init = function () {
-            $scope.selectedReport = [];
-            $scope.reportList = '<?php $reports; ?>';
+
+            $scope.selectedReport = [];           
             $scope.selectedReportDescription = '';           
             $scope.form_data = {};  
             $scope.errors = $scope.successMessage = $scope.modalErrors = null;
