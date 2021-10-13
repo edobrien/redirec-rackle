@@ -981,3 +981,21 @@ input:-webkit-autofill:active {
 .text-dblue {
     color: #08293c !important;
 }
+
+@media (max-width: 480px) {
+    .card-deck {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .card-deck {
+        width: 50% !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-deck {
+        width: 34% !important;
+    }
+}
