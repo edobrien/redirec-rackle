@@ -18,8 +18,8 @@
                                 <img width="15" src="/img/specialist_logo.png" alt="Specialist">
                             @endif
                         </div>   
-                        <p class="text-dark des-txt mb-2" >
-                             {!! Str::words( $firm->description, 20, ' ...') !!}
+                        <p class="text-dark des-txt mb-2 mt-3" >
+                            {!! Str::words( $firm->description, 40, ' ...') !!}
                         </p>
                         <small class="pull-right"><a href="#" class="card-link">Read more</a></small>
                         @if(Auth::user())

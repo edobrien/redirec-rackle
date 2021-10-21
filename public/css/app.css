@@ -981,7 +981,6 @@ input:-webkit-autofill:active {
 .text-dblue {
     color: #08293c !important;
 }
-
 @media (max-width: 480px) {
     .card-deck {
         width: 100% !important;
@@ -990,12 +989,12 @@ input:-webkit-autofill:active {
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .card-deck {
-        width: 50% !important;
+        width: 25.5% !important;
     }
 }
 
 @media (min-width: 1024px) {
     .card-deck {
-        width: 34% !important;
+        width: 25.5% !important;
     }
 }
