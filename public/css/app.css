@@ -858,11 +858,18 @@ input:-webkit-autofill:active {
     color: #fff;
 }
 .firm-logo {
-    position: absolute;
+    /*position: absolute;*/
     /*right: 1.5rem!important;
     top: 3px;                                    Old design    -----------------*/
-    top: 2px;
-    left: 2px;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 75px;
+}
+.firm-brand {
+    position: absolute;
+    top: 10px;
+    left: 9px;
     padding: 7px;
 }
 .bg-lightblue {

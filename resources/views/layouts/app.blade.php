@@ -302,16 +302,16 @@
                                 ng-options="loc as loc.name group by loc.region.name for loc in hire_locations  | orderBy:['loc.name','region.ordering'] track by loc.id" >
                                 <option value="">Any</option>
                         </select> -->
-                        <label for="roleType">I am currently a…</label>
-                        <select class="mb8" name="recruitment_id" 
-                                ng-model="search_data.recruitment_id" 
-                                ng-options="rt as rt.name for rt in search_roletypes track by rt.id">
-                                <option value="">Any</option>
-                        </select>
-                        <label for="service">I am looking for a role in…</label>
+                        <label for="service">I am currently a…</label>
                         <select class="mb8" name="service_id" 
                                 ng-model="search_data.service_id" 
                                 ng-options="service as service.name for service in search_services track by service.id">
+                                <option value="">Any</option>
+                        </select>
+                        <label for="roleType">I am looking for a role in…</label>
+                        <select class="mb8" name="recruitment_id" 
+                                ng-model="search_data.recruitment_id" 
+                                ng-options="rt as rt.name for rt in search_roletypes track by rt.id">
                                 <option value="">Any</option>
                         </select>
                         <label for="practiceArea">My main practice area is….</label>
