@@ -59,8 +59,7 @@
                     <div class="row py-3">
                         <div class="col-md-8 offset-md-2 py-3 rounded" style="background-color: #f4fbfe;">
                             <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6>
-                            <hr/ class="mt-2">
-                                                         
+                            <hr/ class="mt-2">                                                         
                             @foreach ($reports as $report) 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox"
