@@ -5,11 +5,16 @@
         @if(count($firms))
         <h4 class="font-weight-bold text-blue pb-2">Recruiters({{count($firms)}})</h4>
         <div class="row">  
-            @foreach($firms as $firm)                 
+            @foreach($firms as $firm)
             <div class="card-deck ml-1 mb-3" style="width: 17.2rem;">
                 <div class="card rounded bg-lightblue border w-100 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
+               
                     <div class="card-body p-3">
-                    <img class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Recruiters Firm Logo">
+                        @if($firm->logo)
+                             <img class="firm-logo" src="{{asset('asset/img/firm-logo').'/'. $firm->logo}}" alt="{{$firm->name}}">
+                        @else
+                            <h5>{{$firm->name}}</h5>
+                        @endif
                         <div class="pull-right">
                             @if($firm->is_verified == \App\RecruitmentFirm::FLAG_YES)
                                 <img width="15" src="/img/is_verified_logo.png" alt="Verified"> 
@@ -18,13 +23,15 @@
                                 <img width="15" src="/img/specialist_logo.png" alt="Specialist">
                             @endif
                         </div>   
-                        <p class="text-dark des-txt mb-2" >
-                             {!! Str::words( $firm->description, 20, ' ...') !!}
+                        <p class="text-dark des-txt mb-2 mt-3" >
+                            {!! Str::words( $firm->description, 20, ' ...') !!}
                         </p>
-                        <small class="pull-right"><a href="#" class="card-link">Read more</a></small>
+                        <small class="pull-right">
+                            <a href="#" class="card-link">Read more</a>
+                        </small>
                         @if(Auth::user())
                             @if(Auth::user()->is_admin == "YES")
-                                <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small>
+                                 <small class="text-blue pull-right"><strong>{{$firm->view_count}}</strong></small> 
                             @endif
                        @endif
                     </div>
@@ -85,7 +92,7 @@
                 </div>
             </div>
         </div>
-        @endif
+        @endif;
     </div>
 </div>
 @endsection

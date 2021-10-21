@@ -264,7 +264,7 @@
         $scope.firmSubmit = function(form_data){
             $(".bg_load").show();
             $scope.modalErrors = null;
-            form_data.logo = $scope.logo;
+            $scope.form_data.logo = $scope.logo;
             $scope.form_data.description = CKEDITOR.instances["description"].getData();
             $scope.form_data.overview = CKEDITOR.instances["overview"].getData();
             var url = 'recruitment-firm/add-update-firm';
@@ -273,6 +273,7 @@
                     $("#firm-modal").modal('hide');
                     $(".bg_load").hide();
                     $scope.form_data = {};
+                    $scope.logo = null;
                     $('#logo').val('');
                     $scope.successMessage = response.message;
                     $scope.listFirms();
@@ -291,6 +292,8 @@
         $scope.editFirm = function(firm_id){
             $(".bg_load").show();
             $scope.modalErrors = null;
+            $scope.form_data = {};
+            
             var url = 'recruitment-firm/get-info/' + firm_id;
             $http.get(url).then(function (response) {
                 if (response.data.status == 'SUCCESS') {
@@ -424,6 +427,7 @@
                     $('#logo').val('');
                     $(".firm-logo-section").hide();
                 }else{
+                   
                     var errors = [];
                     $.each(response.data.errors, function (key, value) {
                         errors.push(value);
@@ -434,6 +438,7 @@
                 $(".bg_load").hide();
                 $("#firm-modal").animate({ scrollTop: 0 }, "slow");
                 $("#firm-modal").css("overflow-y", "auto");
+                $scope.form_data.logo = null;
             });
         }
         $scope.init();

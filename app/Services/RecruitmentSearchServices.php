@@ -26,7 +26,8 @@ class RecruitmentSearchServices{
                                         'recruitment_firms.view_count',
                                         'recruitment_firms.is_verified',
                                         'recruitment_firms.is_specialism',
-                                        'recruitment_firms.description');
+                                        'recruitment_firms.description',
+                                        'recruitment_firms.logo');
         //Search by firm name or other filters
         
         if(isset($filters->firm_id))

@@ -57,22 +57,21 @@
                     </div>
                     <hr/ class="mb-0">
                     <div class="row py-3">
-                        <div class="col-md-8 offset-md-2 py-3 rounded" style="background-color: #f4fbfe;">
-                            <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6>
-                            <hr/ class="mt-2">                                                         
-                            @foreach ($reports as $report) 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                ng-model="report_{{$report->id}}.isChecked"
-                                value="{{$report->id}}"  
-                                id="{{$report->id}}_check"                                                             
-                                ng-change="addRemoveSelection({{$report->id}},report_{{$report->id}})" 
-                                >  
-                                <label class="form-check-label">
-                                    {{$report->name}}
-                                </label>
-                            </div>  
-                        </div>                                              
+                        <!-- <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6> -->                         
+                        @foreach ($reports as $report) 
+                            <div class="col-md-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox"
+                                    ng-model="report_{{$report->id}}.isChecked"
+                                    value="{{$report->id}}"  
+                                    id="{{$report->id}}_check"                                                             
+                                    ng-change="addRemoveSelection({{$report->id}},report_{{$report->id}})" 
+                                    >  
+                                    <label class="form-check-label">
+                                        {{$report->name}}
+                                    </label>
+                                </div>  
+                            </div>                                              
                         @endforeach
                     </div>
                     <hr/ class="mt-0">
