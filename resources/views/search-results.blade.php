@@ -9,7 +9,7 @@
             <div class="card-deck ml-1 mb-3" style="width: 17.2rem;">
                 <div class="card rounded bg-lightblue border w-100 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
                     <div class="card-body p-3">
-                    <img class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'}}<%firm.logo%>" alt="Recruiters Firm Logo">
+                    <img class="firm-logo" ng-src="{{asset('asset/img/firm-logo').'/'.$firm->logo}}" alt="Recruiters Firm Logo">
                         <div class="pull-right">
                             @if($firm->is_verified == \App\RecruitmentFirm::FLAG_YES)
                                 <img width="15" src="/img/is_verified_logo.png" alt="Verified"> 
