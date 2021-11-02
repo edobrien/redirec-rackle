@@ -71,7 +71,6 @@ class RecruitmentSearchServices{
 
             if((isset($filters->practice_area_id))&&(isset($filters->sector_id))){
 
-
                 $firms->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
                     ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
                     ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
@@ -87,13 +86,17 @@ class RecruitmentSearchServices{
                     ->whereNull('firm_sectors.deleted_at')
                     ->whereNull('sectors.deleted_at');
 
+                    
+
                 $generalists = DB::table('recruitment_firms')
                                     ->select('recruitment_firms.id',
                                             'recruitment_firms.name',
                                             'recruitment_firms.location',
                                             'recruitment_firms.view_count',
                                             'recruitment_firms.is_verified',
-                                            'recruitment_firms.is_specialism')
+                                            'recruitment_firms.is_specialism',
+                                            'recruitment_firms.description',
+                                            'recruitment_firms.logo')
                                 ->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
                                 ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
                                 ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
@@ -122,7 +125,9 @@ class RecruitmentSearchServices{
                                                 'recruitment_firms.location',
                                                 'recruitment_firms.view_count',
                                                 'recruitment_firms.is_verified',
-                                                'recruitment_firms.is_specialism')
+                                                'recruitment_firms.is_specialism',
+                                                'recruitment_firms.description',
+                                            'recruitment_firms.logo')
                                     ->join('firm_practice_areas','recruitment_firms.id', '=','firm_practice_areas.firm_id')
                                     ->join('practice_areas','practice_areas.id','=','firm_practice_areas.practice_area_id')
                                     ->where('firm_practice_areas.is_active', FirmPracticeArea::FLAG_YES)
@@ -148,7 +153,9 @@ class RecruitmentSearchServices{
                                                 'recruitment_firms.location',
                                                 'recruitment_firms.view_count',
                                                 'recruitment_firms.is_verified',
-                                                'recruitment_firms.is_specialism')
+                                                'recruitment_firms.is_specialism',
+                                                'recruitment_firms.description',
+                                            'recruitment_firms.logo')
                                     ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
                                     ->join('sectors','sectors.id','=','firm_sectors.sector_id')
                                     ->where('firm_sectors.is_active', FirmSector::FLAG_YES)
@@ -235,6 +242,7 @@ class RecruitmentSearchServices{
                 }
             }
         }        
+
         return $resultSet;
 	}
 
