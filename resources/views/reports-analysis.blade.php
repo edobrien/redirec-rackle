@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12 pt-4 pb-3 px-4">
             <h4 class="font-weight-bold text-blue pb-2">Reports / Analysis</h4>
-            <p class="text-grey">Below a list of reports that we have compiled. Please click on the relevant card to see the report. If you would like a copy emailed to you, please email <a href="mailto:edobrien@recdirec.com">edobrien@recdirec.com</a> naming the report that you would like to be sent. If you have any thoughts / requests for us to compile any other reports /analysis that would be helpful, please do let us know through our feeback page.</p>
+            <p class="text-grey">Below is a list of reports that we have compiled. If you would like to receive a copy of any of these please click on the relevant report card and request the report which will then be sent to you by email.</p>
         </div>
     </div>
     @if(count($reports))
@@ -113,7 +113,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="email" class="col-form-label">Email Id</label>
+                                            <label for="email" class="col-form-label">Email Address</label>
                                             <input id="email" type="text" class="form-control mb-1 mtc" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
                                         </div>
                                     </div>
@@ -122,6 +122,20 @@
                                             <label for="contact_number" class="col-form-label">Contact Number</label>
                                             <input id="contact_number" type="text" class="form-control mb-1 mtc" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
                                         </div>
+                                    </div>
+                                    <div class="col-md-4 text-right align-self-center">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox"
+                                            ng-model="form_data.consent"
+                                            id="consent">  
+                                            <label for="consent" class="form-check-label">
+                                                I have read the terms and conditions and agree
+                                            </label>
+                                        </div>  
                                     </div>
                                     <div class="col-md-4 text-right align-self-center">
                                     </div>
@@ -163,7 +177,8 @@
     app.controller('ReportController', function ($scope, $http, $compile) {
         $scope.confirmEmail = function(report_description,report_id){  
 
-            $('#confirm-mail').modal('show');        
+            $('#confirm-mail').modal('show');
+            $scope.form_data.consent=null;        
             $scope.modalErrors = $scope.messageToshow = null;  
 
             //Hack to remove and clean selected report

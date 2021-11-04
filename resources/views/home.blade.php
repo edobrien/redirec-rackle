@@ -15,9 +15,9 @@
                     <div class="col-lg-4 d-flex align-self-stretch mb-4">
                         <div class="card border-0 bg-helpful rounded cursor-pointer" onclick="location.href='{{ url('/practice-area-guide') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Practice Area Insights</h5>
+                                <h5 class="card-title text-white">Recruitment Market Overviews</h5>
                                 <p class="text-light m-0">
-                                    Overview of the different practice areas that lawyers work in together with updates on the current recruitment market conditions of that practice area.
+                                    Overview of all the recruitment activity happening in all the different practice areas and inhouse sectors.  Plus, inside views from specialist recruiters.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -30,7 +30,7 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Job Opportunities</h5>
                                 <p class="text-light m-0">
-                                    Range of links to different services and sources of information connected to legal resourcing
+                                    search for current opportunities where your practice area skill sets are needed.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -43,7 +43,7 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">General Insights/Helpful Advice</h5>
                                 <p class="text-light m-0">
-                                    Helpful advice and guides for interviews, selecting recruiters, managing processes and EVP propositions
+                                    helpful insights and advice to help you manage all stages of your legal career.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -56,7 +56,7 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Market Reports and Analysis</h5>
                                 <p class="text-light m-0">
-                                    Range of reports and analysis on areas of the legal market that are relevant to resourcing.
+                                    Range of reports and analysis to help you manage your career within the legal sector.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -82,7 +82,7 @@
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Blog Articles</h5>
                                 <p class="text-light m-0">
-                                    View the latest blog articles from recdirec and their guest bloggers.
+                                    view the latest blog articles from The Rackle and guest bloggers.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">

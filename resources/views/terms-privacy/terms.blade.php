@@ -9,7 +9,7 @@
                 </a> 
                 <h1 class="display-4 pt-5 pb-3">Terms and Conditions</h1>
                 <p>This website is provided by RMC Legal Limited </p>
-                <p>In these website Terms & Conditions, we/our/us shall mean RMC legal Limited, as data controller in respect of Recdirec. </p>
+                <p>In these website Terms & Conditions, we/our/us shall mean RMC legal Limited, as data controller in respect of the Rackle. </p>
                 <p>Please also read our Privacy Policy, which explains how we may collect and use information about you through this website. </p>
 
                 <h2 class="pt-4 pb-2">Disclaimer</h2>
@@ -44,7 +44,7 @@
                 <p>We reserve the right in our absolute discretion to prohibit any link from another website to materials or information on this website without notice. Any link to material or information on this website must be neither misleading nor deceptive and must fairly indicate this website as the destination of the link. You must not establish a link in such a way as to suggest any form of association, approval or endorsement on our part where none exists.</p>
 
                 <h2 class="pt-4 pb-2">Further information or concerns</h2>
-                <p>If you have any questions in relation to this policy or have any concerns over any information which appears on this website please submit your query to recdirec@gmail.com.</p>
+                <p>If you have any questions in relation to this policy or have any concerns over any information which appears on this website please submit your query to theracklereports@gmail.com.</p>
 
                 <h2 class="pt-4 pb-2">General</h2>
                 <p>We reserve the right to vary or amend these terms and conditions from time to time and any such variations or amendments shall take effect upon posting to this website. Accordingly, we recommend that you revisit these terms and conditions on a regular basis.</p>

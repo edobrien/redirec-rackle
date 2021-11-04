@@ -28,7 +28,8 @@ class NotifySelectedReportRequest extends FormRequest
             'name' => 'required|string|max:50',
             'firm_name' => 'required',
             'position' => 'required',
-            'contact_number' => 'required',
+            // 'contact_number' => 'required',
+            'consent' => 'accepted',
             'selectedReport'=>'required|array|min:1'
         ];
     }
@@ -46,7 +47,8 @@ class NotifySelectedReportRequest extends FormRequest
             'email.email' => 'Email is not valid!',
             'name.required' => 'Name is required!',
             'position.required' => 'Position is required!',
-            'contact_number.required' => 'Contact number is required!',
+            // 'contact_number.required' => 'Contact number is required!',
+            'consent.accepted' => 'Accept Terms & Conditions!',
             'firm_name.required' => 'Firm name is required!',
             'selectedReport.required' => 'Select atleast one report!'
 
