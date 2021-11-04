@@ -24,7 +24,7 @@
                         </div>   
                     </div>
                     <div class="card-body p-3">
-                        {!! Str::words( $firm->description, 30, ' ...') !!}
+                        {!! Str::words( $firm->description, 38, ' ...') !!}
                     </div>
                     <div class="card-footer border-0">
                         <a href="#" class="card-link pull-right">Read more</a>
