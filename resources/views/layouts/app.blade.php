@@ -55,7 +55,7 @@
                     <ul class="navbar-nav ml-auto">
                     {{-- @if (Auth::user()->is_active == "YES") --}} 
                             <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Practice Areas</a>
+                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Market Overviews</a>
                             </li>
                             <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ url('/useful-link') }}">Jobs</a>
@@ -320,13 +320,14 @@
                                 ng-options="area as area.name group by area.type for area in search_areas  | filter: { type: '!GENERAL' } track by area.id">
                                 <option value="">General</option>
                         </select>
+                        <!--
                         <label for="recruitmentSize">I would prefer the recruitment firm to be…</label>
                         <select class="mb8" ng-model="size" name="size" id="size">
                             <option value="">Any</option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_SMALL; ?>"><?php echo \App\RecruitmentFirm::SIZE_SMALL_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_MEDIUM; ?>"><?php echo \App\RecruitmentFirm::SIZE_MEDIUM_TEXT; ?></option>
                             <option value="<?php echo \App\RecruitmentFirm::SIZE_LARGE; ?>"><?php echo \App\RecruitmentFirm::SIZE_LARGE_TEXT; ?></option>
-                        </select>
+                        </select> -->
                         <!--
                         <label for="sector">Sector</label>
                         <select class="mb8" name="sector_id" 
@@ -338,7 +339,14 @@
                         <button type="button" ng-click="clearSearch()" class="btn btn-sm bg-blue br-40 w-100">Clear Search</button>
                         </form>
                     </div>
+                    <div class="row footer">
+                        <div class="col-md-12 padding-0 pt-0">
+                            <small style="font-size:70% !important">Copyright 2021 The Rackle All rights reserved.</small>
+                        </div>
+                    </div>
                 </nav>
+                
+
                 {{-- @endif --}}
                 <div class="content">
                     @yield('content')

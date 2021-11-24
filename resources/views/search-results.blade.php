@@ -27,7 +27,7 @@
                         </div>   
                     </div>
                     <div class="card-body p-3">
-                        {!! Str::words( $firm->description, 20, ' ...') !!}
+                        {!! Str::words( $firm->description, 38, ' ...') !!}
                     </div>
                     <div class="card-footer border-0">
                         <a href="#" class="card-link pull-right">Read more</a>
@@ -57,7 +57,7 @@
                         <p class="text-grey" ng-bind-html="firm.description | trust"></p>
                         <h5 class="font-weight-bold py-2">Testimonials</h5>
                         <p class="text-grey" ng-bind-html="firm.testimonials | trust"></p>
-                        <div class="row pt-2 text-footer">
+                        <!--<div class="row pt-2 text-footer">
                             <div class="col-md-6">
                                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                 <span class="text-grey pr-4"><i>Practice Specialism : <% firm.practice_area | areaSpecialismText %></i></span>
@@ -66,7 +66,7 @@
                                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                 <span class="text-grey"><i>Sector Specialism : <% firm.sector | sectorSpecialismText %></i></span>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="row pt-2 text-footer">
                             <div class="col-md-6">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        @endif;
+        @endif
     </div>
 </div>
 @endsection

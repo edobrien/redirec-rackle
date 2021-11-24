@@ -27,7 +27,7 @@
          </ul>
          <br/>
          <p >Best Regards,</p>
-         <p >The Rackle/p>
+         <p >The Rackle </p>
          <br>
       </td>
    </tr>

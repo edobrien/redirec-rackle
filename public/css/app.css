@@ -530,6 +530,15 @@ table.dataTable tbody td {
 .btn.focus, .btn:focus {
     box-shadow: unset;
 }
+.btn-sm-ht{
+    line-height: 3.0rem !important;
+}
+.footer{
+    position: fixed;
+    height: 20px;
+    bottom: 0;
+    width: 100%;
+}
 
 /* Toggle Switch */
 .switch {
