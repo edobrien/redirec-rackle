@@ -11,12 +11,16 @@
 |
 */
 
+Route::get('/', function () {
+    return view('auth.login');
+});
+
 Route::get('/lm-admin', function () {
     return view('auth.login');
 });
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('practice-guide-details', function () {
     return view('practice-area-guide.practice-guide-details');
@@ -44,13 +48,14 @@ Route::get('upload-file', function () {
 });
 
 
-Auth::routes();
-Route::post('/login' , 'Auth\AuthController@authenticate');
+    Auth::routes();
 
+    Route::post('/login' , 'Auth\AuthController@authenticate');
 
+    Route::middleware(['auth'])->group(function () {
 
     Route::get('/approval', 'HomeController@approval')->name('approval');
-
+    Route::get('/home', 'HomeController@index')->name('home');
     //Search page data
     Route::get('/recruitment-firm/get-active-firms', 'Admin\Firm\RecruitmentFirmController@getActiveFirms');
     Route::get('/location/get-active-locations', 'Admin\LocationController@getActiveLocations');
@@ -113,7 +118,7 @@ Route::post('/login' , 'Auth\AuthController@authenticate');
   //  Route::middleware(['approved'])->group(function() {
         //Route::get('/home', 'HomeController@index')->name('home');
   //  });
-  Route::middleware(['auth'])->group(function () {
+ // Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function() {
 
         //Users 

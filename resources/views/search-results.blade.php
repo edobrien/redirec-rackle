@@ -2,9 +2,12 @@
 @section('content')
 <div class="row" ng-cloak ng-controller="DetailListingController">
     <div class="col-md-12 pt-4 pb-3 px-4">
+
+    
         @if(count($firms))
         <h4 class="font-weight-bold text-blue pb-2">Recruiters({{count($firms)}})</h4>
-        <div class="row">  
+        <div class="row"> 
+            
             @foreach($firms as $firm)
             <div class="card-deck ml-1 mb-3" style="width: 17.2rem;">
                 <div class="card rounded bg-lightblue border w-100 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">

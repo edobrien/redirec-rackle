@@ -42,7 +42,7 @@
     <div id="app" ng-app="recdirecApp">
         <nav class="navbar navbar-expand-sm navbar-light navbar-border shadow static-top">
             <div class="container-fluid">
-                <a class="navbar-brand py-0" href="{{ url('/') }}">
+                <a class="navbar-brand py-0" href="{{ url('/home') }}">
                     <!--{{ config('app.name', 'THE RACKLE') }}-->
                     <!--<img src="../img/logo-header.png" alt="The Rackle">-->
                     <h4 class="mb-0 text-white"><span>THE</span> <span class="text-blue">RACKLE</span></h4>
