@@ -1014,3 +1014,24 @@ input:-webkit-autofill:active {
         width: 25.5% !important;
     }
 }
+
+/* Mobile Responsive CSS */
+.d-mob-hide {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .d-mob-hide {
+        display: none;
+    }
+
+    .bg-signin {
+        background: #623DAC;
+    }
+
+    .signIn > .row  {
+        width: 100% !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+}
