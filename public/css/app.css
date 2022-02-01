@@ -626,9 +626,9 @@ table.dataTable tbody td {
     -moz-transition: All 0.3s ease;
     -o-transition: All 0.3s ease;
 }
-.mddp {
+/* .mddp {
     padding: 0 !important;
-}
+} */
 .mddp .dropdown-item {
     padding: .5rem 2rem .5rem 1rem !important;
     font-size: 14px !important;
@@ -1085,11 +1085,45 @@ input:-webkit-autofill:active {
     .modal-body select.form-control, .modal-body .form-text {
         width: 100% !important;
     }
+
+    .w-640 {
+        width: 100%;
+    }
+
+    .border-right {
+        border-right: unset !important;
+    }
+    
+    .border-right.pl-4 {
+        padding-left: 15px !important;
+    }
+
+    .border-right > ul {
+        width: 105%;
+    }
+
+    #navbarSupportedContent {
+        margin-top: 5px;
+    }
+
+    ul.navbar-nav {
+        padding-top: 5px;
+    }
+
+    .navbar-nav:before {
+        content: "";
+        top: -3px;
+        position: relative;
+        width: 100%;
+        height: .5px;
+        background: linear-gradient(43deg, rgba(255,255,255,0)2%, rgb(17,152,163)50%,rgba(255,255,255,0) 99%);
+    }
 }
 
 .navbar-light .navbar-toggler {
-    border-color: #fff !important;
+    border-color: transparent !important;
     padding: 0.50rem 0.50rem !important;
+    outline: unset;
 }
 
 .admin-icon {
@@ -1146,4 +1180,17 @@ input:-webkit-autofill:active {
 
 .display-none {
     display: none;
+}
+
+.dropdown-menu-right {
+    height: 330px;
+    overflow: hidden auto;
+}
+
+.detail ul {
+    padding-bottom: 16px;
+}
+
+.navbar-toggler .fa-search, .navbar-toggler .fa-bars {
+    color: #29ACE4 !important;
 }

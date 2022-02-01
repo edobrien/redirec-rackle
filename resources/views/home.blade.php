@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="text-dec-none" href="https://www.jmangroup.com/">
+                <a class="text-dec-none" href="https://www.jmangroup.com/" target="_blank">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card border-0 rounded bg-green">

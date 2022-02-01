@@ -50,11 +50,11 @@
                     <h4 class="mb-0 text-white"><span>THE</span> <span class="text-blue">RACKLE</span></h4>
                 </a>
                 <div class="d-flex">
-                    <button class="navbar-toggler sidebar-button mr-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler sidebar-button" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="fa fa-bars text-white"></span>
+                        <span class="fa fa-bars"></span>
                     </button>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -126,22 +126,22 @@
                                                     </a>
                                                 </li>
                                                 <li class="d-mob-show">
-                                                    <a class="dropdown-item {{ Request::is('practice-area-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-sections') }}">
+                                                    <a class="dropdown-item {{ Request::is('practice-area-sections') ? 'active' : '' }}" href="{{ url('/practice-area-sections') }}">
                                                         Practice area sections
                                                     </a>
                                                 </li>
                                                 <li class="d-mob-show">
-                                                    <a class="dropdown-item {{ Request::is('interview-guide-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guide-sections') }}"> 
+                                                    <a class="dropdown-item {{ Request::is('interview-guide-sections') ? 'active' : '' }}" href="{{ url('/interview-guide-sections') }}"> 
                                                         Interview sections
                                                     </a>
                                                 </li>
                                                 <li class="d-mob-show">
-                                                    <a class="dropdown-item {{ Request::is('practice-area-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-guides') }}">
+                                                    <a class="dropdown-item {{ Request::is('practice-area-guides') ? 'active' : '' }}" href="{{ url('/practice-area-guides') }}">
                                                         Practice area guides
                                                     </a>
                                                 </li>
                                                 <li class="d-mob-show">
-                                                    <a class="dropdown-item {{ Request::is('interview-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guides') }}"> 
+                                                    <a class="dropdown-item {{ Request::is('interview-guides') ? 'active' : '' }}" href="{{ url('/interview-guides') }}"> 
                                                         Interview guides
                                                     </a>
                                                 </li>
