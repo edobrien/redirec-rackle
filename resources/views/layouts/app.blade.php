@@ -54,7 +54,7 @@
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <span class="fa fa-bars"></span>
+                        <span class="fa fa-th-large"></span>
                     </button>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

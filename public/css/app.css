@@ -1118,6 +1118,10 @@ input:-webkit-autofill:active {
         height: .5px;
         background: linear-gradient(43deg, rgba(255,255,255,0)2%, rgb(17,152,163)50%,rgba(255,255,255,0) 99%);
     }
+
+    .navbar {
+        z-index: 3;
+    }
 }
 
 .navbar-light .navbar-toggler {
@@ -1191,6 +1195,10 @@ input:-webkit-autofill:active {
     padding-bottom: 16px;
 }
 
-.navbar-toggler .fa-search, .navbar-toggler .fa-bars {
+.navbar-toggler .fa-search, .navbar-toggler .fa-th-large {
     color: #29ACE4 !important;
+}
+
+.navbar-toggler .fa-th-large {
+    font-size: 20px;
 }
