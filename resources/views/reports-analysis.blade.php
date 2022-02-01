@@ -61,13 +61,14 @@
                         @foreach ($reports as $report) 
                             <div class="col-md-6">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox"
+                                    <input class="form-check-input" type="radio"
                                     ng-model="report_{{$report->id}}.isChecked"
                                     value="{{$report->id}}"  
-                                    id="{{$report->id}}_check"                                                             
-                                    ng-change="addRemoveSelection({{$report->id}},report_{{$report->id}})" 
+                                    id="{{$report->id}}_check"
+                                    name="report"                       
+                                    ng-change="addRemoveSelection({{$report->id}},report_{{$report->id}}, {{$reports}})" 
                                     >  
-                                    <label class="form-check-label">
+                                    <label class="form-check-label" for="{{$report->id}}_check">
                                         {{$report->name}}
                                     </label>
                                 </div>  
@@ -91,39 +92,35 @@
                             <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="name" class="col-form-label">Name</label>
                                             <input id="name" type="text" class="form-control mb-1 mtc" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="firm_name" class="col-form-label">Firm Name</label>
-                                            <input id="firm_name" type="text" class="form-control mb-1 mtc" ng-model="form_data.firm_name" autocomplete="firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+                                            <input id="firm_name" type="text" class="form-control mb-1 mtc" ng-model="form_data.firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="position" class="col-form-label">Position</label>
-                                            <input id="position" type="text" class="form-control mb-1 mtc" ng-model="form_data.position" autocomplete="position" autocomplete="position" autofocus placeholder="Position">
+                                            <input id="position" type="text" class="form-control mb-1 mtc" ng-model="form_data.position" autocomplete="position" autofocus placeholder="Position">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label for="email" class="col-form-label">Email Address</label>
                                             <input id="email" type="text" class="form-control mb-1 mtc" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-12 col-md-6 col-lg-4">
                                         <div class="form-group">
-                                            <label for="contact_number" class="col-form-label">Contact Number</label>
-                                            <input id="contact_number" type="text" class="form-control mb-1 mtc" ng-model="form_data.contact_number" autocomplete="contact_number" autocomplete="Contact Number" autofocus placeholder="Contact Number">
+                                            <label for="contact_number" class="col-form-label">Year Qualified</label>
+                                            <input id="contact_number" type="text" class="form-control mb-1 mtc" ng-model="form_data.year_qualified" autocomplete="year_qualified" autofocus placeholder="Year Qualified">
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 text-right align-self-center">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -176,7 +173,7 @@
 <script type="text/javascript">
     app.controller('ReportController', function ($scope, $http, $compile) {
         $scope.confirmEmail = function(report_description,report_id){  
-
+            $scope.form_data = {};
             $('#confirm-mail').modal('show');
             $scope.form_data.consent=null;        
             $scope.modalErrors = $scope.messageToshow = null;  
@@ -196,18 +193,27 @@
       
 
         //On checkbox click handle both add/remove for checkbox and card as well
-        $scope.addRemoveSelection = function (report_id,report) {  
-           if(!report.isChecked){
-                var idx = $scope.selectedReport.indexOf(report_id);           
-                $scope.selectedReport.splice(idx, 1);                       
-            }else{                   
+        // $scope.addRemoveSelection = function (report_id,report) {
+        //     if(!report.isChecked){
+        //         var idx = $scope.selectedReport.indexOf(report_id);           
+        //         $scope.selectedReport.splice(idx, 1);  
+        //     }else{
+        //         $scope.selectedReport.push(report_id);
+        //     }  
+        // }
+
+        // Updated logic Allow single selection of the reports based on Ed comment
+        $scope.addRemoveSelection = function (report_id,report, reportsList) {
+            if(!report.isChecked){
+                $scope.selectedReport = [];
+            }else{
+                $scope.selectedReport = [];
                 $scope.selectedReport.push(report_id);
-            }  
+            }
         }
 
         $scope.reportRequestSubmit = function(form_data){
-           
-            form_data.selectedReport = $scope.selectedReport;           
+            form_data.selectedReport = $scope.selectedReport;
             $(".bg_load").show();
             $scope.modalErrors = null;
             var url = 'reports-analysis/send-selected-report-email';

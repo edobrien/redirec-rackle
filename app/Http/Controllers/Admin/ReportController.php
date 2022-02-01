@@ -100,7 +100,7 @@ class ReportController extends Controller
         $validated = $request->validated();
       
         if($this->reportServices->notifySelectedReportRequest($request)){
-            $rv = array("status" => "SUCCESS", "message" => "Report requested to Admin");
+            $rv = array("status" => "SUCCESS", "message" => "Thank you for requesting this report, it will be sent to you shortly");
         }else{
             $errors[] = "Please contact administrator. Error in notifying Admin";
                 $rv = array("status" => "FAILED", "errors" => $errors);

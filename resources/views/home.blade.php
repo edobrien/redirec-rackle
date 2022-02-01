@@ -12,7 +12,7 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col-lg-4 d-flex align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-helpful rounded cursor-pointer" onclick="location.href='{{ url('/practice-area-guide') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Recruitment Market Overviews</h5>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ url('/useful-link') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Job Opportunities</h5>
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-feedback rounded cursor-pointer" onclick="location.href='{{ url('/interview-guide') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">General Insights/Helpful Advice</h5>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 w-100 bg-market rounded cursor-pointer" onclick="location.href='{{ url('/reports-analysis') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Market Reports and Analysis</h5>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-interview rounded cursor-pointer" onclick="location.href='{{ url('/feedback-surveys') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Surveys/Feedback</h5>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-practice rounded cursor-pointer" onclick="location.href='{{ url('/helpful-article') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Blog Articles</h5>

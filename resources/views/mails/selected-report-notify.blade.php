@@ -16,7 +16,7 @@
          <br/>        
           <p>Email: {{$email}}</p>
          <br/>
-          <p>Contact Number: {{$contact_number}}</p>
+          <p>Year Qualified: {{$year_qualified}}</p>
          <br/>
          <p>Reports Selected: </p>
          <ul>

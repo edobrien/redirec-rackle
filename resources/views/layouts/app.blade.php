@@ -23,6 +23,8 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('js/app.js') }}"defer></script>
+    <script src="{{ asset('js/jquery.cookie.js') }}"></script>
+
      
     <!-- Used for google recaptcha-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -47,10 +49,14 @@
                     <!--<img src="../img/logo-header.png" alt="The Rackle">-->
                     <h4 class="mb-0 text-white"><span>THE</span> <span class="text-blue">RACKLE</span></h4>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
+                <div class="d-flex">
+                    <button class="navbar-toggler sidebar-button mr-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="fa fa-bars text-white"></span>
+                    </button>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                     {{-- @if (Auth::user()->is_active == "YES") --}} 
@@ -92,8 +98,7 @@
                                 </a> -->
 
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="icon ion-md-more pt-1 text-grey" style = "padding: 6px;
-                                    margin-top: -3px;"></i>
+                                    <i class="fa fa-ellipsis-h pt-1 admin-icon"></i>
                                 </a>
 
                                 <div class="dropdown-menu rounded-0 mddp dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -120,7 +125,27 @@
                                                         Users
                                                     </a>
                                                 </li>
-                                                <li class="dropdown-submenu list-style">
+                                                <li class="d-mob-show">
+                                                    <a class="dropdown-item {{ Request::is('practice-area-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-sections') }}">
+                                                        Practice area sections
+                                                    </a>
+                                                </li>
+                                                <li class="d-mob-show">
+                                                    <a class="dropdown-item {{ Request::is('interview-guide-sections') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guide-sections') }}"> 
+                                                        Interview sections
+                                                    </a>
+                                                </li>
+                                                <li class="d-mob-show">
+                                                    <a class="dropdown-item {{ Request::is('practice-area-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/practice-area-guides') }}">
+                                                        Practice area guides
+                                                    </a>
+                                                </li>
+                                                <li class="d-mob-show">
+                                                    <a class="dropdown-item {{ Request::is('interview-guides') ? 'text-blue' : 'text-muted' }}" href="{{ url('/interview-guides') }}"> 
+                                                        Interview guides
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-submenu list-style d-des-menu">
                                                     <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-sections') || Request::is('interview-guide-sections')) ? 'active' : 'text-muted' }}">Sections</a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li>
@@ -135,7 +160,7 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="dropdown-submenu list-style">
+                                                <li class="dropdown-submenu list-style d-des-menu">
                                                     <a class="dropdown-item dropdown-toggle {{ (Request::is('practice-area-guides') || Request::is('interview-guides')) ? 'active' : 'text-muted' }}">Guides</a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li>
@@ -266,9 +291,6 @@
         </nav>
 
         <main>
-            <button class="navbar-toggler sidebar-button" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
             <div class="container-fluid">
                {{-- @if (Auth::user()->is_active == "YES") --}} 
                 <nav class="sidebar pt-3 pb-2 collapse navbar-collapse" id="sidebar" ng-controller="SearchDataController">
@@ -357,33 +379,36 @@
     <div raw-ajax-busy-indicator class="bg_load text-center" style="display: none !important;">
         <img src="/img/loader.gif" style="margin-top:25%;">
     </div>
-     @if (session('firm_id'))
-     <input type="text" style="display:none;" name="firm" id="firm" value="{{ session('firm_id') }}"><br>
-     @endif
-     @if (session('location_id'))
-     <input type="text" style="display:none;" name="location" id="location" value="{{ session('location_id') }}"><br>
-     @endif
-     @if (session('hire_loc_id'))
-     <input type="text" style="display:none;" name="hire_location" id="hire_location" value="{{ session('hire_loc_id') }}"><br>
-     @endif
-     @if (session('service_id'))
-     <input type="text" style="display:none;" name="service" id="service" value="{{ session('service_id') }}"><br>
-     @endif
-     @if (session('recruitment_id'))
-     <input type="text" style="display:none;" name="recruitment" id="recruitment" value="{{ session('recruitment_id') }}"><br>
-     @endif
-     @if (session('firm_size'))
-     <input type="text" style="display:none;" name="firm_size" id="firm_size" value="{{ session('firm_size') }}"><br>
-     @endif
-     @if (session('practice_area_id'))
-     <input type="text" style="display:none;" name="practice_area" id="practice_area" value="{{ session('practice_area_id') }}"><br>
-     @endif
-     @if (session('sector_id'))
-     <input type="text" style="display:none;" name="sector" id="sector" value="{{ session('sector_id') }}"><br>
+    <div id="cookie_show" class="cookie-container display-none">
+        <p class="mb-0">We use cookies to provide website functionality, to analyze traffic on our Mailchimp Sites, personalize content, serve targeted advertisements and to enable social media functionality. Our Cookie Statement provides more information and explains how to update your cookie settings. View our <a href="#" target="blank">Cookie Policy</a></p>
+        <button class="submit btn btn-form br-40 px-4 mt-2 float-right" onclick="acceptCookies()">Accept</button>
+    </div>
+    @if (session('firm_id'))
+    <input type="text" style="display:none;" name="firm" id="firm" value="{{ session('firm_id') }}"><br>
+    @endif
+    @if (session('location_id'))
+    <input type="text" style="display:none;" name="location" id="location" value="{{ session('location_id') }}"><br>
+    @endif
+    @if (session('hire_loc_id'))
+    <input type="text" style="display:none;" name="hire_location" id="hire_location" value="{{ session('hire_loc_id') }}"><br>
+    @endif
+    @if (session('service_id'))
+    <input type="text" style="display:none;" name="service" id="service" value="{{ session('service_id') }}"><br>
+    @endif
+    @if (session('recruitment_id'))
+    <input type="text" style="display:none;" name="recruitment" id="recruitment" value="{{ session('recruitment_id') }}"><br>
+    @endif
+    @if (session('firm_size'))
+    <input type="text" style="display:none;" name="firm_size" id="firm_size" value="{{ session('firm_size') }}"><br>
+    @endif
+    @if (session('practice_area_id'))
+    <input type="text" style="display:none;" name="practice_area" id="practice_area" value="{{ session('practice_area_id') }}"><br>
+    @endif
+    @if (session('sector_id'))
+    <input type="text" style="display:none;" name="sector" id="sector" value="{{ session('sector_id') }}"><br>
     @endif
 </body>
 <script>
-    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
         $('#size').val($('#firm_size').val());
@@ -414,11 +439,22 @@
                 } 
             }                       
         });
+        
     });
 
-    
+    /* Cookies Functionality */
+    if(Cookies.get('Rackle')) {
+        $('#cookie_show').css('display', 'none');
+    } else {
+        $('#cookie_show').css('display', 'block');
+    }
 
-
-    
+    function acceptCookies() {
+        var date = new Date();
+        date.setTime(date.getTime() + (1200 * 1000));
+        Cookies.set('Rackle', true, { expires: date });
+        $('#cookie_show').css('display', 'none');
+    }
 </script>
+
 </html>

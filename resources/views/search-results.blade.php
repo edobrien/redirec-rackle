@@ -9,7 +9,7 @@
         <div class="row"> 
             
             @foreach($firms as $firm)
-            <div class="card-deck ml-1 mb-3" style="width: 17.2rem;">
+            <div class="card-deck ml-1 mb-3 col-12 col-md-6 col-lg-4">
                 <div class="card rounded bg-lightblue border w-100 cursor-pointer" ng-click="saveViewCount({{$firm->id}})">
                     <div class="card-header border-0">
                         @if($firm->logo)
