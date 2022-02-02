@@ -11,9 +11,8 @@
     top: 0px;
     width: 100%;
     height: 100%;
-    background: #000;
-    opacity:0.2;
     z-index:9999;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 thead tr {
     color: #fff;
@@ -1122,6 +1121,11 @@ input:-webkit-autofill:active {
     .navbar {
         z-index: 3;
     }
+
+    .dropdown-menu-right {
+        height: 330px;
+        overflow: hidden auto;
+    }
 }
 
 .navbar-light .navbar-toggler {
@@ -1186,11 +1190,6 @@ input:-webkit-autofill:active {
     display: none;
 }
 
-.dropdown-menu-right {
-    height: 330px;
-    overflow: hidden auto;
-}
-
 .detail ul {
     padding-bottom: 16px;
 }
@@ -1202,3 +1201,43 @@ input:-webkit-autofill:active {
 .navbar-toggler .fa-th-large {
     font-size: 20px;
 }
+
+#loader {
+    width: 100px;
+    height: 100px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #29ACE4 !important;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+}
+  

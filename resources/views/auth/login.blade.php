@@ -27,8 +27,9 @@
                 <div class="row">
                     <div class="col-md-9 offset-md-3">
                         <div class="row">
-                            <div class="col-md-12 text-md-right text-center">
-                                <small> <img class="pb-5" src="../img/logo-header.png" alt="Recdirec"></small>
+                            <div class="col-md-12">
+                                <!-- <small> <img class="pb-5" src="../img/logo-header.png" alt="Recdirec"></small> -->
+                                <h4 class="pb-5 text-white"><span>THE</span> <span class="text-blue">RACKLE</span></h4>
                             </div>
                         </div>
                         <div class="row">

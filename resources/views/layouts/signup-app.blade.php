@@ -36,8 +36,9 @@
             @yield('content')
         </main>
     </div>
-    <div raw-ajax-busy-indicator class="bg_load text-center" style="display: none !important;">
-        <img src="/img/loader.gif" style="margin-top:25%;margin-left:50%">
+    <div raw-ajax-busy-indicator class="bg_load d-flex justify-content-center align-items-center" style="display: none !important;">
+        <!-- <img src="/img/loader.gif" style="top: 44%;margin-left: 44%;"> -->
+        <div id="loader"></div>
     </div>
 </body>
 </html>

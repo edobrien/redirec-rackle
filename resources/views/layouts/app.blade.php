@@ -376,8 +376,9 @@
             </div>
         </main>
     </div>
-    <div raw-ajax-busy-indicator class="bg_load text-center" style="display: none !important;">
-        <img src="/img/loader.gif" style="margin-top:25%;">
+    <div raw-ajax-busy-indicator class="bg_load d-flex justify-content-center align-items-center" style="display: none !important;">
+        <!-- <img src="/img/loader.gif" style="top: 44%;margin-left: 44%;"> -->
+        <div id="loader"></div>
     </div>
     <div id="cookie_show" class="cookie-container display-none">
         <p class="mb-0">We use cookies to provide website functionality, to analyze traffic on our Mailchimp Sites, personalize content, serve targeted advertisements and to enable social media functionality. Our Cookie Statement provides more information and explains how to update your cookie settings. View our <a href="#" target="blank">Cookie Policy</a></p>
