@@ -11,16 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
 Route::get('/lm-admin', function () {
     return view('auth.login');
 });
 
-//Route::get('/', 'HomeController@index');
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('practice-guide-details', function () {
     return view('practice-area-guide.practice-guide-details');
@@ -52,7 +52,7 @@ Route::get('upload-file', function () {
 
     Route::post('/login' , 'Auth\AuthController@authenticate');
 
-    Route::middleware(['auth'])->group(function () {
+    //Route::middleware(['auth'])->group(function () {
 
     Route::get('/approval', 'HomeController@approval')->name('approval');
     Route::get('/home', 'HomeController@index')->name('home');
@@ -118,7 +118,7 @@ Route::get('upload-file', function () {
   //  Route::middleware(['approved'])->group(function() {
         //Route::get('/home', 'HomeController@index')->name('home');
   //  });
- // Route::middleware(['auth'])->group(function () {
+  Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function() {
 
         //Users 
