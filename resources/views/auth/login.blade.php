@@ -93,20 +93,20 @@
                                     </small>
                                     @endif
                                 </div>
-                                <!--- <div class="row mb-0">
-                                    <div class="col-7">
+                                <div class="row mb-0">
+                                    <div class="col-12">
                                         <small>
                                             <a href="{{ url('/terms') }}" class="text-signIn">Terms & Conditions</a>
                                             <span class="text-signIn"> | </span>
                                             <a href="{{ url('/privacy') }}" class="text-signIn">Privacy Policy</a>
                                         </small>
                                     </div>
-                                    <div class="col-5 text-right">
+                                    <!-- <div class="col-5 text-right">
                                         <i class="fa fa-instagram" aria-hidden="true"></i>
                                         <i class="fa fa-twitter px-2" aria-hidden="true"></i>
                                         <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    </div>
-                                </div>  --->
+                                    </div> -->
+                                </div>
                             </form>
                         </div>
                     </div>

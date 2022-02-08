@@ -536,7 +536,7 @@ table.dataTable tbody td {
 }
 .footer{
     position: fixed;
-    height: 20px;
+    height: 44px;
     bottom: 0;
     width: 100%;
 }
@@ -1179,6 +1179,7 @@ input:-webkit-autofill:active {
     padding: 20px;
     position: fixed;
     bottom: 0;
+    width: 100%;
 }
 
 .cookie-container a {
@@ -1243,4 +1244,8 @@ input:-webkit-autofill:active {
 
 .dis-flex {
     display: flex;
+}
+
+.font-bold {
+    font-weight: bold;
 }
