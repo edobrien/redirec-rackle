@@ -379,21 +379,6 @@
                 <div class="content">
                     @yield('content')
                 </div>
-                <div id="cookie-modal" class="modal fade" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content rounded-0">
-                            <div class="modal-header">
-                                <h4 class="modal-title font-weight-bold">Cookies</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>This website uses cookies to improve your experience while you navigate through the website. Out of these cookies, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default br-40 px-4" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </main>
     </div>
@@ -402,10 +387,11 @@
         <div id="loader"></div>
     </div>
     <div id="cookie_show" class="cookie-container display-none">
-        <p class="mb-0">This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.</p>
-        <div class="float-right">
-            <button class="btn btn-default br-40 px-4 mt-2 mr-2" onclick="showCookiesInfo()">Cookies</button>
-            <button class="submit btn btn-form br-40 px-4 mt-2" onclick="acceptCookies()">Accept</button>
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="mb-0 pr-14">This website uses cookies to ensure you get the best experience on our website. <a href="/cookies">Read More</a></p>
+            <div class="float-right">
+                <button class="submit btn btn-form br-40 px-4" onclick="acceptCookies()">Got it</button>
+            </div>
         </div>
     </div>
     @if (session('firm_id'))
@@ -479,11 +465,6 @@
         date.setTime(date.getTime() + (1200 * 1000));
         Cookies.set('Rackle', true, { expires: date });
         $('#cookie_show').css('display', 'none');
-    }
-
-    function showCookiesInfo() {
-        console.log("Cookies");
-        $("#cookie-modal").modal('show');
     }
 </script>
 

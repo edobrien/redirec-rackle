@@ -1176,7 +1176,7 @@ input:-webkit-autofill:active {
     background-color: #AB58D7;
     background-image: linear-gradient(to left top, #af98e5, #9a7fe7, #8066e8, #614dea, #2e34eb);
     color: #fff;
-    padding: 20px;
+    padding: 10px 20px;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -1248,4 +1248,8 @@ input:-webkit-autofill:active {
 
 .font-bold {
     font-weight: bold;
+}
+
+.pr-14 {
+    padding-right: 14px;
 }

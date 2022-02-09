@@ -37,6 +37,9 @@ Route::get('terms', function () {
 Route::get('privacy', function () {
     return view('terms-privacy.privacy');
 });
+Route::get('cookies', function () {
+    return view('terms-privacy.cookies');
+});
 Route::get('access-denied', function () {
     return view('access-denied.404-access-denied');
 });
