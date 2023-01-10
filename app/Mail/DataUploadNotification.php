@@ -34,7 +34,7 @@ class DataUploadNotification extends Mailable
     {
         return $this->view('mails.data-upload-notify')
                 ->subject('Recdirec - Data Upload')
-                ->from('noreply@recdirec.com')
+                ->from('noreply@rackle.com')
                 ->to(SiteConstants::ADMIN_EMAIL)
                 ->with([
                     'file' => $this->uploadLog->file_name

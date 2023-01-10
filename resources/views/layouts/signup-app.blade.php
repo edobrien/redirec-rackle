@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="img/fav.png">
-    <title>Recdirec</title>
+    <title>Rackle</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

@@ -5,7 +5,7 @@
     <div class="row mt-170">
         <div class="col-lg-7 col-md-6 p-28 d-flex justify-content-center">
             <a class="navbar-brand pb-4" href="{{ url('/') }}">
-                <img src="../../img/logo-login.png" alt="Recdirec">
+                <img src="../../img/logo-login.png" alt="Rackle">
             </a>
         </div>
         <div class="col-lg-5 col-md-6">

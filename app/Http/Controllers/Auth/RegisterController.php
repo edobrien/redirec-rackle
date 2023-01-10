@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Notifications\NewUser;
 use App\Rules\Captcha;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+
 
 class RegisterController extends Controller
 {
@@ -30,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -55,10 +58,8 @@ class RegisterController extends Controller
             'firm_name' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'contact_number' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'accepted_terms' => ['required'],
-            // 'g-recaptcha-response' => new Captcha(),
         ]);
     }
 
@@ -68,23 +69,35 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+       
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
     protected function create(array $data)
     {
         $user = User::create([
             'name' => $data['name'],
             'firm_name' => $data['firm_name'],
             'position' => $data['position'],
-            'email' => $data['email'],
-            'contact_number' => $data['contact_number'],
+            'email' => $data['email'],            
             'password' => Hash::make($data['password']),
             'accepted_terms' => $data['accepted_terms'],
         ]);
 
         $admin = User::where('is_admin', User::FLAG_YES)->first();
+
         if ($admin) {
             $admin->notify(new NewUser($user));
         }
 
         return $user;
-    }
+    } 
 }

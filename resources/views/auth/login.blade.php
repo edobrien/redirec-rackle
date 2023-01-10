@@ -13,11 +13,11 @@
 
                 <h6 class="lh5 pb-4 text-muted">A quick and easy to read review of all the main stories in the legal press <br/>most relevant to legal resourcing teams.</h6> -->
 
-                <!--- <a class="text-white" href="{{ route('register') }}">
+                <a class="text-white" href="{{ route('register') }}">
                     <button type="button" class="btn btn-form br-40 px-5 mb-4">
                         <span class="text-white">Register here</span>
                     </button>
-                </a> --->
+                </a>
 
                 <!-- <footer class="footer">
                     <small class="text-muted">info@legalrecruitmentmadeclear.com</small>
@@ -93,6 +93,7 @@
                                     </small>
                                     @endif
                                 </div>
+                               
                                 <div class="row mb-0">
                                     <div class="col-12">
                                         <small>
@@ -102,9 +103,9 @@
                                         </small>
                                     </div>
                                     <!-- <div class="col-5 text-right">
-                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        <i class="fa fa-twitter px-2" aria-hidden="true"></i>
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        <small>
+                                            <a href="{{ url('/Register') }}" class="text-signIn">Sign Up?</a>
+                                        </small>
                                     </div> -->
                                 </div>
                             </form>

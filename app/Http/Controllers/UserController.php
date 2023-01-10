@@ -47,9 +47,9 @@ class UserController extends Controller
             $errors[] = "Position is missing";
         }
 
-        if(empty($request->contact_number)){
-            $errors[] = "Contact number is missing";
-        }
+        // if(empty($request->contact_number)){
+        //     $errors[] = "Contact number is missing";
+        // }
         
         if(empty($request->email)){
              $errors[] = "Email is missing";

@@ -4,9 +4,14 @@
     <div class="row">
         <div class="col-md-12 pt-4 pb-4 px-4 capture-ext-links">
             <h4 class="font-weight-bold text-blue pb-2">Surveys</h4>
+            @if (Auth::user() && Auth::user()->is_active == "YES")
             <p class="text-grey">Please see below links to some surveys that we have created. Please do take part in these surveys, they have been designed to be only 10 questions and take less than 2 mins to complete.  All information will be anonymized and treated with the strictest confidence. Once we have sufficient responses, we will aggregate the survey results to produce a report that we will provide for free to all those that have taken part.</p>
             <a href="<% link.url %>" target="_blank" class="btn btn-outline-secondary btn-sm btn-sm-ht br-40 mr-2 mb-2 px-3 fs-12" styel="line-height:3.0rem !important;" ng-repeat="link in survey_links"><% link.title %></a>
         </div>
+        @else
+            <!-- <h6 class="text-dark mb-0">Please <a href="{{ route('login') }}">{{ __('Login') }}</a> to view Surveys</h6> -->
+            <i><h6 class="text-dark mb-0">This is a premium content page, please <a href="{{ route('register') }}">{{ __('register') }}</a> or <a href="{{ route('login') }}">{{ __('sign in') }}</a> to view</h6></i>
+            @endif
     </div>
     <!--
     <div class="row">

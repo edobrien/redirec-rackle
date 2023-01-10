@@ -9,7 +9,7 @@
          <p>Data upload was completed successfully - {{$file}}</p>
          <br/>
          <p >Best Wishes,</p>
-         <p >Recdirec</p>
+         <p >Rackle</p>
          <br>
       </td>
    </tr>

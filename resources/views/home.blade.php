@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12 p-4">
             <div class="landing-page">
-             @if (Auth::user())   
+            @if(Auth::user() && (Auth::user()->is_active == "YES"))
                 <div class="row">
                     <div class="col-md-12 py-2">
                         <h2><span class="text-muted">Welcome</span> <strong>{{ Auth::user()->name }}</strong>,</h2>
@@ -26,17 +26,32 @@
                         </div>
                     </div>
                     <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    @if (Auth::user())
                         <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ url('/useful-link') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Job Opportunities</h5>
                                 <p class="text-light m-0">
-                                    search for current opportunities where your practice area skill sets are needed.
+                                    <!-- search for current opportunities where your practice area skill sets are needed. -->
+                                    View current jobs within the London market by practice area.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
                                 <i class="icon ion-md-arrow-round-forward text-white"></i>
                             </div>
                         </div>
+                    @else
+                    <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ route('login')}}';">
+                            <div class="card-body pb-0">
+                                <h5 class="card-title text-white">Job Opportunities</h5>
+                                <p class="text-light m-0">
+                                    View current jobs within the London market by practice area.
+                                </p>
+                            </div>
+                            <div class="card-footer border-0 bg-transparent text-right">
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
+                            </div>
+                        </div>
+                    @endif
                     </div>
                     <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-feedback rounded cursor-pointer" onclick="location.href='{{ url('/interview-guide') }}';">
@@ -64,12 +79,14 @@
                             </div>
                         </div>
                     </div>
+                    @if (Auth::user())
                     <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-interview rounded cursor-pointer" onclick="location.href='{{ url('/feedback-surveys') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Surveys/Feedback</h5>
+                                <h5 class="card-title text-white">Surveys</h5>
                                 <p class="text-light m-0">
-                                    Take part in our surveys relating to diversity, social mobility, attrition and other resourcing related matters. Provide feedback / suggestions on the site.
+                                    <!-- Take part in our surveys relating to diversity, social mobility, attrition and other resourcing related matters. Provide feedback / suggestions on the site. -->
+                                    Take part in our surveys relating to diversity, social mobility, attrition and recruitment. 
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -77,6 +94,21 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                        <div class="card border-0 bg-interview rounded cursor-pointer" onclick="location.href='{{ route('login') }}';">
+                            <div class="card-body pb-0">
+                                <h5 class="card-title text-white">Surveys</h5>
+                                <p class="text-light m-0">
+                                    Take part in our surveys relating to diversity, social mobility, attrition and recruitment.
+                                </p>
+                            </div>
+                            <div class="card-footer border-0 bg-transparent text-right">
+                                <i class="icon ion-md-arrow-round-forward text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-practice rounded cursor-pointer" onclick="location.href='{{ url('/helpful-article') }}';">
                             <div class="card-body pb-0">
@@ -124,7 +156,7 @@
                                 <% successMessage %>
                             </div>
                             {{--  <div class="card-body pb-0">
-                                <h5 class="card-title">Register to receive the recdirec weekly update</h5>
+                                <h5 class="card-title">Register to receive the rackle weekly update</h5>
                                 <p class="text-muted m-0">A quick and easy to read review of all the main stories in the legal press most relevant to legal resourcing teams.</p>
                             </div>
                             <div class="card-footer border-0 bg-transparent">

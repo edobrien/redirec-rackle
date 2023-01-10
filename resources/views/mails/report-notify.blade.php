@@ -9,7 +9,7 @@
           <p>{{$user->name}}({{$user->email}}) has requested report name - {{$report_name}}.</p>
          <br/>
          <p >Best Wishes,</p>
-         <p >Recdirec</p>
+         <p >Rackle</p>
          <br>
       </td>
    </tr>

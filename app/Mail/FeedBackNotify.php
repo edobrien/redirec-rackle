@@ -36,7 +36,7 @@ class FeedBackNotify extends Mailable
         return $this->view('mails.feedback-notify')
                 ->from('noreply@redirec.com')
                 ->to(SiteConstants::ADMIN_EMAIL)
-                ->subject("Recdirec: New Feedback Submission!")
+                ->subject("Rackle: New Feedback Submission!")
                 ->with([
                     "name" => $this->user->name,
                     "firm_name" => $this->user->firm_name,

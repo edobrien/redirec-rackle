@@ -63,7 +63,7 @@
                <div class="content">
                   <table bgcolor="#2196f3">
                      <tr>
-                        <td><img style="width:4%" src="{{ \App\SiteConstants::APP_URL }}img/fav.png" /><strong>Recdirec</strong></td>
+                        <td><img style="width:4%" src="{{ \App\SiteConstants::APP_URL }}img/fav.png" /><strong>Rackle</strong></td>
                         <td align="right">
                            <h6 class="collapse"></h6>
                         </td>

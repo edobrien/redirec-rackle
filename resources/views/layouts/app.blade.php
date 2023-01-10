@@ -59,40 +59,49 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                    {{-- @if (Auth::user()->is_active == "YES") --}} 
-                            <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/practice-area-guide') }}">Market Overviews</a>
-                            </li>
-                            <li class="nav-item {{ Request::is('useful-links') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/useful-link') }}">Jobs</a>
-                            </li>
-                            <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/interview-guide') }}">Advice</a>
-                            </li>
-                            <li class="nav-item {{ Request::is('reports-analysis') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/reports-analysis') }}">Reports</a>
-                            </li>
-                            <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/feedback-surveys') }}">Surveys</a>
-                            </li>
-                            <li class="nav-item {{ Request::is('helpful-article') ? 'active' : '' }}">
-                                <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
-                            </li>
-                           
-                            {{-- @endif --}}
+                        <li class="nav-item {{ Request::is('practice-area-guide') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/practice-area-guide') }}">Market Overviews</a>
+                        </li>
+                        @if (Auth::user())
+                        <li class="nav-item {{ Request::is('useful-link') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/useful-link') }}">Jobs</a>
+                        </li>
+                        @else
+                        <li class="nav-item {{ Request::is('useful-link') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('login') }}">Jobs</a>
+                        </li>
+                        @endif
+                        <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/interview-guide') }}">Advice</a>
+                        </li>
+                        <li class="nav-item {{ Request::is('reports-analysis') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/reports-analysis') }}">Reports</a>
+                        </li>
+                        @if (Auth::user())
+                        <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/feedback-surveys') }}">Surveys</a>
+                        </li>
+                        @else
+                        <li class="nav-item {{ Request::is('feedback-surveys') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('login') }}">Surveys</a>
+                        </li>
+                        @endif
+                        
+                        <li class="nav-item {{ Request::is('helpful-article') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
+                        </li>
                         <!-- Authentication Links -->
-                        @guest
-                            
-                           <!-- <li class="nav-item">
+                        @if(Auth::user() && (Auth::user()->is_active == "No"))
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif -->
-                        @else
-                            <li class="nav-item dropdown">
+                            @endif
+                        @elseif(Auth::user())
+                        <li class="nav-item dropdown">
                                 <!-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a> -->
@@ -284,7 +293,19 @@
                                     @endif
                                 </div>
                             </li>
-                        @endguest
+                        @else 
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @endif                        
+                        <!-- @if(Auth::user() && (Auth::user()->is_active == "Yes"))
+                            
+                        @endif -->
                     </ul>
                 </div>
             </div>

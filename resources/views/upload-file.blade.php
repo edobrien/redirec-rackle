@@ -29,7 +29,7 @@
                     ng-model="form_data.upload_excel" id="upload_excel" file-model="upload_excel" 
                     accept=".xlsx,.xls">
                 <div class="dropzone mt-3 d-flex flex-column align-items-center justify-content-center">
-                    <img src="img/file-upload.png" alt="Recdirec" width="150" class="mb-4">
+                    <img src="img/file-upload.png" alt="Rackle" width="150" class="mb-4">
                     <h3 class="text-grey font-weight-bold mb-3">Drag and drop or click here</h3>
                     <h4 class="text-grey mb-4">to upload data (max 2MB)</h4>
                 </div>

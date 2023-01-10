@@ -4,10 +4,11 @@
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column signIn">
         <div class="row">
             <div class="col-md-7">
-                <img class="pt-5 pb-4" src="img/logo-login.png" alt="Recdirec">
+                <h4 class="pb-5 text-white"><span>THE</span> <span class="text-blue">RACKLE</span></h4>
+                <!-- <img class="pt-5 pb-4" src="img/logo-login.png" alt="Recdirec"> -->
                 <h1 class="display-3 text-white">Legal recruitment made clear</h1>
 
-                <h5 class="lh5 pb-4 text-white">Thank you for registering to join recdirec.  This is a free to use site for relevant individuals in law firms / in-house who are involved in the recruitment process. We ask for details of your current firm and position to ensure that you fit within this community, and request your mobile and work email in case we need to verify information. </h5>
+                <h5 class="lh5 pb-4 text-white">Thank you for registering to join rackle.  This is a free to use site for relevant individuals in law firms / in-house who are involved in the recruitment process. We ask for details of your current firm and position to ensure that you fit within this community, and request your mobile and work email in case we need to verify information. </h5>
             </div>
             <div class="col-md-5">
                 <div class="row">
@@ -19,7 +20,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 class="text-white py-2 lh5">{{ __('Please register to join recdirec') }}</h4>
+                                <h4 class="text-white py-2 lh5">{{ __('Please register to join rackle') }}</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -62,7 +63,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <input id="contact_number" type="text" class="form-control mb-1 @error('contact_number') is-invalid @enderror" name="contact_number" value="{{ old('contact_number') }}" required autocomplete="contact_number" autofocus placeholder="Contact Number">
 
                                         @error('contact_number')
@@ -70,7 +71,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <input id="password" type="password" class="form-control mb-1 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
 
@@ -124,22 +125,22 @@
                                     @endif --}}
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-primary w-100 signin-Button">
-                                            {{ __('Join recdirec') }}
+                                            {{ __('Join rackle') }}
                                         </button>
                                     </div>
                                     <div class="row mb-0">
-                                        <div class="col-7">
+                                        <div class="col-12">
                                             <small>
                                                 <a href="{{ url('/terms') }}" class="text-signIn">Terms & Conditions</a>
                                                 <span class="text-signIn"> | </span>
                                                 <a href="{{ url('/privacy') }}" class="text-signIn">Privacy Policy</a>
                                             </small>
                                         </div>
-                                        <div class="col-5 text-right">
+                                        <!-- <div class="col-5 text-right">
                                             <i class="fa fa-instagram" aria-hidden="true"></i>
                                             <i class="fa fa-twitter px-2" aria-hidden="true"></i>
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </form>
                             </div>
