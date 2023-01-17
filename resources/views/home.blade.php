@@ -127,17 +127,19 @@
                 <a class="text-dec-none" href="https://www.jmangroup.com/" target="_blank">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card border-0 rounded bg-green">
-                            <div class="card-body">
+                        <div class="card">
+                            <img src="/img/j1.png" height='152px'>
+                            <!-- <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-8 col-md-12 py-4">
-                                        <h3 class="text-g pl-3 mb-0">Empowering our clients to enhance business outcomes through data and analytics</h3>
+                                        <h3 class="text-g pl-3 mb-0">DOING DATA DIFFERENTLY.</h3>
+                                        <h3 class="text-g pl-3 mb-0">DOING BUSINESS BETTER.</h3>
                                     </div>
-                                    <div class="col-lg-4 col-md-12 d-flex-grid align-items-center justify-content-center">
-                                        <img src="/img/jman-group-w.png" height="45">
+                                    <div class="col-lg-4 col-md-12 align-items-right justify-content-right text-lg-right text-center">
+                                        <img src="/img/j1.png" height="45">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
