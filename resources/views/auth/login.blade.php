@@ -3,11 +3,12 @@
 <div class="bg-signin">
     <div class="container d-flex align-items-center w-100 h-100 p-3 mx-auto signIn">
         <div class="row pt-9">
-            <div class="col-md-7 d-mob-hide">
+            <div class="col-md-7 d-mob-hide login-align">
+                <h5 class="lh5 pb-3 login-align">Helping lawyers navigate their most successful, enjoyable and rewarding career path.</h5>
                
-                <h5 class="lh5 pb-3">Our goal is to provide law firm and in-house legal resourcing teams with greater knowledge and information about the legal recruitment market, to help improve efficiency, transparency and the services provided throughout the recruitment process.</h5>
+                <!-- <h5 class="lh5 pb-3">Our goal is to provide law firm and in-house legal resourcing teams with greater knowledge and information about the legal recruitment market, to help improve efficiency, transparency and the services provided throughout the recruitment process.</h5>
 
-                <h5 class="lh5 pb-4">We believe providing relevant, objective information and coordinated content in an easily accessible format, for a specific target audience, will help reduce time spent on recruitment activities and improve their outcome.  If you work within a law firm resourcing team, or are a partner/member of an in-house legal team involved in the recruitment process, we encourage you to register and benefit from the free access to this information.</h5>  
+                <h5 class="lh5 pb-4">We believe providing relevant, objective information and coordinated content in an easily accessible format, for a specific target audience, will help reduce time spent on recruitment activities and improve their outcome.  If you work within a law firm resourcing team, or are a partner/member of an in-house legal team involved in the recruitment process, we encourage you to register and benefit from the free access to this information.</h5>   -->
 
                 <!-- <h5 class="lh5">Register to receive the Recdirec weekly update.</h5>
 
@@ -23,9 +24,9 @@
                     <small class="text-muted">info@legalrecruitmentmadeclear.com</small>
                 </footer> -->
             </div>
-            <div class="col-md-5 col-12">
+            <div class="col-md-5 col-12 ">
                 <div class="row">
-                    <div class="col-md-9 offset-md-3">
+                    <div class="col-md-9 offset-md-3-login">
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- <small> <img class="pb-5" src="../img/logo-header.png" alt="Recdirec"></small> -->

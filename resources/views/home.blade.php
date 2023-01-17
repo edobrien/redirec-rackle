@@ -12,7 +12,7 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-helpful rounded cursor-pointer" onclick="location.href='{{ url('/practice-area-guide') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Recruitment Market Overviews</h5>
@@ -25,11 +25,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                     @if (Auth::user())
                         <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ url('/useful-link') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Job Opportunities</h5>
+                                <h5 class="card-title text-white bg-useful">Job Opportunities</h5>
                                 <p class="text-light m-0">
                                     <!-- search for current opportunities where your practice area skill sets are needed. -->
                                     View current jobs within the London market by practice area.
@@ -42,9 +42,10 @@
                     @else
                     <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ route('login')}}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Job Opportunities</h5>
+                                <h5 class="card-title text-white bg-useful">Job Opportunities</h5>
                                 <p class="text-light m-0">
-                                    View current jobs within the London market by practice area.
+                                    <!-- View current jobs within the London market by practice area. -->
+                                    <i>Please register or sign in to access.</i>
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -53,7 +54,7 @@
                         </div>
                     @endif
                     </div>
-                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-feedback rounded cursor-pointer" onclick="location.href='{{ url('/interview-guide') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">General Insights/Helpful Advice</h5>
@@ -66,7 +67,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 w-100 bg-market rounded cursor-pointer" onclick="location.href='{{ url('/reports-analysis') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Market Reports and Analysis</h5>
@@ -80,13 +81,13 @@
                         </div>
                     </div>
                     @if (Auth::user())
-                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-interview rounded cursor-pointer" onclick="location.href='{{ url('/feedback-surveys') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Surveys</h5>
                                 <p class="text-light m-0">
                                     <!-- Take part in our surveys relating to diversity, social mobility, attrition and other resourcing related matters. Provide feedback / suggestions on the site. -->
-                                    Take part in our surveys relating to diversity, social mobility, attrition and recruitment. 
+                                    Take part in surveys relating to moving roles and managing your legal career.
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -95,12 +96,12 @@
                         </div>
                     </div>
                     @else
-                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-interview rounded cursor-pointer" onclick="location.href='{{ route('login') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Surveys</h5>
                                 <p class="text-light m-0">
-                                    Take part in our surveys relating to diversity, social mobility, attrition and recruitment.
+                                    <i>Please register or sign in to access.</i>
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -109,7 +110,7 @@
                         </div>
                     </div>
                     @endif
-                    <div class="col-lg-4 d-flex d-mob-block align-self-stretch mb-4">
+                    <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-practice rounded cursor-pointer" onclick="location.href='{{ url('/helpful-article') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Blog Articles</h5>
@@ -132,7 +133,7 @@
                                     <div class="col-lg-8 col-md-12 py-4">
                                         <h3 class="text-g pl-3 mb-0">Empowering our clients to enhance business outcomes through data and analytics</h3>
                                     </div>
-                                    <div class="col-lg-4 col-md-12 d-flex align-items-center justify-content-center">
+                                    <div class="col-lg-4 col-md-12 d-flex-grid align-items-center justify-content-center">
                                         <img src="/img/jman-group-w.png" height="45">
                                     </div>
                                 </div>

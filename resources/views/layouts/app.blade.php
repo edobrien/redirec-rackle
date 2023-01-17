@@ -68,7 +68,7 @@
                         </li>
                         @else
                         <li class="nav-item {{ Request::is('useful-link') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('login') }}">Jobs</a>
+                            <a class="nav-link" href="{{url('/useful-link') }}">Jobs</a>
                         </li>
                         @endif
                         <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">

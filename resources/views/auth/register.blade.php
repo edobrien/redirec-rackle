@@ -1,25 +1,32 @@
 @extends('layouts.signup-app')
 @section('content')
-<div class="bg-register">
+<div class="bg-signin">
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column signIn">
         <div class="row">
-            <div class="col-md-7">
-                <h4 class="pb-5 text-white"><span>THE</span> <span class="text-blue">RACKLE</span></h4>
-                <!-- <img class="pt-5 pb-4" src="img/logo-login.png" alt="Recdirec"> -->
-                <h1 class="display-3 text-white">Legal recruitment made clear</h1>
+            <div class="col-md-7 lh5 login-align">
+                <h5 class="lh5 pb-3 ">Helping lawyers navigate their most successful, enjoyable and rewarding career path.</h5>
 
-                <h5 class="lh5 pb-4 text-white">Thank you for registering to join rackle.  This is a free to use site for relevant individuals in law firms / in-house who are involved in the recruitment process. We ask for details of your current firm and position to ensure that you fit within this community, and request your mobile and work email in case we need to verify information. </h5>
+              
+                <h5 class="lh5 pb-3">Thank you for registering to join rackle.  This is a free to use site for relevant individuals in law firms / in-house who are involved in the recruitment process. We ask for details of your current firm and position to ensure that you fit within this community, and request your mobile and work email in case we need to verify information. </h5>
+
+                <a class="text-white" href="{{ route('login') }}">
+                   <button type="button" class="btn btn-form br-40 px-5 mb-4">
+                       Already have an account? <span class="text-white">Sign In here</span>
+                   </button>
+               </a>
             </div>
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-md-9 offset-md-3">
-                        <div class="row">
-                            <div class="col-md-12 text-right">
+                        <div class="row pt-5">
+                            <!-- <div class="col-md-12 text-right">
                                 <small><a class="text-white" href="{{ route('login') }}">SIGN IN</a></small>
-                            </div>
+                            </div> -->
+                           
                         </div>
                         <div class="row">
                             <div class="col-md-12">
+                                <h4 class="pt-5 text-white "><span>THE</span> <span class="text-blue">RACKLE</span></h4>
                                 <h4 class="text-white py-2 lh5">{{ __('Please register to join rackle') }}</h4>
                             </div>
                         </div>

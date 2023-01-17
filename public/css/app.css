@@ -911,6 +911,17 @@ input:-webkit-autofill:active {
     font-size: 18px;
     top: 4px;
 }
+.card {
+    min-height: 152px !important;
+}
+
+.offset-md-3-login{
+    margin-left: 60% !important;
+}
+
+.login-align{
+    align-self: center  !important;
+}
 
 /* Internet Explorer */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
@@ -925,6 +936,11 @@ input:-webkit-autofill:active {
     .d-flex {
         display: block !important;
     }
+
+    .d-flex-grid {
+        display: grid !important;
+    }
+
     .pt-9 {
         padding-top: 9%;
     }
@@ -934,6 +950,7 @@ input:-webkit-autofill:active {
     .bg-practice .card-body, .bg-interview .card-body , .bg-market .card-body, .bg-useful .card-body, .bg-helpful .card-body, .bg-feedback .card-body {
         min-height: 110px !important;
     }
+   
     .no-search-results {
         text-align: center;
         padding-top: 13%;
