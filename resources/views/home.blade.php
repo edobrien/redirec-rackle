@@ -29,7 +29,7 @@
                     @if (Auth::user())
                         <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ url('/useful-link') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white bg-useful">Job Opportunities</h5>
+                                <h5 class="card-title text-white">Job Opportunities</h5>
                                 <p class="text-light m-0">
                                     <!-- search for current opportunities where your practice area skill sets are needed. -->
                                     View current jobs within the London market by practice area.
@@ -42,7 +42,7 @@
                     @else
                     <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ route('login')}}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white bg-useful">Job Opportunities</h5>
+                                <h5 class="card-title text-white">Job Opportunities</h5>
                                 <p class="text-light m-0">
                                     <!-- View current jobs within the London market by practice area. -->
                                     <i>Please register or sign in to access.</i>
@@ -124,76 +124,8 @@
                         </div>
                     </div>
                 </div>
-                <a class="text-dec-none" href="https://www.jmangroup.com/" target="_blank">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <img src="/img/j1.png" height='152px'>
-                            <!-- <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-12 py-4">
-                                        <h3 class="text-g pl-3 mb-0">DOING DATA DIFFERENTLY.</h3>
-                                        <h3 class="text-g pl-3 mb-0">DOING BUSINESS BETTER.</h3>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 align-items-right justify-content-right text-lg-right text-center">
-                                        <img src="/img/j1.png" height="45">
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
                 </a>
-                {{--  @if(Auth::user()->newsletter_signup == "NO")  --}}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card border-0 rounded shadow">
-                            <div ng-hide="!errors" class="alert alert-danger">
-                                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
-                                <ul class="pl-2 mb-0">
-                                    <li ng-repeat="error in errors"><% error %></li>
-                                </ul>
-                            </div>
-                            <div ng-hide="!successMessage"  class="alert alert-success">
-                                <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
-                                <% successMessage %>
-                            </div>
-                            {{--  <div class="card-body pb-0">
-                                <h5 class="card-title">Register to receive the rackle weekly update</h5>
-                                <p class="text-muted m-0">A quick and easy to read review of all the main stories in the legal press most relevant to legal resourcing teams.</p>
-                            </div>
-                            <div class="card-footer border-0 bg-transparent">
-                                <a href="#">
-                                    <button type="button" class="btn btn-sm btn-form br-40 px-4"
-                                    ng-click="newletterRegister()">Register</button>
-                                </a>
-                            </div>  --}}
-                        </div>  
-                    </div>
-                </div>
-                {{--  @else  --}}
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- <div class="card border-0 rounded shadow bg-green pb-0">
-                            <div class="card-body py-0">
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-12 py-3">
-                                        <h5 class="card-title text-white">JMAN GROUP IS A TECHNOLOGY-ENABLED MANAGEMENT CONSULTANCY.</h5>
-                                        <p class="text-white">Recognised by Financial Times as one of the UK’s leading Management Consultancies in 2018.</p>
-                                        <a href="https://www.jmangroup.com/" target="_blank">
-                                            <button type="button" class="btn btn-sm btn-form br-40 px-4 py-2">Get Started</button>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 text-lg-right text-center">
-                                        <img src="/img/finanacial-times-logo-2019.png" height="130">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!--<img src="/img/Legal_Monitor_Banner.jpg" class="w-100" alt="CB_Conference Banner">-->
-                    </div>
-                </div>
-                {{--  @endif  --}}
+                
                 
                 <!-- modal begins -->
                 <div id="register-confirm" class="modal fade" role="dialog">

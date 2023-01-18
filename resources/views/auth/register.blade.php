@@ -2,16 +2,17 @@
 @section('content')
 <div class="bg-signin">
     <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column signIn">
-        <div class="row">
+        <div class="row pt-9">
             <div class="col-md-7 lh5 login-align">
                 <h5 class="lh5 pb-3 ">Helping lawyers navigate their most successful, enjoyable and rewarding career path.</h5>
 
               
-                <h5 class="lh5 pb-3">Thank you for registering to join rackle.  This is a free to use site for relevant individuals in law firms / in-house who are involved in the recruitment process. We ask for details of your current firm and position to ensure that you fit within this community, and request your mobile and work email in case we need to verify information. </h5>
+                <h5 class="lh5 pb-3">Thank you for registering to join the rackle. This is a site for qualified lawyers; our aim is to provide objective helpful information, advise and insights that will help you achieve the most successful and rewarding career that your hard work and talent deserve. </h5>
+                <h5 class="lh5 pb-3">We ask for your work email address to verify that you are a qualified lawyer </h5>
 
                 <a class="text-white" href="{{ route('login') }}">
                    <button type="button" class="btn btn-form br-40 px-5 mb-4">
-                       Already have an account? <span class="text-white">Sign In here</span>
+                       Already have an account? <span class="text-white">Sign In</span>
                    </button>
                </a>
             </div>

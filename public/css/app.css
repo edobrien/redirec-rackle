@@ -270,7 +270,7 @@ a:hover {
 }
 .bg-useful {
     background-color: #65CBDC;
-    background-image: linear-gradient(to left top, #94da56, #74e081, #5be3a7, #53e4c7, #65e3de);
+    background-image: linear-gradient(to left top, #65e3de, #53e4c7, #5be3a7, #74e081, #94da56)
 }
 .bg-helpful {
     background-color: #E7707A;
@@ -922,6 +922,12 @@ input:-webkit-autofill:active {
 
 .login-align{
     align-self: center  !important;
+}
+
+.flex1{
+    align-items: flex-start;
+    display: flex;
+    flex: 1
 }
 
 /* Internet Explorer */
