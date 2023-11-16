@@ -42,107 +42,108 @@
     <div id="confirm-mail" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content rounded-0">
-            <div class="modal-header border-0 rhead">
-                <h4 class="modal-title text-blue mb-0" id="exampleModalLabel">Request a Report</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body pt-1" id="modalBody">
-                <div class="container-fluid rounded">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h6 class="modal-title" id="exampleModalLabel"><% selectedReportDescription %></h6>
+                <div class="modal-header border-0 rhead">
+                    <h4 class="modal-title text-blue mb-0" id="exampleModalLabel">Request a Report</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pt-1" id="modalBody">
+                    <div class="container-fluid rounded">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h6 class="modal-title" id="exampleModalLabel"><% selectedReportDescription %></h6>
+                            </div>
                         </div>
-                    </div>
-                    <hr/ class="mb-0">
-                    <div class="row py-3">
-                        <!-- <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6> -->                         
-                        @foreach ($reports as $report) 
-                            <div class="col-md-6">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio"
-                                    ng-model="report_{{$report->id}}.isChecked"
-                                    value="{{$report->id}}"  
-                                    id="{{$report->id}}_check"
-                                    name="report"                       
-                                    ng-change="addRemoveSelection({{$report->id}},report_{{$report->id}}, {{$reports}})" 
-                                    >  
-                                    <label class="form-check-label" for="{{$report->id}}_check">
-                                        {{$report->name}}
-                                    </label>
-                                </div>  
-                            </div>                                              
-                        @endforeach
-                    </div>
-                    <hr/ class="mt-0">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3">
-                            <div ng-if="modalErrors" class="card border-0 mb-3">
-                                <div class="card-body text-danger">
-                                    <ul class="mb-0">
-                                        <li ng-repeat="error in modalErrors" ><% error %></li>
-                                    </ul>
+                        <hr/ class="mb-0">
+                        <div class="row py-3">
+                            <!-- <h6 class="modal-title text-center"><b>Partnership Promotions</b></h6> -->                         
+                            @foreach ($reports as $report) 
+                                <div class="col-md-6">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                        ng-model="report_{{$report->id}}.isChecked"
+                                        value="{{$report->id}}"  
+                                        id="{{$report->id}}_check"
+                                        name="report"                       
+                                        ng-change="addRemoveSelection({{$report->id}},report_{{$report->id}}, {{$reports}})" 
+                                        >  
+                                        <label class="form-check-label" for="{{$report->id}}_check">
+                                            {{$report->name}}
+                                        </label>
+                                    </div>  
+                                </div>                                              
+                            @endforeach
+                        </div>
+                        <hr/ class="mt-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div ng-if="modalErrors" class="border-0 mb-3">
+                                    <div class="text-danger">
+                                        <ul class="mb-0 pl-20">
+                                            <li ng-repeat="error in modalErrors" ><% error %></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label for="name" class="col-form-label">Name</label>
-                                            <input id="name" type="text" class="form-control mb-1 mtc" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="post" ng-submit="reportRequestSubmit(form_data)" ng-model="form_data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="name" class="col-form-label">Name</label>
+                                                <input id="name" type="text" class="form-control mb-1 mtc" ng-model="form_data.name" autocomplete="name" autofocus placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="firm_name" class="col-form-label">Firm Name</label>
+                                                <input id="firm_name" type="text" class="form-control mb-1 mtc" ng-model="form_data.firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="position" class="col-form-label">Position</label>
+                                                <input id="position" type="text" class="form-control mb-1 mtc" ng-model="form_data.position" autocomplete="position" autofocus placeholder="Position">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="email" class="col-form-label">Email Address</label>
+                                                <input id="email" type="text" class="form-control mb-1 mtc" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="form-group">
+                                                <label for="contact_number" class="col-form-label">Year Qualified</label>
+                                                <input id="contact_number" type="text" class="form-control mb-1 mtc" ng-model="form_data.year_qualified" autocomplete="year_qualified" autofocus placeholder="Year Qualified">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label for="firm_name" class="col-form-label">Firm Name</label>
-                                            <input id="firm_name" type="text" class="form-control mb-1 mtc" ng-model="form_data.firm_name" autocomplete="firm_name" autofocus placeholder="Firm">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox"
+                                                ng-model="form_data.consent"
+                                                id="consent">  
+                                                <label for="consent" class="form-check-label">
+                                                    I have read the terms and conditions and agree
+                                                </label>
+                                            </div>  
+                                        </div>
+                                        <div class="col-md-4 text-right align-self-center">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label for="position" class="col-form-label">Position</label>
-                                            <input id="position" type="text" class="form-control mb-1 mtc" ng-model="form_data.position" autocomplete="position" autofocus placeholder="Position">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-form">Submit</button>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label for="email" class="col-form-label">Email Address</label>
-                                            <input id="email" type="text" class="form-control mb-1 mtc" ng-model="form_data.email" autocomplete="email" autocomplete="email" autofocus placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label for="contact_number" class="col-form-label">Year Qualified</label>
-                                            <input id="contact_number" type="text" class="form-control mb-1 mtc" ng-model="form_data.year_qualified" autocomplete="year_qualified" autofocus placeholder="Year Qualified">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox"
-                                            ng-model="form_data.consent"
-                                            id="consent">  
-                                            <label for="consent" class="form-check-label">
-                                                I have read the terms and conditions and agree
-                                            </label>
-                                        </div>  
-                                    </div>
-                                    <div class="col-md-4 text-right align-self-center">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-form">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,17 +152,23 @@
     </div>
     
     <div id="confirm-done" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h4 class="modal-title font-weight-bold">Request Received</h4>
-            </div>
-            <div class="modal-body pt-4">
-                <p><% messageToshow %></p>
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-default btn-success br-40 px-4" data-dismiss="modal">Ok</button>
-            </div>
+                <div class="modal-header border-0 rhead">
+                    <h4 class="modal-title text-blue mb-0">Request Received</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid rounded">
+                        <p>Many thanks for registering for this report/market update.  Our report/market updates are intended to help lawyers navigate a successful, enjoyable, and rewarding career path.  As such we only send report/market updates to practising lawyers.</p>
+                        <p>If you have used a work email address we will shortly send you the report.  If you have used a personal email address and are not yet registered with therackle, we may contact you to verify your status as a practising lawyer prior to sending the report/market updates.</p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-default btn-success br-40 px-4" data-dismiss="modal">Ok</button>
+                </div>
             </div>
         </div>
     </div>
@@ -186,7 +193,9 @@
             $scope.selectedReport = [];            
             //Hack to handle the checkbox, trigger to add
             document.getElementById(report_id+'_check').click(); 
-
+            if(report_id) {
+                $scope.selectedReport = [parseInt(report_id)];
+            }
             $scope.selectedReportDescription = report_description;          
       
         }
@@ -223,7 +232,8 @@
                     $('#confirm-mail').modal('hide');  
                     $scope.form_data = {};
                     $scope.selectedReport = [];
-                    $scope.successMessage = response.data.message;
+                    $('#confirm-done').modal('show');
+                    // $scope.successMessage = response.data.message;
                 } 
             }).catch(function(response) {               
                     var errors = [];
@@ -237,26 +247,26 @@
             });
         }
 
-
-        $scope.sendReportEmail = function(report_name){
-            $(".bg_load").show();
-            $scope.modalErrors = null;
-            var url = 'reports-analysis/send-report-email';
-            $http.post(url,$scope.form_data).then(function (response) {
-                if (response.data.status == 'SUCCESS') {                    
-                    //$scope.successMessage = response.data.message;
-                    $('#confirm-mail').modal('hide');
-                    $('#confirm-done').modal('show');
-                    $scope.messageToshow = "We have received your request for "+$scope.form_data.report_name+". A copy of this will be sent to you via email.";
-                    $scope.form_data = {};
-                } else {
+        /* Old Functionality - Not using now */
+        // $scope.sendReportEmail = function(report_name){
+        //     $(".bg_load").show();
+        //     $scope.modalErrors = null;
+        //     var url = 'reports-analysis/send-report-email';
+        //     $http.post(url,$scope.form_data).then(function (response) {
+        //         if (response.data.status == 'SUCCESS') {                    
+        //             //$scope.successMessage = response.data.message;
+        //             $('#confirm-mail').modal('hide');
+        //             $('#confirm-done').modal('show');
+        //             $scope.messageToshow = "We have received your request for "+$scope.form_data.report_name+". A copy of this will be sent to you via email.";
+        //             $scope.form_data = {};
+        //         } else {
                    
-                    $scope.modalErrors = response.data.errors;
-                }
-            }).finally(function(){
-                $(".bg_load").hide();
-            });
-        }
+        //             $scope.modalErrors = response.data.errors;
+        //         }
+        //     }).finally(function(){
+        //         $(".bg_load").hide();
+        //     });
+        // }
 
         $scope.hideMessage = function(){
             if($scope.modalErrors){
