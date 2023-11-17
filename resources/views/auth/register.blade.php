@@ -158,7 +158,36 @@
             </div>
         </div>
     </div>
+    <div id="register-done" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header border-0 rhead">
+                    <h4 class="modal-title text-blue mb-0">Request Received</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid rounded">
+                        <p>Many thanks for registering with the rackle.  The rackle is a site to help lawyers navigate a successful, enjoyable, and rewarding career path.  As such we restrict access to the site to practising lawyers.</p>
+                        <p>If you have registered using your work email address, we will shortly email you to confirm approval and you will be able to access the site immediately.  If you have used a personal email address, we will contact you to verify your status prior to approving your registration.</p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-default btn-success br-40 px-4" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Based on Success, trigger the modal -->
+@if(isset($success) && $success)
+    <script>
+        $(document).ready(function(){
+            $('#register-done').modal('show');
+        });
+    </script>
+@endif
 <script type="text/javascript">
     $(document).ready(function(){
         $("#register").on("submit", function(){
