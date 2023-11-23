@@ -45,7 +45,7 @@ class NewUser extends Notification
     {
          return (new MailMessage)->view('mails.new-user-notify')
                                 ->subject('Rackle - New User')
-                                ->from('noreply@rackle.com');
+                                ->from('noreply@therackle.com');
     }
 
     /**

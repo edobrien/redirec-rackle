@@ -46,7 +46,7 @@ class CustomResetPasswordNotification extends Notification
 
         return (new MailMessage)->view('auth.passwords.reset-email', ['link' => $link])
                                 ->subject('Reset your password')
-                                ->from('noreply@rackle.com');
+                                ->from('noreply@therackle.com');
 
     }
 

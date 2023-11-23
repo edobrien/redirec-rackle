@@ -82,12 +82,12 @@
                         <td>
                            <h3 style="padding:7px 0px 7px 0px;">Hi,</h3>
                            <br/>
-                           <p>You have requested to reset your password from <a href="{{ \App\SiteConstants::APP_URL }}">RecDirec.</a></p>
+                           <p>You have requested to reset your password from the <a href="{{ \App\SiteConstants::APP_URL }}">Rackle.</a></p>
                            <br/>
                            <p><a href="{{ $link }}">Click here</a> or use the link below to reset your password.</p>
                            <p><a href="{{ $link }}">{{ $link }}</a></p>
                            <br/>
-                           <p>If you have any questions please feel free to get in touch with the Ed O'Brien on {{ \App\SiteConstants::ADMIN_EMAIL }}.</p>
+                           <p>If you have any questions, please contact <a href="mailto:{{ \App\SiteConstants::ADMIN_EMAIL }}">{{ \App\SiteConstants::ADMIN_EMAIL }}</a>.</p>
                            <br/>
                            <p >Best Wishes,</p>
                            <p >Ed O'Brien</p>
