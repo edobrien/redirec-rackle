@@ -82,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Report Listing
     Route::get('reports-analysis', 'Admin\ReportController@getActiveReportListing');
+    Route::post('reports-analysis/send-selected-report-email', 'Admin\ReportController@notifySelectedReport');
     Route::post('reports-analysis/send-report-email', 'Admin\ReportController@notifyReportRequest');
 
     //Useful link listing
