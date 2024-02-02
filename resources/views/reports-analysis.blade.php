@@ -230,7 +230,7 @@
                     $scope.form_data = {};
                     $scope.selectedReport = [];
                     $('#confirm-done').modal('show');
-                    // $scope.successMessage = response.data.message;
+                    $scope.messageToshow = response.data.message;
                 } 
             }).catch(function(response) {               
                     var errors = [];

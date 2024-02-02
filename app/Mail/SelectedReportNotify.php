@@ -31,8 +31,7 @@ class SelectedReportNotify extends Mailable
         $this->firm_name = $requestData->firm_name;
         $this->position = $requestData->position;
         $this->email = $requestData->email;
-        $this->contact_number = $requestData->contact_number;
-        $this->year_qualified = $requestData->year_qualified;
+        $this->contact_number = $requestData->year_qualified;
         $this->selected_report = $requestedReport;
 
     }
@@ -54,7 +53,6 @@ class SelectedReportNotify extends Mailable
                     "position" => $this->position,
                     'email'=>$this->email,
                     "contact_number" => $this->contact_number,
-                    'year_qualified'=>$this->year_qualified,
                     "selected_report" => $this->selected_report,
                 ]);
     }
