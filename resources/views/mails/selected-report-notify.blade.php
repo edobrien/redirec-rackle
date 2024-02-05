@@ -38,6 +38,7 @@
       <td class="container" style="background:rgba(33,150,243,1);">
          <div class="content">
             <table>
+               <!-- <div></div> -->
                <tr>
                    <td align="center" style="color: #fff"> {{ \App\SiteConstants::ADMIN_EMAIL }} &nbsp;&nbsp;
                   </td>

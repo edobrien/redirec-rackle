@@ -239,6 +239,7 @@
                     });
                     
                     $scope.modalErrors = errors;
+                    // console.log("error")
             }).finally(function(){
                 $(".bg_load").hide();
             });

@@ -24,7 +24,7 @@ class SelectedReportNotify extends Mailable
     private $contact_number;
     private $year_qualified;
     private $selected_report = [];
-
+   
     public function __construct($requestData,$requestedReport)
     {
         $this->name = $requestData->name;
@@ -38,7 +38,7 @@ class SelectedReportNotify extends Mailable
 
     /**
      * Build the message.
-     *
+     * console.log("")
      * @return $this
      */
     public function build()
@@ -55,5 +55,6 @@ class SelectedReportNotify extends Mailable
                     "contact_number" => $this->contact_number,
                     "selected_report" => $this->selected_report,
                 ]);
+            
     }
 }
