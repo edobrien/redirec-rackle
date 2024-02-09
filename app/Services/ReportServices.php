@@ -13,7 +13,7 @@ use App\Mail\NotifyReport;
 use Yajra\Datatables\Datatables;
 use Mail;
 use App\SiteConstants;
-
+use App\Mail\SelectedReportNotify;
 class ReportServices{
 
 	public function listReports(){
@@ -96,6 +96,26 @@ class ReportServices{
                     ->orderBy('ordering', 'ASC')
 			        ->get();
 
+    }
+    public function notifySelectedReportRequest($data){
+
+        try {
+
+            $requestedReport = array();
+
+            if (count($data->selectedReport)) {
+                $requestedReport = Report::whereIn('id',$data->selectedReport)->pluck('name');
+            }
+
+            //Send mail to admin on successful submission
+            Mail::send(new SelectedReportNotify($data,$requestedReport));
+
+            return true;
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error($e->getMessage());
+            return false;
+        }
+        
     }
 
     public function notifyReportRequest($data){

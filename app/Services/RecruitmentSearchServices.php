@@ -25,6 +25,8 @@ class RecruitmentSearchServices{
                                         'recruitment_firms.location',
                                         'recruitment_firms.view_count',
                                         'recruitment_firms.is_verified',
+                                        'recruitment_firms.description',
+                                        'recruitment_firms.logo',
                                         'recruitment_firms.is_specialism');
         //Search by firm name or other filters
         
@@ -146,6 +148,8 @@ class RecruitmentSearchServices{
                                                 'recruitment_firms.location',
                                                 'recruitment_firms.view_count',
                                                 'recruitment_firms.is_verified',
+                                                'recruitment_firms.description',
+                                                'recruitment_firms.logo',
                                                 'recruitment_firms.is_specialism')
                                     ->join('firm_sectors','recruitment_firms.id', '=','firm_sectors.firm_id')
                                     ->join('sectors','sectors.id','=','firm_sectors.sector_id')

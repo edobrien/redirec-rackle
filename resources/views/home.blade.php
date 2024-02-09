@@ -103,7 +103,7 @@
                                 <a href="#" class="close pr-2" ng-click="hideMessage()" aria-label="close">&times;</a>
                                 <% successMessage %>
                             </div>
-                            <!-- <div class="card-body pb-0">
+                            <!--  <div class="card-body pb-0">
                                 <h5 class="card-title">Register to receive the recdirec weekly update</h5>
                                 <p class="text-muted m-0">A quick and easy to read review of all the main stories in the legal press most relevant to legal resourcing teams.</p>
                             </div>
@@ -112,7 +112,7 @@
                                     <button type="button" class="btn btn-sm btn-form br-40 px-4"
                                     ng-click="newletterRegister()">Register</button>
                                 </a>
-                            </div> -->
+                            </div>  -->
                         </div>  
                     </div>
                 </div>

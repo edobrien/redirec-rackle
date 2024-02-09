@@ -5,9 +5,13 @@
         <div class="row pt-9">
             <div class="col-md-7">
                 <img class="pb-5" src="img/logo-login.png" alt="Recdirec">
-                <h5 class="lh5 pb-3">Our goal is to provide law firm and in-house legal resourcing teams with greater knowledge and information about the legal recruitment market, to help improve efficiency, transparency and the services provided throughout the recruitment process.</h5>
+                <h5 class="lh5 pb-3">
+                Recdirec is a site for law firm in-house resourcing teams.   We provide in-depth information on practice areas, overviews of recruiters, as well as monthly reports and analysis on areas of the legal market that are relevant to recruiting.
+                </h5>
 
-                <h5 class="lh5 pb-4">We believe providing relevant, objective information and coordinated content in an easily accessible format, for a specific target audience, will help reduce time spent on recruitment activities and improve their outcome.  If you work within a law firm resourcing team, or are a partner/member of an in-house legal team involved in the recruitment process, we encourage you to register and benefit from the free access to this information.</h5>
+                <h5 class="lh5 pb-4">
+                If you work within a law firm resourcing team (or are a partner involved in the recruitment process at your firm), please register and start benefitting from our information and analysis.
+                </h5>
 
                 <!-- <h5 class="lh5">Register to receive the Recdirec weekly update.</h5>
 

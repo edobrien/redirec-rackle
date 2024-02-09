@@ -328,6 +328,17 @@
                         <button type="button" ng-click="clearSearch()" class="btn btn-sm bg-blue br-40 w-100">Clear Search</button>
                         </form>
                     </div>
+                    <div style=" display: flex;
+                    flex-wrap: wrap;
+                    justify-content:center;
+                    align-items:end;
+                    margin-right: -15px;
+                    margin-left: -15px;    position: fixed;
+                    height: 44px;
+                    bottom: 0;
+                    width: 230px;
+                    "><small style="font-size: 70% !important;">copyright 2023 recdirec All rights reserved.</small></div>
+                 
                 </nav>
                 @endif
                 <div class="content">
