@@ -46,7 +46,7 @@ class SelectedReportNotify extends Mailable
         return $this->view('mails.selected-report-notify')
                 ->from('noreply@therackle.com')
                 ->to(SiteConstants::ADMIN_EMAIL)
-                ->subject("The Rackle: Report request Submission!")
+                ->subject("Recdirec: report submission request!")
                 ->with([
                     "name" => $this->name,
                     "firm_name" => $this->firm_name,
