@@ -3,7 +3,7 @@
 <div ng-cloak ng-controller="UsefulController">
     <div class="row">
         <div class="col-md-12 p-4">
-            <h4 class="font-weight-bold text-blue pb-2">Job Opportunities</h4>
+            <h4 class="font-weight-bold text-blue pb-2">Who's Hiring?</h4>
             @if (Auth::user() && Auth::user()->is_active == "YES")
             <div id="accordion-list">
                 <ul class="capture-ext-links">

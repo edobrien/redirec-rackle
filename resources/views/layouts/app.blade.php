@@ -28,6 +28,14 @@
      
     <!-- Used for google recaptcha-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+      <!-- Google tag (gtag.js) --> 
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDQSDTL6SL"></script> 
+        <script> 
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); } 
+            gtag('js', new Date()); 
+            gtag('config', 'G-ZDQSDTL6SL'); 
+        </script>
      
     <!-- Used for yajra datatables-->
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"defer></script>
@@ -63,16 +71,16 @@
                             <a class="nav-link" href="{{ url('/practice-area-guide') }}">Market Overviews</a>
                         </li>
                         @if (Auth::user())
-                        <li class="nav-item {{ Request::is('useful-link') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ url('/useful-link') }}">Jobs</a>
+                        <li class="nav-item {{ Request::is('jobs') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/jobs') }}">Jobs</a>
                         </li>
                         @else
-                        <li class="nav-item {{ Request::is('useful-link') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('jobs') ? 'active' : '' }}">
                             <a class="nav-link" href="{{route('login') }}">Jobs</a>
                         </li>
                         @endif
-                        <li class="nav-item {{ Request::is('interview-guide') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ url('/interview-guide') }}">Advice</a>
+                        <li class="nav-item {{ Request::is('advice') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/advice') }}">Advice</a>
                         </li>
                         <li class="nav-item {{ Request::is('reports-analysis') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ url('/reports-analysis') }}">Reports</a>
@@ -87,8 +95,8 @@
                         </li>
                         @endif
                         
-                        <li class="nav-item {{ Request::is('helpful-article') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ url('/helpful-article') }}">Blog</a>
+                        <li class="nav-item {{ Request::is('blog') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
                         </li>
                         <!-- Authentication Links -->
                         @if(Auth::user() && (Auth::user()->is_active == "No"))
@@ -360,7 +368,7 @@
                         <label for="practiceArea">My main practice area is….</label>
                         <select class="mb8" name="practice_area_id"
                                 ng-model="search_data.practice_area_id" 
-                                ng-options="area as area.name group by area.type for area in search_areas  | filter: { type: '!GENERAL' } track by area.id">
+                                ng-options="area as area.name group by area.type for area in search_areas | orderBy:'name' | filter: { type: '!GENERAL' } track by area.id">
                                 <option value="">General</option>
                         </select>
                         <!--

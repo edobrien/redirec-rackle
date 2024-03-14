@@ -130,7 +130,7 @@
                                                 ng-model="form_data.consent"
                                                 id="consent">  
                                                 <label for="consent" class="form-check-label">
-                                                    I have read the terms and conditions and agree
+                                                    I have read the <a href="/terms">terms and conditions</a> and agree
                                                 </label>
                                             </div>  
                                         </div>

@@ -15,9 +15,9 @@
                     <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                         <div class="card border-0 bg-helpful rounded cursor-pointer" onclick="location.href='{{ url('/practice-area-guide') }}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Recruitment Market Overviews</h5>
+                                <h5 class="card-title text-white">Know your Options</h5>
                                 <p class="text-light m-0">
-                                    Overview of all the recruitment activity happening in all the different practice areas and inhouse sectors.  Plus, inside views from specialist recruiters.
+                                Research your practice area and discover which types of firms are expected to be hiring and how many roles you can expect to arise over the next 12 months
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
                     @if (Auth::user())
-                        <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ url('/useful-link') }}';">
+                        <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ url('/jobs') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Job Opportunities</h5>
                                 <p class="text-light m-0">
@@ -42,10 +42,10 @@
                     @else
                     <div class="card border-0 bg-useful rounded cursor-pointer" onclick="location.href='{{ route('login')}}';">
                             <div class="card-body pb-0">
-                                <h5 class="card-title text-white">Job Opportunities</h5>
+                                <h5 class="card-title text-white">Who's Hiring?</h5>
                                 <p class="text-light m-0">
                                     <!-- View current jobs within the London market by practice area. -->
-                                    <i>Please register or sign in to access.</i>
+                                    <i>Stay up to date with which firms are currently advertising roles in your practice area. <a href="/login">Sign in</a> or <a href="/register">register</a> for free to access this information.</i>
                                 </p>
                             </div>
                             <div class="card-footer border-0 bg-transparent text-right">
@@ -55,7 +55,7 @@
                     @endif
                     </div>
                     <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
-                        <div class="card border-0 bg-feedback rounded cursor-pointer" onclick="location.href='{{ url('/interview-guide') }}';">
+                        <div class="card border-0 bg-feedback rounded cursor-pointer" onclick="location.href='{{ url('/advice') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">General Insights/Helpful Advice</h5>
                                 <p class="text-light m-0">
@@ -111,7 +111,7 @@
                     </div>
                     @endif
                     <div class="col-lg-4 d-flex-grid d-mob-block align-self-stretch mb-4">
-                        <div class="card border-0 bg-practice rounded cursor-pointer" onclick="location.href='{{ url('/helpful-article') }}';">
+                        <div class="card border-0 bg-practice rounded cursor-pointer" onclick="location.href='{{ url('/blog') }}';">
                             <div class="card-body pb-0">
                                 <h5 class="card-title text-white">Blog Articles</h5>
                                 <p class="text-light m-0">

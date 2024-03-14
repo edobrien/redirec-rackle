@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -9,6 +10,14 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+         <!-- Google tag (gtag.js) --> 
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDQSDTL6SL"></script> 
+        <script> 
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); } 
+            gtag('js', new Date()); 
+            gtag('config', 'G-ZDQSDTL6SL'); 
+        </script>
         <!-- Styles -->
         <style>
             html, body {

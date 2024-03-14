@@ -88,7 +88,7 @@ Route::get('upload-file', function () {
     Route::get('practice-area-guide-detail/{id}', 'Admin\PracticeAreaGuideController@getGuideView');
 
     //Interview Guide listing
-    Route::get('interview-guide', 'Admin\InterviewGuideController@getActiveInterviewGuides');
+    Route::get('advice', 'Admin\InterviewGuideController@getActiveInterviewGuides');
     Route::post('interview-guide-detail', 'Admin\InterviewGuideController@saveViewCount');
     Route::get('interview-guide-detail/{id}', 'Admin\InterviewGuideController@getGuideView');
 
@@ -99,10 +99,10 @@ Route::get('upload-file', function () {
     Route::post('reports-analysis/send-report-email', 'Admin\ReportController@notifySelectedReport');
 
     //Useful link listing
-    Route::get('useful-link', 'Admin\UsefulLinksController@getActiveUsefulLinksListing');
+    Route::get('jobs', 'Admin\UsefulLinksController@getActiveUsefulLinksListing');
 
     //Useful link listing
-    Route::get('helpful-article', 'Admin\HelpfulArticleController@getActiveArticleListing');
+    Route::get('blog', 'Admin\HelpfulArticleController@getActiveArticleListing');
 
     Route::get('feedback-surveys', function () {
         return view('feedback-surveys');
