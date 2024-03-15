@@ -398,7 +398,7 @@
                             </small>
                         </div>
                         <div class="col-md-12 padding-0 pt-0">
-                            <small style="font-size:70% !important">Copyright 2023 The Rackle All rights reserved.</small>
+                            <small style="font-size:70% !important">copyright 2023 The Rackle All rights reserved.</small>
                         </div>
                     </div>
                 </nav>
