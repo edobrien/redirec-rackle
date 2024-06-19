@@ -131,6 +131,19 @@
                                         @endif
                                     </div>
                                     @endif --}}
+                                     <div class = "form-group mt-2 mb-2">
+                                        <div class="captcha">
+                                            <span>{!!  captcha_img() !!}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="captcha" class="form-control @error('captcha') is-invalid @enderror" name="captcha" placeholder="Enter Captcha">
+                                        @error('captcha')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-primary w-100 signin-Button">
                                             {{ __('Join rackle') }}
@@ -193,6 +206,15 @@
         $("#register").on("submit", function(){
             $(".bg_load").show();
         });
+    });
+
+    document.getElementById('reload').addEventListener('click', function() {
+        fetch('reload-captcha')
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('.captcha span').innerHTML = data.captcha;
+            })
+            .catch(error => console.error('Error:', error));
     });
 </script>
 @endsection
